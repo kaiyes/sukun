@@ -1,0 +1,305 @@
+<head>
+  <title>practise</title>
+  <script>
+    ChatraID = 'xsLe7wa4iLw3bL6G3';
+    (function(d, w, c) {
+        var n = d.getElementsByTagName('script')[0],
+            s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
+            + '//chat.chatra.io/chatra.js';
+        n.parentNode.insertBefore(s, n);
+    })(document, window, 'Chatra');
+</script>
+</head>
+
+<body>
+  
+</body>
+
+
+<template name="home">
+ {{>style}}
+  <div class="container">         
+  {{>login}}  
+  {{>register}} 
+  </div> 
+</template>
+
+
+<template name="show">
+    <div class="container">
+
+
+      <div class="row">
+        
+         <div class="col s4">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="/1.jpg">
+                </div>
+                 <div class="card-content">
+                 <h5>{{userName}}</h5>
+                 <p><strong> Age: </strong> {{age}}  </p>
+                 <p> <strong> Height:</strong> {{height}}</p>
+                 <p> <strong> Profession:</strong> {{profession}}</p>
+                </div>   
+          </div>
+        </div>
+
+        <div class="col s4">
+          <div class="card-panel hoverable teal">
+                 <div class="card-content">
+                 <h3> Religious Details </h3>
+                 <p> <strong> Beard: </strong> {{beard}}</p>
+                 <p> <strong> Hijab: </strong> {{Hijab}}</p>
+                 <p> <strong> Prayer: </strong> {{prayer}}</p>
+                 <p> <strong> Sect: </strong> {{sect}}</p>
+                 <p> <strong> History: </strong> {{religiousHistory}}</p>
+                </div>     
+          </div>
+         </div>
+
+        <div class="col s4">
+          <div class="card-panel hoverable teal">
+                 <div class="card-content">
+                 <h3> Family Details </h3>
+                 <p> <strong> Current Residence: </strong> {{currentResidence}}</p>
+                 <p> <strong> Original Residence: </strong> {{originalResidence}}</p>
+                 <p> <strong> Family Members: </strong> {{familyMembers}}</p>
+                </div>     
+          </div>
+        </div>
+
+      </div> <!-- row finished -->
+
+      
+      <div class="row">
+        
+        <div class="col s4">
+          <div class="card-panel hoverable teal">
+                 <div class="card-content">
+                 <h3> Educational Details  </h3>
+                 <p> <strong> Degree: </strong> {{lastOrNextDegree}}</p>
+                 </div>
+         </div>
+       </div>
+        
+      <div class="col s4">
+        <div class="card-panel hoverable teal">
+               <div class="card-content">
+               <h3> Family Details </h3>
+               <p> <strong> Current Residence: </strong> {{currentResidence}}</p>
+               <p> <strong> Original Residence: </strong> {{originalResidence}}</p>
+               <p> <strong> Family Members: </strong> {{familyMembers}}</p>
+              </div>     
+        </div>
+       </div>
+          
+
+    <div class="col s4">
+      <div class="card-panel hoverable teal">
+             <div class="card-content">
+             <h3> Family Details </h3>
+             <p> <strong> Current Residence: </strong> {{currentResidence}}</p>
+             <p> <strong> Original Residence: </strong> {{originalResidence}}</p>
+             <p> <strong> Family Members: </strong> {{familyMembers}}</p>
+            </div>     
+      </div>
+    </div>
+
+      </div> <!-- row finished -->
+
+
+
+
+
+    </div>
+</template>
+
+
+
+<template name="details">
+ {{>style_details}}
+
+<div class="container"> 
+  <div class="card-panel">
+    {{#if currentUser }}
+     {{> quickForm collection="Biye" id="details" type="insert"}}
+    {{/if}}
+  </div>
+</div> 
+</template>
+
+
+
+<template name="register">
+   <div class="row"> 
+     <div class="col s12">
+      <div class = "card-panel center-align" > 
+        <form  class="register">
+          <p>Email: <input 
+          type="email" 
+          name= "email">  </p>
+
+          <p>Password: <input
+          type="password"
+          name="password"></p>
+       
+          <p class="center-align"> <input id="1" type="radio" name="sex" value="male" required> 
+          <label for="1">Male </label> 
+
+          <input id="2" type="radio" name="sex" value="female" required> 
+          <label for="2"> Female</label></p>
+               
+          <input id="button" class= "waves-effect waves-light btn-large" 
+          type="submit" value="register">
+        </form>
+     </div>
+    </div> 
+  </div>  
+</template>
+
+
+
+
+<template name="login">
+   
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        
+        <div class="input-field col s5">
+        <input id="email" type="email">
+        <label class ="black-text" for="email">Email</label>
+        </div>
+      
+        <div class="input-field col s5">
+        <input id="password" type="password">
+        <label class ="black-text" 
+        for="password">Password</label>
+        </div>
+
+        <div class="col s2" >
+        <input class= "waves-effect waves-light btn-large" 
+        type="submit" value="login">
+        </div>
+
+      </div>
+    </form> 
+  </div>
+
+
+</template>
+
+
+<template name="tryy">
+ {{>style_try}}
+
+{{#if currentUser}}
+    <ul> 
+          <div class="row">
+
+        {{#each people}}
+
+            <div class="col s3">
+              <div class="card small hoverable">
+                <div class="card-image">
+                  <img src="/1.jpg">
+                   <span class="card-title">    {{userName}}</span>
+                    </div>
+                     <div class="card-content">
+                     <p>{{gender}}</p>
+                    </div>
+                   <div class="card-action">
+                  <a href="{{pathFor 'show'}}">Yes</a>
+                </div>
+              </div>
+            </div>
+
+        {{/each}}  
+
+          </div>
+    </ul>
+
+  <div class="center-align">
+    <a href="#" id="button" name= "logout" 
+    class="waves-effect waves-light btn">Logout</a>
+  </div>
+
+{{/if}}
+
+<!-- <div class="container">
+
+   <ul class="collection">
+    {{#if  currentUser}}
+       {{#each people }}
+         
+          <li class="collection-item avatar">
+            <img src="/1.jpg" class="circle">
+            <a href="{{pathFor 'show'}}">{{firstName}}</a>
+          </li> 
+
+        {{/each}} 
+    {{/if}}
+  </ul> 
+
+  <div class="center-align">
+    <a href="#" id="button" name= "logout" 
+    class="waves-effect waves-light btn">Logout</a>
+  </div>
+
+ </div> -->
+</template>
+
+
+
+<template name="style_details">
+  <style>
+      body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding-top: 53px;
+  padding-bottom: 64px;
+  background-color: #b9f6ca;
+}
+  </style>
+</template>
+
+
+
+<template name="style_try">
+  <style>
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-top: 53px;
+    padding-bottom: 64px;
+    background-color:  #b3e5fc;
+     }
+  </style>
+</template>
+
+
+
+<template name="style">
+  <style>
+      body {
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 53px;
+  padding-bottom: 64px;
+  background-color: #3EBF50;
+}
+
+  </style>
+}
+</template>
+
