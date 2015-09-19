@@ -30,17 +30,119 @@
 </template>
 
 
-<template name="show">
-    <div class="container">
+
+<!-- .........................Register form............... -->
+
+<template name="register">
+   <div class="row"> 
+     <div class="col s12">
+      <div class = "card-panel center-align" > 
+        <form  class="register">
+          <p>Email: <input 
+          type="email" 
+          name= "email">  </p>
+          <p>Password: <input
+          type="password"
+          name="password"></p>
+          <p class="center-align"> <input id="1" type="radio" name="sex" value="male" required> 
+          <label for="1">Male </label> 
+          <input id="2" type="radio" name="sex" value="female" required> 
+          <label for="2"> Female</label></p>      
+          <input id="button" class= "waves-effect waves-light btn-large" 
+          type="submit" value="register">
+        </form>
+     </div>
+    </div> 
+  </div>  
+</template>
 
 
+<!-- .........................Login............... -->
+
+<template name="login"> 
+  <div class="row">
+    <form class="col s12">
       <div class="row">
-        
-         <div class="col s4">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img src="/1.jpg">
+        <div class="input-field col s5">
+        <input id="email" type="email">
+        <label class ="black-text" for="email">Email</label>
+        </div>
+        <div class="input-field col s5">
+        <input id="password" type="password">
+        <label class ="black-text" 
+        for="password">Password</label>
+        </div>
+        <div class="col s2" >
+        <input class= "waves-effect waves-light btn-large" 
+        type="submit" value="login">
+        </div>
+      </div>
+    </form> 
+  </div>
+</template>
+
+
+ <!-- .........................Details input form............... -->
+
+<template name="details">
+ {{>style_details}}
+  <div class="container"> 
+    <div class="card-panel">
+      {{#if currentUser }}
+       {{> quickForm collection="Biye" id="details" type="insert"}}
+      {{/if}}
+    </div>
+  </div> 
+</template>
+
+
+
+<template name="list">
+ {{>style_list}}
+
+{{#if currentUser}}
+    <ul> 
+         <div class="row">
+        {{#each people}}
+            <div class="col s3">
+              <div class="card small hoverable">
+                <div class="card-image">
+                  <img src="/1.jpg">
+                   <span class="card-title">    {{userName}}</span>
+                    </div>
+                     <div class="card-content">
+                     <p>{{gender}}</p>
+                    </div>
+                   <div class="card-action">
+                  <a href="{{pathFor 'show'}}">Yes</a>
                 </div>
+              </div>
+            </div>
+        {{/each}}  
+          </div>
+    </ul>
+
+  <div class="center-align">
+    <a href="#" id="button" name= "logout" 
+    class="waves-effect waves-light btn">Logout</a>
+  </div>
+
+{{/if}}
+
+</template>
+
+
+<template name="show">
+  {{>style_details}}
+    <div class="container">
+       <div class="row">
+
+         <div class="col s4">        
+            {{>profile}}        
+        </div>
+
+         <div class="col s4">
+          <div class="card hoverable teal">
                  <div class="card-content">
                  <h5>{{userName}}</h5>
                  <p><strong> Age: </strong> {{age}}  </p>
@@ -63,16 +165,7 @@
           </div>
          </div>
 
-        <div class="col s4">
-          <div class="card-panel hoverable teal">
-                 <div class="card-content">
-                 <h3> Family Details </h3>
-                 <p> <strong> Current Residence: </strong> {{currentResidence}}</p>
-                 <p> <strong> Original Residence: </strong> {{originalResidence}}</p>
-                 <p> <strong> Family Members: </strong> {{familyMembers}}</p>
-                </div>     
-          </div>
-        </div>
+     
 
       </div> <!-- row finished -->
 
@@ -98,23 +191,25 @@
               </div>     
         </div>
        </div>
-          
 
-    <div class="col s4">
-      <div class="card-panel hoverable teal">
-             <div class="card-content">
-             <h3> Family Details </h3>
-             <p> <strong> Current Residence: </strong> {{currentResidence}}</p>
-             <p> <strong> Original Residence: </strong> {{originalResidence}}</p>
-             <p> <strong> Family Members: </strong> {{familyMembers}}</p>
-            </div>     
-      </div>
-    </div>
+        <div class="col s4">
+          <div class="card-panel hoverable teal">
+                 <div class="card-content">
+                 <h3> Educational Details  </h3>
+                 <p> <strong> Degree: </strong> {{lastOrNextDegree}}</p>
+                 </div>
+         </div>
+       </div>
 
       </div> <!-- row finished -->
 
 
-
+      <div class="row">  
+        <div class="center-align">
+          <a href="#" id="button" name= "logout" 
+          class="waves-effect waves-light btn red">Logout</a>
+        </div>
+      </div>
 
 
     </div>
@@ -122,140 +217,35 @@
 
 
 
-<template name="details">
- {{>style_details}}
-
-<div class="container"> 
-  <div class="card-panel">
-    {{#if currentUser }}
-     {{> quickForm collection="Biye" id="details" type="insert"}}
-    {{/if}}
-  </div>
-</div> 
-</template>
-
-
-
-<template name="register">
-   <div class="row"> 
-     <div class="col s12">
-      <div class = "card-panel center-align" > 
-        <form  class="register">
-          <p>Email: <input 
-          type="email" 
-          name= "email">  </p>
-
-          <p>Password: <input
-          type="password"
-          name="password"></p>
-       
-          <p class="center-align"> <input id="1" type="radio" name="sex" value="male" required> 
-          <label for="1">Male </label> 
-
-          <input id="2" type="radio" name="sex" value="female" required> 
-          <label for="2"> Female</label></p>
-               
-          <input id="button" class= "waves-effect waves-light btn-large" 
-          type="submit" value="register">
-        </form>
-     </div>
-    </div> 
-  </div>  
-</template>
-
-
-
-
-<template name="login">
-   
+<template name="upload">
+  <div class="container">
+  
   <div class="row">
-    <form class="col s12">
-      <div class="row">
-        
-        <div class="input-field col s5">
-        <input id="email" type="email">
-        <label class ="black-text" for="email">Email</label>
-        </div>
-      
-        <div class="input-field col s5">
-        <input id="password" type="password">
-        <label class ="black-text" 
-        for="password">Password</label>
-        </div>
+      <input type="file" 
+      id="exampleInput"> 
+   </div>  
+    
+   <div class="row">
+     <a href="{{pathFor 'list'}}" class="btn btn-danger"> I have uploaded My photo</a>
+   </div> 
 
-        <div class="col s2" >
-        <input class= "waves-effect waves-light btn-large" 
-        type="submit" value="login">
-        </div>
-
-      </div>
-    </form> 
   </div>
-
-
 </template>
 
 
-<template name="tryy">
- {{>style_try}}
-
-{{#if currentUser}}
-    <ul> 
-          <div class="row">
-
-        {{#each people}}
-
-            <div class="col s3">
-              <div class="card small hoverable">
-                <div class="card-image">
-                  <img src="/1.jpg">
-                   <span class="card-title">    {{userName}}</span>
-                    </div>
-                     <div class="card-content">
-                     <p>{{gender}}</p>
-                    </div>
-                   <div class="card-action">
-                  <a href="{{pathFor 'show'}}">Yes</a>
-                </div>
-              </div>
-            </div>
-
-        {{/each}}  
-
-          </div>
-    </ul>
-
-  <div class="center-align">
-    <a href="#" id="button" name= "logout" 
-    class="waves-effect waves-light btn">Logout</a>
-  </div>
-
-{{/if}}
-
-<!-- <div class="container">
-
-   <ul class="collection">
-    {{#if  currentUser}}
-       {{#each people }}
-         
-          <li class="collection-item avatar">
-            <img src="/1.jpg" class="circle">
-            <a href="{{pathFor 'show'}}">{{firstName}}</a>
-          </li> 
-
-        {{/each}} 
-    {{/if}}
-  </ul> 
-
-  <div class="center-align">
-    <a href="#" id="button" name= "logout" 
-    class="waves-effect waves-light btn">Logout</a>
-  </div>
-
- </div> -->
+ 
+<template name="profile">
+ 
+       {{#each profilePic}}       
+          <img src="{{this.url}}" 
+          height="400" width="400" 
+          class="img-circle">
+       {{/each}}  
+ 
 </template>
 
 
+<!-- .....................StyleSheet............. -->
 
 <template name="style_details">
   <style>
@@ -272,7 +262,7 @@
 
 
 
-<template name="style_try">
+<template name="style_list">
   <style>
   body {
     height: 100%;
@@ -300,6 +290,7 @@
 }
 
   </style>
-}
 </template>
+
+
 

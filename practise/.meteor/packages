@@ -13,3 +13,5 @@ aldeed:collection2
 aldeed:autoform
 materialize:materialize
 gildaspk:autoform-materialize
+cfs:standard-packages
+cfs:gridfs
