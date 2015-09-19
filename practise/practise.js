@@ -21,7 +21,7 @@ Router.route('show',{
       path:'/list/:_id',
   data: function(){
     return Biye.findOne({_id: this.params._id});
-    return Images.findOne({_id: this.params._id});
+    
 
   }
 
@@ -126,82 +126,82 @@ Biye.attachSchema(new SimpleSchema({
      allowedValues: ['Male', 'Female']
   },
 
-  // age: {
-  //     type: Number,
-  //     max: 60      
-  // },
+  age: {
+      type: Number,
+      max: 60      
+  },
 
-  // profession: {
-  //     type: String      
-  // },
+  profession: {
+      type: String      
+  },
 
-  // currentResidence: {
-  //     type: String      
-  // },
+  currentResidence: {
+      type: String      
+  },
 
-  // originalResidence : {
-  //     type: String      
-  // },
+  originalResidence : {
+      type: String      
+  },
 
-  // familyMembers: {
-  //     type: String     
-  // },
+  familyMembers: {
+      type: String     
+  },
 
-  // lastOrNextDegree: {
-  //    type: String,
-  //    allowedValues: ['Phd','Masters','Honours','Diploma','HSC','SSC']
-  // },
+  lastOrNextDegree: {
+     type: String,
+     allowedValues: ['Phd','Masters','Honours','Diploma','HSC','SSC']
+  },
 
-  // dateOfBirth: {
-  //    type: Date,
-  // },
+  dateOfBirth: {
+     type: Date,
+  },
 
-  // religiousHistory: {
-  //    type: String,
-  //    allowedValues: ['Started practising 1 or 2 years back', 
-  //                     'Been practising for more than 5 years',
-  //                     'Revert Muslim','Have not started practising yet but want too soon',
-  //                     'I have faith in my heart']
-  // },
+  religiousHistory: {
+     type: String,
+     allowedValues: ['Started practising 1 or 2 years back', 
+                      'Been practising for more than 5 years',
+                      'Revert Muslim','Have not started practising yet but want too soon',
+                      'I have faith in my heart']
+  },
 
-  // sect: {
-  //    type: String,
-  //    allowedValues: ['Salafi/Ahle Hadeeth', 'Hanafi',
-  //                     'Tablig','Pir','Shia','I do not know']
-  // },
+  sect: {
+     type: String,
+     allowedValues: ['Salafi/Ahle Hadeeth', 'Hanafi',
+                      'Tablig','Pir','Shia','I do not know']
+  },
 
-  // prayer: {
-  //    type: String,
-  //    allowedValues: ['Always pray', 'Sometimes miss fajr',
-  //                     'Often pray','Before exam, I pray',
-  //                      'Eid only','Jumuah Only',
-  //                      'Will start praying very soon']
-  // },
+  prayer: {
+     type: String,
+     allowedValues: ['Always pray', 'Sometimes miss fajr',
+                      'Often pray','Before exam, I pray',
+                       'Eid only','Jumuah Only',
+                       'Will start praying very soon']
+  },
 
-  // maritalStatus: {
-  //    type: String,
-  //    allowedValues: ['Never Married', 'Annulled (Khula)',
-  //                   'Divorced','widowed','Married']
-  // },
+  maritalStatus: {
+     type: String,
+     allowedValues: ['Never Married', 'Annulled (Khula)',
+                    'Divorced','widowed','Married']
+  },
 
-  // numberOfChildren: {
-  //    type: Number   
-  // },
+  numberOfChildren: {
+     type: Number   
+  },
 
-  // Hijab: {
-  //    type: String,
-  //    allowedValues: ['Always With Burkha/Abaya face open', 
-  //                    'Always with Burkha/Abaya with Niqab',
-  //                    'Always with Scraf only',
-  //                    'I dress modestly but not Burkha/Abaya/niqab',
-  //                    'I dress modestly but Sometimes I wear Hijab',
-  //                    '(Male only) Shirt,trousers,casual clothing',
-  //                    '(Male only) Panjabi','(Male only) Jobba']
-  // },
+  Hijab: {
+     type: String,
+     allowedValues: ['Always With Burkha/Abaya face open', 
+                     'Always with Burkha/Abaya with Niqab',
+                     'Always with Scraf only',
+                     'I dress modestly but not Burkha/Abaya/niqab',
+                     'I dress modestly but Sometimes I wear Hijab',
+                     '(Male only) Shirt,trousers,casual clothing',
+                     '(Male only) Panjabi','(Male only) Jobba']
+  },
 
-  // height: {
-  //    type: String   
-  // },
+  height: {
+     type: String   
+  },
 
   beard:{
     type: String,
