@@ -6,7 +6,7 @@ To run this app,
 
 Install Meteor:
 
-curl https://install.meteor.com | /bin/sh
+`curl https://install.meteor.com | /bin/sh`
 
 
 Then downgrade
