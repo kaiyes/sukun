@@ -11,17 +11,19 @@ Install Meteor:
 
 Then downgrade
 
-meteor update --release 1.1.0.3
+`meteor update --release 1.1.0.3`
 
 then, 
 
-git clone https://github.com/kaiyes/Matrimony.git
+`git clone https://github.com/kaiyes/Matrimony.git`
 
-cd Matrimony
+`cd Matrimony`
 
-cd practise
+`cd practise`
 
-then Meteor
+then finally run the app at `localhost:3000` by typing in your terminal
+
+ `Meteor`
 
 
 
