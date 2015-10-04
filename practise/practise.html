@@ -1,6 +1,6 @@
 <head>
   <title>practise</title>
-  <script>
+ <!--  <script>
     ChatraID = 'xsLe7wa4iLw3bL6G3';
     (function(d, w, c) {
         var n = d.getElementsByTagName('script')[0],
@@ -13,7 +13,7 @@
             + '//chat.chatra.io/chatra.js';
         n.parentNode.insertBefore(s, n);
     })(document, window, 'Chatra');
-</script>
+</script> -->
 </head>
 
 <body>
@@ -127,6 +127,7 @@
     class="waves-effect waves-light btn">Logout</a>
   </div>
 
+  
 {{/if}}
 
 </template>
@@ -138,7 +139,7 @@
        <div class="row">
 
          <div class="col s4">        
-            {{>profile}}        
+           <img src=" {{image}}" alt="">         
         </div>
 
          <div class="col s4">
@@ -217,34 +218,6 @@
 
 
 
-<template name="upload">
-  <div class="container">
-  
-  <div class="row">
-      <input type="file" 
-      id="exampleInput"> 
-   </div>  
-    
-   <div class="row">
-     <a href="{{pathFor 'list'}}" class="btn btn-danger"> I have uploaded My photo</a>
-   </div> 
-
-  </div>
-</template>
-
-
- 
-<template name="profile">
- 
-       {{#each profilePic}}       
-          <img src="{{this.url}}" 
-          height="400" width="400" 
-          class="img-circle">
-       {{/each}}  
- 
-</template>
-
-
 <!-- .....................StyleSheet............. -->
 
 <template name="style_details">
@@ -291,6 +264,52 @@
 
   </style>
 </template>
+
+
+<template name="chat">
+ 
+ <div> 
+  {{>chatBox}}
+ </div>
+  
+
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
