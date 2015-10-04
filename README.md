@@ -1,6 +1,6 @@
-# Matrimony App
+# Matrimony
 
-This is a Matrimony web app made entirely with Meteor. This does not uses the latest Meteor 1.2 as the update has breaking changes to this app. so if you directly clone this repo it might not work. To use this, you will have to use the previos version 1.1.0.3. 
+This is a web app made entirely with Meteor. This app is a basic matchmaking app. This does not use the latest Meteor 1.2 as the update has breaking changes to this app ( Materialize css and iron router ). So if you directly clone this repo it might not work. To use this, you will have to use the previos version 1.1.0.3. 
 
 To run this app, 
 
