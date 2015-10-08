@@ -44,6 +44,11 @@
           <p>Password: <input
           type="password"
           name="password"></p>
+
+          <p>User Name: <input
+          type="text"
+          name="username"></p>  
+
           <p class="center-align"> <input id="1" type="radio" name="sex" value="male" required> 
           <label for="1">Male </label> 
           <input id="2" type="radio" name="sex" value="female" required> 
@@ -125,6 +130,11 @@
   <div class="center-align">
     <a href="#" id="button" name= "logout" 
     class="waves-effect waves-light btn">Logout</a>
+  </div>
+
+    <div class="center-align">
+    <a href="{{pathFor 'chat'}}" id="button" name= "chat" 
+    class="waves-effect waves-light btn">Chat now</a>
   </div>
 
   
@@ -266,18 +276,20 @@
 </template>
 
 
+<!-- // .....................Chat .............// -->
 
 
 <template name="chat">
-  <div id="wrapper">
-       {{> sidebar }}
-       <div id="page-content-wrapper">
-          <h1>Chatapp</h1>
-          {{> loginButtons align="right"}}<br>
-          {{> input }}
-          {{> messages }}
-      </div>
-  </div>
+ {{#if currentUser}}
+    <div id="wrapper">
+            {{> sidebar }}
+         <div id="page-content-wrapper">
+            <h1>Chatapp</h1>
+            {{> input }}
+            {{> messages }}
+        </div>
+    </div>
+  {{/if}} 
 </template>
   
 
@@ -286,16 +298,19 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav onlUsers">
             <li class="sidebar-brand">
-                <a href="#">
+                <a href=" #">
                     Online Users
                 </a>
             </li>
             {{#each onlusr}}
-                <li class="user"><a href='#'>{{username}}</a></li>
+                <li name="user">
+                <a href='#'>{{profile.name}}</a></li>
             {{/each}}
         </ul>
     </div>
 </template>
+
+
 
 <template name="messages">
   {{#each msgs}}
@@ -303,18 +318,14 @@
   {{/each}}
 </template>
 
+
+
 <template name="input">
-  <p>Message: <input type="text" id="message"></p>
+  <p>Message: <input type="text" name="message"></p>
 </template>
 
 
-
-
-
-
-
-
-
+ 
 
 
 
