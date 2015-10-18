@@ -44,6 +44,11 @@
           <p>Password: <input
           type="password"
           name="password"></p>
+
+          <p>User Name: <input
+          type="text"
+          name="username"></p>  
+
           <p class="center-align"> <input id="1" type="radio" name="sex" value="male" required> 
           <label for="1">Male </label> 
           <input id="2" type="radio" name="sex" value="female" required> 
@@ -89,13 +94,13 @@
   <div class="container"> 
     <div class="card-panel">
       {{#if currentUser }}
-       {{> quickForm collection="Biye" id="details" type="insert"}}
+       {{> quickForm collection="Biye" id="details" type="insert" omitFields="createdBy"}}
       {{/if}}
     </div>
   </div> 
 </template>
 
-
+<!-- .........................list............... -->
 
 <template name="list">
  {{>style_list}}
@@ -121,10 +126,15 @@
         {{/each}}  
           </div>
     </ul>
-
+<!-- {{pathFor 'show'}} -->
   <div class="center-align">
     <a href="#" id="button" name= "logout" 
     class="waves-effect waves-light btn">Logout</a>
+  </div>
+
+    <div class="center-align">
+    <a href="{{pathFor 'chat'}}" id="button" name= "chat" 
+    class="waves-effect waves-light btn">Chat now</a>
   </div>
 
   
@@ -133,88 +143,128 @@
 </template>
 
 
+<!-- .................show everything template............... -->
+
+
 <template name="show">
   {{>style_details}}
-    <div class="container">
-       <div class="row">
+  {{>header}}
+<div class="container">
+   <div class="row">
 
-         <div class="col s4">        
+    <div class="col s4">        
+       <img src=" {{image}}" alt="">         
+    </div>
+        
+ 
+ <a id="button" name= "add-friend" 
+  class="waves-effect waves-light btn right">
+  add-friend</a>
+
+<a id="button" name= "who" 
+  class="waves-effect waves-light btn right">
+  who is this ?</a>
+
+<a id="button" name= "I" 
+  class="waves-effect waves-light btn right">
+  who am I ?</a>  
+
+ </div> <!-- row finished -->
+
+
+
+    <div class="center-align">
+      <a href="#" id="button" name= "logout" 
+      class="waves-effect waves-light btn">Logout</a>
+    </div>
+
+  </div>
+</template>
+
+<!-- .................social template.............. -->
+
+
+<!-- {{#if this.isFriendsWith currentUser }}
+        <div class="col s4">        
            <img src=" {{image}}" alt="">         
         </div>
-
-         <div class="col s4">
-          <div class="card hoverable teal">
-                 <div class="card-content">
-                 <h5>{{userName}}</h5>
-                 <p><strong> Age: </strong> {{age}}  </p>
-                 <p> <strong> Height:</strong> {{height}}</p>
-                 <p> <strong> Profession:</strong> {{profession}}</p>
-                </div>   
-          </div>
+    {{else}}
+        <div class="div">
+          <p> mada mada</p>
         </div>
+  {{/if}} -->
 
-        <div class="col s4">
-          <div class="card-panel hoverable teal">
-                 <div class="card-content">
-                 <h3> Religious Details </h3>
-                 <p> <strong> Beard: </strong> {{beard}}</p>
-                 <p> <strong> Hijab: </strong> {{Hijab}}</p>
-                 <p> <strong> Prayer: </strong> {{prayer}}</p>
-                 <p> <strong> Sect: </strong> {{sect}}</p>
-                 <p> <strong> History: </strong> {{religiousHistory}}</p>
-                </div>     
-          </div>
-         </div>
-
-     
-
-      </div> <!-- row finished -->
-
-      
-      <div class="row">
-        
-        <div class="col s4">
-          <div class="card-panel hoverable teal">
-                 <div class="card-content">
-                 <h3> Educational Details  </h3>
-                 <p> <strong> Degree: </strong> {{lastOrNextDegree}}</p>
-                 </div>
-         </div>
-       </div>
-        
-      <div class="col s4">
-        <div class="card-panel hoverable teal">
-               <div class="card-content">
-               <h3> Family Details </h3>
-               <p> <strong> Current Residence: </strong> {{currentResidence}}</p>
-               <p> <strong> Original Residence: </strong> {{originalResidence}}</p>
-               <p> <strong> Family Members: </strong> {{familyMembers}}</p>
-              </div>     
-        </div>
-       </div>
-
-        <div class="col s4">
-          <div class="card-panel hoverable teal">
-                 <div class="card-content">
-                 <h3> Educational Details  </h3>
-                 <p> <strong> Degree: </strong> {{lastOrNextDegree}}</p>
-                 </div>
-         </div>
-       </div>
-
-      </div> <!-- row finished -->
-
-
-      <div class="row">  
-        <div class="center-align">
-          <a href="#" id="button" name= "logout" 
-          class="waves-effect waves-light btn red">Logout</a>
-        </div>
-      </div>
-
-
+<!-- <div class="col s4">
+  <div class="card hoverable teal">
+    <div class="card-content">
+       {{#if this.isFriendsWith currentUser }}
+          <a id="button" name= "end-friendship" 
+          class="waves-effect waves-light btn">Unfriend</a>
+          {{else}}
+             {{#if currentUser.hasRequestFrom this}}
+              <a id="button" name= "accept" 
+              class="waves-effect waves-light btn">Accept Request</a>
+             {{else}}
+                {{#if hasRequestFrom currentUser}}
+                  <a id="button" name= "cancel-request" 
+                  class="waves-effect waves-light btn">cancel Request</a>    
+                    {{else}}
+                     <a id="button" name= "add-friend" 
+                     class="waves-effect waves-light btn">add-friend</a>
+             {{/if}}
+           {{/if}}
+       {{/if}}
     </div>
+  </div>
+</div> -->
+
+
+<template name="friendShip">
+   
+<!--  <div class="row"> 
+   <div class="col s4">
+    <div class="card hoverable teal">
+      <div class="card-content">
+       <h1> সে বন্ধু হতে চায়  </h1> -->
+      
+       {{#each requestFromPeople}}
+        <li> 
+          <p><strong>{{requester.username}} </strong> wants to be your friend</p>
+        </li>
+       {{/each}}
+<!-- 
+      </div>   
+    </div>
+   </div>  
+  </div> -->
 </template>
+
+
+
+<!-- .....................nav............................. -->
+
+<template name="header">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Logo</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#">Sass</a></li>
+      <li><a href="#">Components</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" name ="drop" href="#" 
+      data-activates="dropdown1">Dropdown
+     <!-- <i class="small-material-icons-clear-all"></i> -->
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- dropdown1 structure -->
+<ul id="dropdown1" class="dropdown-content">
+    {{>friendShip}}
+</ul>
+</template>
+
 
 
 
@@ -223,11 +273,11 @@
 <template name="style_details">
   <style>
       body {
-  height: 100%;
+  /*height: 100%;
   width: 100%;
-  margin: 0;
-  padding-top: 53px;
-  padding-bottom: 64px;
+  margin: 0;*/
+  /*padding-top: 53px;*/
+  /*padding-bottom: 64px;*/
   background-color: #b9f6ca;
 }
   </style>
@@ -266,49 +316,53 @@
 </template>
 
 
+<!-- // .....................Chat .............// -->
+
+
 <template name="chat">
- 
- <div> 
-  {{>chatBox}}
- </div>
+ {{#if currentUser}}
+    <div id="wrapper">
+            {{> sidebar }}
+         <div id="page-content-wrapper">
+            <h1>Chatapp</h1>
+            {{> input }}
+            {{> messages }}
+        </div>
+    </div>
+  {{/if}} 
+</template>
   
 
+
+<template name="sidebar">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav onlUsers">
+            <li class="sidebar-brand">
+                <a href=" #">
+                    Online Users
+                </a>
+            </li>
+            {{#each onlusr}}
+                <li name="user">
+                <a href='#'>{{username}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
 </template>
 
 
 
+<template name="messages">
+  {{#each msgs}}
+    <strong>{{name}}:</strong> {{text}}<br>
+  {{/each}}
+</template>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<template name="input">
+  <p>Message: <input type="text" name="message"></p>
+</template>
 
 
 
