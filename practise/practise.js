@@ -39,7 +39,11 @@ AutoForm.setDefaultTemplate('materialize');
          var name = event.target.username.value; 
          profile = {
             gender: gender,
+<<<<<<< HEAD
            
+=======
+            name:name
+>>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
           }; 
          Accounts.createUser({            
                email: email,
@@ -137,6 +141,7 @@ Biye.attachSchema(new SimpleSchema({
      allowedValues: ['Male', 'Female']
   },
 
+<<<<<<< HEAD
   createdBy: {
     type: String,
     autoValue: function() {
@@ -148,6 +153,8 @@ Biye.attachSchema(new SimpleSchema({
       }
     }
   },
+=======
+>>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
   
 
   image: {
@@ -205,6 +212,7 @@ Template.header.onRendered(function(){
        }
      });
 
+<<<<<<< HEAD
 
   Template.friendShip.helpers({
    
@@ -216,6 +224,8 @@ Template.header.onRendered(function(){
 
   });
 
+=======
+>>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
 // .....................Chat .............
 
 
@@ -256,7 +266,11 @@ Template.input.events({
   'keyup [name=message]' : function (event) {
     if (event.which == 13) { 
        if (Meteor.user()) {
+<<<<<<< HEAD
           var name = Meteor.user().username;
+=======
+          var name = Meteor.user().profile.name;
+>>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
           var message =  $('[name="message"]').val();
 
               if(message !== ''){ 
@@ -273,7 +287,11 @@ Template.input.events({
 });
         
 
+<<<<<<< HEAD
 }   // meteor is client ends...............................
+=======
+}   // meteor is client ...............................
+>>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
 
 if(Meteor.isServer){
   
@@ -366,6 +384,7 @@ if(Meteor.isServer){
   //                   'No beaerd, shaved, will keep beard in future',
   //                   'I am a woman, I CAN NOT HAVE BEARD you silly']
   // },
+<<<<<<< HEAD
 
 
 
@@ -410,3 +429,5 @@ if(Meteor.isServer){
 
 
 
+=======
+>>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
