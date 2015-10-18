@@ -39,11 +39,7 @@ AutoForm.setDefaultTemplate('materialize');
          var name = event.target.username.value; 
          profile = {
             gender: gender,
-<<<<<<< HEAD
            
-=======
-            name:name
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
           }; 
          Accounts.createUser({            
                email: email,
@@ -103,11 +99,9 @@ AutoForm.setDefaultTemplate('materialize');
           return Biye.find({gender: "Female"});
          } else{
              //console.log("male ");
-             return Biye.find({gender: "Male"});
+          return Biye.find({gender: "Male"});
             
          }; 
-
-        
       }
     });
 
@@ -141,7 +135,6 @@ Biye.attachSchema(new SimpleSchema({
      allowedValues: ['Male', 'Female']
   },
 
-<<<<<<< HEAD
   createdBy: {
     type: String,
     autoValue: function() {
@@ -153,8 +146,6 @@ Biye.attachSchema(new SimpleSchema({
       }
     }
   },
-=======
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
   
 
   image: {
@@ -185,7 +176,28 @@ Template.header.onRendered(function(){
 });
 
 
-// .....................Show details page.....................
+ Template.header.helpers({
+   allFriendShipStuff: function () {
+    return  Meteor.user();  
+   }
+ });
+
+
+// .....................friendship stuff.....................
+
+  Template.friendShip.helpers({
+   
+    requestFromPeople : function () {
+    return  Meteor.requests.find({userId:Meteor.userId()});       
+    },
+
+    notifications : function () {
+    return  Meteor.requests.find({userId:Meteor.userId()}).count();       
+    },
+
+  });
+
+// .....................Show page.....................
    Template.show.events({
 
       'click [name=add-friend]': function () {
@@ -195,16 +207,6 @@ Template.header.onRendered(function(){
           console.log("request sent");
         },
 
-        'click [name=who]': function () {
-          var formOwner = Biye.findOne({_id:Router.current().params._id}).createdBy;  
-          var user = Meteor.users.findOne({_id:formOwner});
-          console.log(user.displayName());   
-        },
-
-        'click [name=I]': function () {
-          console.log(Meteor.user().username);   
-        },
-    
        'click [name=logout]': function () {
          event.preventDefault();
          Meteor.logout();
@@ -212,20 +214,7 @@ Template.header.onRendered(function(){
        }
      });
 
-<<<<<<< HEAD
 
-  Template.friendShip.helpers({
-   
-   	requestFromPeople : function () {
- 	  return  Meteor.requests.find({userId:Meteor.userId()});	  	  
-  	},
-
-
-
-  });
-
-=======
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
 // .....................Chat .............
 
 
@@ -266,11 +255,7 @@ Template.input.events({
   'keyup [name=message]' : function (event) {
     if (event.which == 13) { 
        if (Meteor.user()) {
-<<<<<<< HEAD
           var name = Meteor.user().username;
-=======
-          var name = Meteor.user().profile.name;
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
           var message =  $('[name="message"]').val();
 
               if(message !== ''){ 
@@ -287,11 +272,7 @@ Template.input.events({
 });
         
 
-<<<<<<< HEAD
 }   // meteor is client ends...............................
-=======
-}   // meteor is client ...............................
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
 
 if(Meteor.isServer){
   
@@ -384,7 +365,6 @@ if(Meteor.isServer){
   //                   'No beaerd, shaved, will keep beard in future',
   //                   'I am a woman, I CAN NOT HAVE BEARD you silly']
   // },
-<<<<<<< HEAD
 
 
 
@@ -429,5 +409,3 @@ if(Meteor.isServer){
 
 
 
-=======
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3

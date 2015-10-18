@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  
+
 </body>
 
 
@@ -113,7 +113,7 @@
               <div class="card small hoverable">
                 <div class="card-image">
                   <img src="/1.jpg">
-                   <span class="card-title">    {{userName}}</span>
+                   <span class="card-title">   {{username}} </span>
                     </div>
                      <div class="card-content">
                      <p>{{gender}}</p>
@@ -148,7 +148,7 @@
 
 <template name="show">
   {{>style_details}}
-  {{>header}}
+ 
 <div class="container">
    <div class="row">
 
@@ -160,14 +160,7 @@
  <a id="button" name= "add-friend" 
   class="waves-effect waves-light btn right">
   add-friend</a>
-
-<a id="button" name= "who" 
-  class="waves-effect waves-light btn right">
-  who is this ?</a>
-
-<a id="button" name= "I" 
-  class="waves-effect waves-light btn right">
-  who am I ?</a>  
+  
 
  </div> <!-- row finished -->
 
@@ -221,22 +214,18 @@
 
 <template name="friendShip">
    
-<!--  <div class="row"> 
-   <div class="col s4">
-    <div class="card hoverable teal">
-      <div class="card-content">
-       <h1> সে বন্ধু হতে চায়  </h1> -->
+
       
+
        {{#each requestFromPeople}}
-        <li> 
-          <p><strong>{{requester.username}} </strong> wants to be your friend</p>
-        </li>
+          <li> 
+          <span class="black-text"> {{requester.username}} </span>
+          </li>
        {{/each}}
-<!-- 
-      </div>   
-    </div>
-   </div>  
-  </div> -->
+
+    
+
+
 </template>
 
 
@@ -244,24 +233,30 @@
 <!-- .....................nav............................. -->
 
 <template name="header">
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#">Sass</a></li>
-      <li><a href="#">Components</a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" name ="drop" href="#" 
-      data-activates="dropdown1">Dropdown
-     <!-- <i class="small-material-icons-clear-all"></i> -->
-      </a></li>
-    </ul>
-  </div>
-</nav>
+<div class="navbar-fixed"> 
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" name= "I" class="brand-logo">
+        {{#with allFriendShipStuff }}
+           <span class= "black-text"> {{username}} </span>
+        {{/with}}
+      </a>
 
+      <ul class="right hide-on-med-and-down">
+        
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" name ="drop" href="#" 
+        data-activates="dropdown1">Friend Request From 
+        </a></li>
+
+      </ul>
+    </div>
+  </nav>
+</div>
 <!-- dropdown1 structure -->
 <ul id="dropdown1" class="dropdown-content">
     {{>friendShip}}
+    
 </ul>
 </template>
 
@@ -281,6 +276,7 @@
   background-color: #b9f6ca;
 }
   </style>
+  {{>header}}
 </template>
 
 
@@ -288,14 +284,15 @@
 <template name="style_list">
   <style>
   body {
-    height: 100%;
+    /*height: 100%;
     width: 100%;
     margin: 0;
     padding-top: 53px;
-    padding-bottom: 64px;
+    padding-bottom: 64px;*/
     background-color:  #b3e5fc;
      }
   </style>
+  {{>header}}
 </template>
 
 
@@ -317,75 +314,6 @@
 
 
 <!-- // .....................Chat .............// -->
-<<<<<<< HEAD
-=======
-
-
-<template name="chat">
- {{#if currentUser}}
-    <div id="wrapper">
-            {{> sidebar }}
-         <div id="page-content-wrapper">
-            <h1>Chatapp</h1>
-            {{> input }}
-            {{> messages }}
-        </div>
-    </div>
-  {{/if}} 
-</template>
-  
-
-
-<template name="sidebar">
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav onlUsers">
-            <li class="sidebar-brand">
-                <a href=" #">
-                    Online Users
-                </a>
-            </li>
-            {{#each onlusr}}
-                <li name="user">
-                <a href='#'>{{profile.name}}</a></li>
-            {{/each}}
-        </ul>
-    </div>
-</template>
-
-
-
-<template name="messages">
-  {{#each msgs}}
-    <strong>{{name}}:</strong> {{text}}<br>
-  {{/each}}
-</template>
-
-
-
-<template name="input">
-  <p>Message: <input type="text" name="message"></p>
-</template>
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 6b128054dd6e810c5f5e5e2d8895be90491a7bc3
 
 
 <template name="chat">
