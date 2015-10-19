@@ -116,7 +116,7 @@
                    <span class="card-title">   {{username}} </span>
                     </div>
                      <div class="card-content">
-                     <p>{{gender}}</p>
+                     <p>{{profile.gender}}</p>
                     </div>
                    <div class="card-action">
                   <a href="{{pathFor 'show'}}">Yes</a>
@@ -152,47 +152,21 @@
 <div class="container">
    <div class="row">
 
-    <div class="col s4">        
-       <img src=" {{image}}" alt="">         
-    </div>
-        
- 
- <a id="button" name= "add-friend" 
-  class="waves-effect waves-light btn right">
-  add-friend</a>
-  
 
- </div> <!-- row finished -->
-
-
-
-    <div class="center-align">
-      <a href="#" id="button" name= "logout" 
-      class="waves-effect waves-light btn">Logout</a>
-    </div>
-
-  </div>
-</template>
-
-<!-- .................social template.............. -->
-
-
-<!-- {{#if this.isFriendsWith currentUser }}
-        <div class="col s4">        
-           <img src=" {{image}}" alt="">         
-        </div>
-    {{else}}
-        <div class="div">
-          <p> mada mada</p>
-        </div>
-  {{/if}} -->
-
-<!-- <div class="col s4">
+<div class="col s4">
   <div class="card hoverable teal">
     <div class="card-content">
        {{#if this.isFriendsWith currentUser }}
           <a id="button" name= "end-friendship" 
           class="waves-effect waves-light btn">Unfriend</a>
+
+                 
+                {{#with  biyekorun}}
+                  <div class="col s4">        
+                      <img src=" {{image}}" alt="">         
+                  </div>
+                {{/with}}
+
           {{else}}
              {{#if currentUser.hasRequestFrom this}}
               <a id="button" name= "accept" 
@@ -209,26 +183,36 @@
        {{/if}}
     </div>
   </div>
-</div> -->
+</div>
+
+
+
+
+ </div> <!-- row finished -->
+
+
+
+    <div class="center-align">
+      <a href="#" id="button" name= "logout" 
+      class="waves-effect waves-light btn">Logout</a>
+    </div>
+
+  </div>
+</template>
+
+<!-- .................social template.............. -->
 
 
 <template name="friendShip">
    
-
-      
-
        {{#each requestFromPeople}}
           <li> 
-          <span class="black-text"> {{requester.username}} </span>
+          <span class="black-text"> 
+          {{requester.username}} is requesting to view the photo</span>
           </li>
        {{/each}}
 
-    
-
-
 </template>
-
-
 
 <!-- .....................nav............................. -->
 
@@ -237,7 +221,7 @@
   <nav>
     <div class="nav-wrapper">
       <a href="#" name= "I" class="brand-logo">
-        {{#with allFriendShipStuff }}
+        {{#with me }}
            <span class= "black-text"> {{username}} </span>
         {{/with}}
       </a>
@@ -246,7 +230,7 @@
         
         <!-- Dropdown Trigger -->
         <li><a class="dropdown-button" name ="drop" href="#" 
-        data-activates="dropdown1">Friend Request From 
+        data-activates="dropdown1">Friend Requests
         </a></li>
 
       </ul>
@@ -259,7 +243,6 @@
     
 </ul>
 </template>
-
 
 
 
@@ -360,7 +343,4 @@
 <template name="input">
   <p>Message: <input type="text" name="message"></p>
 </template>
-
-
-
 

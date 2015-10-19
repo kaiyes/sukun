@@ -16,10 +16,10 @@ Router.route('/list');
 Router.route('/chat');
 
 Router.route('show',{
-      path:'/list/:_id',
+      path:'/list/:username',
 
   data: function(){
-  return Biye.findOne({_id: this.params._id});
+  return Meteor.users.findOne({username: this.params.username});
   }
 
 });
@@ -94,12 +94,12 @@ AutoForm.setDefaultTemplate('materialize');
      
      "people": function(){
       var gen = Meteor.user().profile.gender;
+      var males = Meteor.users.find({"profile.gender": "male"});
+      var females = Meteor.users.find({"profile.gender": "female"});  
          if (gen==="male") {
-          //console.log("female ");
-          return Biye.find({gender: "Female"});
+          return females;
          } else{
-             //console.log("male ");
-          return Biye.find({gender: "Male"});
+          return males;
             
          }; 
       }
@@ -126,13 +126,9 @@ AutoForm.setDefaultTemplate('materialize');
 
 Biye.attachSchema(new SimpleSchema({
   
-  // userName: {
-  //     type: String      
-  // },
-
-  gender: {
-     type: String,
-     allowedValues: ['Male', 'Female']
+  age: {
+      type: Number,
+      max: 60      
   },
 
   createdBy: {
@@ -177,7 +173,7 @@ Template.header.onRendered(function(){
 
 
  Template.header.helpers({
-   allFriendShipStuff: function () {
+   me: function () {
     return  Meteor.user();  
    }
  });
@@ -200,12 +196,40 @@ Template.header.onRendered(function(){
 // .....................Show page.....................
    Template.show.events({
 
-      'click [name=add-friend]': function () {
-          var formOwner = Biye.findOne({_id:Router.current().params._id}).createdBy;  
-          var user = Meteor.users.findOne({_id:formOwner});
-          user.requestFriendship();
-          console.log("request sent");
+      'click  [name=add-friend]': function () {
+         this.requestFriendship();
         },
+
+      'click  [name=cancel-request]': function () {
+          var request = Meteor.requests.findOne({
+           requesterId:Meteor.userId(),
+           userId:this._id
+           });
+          request && request.cancel();
+       },
+
+       'click  [name=end-friendship]': function () {
+          this.unfriend();
+         },
+
+        'click  [name=accept]': function () {
+            var request = Meteor.requests.findOne({
+              
+             userId:Meteor.userId(),
+             requesterId:this._id
+             });
+            request && request.accept();
+         },  
+
+
+       'click  [name=deny]': function () {
+           var request = Meteor.requests.findOne({
+            requesterId:Meteor.userId(),
+            userId:this._id
+            });
+           request && request.deny();
+        }, 
+
 
        'click [name=logout]': function () {
          event.preventDefault();
@@ -213,6 +237,14 @@ Template.header.onRendered(function(){
          Router.go("home");
        }
      });
+
+
+   Template.show.helpers({
+     biyekorun: function () {
+        var user = Meteor.users.findOne({username:Router.current().params.username})._id;
+        return Biye.findOne({createdBy:user});
+     }
+   });
 
 
 // .....................Chat .............
@@ -275,10 +307,19 @@ Template.input.events({
 }   // meteor is client ends...............................
 
 if(Meteor.isServer){
-  
+    
 
 }
 
+
+// userName: {
+  //     type: String      
+  // },
+
+// gender: {
+//    type: String,
+//    allowedValues: ['Male', 'Female']
+// },
 
 // age: {
   //     type: Number,
