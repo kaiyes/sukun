@@ -151,7 +151,13 @@
  
 <div class="container">
    <div class="row">
+    
+        <div class="col s3">
+          <div class="card hoverable teal right">      
+               <span class="card-title black-text"> <h1>{{username}}'s profile </h1> </span>
 
+          </div>
+        </div>
 
 <div class="col s4">
   <div class="card hoverable teal">
@@ -163,7 +169,8 @@
                  
                 {{#with  biyekorun}}
                   <div class="col s4">        
-                      <img src=" {{image}}" alt="">         
+                      <!-- <img src=" {{image}}" alt="">          -->
+                      <h1> {{age}}</h1>
                   </div>
                 {{/with}}
 
@@ -185,7 +192,13 @@
   </div>
 </div>
 
+  
+  <div class="center-align">
+    <a href="#" id="button" name= "chat" 
+    class="waves-effect waves-light btn">Chat now</a>
+  </div>
 
+ 
 
 
  </div> <!-- row finished -->

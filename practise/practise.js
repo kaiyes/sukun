@@ -141,17 +141,17 @@ Biye.attachSchema(new SimpleSchema({
         console.log("no userId entered");;
       }
     }
-  },
+   }
   
 
-  image: {
-    type: String,
-    autoform: {
-      afFieldInput: {
-        type: 'cloudinary'
-      }
-    }
-  }
+  // image: {
+  //   type: String,
+  //   autoform: {
+  //     afFieldInput: {
+  //       type: 'cloudinary'
+  //     }
+  //   }
+  // }
 
 }));
 
@@ -194,6 +194,16 @@ Template.header.onRendered(function(){
   });
 
 // .....................Show page.....................
+   
+   Template.show.helpers({
+     biyekorun: function () {
+        var user = Meteor.users.findOne({username:Router.current().params.username})._id;
+        return Biye.findOne({createdBy:user});
+     }
+
+   });
+
+
    Template.show.events({
 
       'click  [name=add-friend]': function () {
@@ -230,6 +240,17 @@ Template.header.onRendered(function(){
            request && request.deny();
         }, 
 
+        'click [name=chat]': function () {
+          event.preventDefault();
+          conversation = new Conversation().save();
+          user = Meteor.users.findOne({username:Router.current().params.username})._id;
+          var chat = Meteor.conversations.findOne({_id: "P2kdYr5LBJLiNNY2P"})
+          chat.addParticipants(["2kcYqqgfwiorhFniQ"])
+          //conversation.sendMessage(body);
+          console.log(conversation._id);
+
+          //Router.go('/chat');
+        },
 
        'click [name=logout]': function () {
          event.preventDefault();
@@ -238,13 +259,6 @@ Template.header.onRendered(function(){
        }
      });
 
-
-   Template.show.helpers({
-     biyekorun: function () {
-        var user = Meteor.users.findOne({username:Router.current().params.username})._id;
-        return Biye.findOne({createdBy:user});
-     }
-   });
 
 
 // .....................Chat .............
