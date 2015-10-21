@@ -132,7 +132,7 @@
     class="waves-effect waves-light btn">Logout</a>
   </div>
 
-    <div class="center-align">
+  <div class="center-align">
     <a href="{{pathFor 'chat'}}" id="button" name= "chat" 
     class="waves-effect waves-light btn">Chat now</a>
   </div>
@@ -152,13 +152,12 @@
 <div class="container">
    <div class="row">
     
-        <div class="col s3">
+    <div class="col s6">    
           <div class="card hoverable teal right">      
                <span class="card-title black-text"> <h1>{{username}}'s profile </h1> </span>
-
           </div>
-        </div>
-
+    </div>
+        
 <div class="col s4">
   <div class="card hoverable teal">
     <div class="card-content">
@@ -178,16 +177,16 @@
              {{#if currentUser.hasRequestFrom this}}
               <a id="button" name= "accept" 
               class="waves-effect waves-light btn">Accept Request</a>
-             {{else}}
-                {{#if hasRequestFrom currentUser}}
-                  <a id="button" name= "cancel-request" 
-                  class="waves-effect waves-light btn">cancel Request</a>    
-                    {{else}}
-                     <a id="button" name= "add-friend" 
-                     class="waves-effect waves-light btn">add-friend</a>
+                {{else}}
+                  {{#if hasRequestFrom currentUser}}
+                    <a id="button" name= "cancel-request" 
+                     class="waves-effect waves-light btn">cancel Request</a>    
+                      {{else}}
+                        <a id="button" name= "add-friend" 
+                        class="waves-effect waves-light btn">add-friend</a>
+        {{/if}}
              {{/if}}
-           {{/if}}
-       {{/if}}
+                  {{/if}}
     </div>
   </div>
 </div>
@@ -213,21 +212,9 @@
   </div>
 </template>
 
-<!-- .................social template.............. -->
 
 
-<template name="friendShip">
-   
-       {{#each requestFromPeople}}
-          <li> 
-          <span class="black-text"> 
-          {{requester.username}} is requesting to view the photo</span>
-          </li>
-       {{/each}}
-
-</template>
-
-<!-- .....................nav............................. -->
+<!-- .....................navbar............................. -->
 
 <template name="header">
 <div class="navbar-fixed"> 
@@ -239,9 +226,13 @@
         {{/with}}
       </a>
 
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         
         <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" name ="chat" href="#" 
+        data-activates="dropdown2">Chat Requests
+        </a></li>
+
         <li><a class="dropdown-button" name ="drop" href="#" 
         data-activates="dropdown1">Friend Requests
         </a></li>
@@ -252,7 +243,22 @@
 </div>
 <!-- dropdown1 structure -->
 <ul id="dropdown1" class="dropdown-content">
-    {{>friendShip}}
+    {{#each requestFromPeople}}
+      <li> 
+      <span class="black-text"> 
+      {{requester.username}} is requesting to view the photo</span>
+      </li>
+    {{/each}}
+    
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+    {{#each invitesForChat}}
+       <li> 
+       <span class="black-text"> 
+       {{inviter}} wants to chat</span>
+       </li>
+    {{/each}}
     
 </ul>
 </template>

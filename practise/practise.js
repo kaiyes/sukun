@@ -1,5 +1,6 @@
 Biye = new Meteor.Collection ('biye');
 ChatRooms = new Meteor.Collection("chatrooms");
+ChatInvites = new Meteor.Collection('invites');
 
 if(Meteor.isClient) {
   
@@ -162,36 +163,6 @@ AutoForm.addHooks('details',{
       }
 });
 
-// .....................header dropdown.............
-
-Template.header.onRendered(function(){
-  this.$(".dropdown-button").dropdown({
-    hover: true ,
-    belowOrigin: true // Displays dropdown below the button
-  });
-});
-
-
- Template.header.helpers({
-   me: function () {
-    return  Meteor.user();  
-   }
- });
-
-
-// .....................friendship stuff.....................
-
-  Template.friendShip.helpers({
-   
-    requestFromPeople : function () {
-    return  Meteor.requests.find({userId:Meteor.userId()});       
-    },
-
-    notifications : function () {
-    return  Meteor.requests.find({userId:Meteor.userId()}).count();       
-    },
-
-  });
 
 // .....................Show page.....................
    
@@ -243,12 +214,19 @@ Template.header.onRendered(function(){
         'click [name=chat]': function () {
           event.preventDefault();
           conversation = new Conversation().save();
-          user = Meteor.users.findOne({username:Router.current().params.username})._id;
-          var chat = Meteor.conversations.findOne({_id: "P2kdYr5LBJLiNNY2P"})
-          chat.addParticipants(["2kcYqqgfwiorhFniQ"])
-          //conversation.sendMessage(body);
-          console.log(conversation._id);
+          currentuser = Meteor.user().username;
+          user = Router.current().params.username;
+          
+          if (currentuser!= user){
+              ChatInvites.insert({
+                invited: user,
+                inviter: currentuser,  
+              });
 
+          };
+            
+          //chat.addParticipants(["2kcYqqgfwiorhFniQ"])
+          //conversation.sendMessage(body);
           //Router.go('/chat');
         },
 
@@ -259,6 +237,43 @@ Template.header.onRendered(function(){
        }
      });
 
+
+// .....................header dropdown.............
+
+Template.header.onRendered(function(){
+  this.$(".dropdown-button").dropdown({
+    hover: true ,
+    belowOrigin: true // Displays dropdown below the button
+  });
+});
+
+
+ Template.header.helpers({
+   me: function () {
+    return  Meteor.user();  
+   },
+
+  invitesForChat : function () {
+   var currentUsersName =  Meteor.user().username; 
+   return ChatInvites.find({'invited':currentUsersName});
+    },
+
+    requestFromPeople : function () {
+    return  Meteor.requests.find({userId:Meteor.userId()});       
+    }
+ 
+
+ });
+
+ Template.header.events({
+    
+    'click [name=logout]': function () {
+         event.preventDefault();
+         Meteor.logout();
+         Router.go("home");
+    }
+    
+  });
 
 
 // .....................Chat .............
