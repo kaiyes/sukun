@@ -90,7 +90,7 @@
  <!-- .........................Details input form............... -->
 
 <template name="details">
- {{>style_details}}
+ {{>style_show}}
   <div class="container"> 
     <div class="card-panel">
       {{#if currentUser }}
@@ -104,6 +104,7 @@
 
 <template name="list">
  {{>style_list}}
+  {{>header}}
 
 {{#if currentUser}}
     <ul> 
@@ -147,18 +148,20 @@
 
 
 <template name="show">
-  {{>style_details}}
+  {{>header}}
+  {{>style_show}}
  
 <div class="container">
    <div class="row">
     
     <div class="col s6">    
           <div class="card hoverable teal right">      
-               <span class="card-title black-text"> <h1>{{username}}'s profile </h1> </span>
+               <span class="card-title black-text"> 
+               <h1>{{username}}'s profile </h1> </span>
           </div>
     </div>
         
-<div class="col s4">
+<div class="col s4">  <!-- start  --> 
   <div class="card hoverable teal">
     <div class="card-content">
        {{#if this.isFriendsWith currentUser }}
@@ -166,7 +169,7 @@
           class="waves-effect waves-light btn">Unfriend</a>
 
                  
-                {{#with  biyekorun}}
+                {{#with  detailsDb}}
                   <div class="col s4">        
                       <!-- <img src=" {{image}}" alt="">          -->
                       <h1> {{age}}</h1>
@@ -189,7 +192,30 @@
                   {{/if}}
     </div>
   </div>
+</div> <!-- finish  -->
+
+
+
+
+<div class="col s4">
+  <div class="card hoverable">
+       <div class="card-content">
+         
+         
+          
+           {{#each messages}}
+             
+             <strong>{{user.username}}:</strong> {{body}}<br>
+                
+           
+            {{/each}} 
+                    
+            <p> <input type="text" name="formArea"></p>
+        
+       </div>
+    </div>
 </div>
+                                                        
 
   
   <div class="center-align">
@@ -267,7 +293,7 @@
 
 <!-- .....................StyleSheet............. -->
 
-<template name="style_details">
+<template name="style_show">
   <style>
       body {
   /*height: 100%;
@@ -278,7 +304,6 @@
   background-color: #b9f6ca;
 }
   </style>
-  {{>header}}
 </template>
 
 
@@ -294,7 +319,7 @@
     background-color:  #b3e5fc;
      }
   </style>
-  {{>header}}
+
 </template>
 
 

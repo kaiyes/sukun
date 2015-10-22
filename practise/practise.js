@@ -167,11 +167,22 @@ AutoForm.addHooks('details',{
 // .....................Show page.....................
    
    Template.show.helpers({
-     biyekorun: function () {
-        var user = Meteor.users.findOne({username:Router.current().params.username})._id;
+     detailsDb: function () {
+        var user = Meteor.users.findOne({
+        username:Router.current().params.username})._id;
         return Biye.findOne({createdBy:user});
-     }
+     },
 
+    messages: function () {
+    
+      var currentuser = Meteor.userId();
+      var user = Meteor.users.findOne({
+      username:Router.current().params.username});
+      Meteor.participants.findOne({userId: currentuser})
+      var c = Meteor.conversations.findOne({_id:"WC6FiKG78MYRw3gAp"});
+      return c.messages();
+
+     }
    });
 
 
@@ -213,22 +224,49 @@ AutoForm.addHooks('details',{
 
         'click [name=chat]': function () {
           event.preventDefault();
-          conversation = new Conversation().save();
-          currentuser = Meteor.user().username;
-          user = Router.current().params.username;
-          
-          if (currentuser!= user){
-              ChatInvites.insert({
-                invited: user,
-                inviter: currentuser,  
-              });
+          var conversation = new Conversation().save();
+          var currentuser = Meteor.user();
+          var user = Meteor.users.findOne({
+          username:Router.current().params.username});
 
-          };
-            
-          //chat.addParticipants(["2kcYqqgfwiorhFniQ"])
-          //conversation.sendMessage(body);
-          //Router.go('/chat');
+
+          
+          // if (currentuser!= user){
+          //     ChatInvites.insert({
+          //       invited: user.username,
+          //       inviter: currentuser.username, 
+          //     });
+
+          // };
+
+          conversation.addParticipant(user);
+          conversation.sendMessage("hi");
+          console.log("message sent");      
         },
+
+        'keyup [name=formArea]' : function (event) {
+          if (event.which == 13) { 
+
+       
+                var userId = Meteor.users.findOne({
+                username:Router.current().params.username})._id;
+                //var participants = [ user];
+                var text =  $('[name="formArea"]').val(); 
+                
+                Meteor.user().findExistingConversationWithUsers([userId], 
+                  function(error, result){
+                    if(result){
+                        var convoId = result;
+                         var conversation = Meteor.conversations.findOne({_id:convoId});
+                         if(text !== ''){ 
+                          conversation.sendMessage(text);
+                       }//if message 
+                    } 
+                }); 
+               
+                $('[name="formArea"]').val('');            
+          } // if enter
+        }, //keyup
 
        'click [name=logout]': function () {
          event.preventDefault();
@@ -261,8 +299,6 @@ Template.header.onRendered(function(){
     requestFromPeople : function () {
     return  Meteor.requests.find({userId:Meteor.userId()});       
     }
- 
-
  });
 
  Template.header.events({
@@ -436,45 +472,6 @@ if(Meteor.isServer){
   //                   'I am a woman, I CAN NOT HAVE BEARD you silly']
   // },
 
-
-
-
-// socialize
-
-
-    // 'click  [name=add-friend]': function () {
-    //    this.requestFriendship();
-    //   },
-
-    // 'click  [name=cancel-request]': function () {
-    //     var request = Meteor.requests.findOne({
-    //      requesterId:Meteor.userId(),
-    //      userId:this._id
-    //      });
-    //     request && request.cancel();
-    //  },
-
-    //  'click  [name=end-friendship]': function () {
-    //     this.unfriend();
-    //    },
-
-    //   'click  [name=accept]': function () {
-    //       var request = Meteor.requests.findOne({
-            
-    //        userId:Meteor.userId(),
-    //        requesterId:this._id
-    //        });
-    //       request && request.accept();
-    //    },  
-
-
-    //  'click  [name=deny]': function () {
-    //      var request = Meteor.requests.findOne({
-    //       requesterId:Meteor.userId(),
-    //       userId:this._id
-    //       });
-    //      request && request.deny();
-    //   }, 
 
 
 

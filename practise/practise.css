@@ -3,21 +3,10 @@ div.card-panel-transparent {
     }
 
 html {
-    padding: 10px;
+ 
     font-family: Verdana, sans-serif;
 }
 
-.login-buttons-dropdown-align-right {
-    float: right;
-}
-
-/*!
- * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-/* Toggle Styles */
 
 #wrapper {
     padding-left: 0;
@@ -32,11 +21,11 @@ html {
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    /*z-index: 1000;*/
     position: fixed;
     left: 250px;
     width: 0;
-    height: 100%;
+    height: 20%;
     margin-left: -250px;
     overflow-y: auto;
     background: #000;
