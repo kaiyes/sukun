@@ -196,25 +196,38 @@
 
 
 
+<!--    {{#each this.conversations}}<div class="col s4">
+     <div class="card hoverable">
+         <div class="card-content">       
+                   {{#each messages}}
+                      <strong>{{user.username}}:</strong> {{body}}<br>
+                    {{/each}}           
+              <p> <input type="text" name="formArea"></p>
+          
+         </div>
+       </div>
+     </div>
+   {{/each}} 
+ -->
 
-<div class="col s4">
+
+<!-- <div class="col s4">
   <div class="card hoverable">
        <div class="card-content">
-         
-         
-          
-           {{#each messages}}
+
+           {{#each this.conversations}}
              
-             <strong>{{user.username}}:</strong> {{body}}<br>
-                
-           
+                  
+                    <strong>{{user.username}}:</strong> {{body}}<br>
+                 
+
             {{/each}} 
                     
             <p> <input type="text" name="formArea"></p>
         
        </div>
     </div>
-</div>
+</div> -->
                                                         
 
   
@@ -255,12 +268,16 @@
       <ul class="right">
         
         <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button" name ="chat" href="#" 
-        data-activates="dropdown2">Chat Requests
+        <li><a class="dropdown-button" name ="photoR" href="#" 
+        data-activates="dropdown2">Photo Requests
         </a></li>
 
-        <li><a class="dropdown-button" name ="drop" href="#" 
-        data-activates="dropdown1">Friend Requests
+        <li><a class="dropdown-button" name ="friendR" href="#" 
+        data-activates="dropdown1">chat Requests
+        </a></li>
+
+        <li><a class="dropdown-button" name ="chatM" href="#" 
+        data-activates="dropdown3">Messages
         </a></li>
 
       </ul>
@@ -286,6 +303,16 @@
        </li>
     {{/each}}
     
+</ul>
+
+<ul id="dropdown3" class="dropdown-content">
+    {{#each  loggedInUser}}
+          <li> 
+              
+                <p> {{conversationId}} </p>
+              
+          </li>    
+     {{/each}} 
 </ul>
 </template>
 

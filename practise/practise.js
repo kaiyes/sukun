@@ -173,16 +173,12 @@ AutoForm.addHooks('details',{
         return Biye.findOne({createdBy:user});
      },
 
-    messages: function () {
+    // messages: function () {
     
-      var currentuser = Meteor.userId();
-      var user = Meteor.users.findOne({
-      username:Router.current().params.username});
-      Meteor.participants.findOne({userId: currentuser})
-      var c = Meteor.conversations.findOne({_id:"WC6FiKG78MYRw3gAp"});
-      return c.messages();
+    //  return Meteor.user().conversations();
+     
 
-     }
+    //  }
    });
 
 
@@ -230,11 +226,14 @@ AutoForm.addHooks('details',{
           username:Router.current().params.username});
 
 
-          
+          // button should disappear after sending once to be implemented
+
+
           // if (currentuser!= user){
           //     ChatInvites.insert({
           //       invited: user.username,
           //       inviter: currentuser.username, 
+          //       convoId:conversation._id 
           //     });
 
           // };
@@ -247,10 +246,10 @@ AutoForm.addHooks('details',{
         'keyup [name=formArea]' : function (event) {
           if (event.which == 13) { 
 
+       // move away from router.params.username approach
        
                 var userId = Meteor.users.findOne({
                 username:Router.current().params.username})._id;
-                //var participants = [ user];
                 var text =  $('[name="formArea"]').val(); 
                 
                 Meteor.user().findExistingConversationWithUsers([userId], 
@@ -288,7 +287,7 @@ Template.header.onRendered(function(){
 
  Template.header.helpers({
    me: function () {
-    return  Meteor.user();  
+    return  Meteor.users.findOne({_id:Meteor.userId()});  
    },
 
   invitesForChat : function () {
@@ -298,6 +297,12 @@ Template.header.onRendered(function(){
 
     requestFromPeople : function () {
     return  Meteor.requests.find({userId:Meteor.userId()});       
+    },
+
+     loggedInUser: function () {
+      // var loggedInUsersConvo = 
+      return Meteor.user().conversations();
+   
     }
  });
 
