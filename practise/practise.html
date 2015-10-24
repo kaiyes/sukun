@@ -268,51 +268,67 @@
       <ul class="right">
         
         <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button" name ="photoR" href="#" 
-        data-activates="dropdown2">Photo Requests
+        <li><a class="dropdown-button" name ="photoSent" href="#" 
+        data-activates="dropdown1">Photo Requests Sent
         </a></li>
 
-        <li><a class="dropdown-button" name ="friendR" href="#" 
-        data-activates="dropdown1">chat Requests
+        <li><a class="dropdown-button" name ="photoReceived" href="#" 
+        data-activates="dropdown2">Photo Requests Received
         </a></li>
 
-        <li><a class="dropdown-button" name ="chatM" href="#" 
-        data-activates="dropdown3">Messages
+        <li><a class="dropdown-button" name ="chatReceived" href="#" 
+        data-activates="dropdown3">Chat Invitaion Received
+        </a></li>
+
+        <li><a class="dropdown-button" name ="chatSent" href="#" 
+        data-activates="dropdown4">Chat Invitaion Sent
         </a></li>
 
       </ul>
     </div>
   </nav>
 </div>
+
 <!-- dropdown1 structure -->
+
 <ul id="dropdown1" class="dropdown-content">
-    {{#each requestFromPeople}}
+    {{#each requestFromMe}}
       <li> 
       <span class="black-text"> 
-      {{requester.username}} is requesting to view the photo</span>
+      You have requested to view {{user.username}}'s photo</span>
       </li>
     {{/each}}
     
 </ul>
 
 <ul id="dropdown2" class="dropdown-content">
-    {{#each invitesForChat}}
-       <li> 
-       <span class="black-text"> 
-       {{inviter}} wants to chat</span>
-       </li>
+    {{#each requestFromPeople}}
+      <li> 
+      <span class="black-text"> 
+        {{requester.username}} wants to view you photo</span>
+      </li>
     {{/each}}
     
 </ul>
 
 <ul id="dropdown3" class="dropdown-content">
-    {{#each  loggedInUser}}
-          <li> 
-              
-                <p> {{conversationId}} </p>
-              
-          </li>    
-     {{/each}} 
+    {{#each  youAreInvited}}
+       <li> <a href="{{pathFor 'chat'}}"> <span class="black-text"> 
+       {{inviter}} wants to chat with You</span></a> 
+      </li>
+      
+    {{/each}}
+
+    
+</ul>
+
+<ul id="dropdown4" class="dropdown-content">
+   {{#each  ihaveInvited}}
+       <li> <a href="{{pathFor 'chat'}}">
+       <span class="black-text"> 
+       You have invited {{this.invited}}</span></a>
+       </li>
+    {{/each}}
 </ul>
 </template>
 
@@ -376,8 +392,9 @@
             {{> sidebar }}
          <div id="page-content-wrapper">
             <h1>Chatapp</h1>
-            {{> input }}
+           
             {{> messages }}
+             {{> input }}
         </div>
     </div>
   {{/if}} 
@@ -390,12 +407,12 @@
         <ul class="sidebar-nav onlUsers">
             <li class="sidebar-brand">
                 <a href=" #">
-                    Online Users
+                     Your conversations
                 </a>
             </li>
-            {{#each onlusr}}
+            {{#each conversations}}
                 <li name="user">
-                <a href='#'>{{username}}</a></li>
+                <a href='#'>{{invited}}</a></li>
             {{/each}}
         </ul>
     </div>

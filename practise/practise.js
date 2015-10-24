@@ -25,6 +25,15 @@ Router.route('show',{
 
 });
 
+// Router.route('',{
+//       path:'/list/:username',
+
+//   data: function(){
+//   return Meteor.users.findOne({username: this.params.username});
+//   }
+
+// });
+
 
 
 AutoForm.setDefaultTemplate('materialize');
@@ -229,14 +238,14 @@ AutoForm.addHooks('details',{
           // button should disappear after sending once to be implemented
 
 
-          // if (currentuser!= user){
-          //     ChatInvites.insert({
-          //       invited: user.username,
-          //       inviter: currentuser.username, 
-          //       convoId:conversation._id 
-          //     });
+          if (currentuser!= user){
+              ChatInvites.insert({
+                invited: user.username,
+                inviter: currentuser.username, 
+                convoId:conversation._id 
+              });
 
-          // };
+          };
 
           conversation.addParticipant(user);
           conversation.sendMessage("hi");
@@ -290,20 +299,26 @@ Template.header.onRendered(function(){
     return  Meteor.users.findOne({_id:Meteor.userId()});  
    },
 
-  invitesForChat : function () {
+  requestFromMe: function () {
+    // if (true) {}; put both in one place
+    return  Meteor.requests.find({requesterId:Meteor.userId()});  
+   },
+
+   requestFromPeople : function () {
+   return  Meteor.requests.find({userId:Meteor.userId()});       
+   },
+
+  youAreInvited : function () {
    var currentUsersName =  Meteor.user().username; 
    return ChatInvites.find({'invited':currentUsersName});
+
     },
 
-    requestFromPeople : function () {
-    return  Meteor.requests.find({userId:Meteor.userId()});       
-    },
+  ihaveInvited: function () {
+   var currentUsersName =  Meteor.user().username; 
+   return ChatInvites.find({'inviter':currentUsersName});
 
-     loggedInUser: function () {
-      // var loggedInUsersConvo = 
-      return Meteor.user().conversations();
-   
-    }
+}
  });
 
  Template.header.events({
@@ -321,8 +336,8 @@ Template.header.onRendered(function(){
 
 
 Template.sidebar.helpers({
-    'onlusr':function(){
-        return Meteor.users.find({_id:{$ne:Meteor.userId()}});
+    'conversations':function(){
+        return ChatInvites.find({inviter: Meteor.user().username});
     }
 });
 
