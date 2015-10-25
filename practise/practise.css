@@ -3,10 +3,14 @@ div.card-panel-transparent {
     }
 
 html {
- 
+
     font-family: Verdana, sans-serif;
 }
 
+#inputMessage{
+  position: fixed;
+  bottom: 1px;
+}
 
 #wrapper {
     padding-left: 0;
@@ -97,6 +101,11 @@ html {
     background: none;
 }
 
+.nav-wrapper > .brand-logo  {
+
+    padding-left: 25px;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
@@ -122,4 +131,4 @@ html {
         position: relative;
         margin-right: 0;
     }
-}    
+}

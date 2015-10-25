@@ -3,12 +3,12 @@ ChatRooms = new Meteor.Collection("chatrooms");
 ChatInvites = new Meteor.Collection('invites');
 
 if(Meteor.isClient) {
-  
+
 // ........................Routing.............................
 Router.route('/', {
   name : 'home',
   template : "home"
-}); 
+});
 
 Router.route('/register');
 Router.route('/login');
@@ -39,19 +39,19 @@ Router.route('show',{
 AutoForm.setDefaultTemplate('materialize');
 
 // ........................register.............................
-      
+
       Template.register.events({
        'submit form': function (){
          event.preventDefault();
          var email = event.target.email.value;
          var password = event.target.password.value;
-         var gender = event.target.sex.value; 
-         var name = event.target.username.value; 
+         var gender = event.target.sex.value;
+         var name = event.target.username.value;
          profile = {
             gender: gender,
-           
-          }; 
-         Accounts.createUser({            
+
+          };
+         Accounts.createUser({
                email: email,
                password: password,
                username:name,
@@ -62,14 +62,14 @@ AutoForm.setDefaultTemplate('materialize');
                   console.log(error.reason);
                 } else{
                   Router.go('details');
-                }              
-             }); 
+                }
+             });
 
-         $('[name = password]').val(''); 
-         $('[name = email]').val('');            
+         $('[name = password]').val('');
+         $('[name = email]').val('');
        },
 
-     });   
+     });
 
 
 // ........................login.............................
@@ -80,17 +80,17 @@ AutoForm.setDefaultTemplate('materialize');
          var email = event.target.email.value;
          var password = event.target.password.value;
 
-         Meteor.loginWithPassword(email, password, 
+         Meteor.loginWithPassword(email, password,
          function(error){
-           
+
            if (error) {
              console.log(error.reason);
            } else{
             Router.go('list');
-           }; 
+           };
          });
          $('[name="listName"]').val('');
-         $('[name = password]').val(''); 
+         $('[name = password]').val('');
       }
 
     });
@@ -99,19 +99,19 @@ AutoForm.setDefaultTemplate('materialize');
 
   // .......................List....................
 
-  
+
   Template.list.helpers({
-     
+
      "people": function(){
       var gen = Meteor.user().profile.gender;
       var males = Meteor.users.find({"profile.gender": "male"});
-      var females = Meteor.users.find({"profile.gender": "female"});  
+      var females = Meteor.users.find({"profile.gender": "female"});
          if (gen==="male") {
           return females;
          } else{
           return males;
-            
-         }; 
+
+         };
       }
     });
 
@@ -135,10 +135,10 @@ AutoForm.setDefaultTemplate('materialize');
 
 
 Biye.attachSchema(new SimpleSchema({
-  
+
   age: {
       type: Number,
-      max: 60      
+      max: 60
   },
 
   createdBy: {
@@ -152,7 +152,7 @@ Biye.attachSchema(new SimpleSchema({
       }
     }
    }
-  
+
 
   // image: {
   //   type: String,
@@ -174,7 +174,7 @@ AutoForm.addHooks('details',{
 
 
 // .....................Show page.....................
-   
+
    Template.show.helpers({
      detailsDb: function () {
         var user = Meteor.users.findOne({
@@ -183,9 +183,9 @@ AutoForm.addHooks('details',{
      },
 
     // messages: function () {
-    
+
     //  return Meteor.user().conversations();
-     
+
 
     //  }
    });
@@ -211,12 +211,12 @@ AutoForm.addHooks('details',{
 
         'click  [name=accept]': function () {
             var request = Meteor.requests.findOne({
-              
+
              userId:Meteor.userId(),
              requesterId:this._id
              });
             request && request.accept();
-         },  
+         },
 
 
        'click  [name=deny]': function () {
@@ -225,7 +225,7 @@ AutoForm.addHooks('details',{
             userId:this._id
             });
            request && request.deny();
-        }, 
+        },
 
         'click [name=chat]': function () {
           event.preventDefault();
@@ -241,40 +241,41 @@ AutoForm.addHooks('details',{
           if (currentuser!= user){
               ChatInvites.insert({
                 invited: user.username,
-                inviter: currentuser.username, 
-                convoId:conversation._id 
+                inviter: currentuser.username,
+                convoId:conversation._id
               });
 
           };
 
           conversation.addParticipant(user);
           conversation.sendMessage("hi");
-          console.log("message sent");      
+          console.log("message sent");
         },
 
         'keyup [name=formArea]' : function (event) {
-          if (event.which == 13) { 
+          if (event.which == 13) {
 
        // move away from router.params.username approach
-       
-                var userId = Meteor.users.findOne({
-                username:Router.current().params.username})._id;
-                var text =  $('[name="formArea"]').val(); 
-                
-                Meteor.user().findExistingConversationWithUsers([userId], 
-                  function(error, result){
-                    if(result){
-                        var convoId = result;
-                         var conversation = Meteor.conversations.findOne({_id:convoId});
-                         if(text !== ''){ 
-                          conversation.sendMessage(text);
-                       }//if message 
-                    } 
-                }); 
-               
-                $('[name="formArea"]').val('');            
-          } // if enter
-        }, //keyup
+
+        var userId = Meteor.users.findOne({
+        username:Router.current().params.username})._id;
+        var text =  $('[name="formArea"]').val();
+
+        Meteor.user().findExistingConversationWithUsers([userId],
+        function(error, result){
+          if(result){
+           var convoId = result;
+           var conversation =
+             Meteor.conversations.findOne({id:convoId});
+              if(text !== ''){
+              conversation.sendMessage(text);
+             }//if message
+           }
+          });
+
+          $('[name="formArea"]').val('');
+        } // if enter
+      }, //keyup
 
        'click [name=logout]': function () {
          event.preventDefault();
@@ -296,39 +297,39 @@ Template.header.onRendered(function(){
 
  Template.header.helpers({
    me: function () {
-    return  Meteor.users.findOne({_id:Meteor.userId()});  
+    return  Meteor.users.findOne({_id:Meteor.userId()});
    },
 
   requestFromMe: function () {
     // if (true) {}; put both in one place
-    return  Meteor.requests.find({requesterId:Meteor.userId()});  
+    return  Meteor.requests.find({requesterId:Meteor.userId()});
    },
 
    requestFromPeople : function () {
-   return  Meteor.requests.find({userId:Meteor.userId()});       
+   return  Meteor.requests.find({userId:Meteor.userId()});
    },
 
   youAreInvited : function () {
-   var currentUsersName =  Meteor.user().username; 
+   var currentUsersName =  Meteor.user().username;
    return ChatInvites.find({'invited':currentUsersName});
 
     },
 
   ihaveInvited: function () {
-   var currentUsersName =  Meteor.user().username; 
+   var currentUsersName =  Meteor.user().username;
    return ChatInvites.find({'inviter':currentUsersName});
 
 }
  });
 
  Template.header.events({
-    
+
     'click [name=logout]': function () {
          event.preventDefault();
          Meteor.logout();
          Router.go("home");
     }
-    
+
   });
 
 
@@ -336,69 +337,54 @@ Template.header.onRendered(function(){
 
 
 Template.sidebar.helpers({
-    'conversations':function(){
+    'conversationsIstarted':function(){
         return ChatInvites.find({inviter: Meteor.user().username});
+    },
+
+    'conversationsIwasInvited': function(){
+        return ChatInvites.find({invited: Meteor.user().username});
     }
+
 });
 
 Template.sidebar.events({
     'click [name=user]':function(){
-        Session.set('currentId',this._id);
-        var get = Session.get('currentId');
-        var res=ChatRooms.findOne({chatIds:{$all:[this._id,Meteor.userId()]}});
-        if(res)
-        {
-            //already room exists
-            Session.set(  "roomid",res._id);
-        }
-        else{
-            //no room exists
-            var newRoom= ChatRooms.insert({chatIds:[this._id , Meteor.userId()],messages:[]});
-            Session.set('roomid',newRoom);
-        }
-
+      Session.set("convoId",this.convoId);
     }
 });
 
 Template.messages.helpers({
-    'msgs':function(){
-        var result=ChatRooms.findOne({_id:Session.get('roomid')});
-        
-       return result.messages;
+    'displayMessages':function(){
+    var conversationId= Session.get("convoId");
+    return Meteor.conversations.findOne({_id:conversationId});
     }
 });
 
 Template.input.events({
   'keyup [name=message]' : function (event) {
-    if (event.which == 13) { 
-       if (Meteor.user()) {
-          var name = Meteor.user().username;
-          var message =  $('[name="message"]').val();
-
-              if(message !== ''){ 
-                ChatRooms.update({"_id":Session.get("roomid")},
-                  {$push:
-                    {messages:{name: name,text: message,createdAt: Date.now()}
-                  }
-                });    
-                $('[name="message"]').val('');    
-              } //if message
-        } // if user
-    } // if enter
-  } //keyup
+    if (event.which == 13) {
+      var conversationId= Session.get("convoId");
+      var conversation = Meteor.conversations.findOne({_id:conversationId});
+      var text =  $('[name="message"]').val();
+       if(text !== ''){
+        conversation.sendMessage(text);
+        }//if message
+      $('[name="message"]').val('');
+    } // if event
+  } // if keyup
 });
-        
+
 
 }   // meteor is client ends...............................
 
 if(Meteor.isServer){
-    
+
 
 }
 
 
 // userName: {
-  //     type: String      
+  //     type: String
   // },
 
 // gender: {
@@ -408,23 +394,23 @@ if(Meteor.isServer){
 
 // age: {
   //     type: Number,
-  //     max: 60      
+  //     max: 60
   // },
 
   // profession: {
-  //     type: String      
+  //     type: String
   // },
 
   // currentResidence: {
-  //     type: String      
+  //     type: String
   // },
 
   // originalResidence : {
-  //     type: String      
+  //     type: String
   // },
 
   // familyMembers: {
-  //     type: String     
+  //     type: String
   // },
 
   // lastOrNextDegree: {
@@ -438,7 +424,7 @@ if(Meteor.isServer){
 
   // religiousHistory: {
   //    type: String,
-  //    allowedValues: ['Started practising 1 or 2 years back', 
+  //    allowedValues: ['Started practising 1 or 2 years back',
   //                     'Been practising for more than 5 years',
   //                     'Revert Muslim','Have not started practising yet but want too soon',
   //                     'I have faith in my heart']
@@ -465,12 +451,12 @@ if(Meteor.isServer){
   // },
 
   // numberOfChildren: {
-  //    type: Number   
+  //    type: Number
   // },
 
   // Hijab: {
   //    type: String,
-  //    allowedValues: ['Always With Burkha/Abaya face open', 
+  //    allowedValues: ['Always With Burkha/Abaya face open',
   //                    'Always with Burkha/Abaya with Niqab',
   //                    'Always with Scraf only',
   //                    'I dress modestly but not Burkha/Abaya/niqab',
@@ -480,19 +466,14 @@ if(Meteor.isServer){
   // },
 
   // height: {
-  //    type: String   
+  //    type: String
   // },
 
   // beard:{
   //   type: String,
 
-  //   allowedValues: ['I have let my beard grow','I trim my beard', 
+  //   allowedValues: ['I have let my beard grow','I trim my beard',
   //                   'No beaerd, shaved, will not keep beard',
   //                   'No beaerd, shaved, will keep beard in future',
   //                   'I am a woman, I CAN NOT HAVE BEARD you silly']
   // },
-
-
-
-
-
