@@ -13,9 +13,28 @@ html {
   bottom: 1px;
 }
 
+#biye{
+   position:absolute;
+   visibility:show;
+   right: 400px;
+   top: 300px;
+   z-index:200
+}
+
+.tag{
+      font-size: 7rem;
+      font-weight: 600;
+      top: 500px;
+}
+
 .card-panel{
 border-radius: 5px;
 
+}
+
+.row .col.s3 {
+    width: 15%;
+    margin-left: 0;
 }
 
 .btn {
@@ -24,6 +43,7 @@ border-radius: 5px;
 
 .btn-large {
     border-radius: 10px;
+
 }
 
 #wrapper {

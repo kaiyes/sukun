@@ -25,8 +25,18 @@
  {{>style}}
   <div class="container">
   {{>login}}
+
+
   {{>register}}
-  </div>
+    <div id="biye" class="col s6">
+      <h1 class="tag"> বিয়ে করুন </h1>
+    </div>
+
+    <!-- <div id="arrow">
+
+    </div> -->
+
+</div>
 </template>
 
 
@@ -36,7 +46,7 @@
 <template name="register">
    <div class="row">
      <div class="col s6">
-      <div class = "card-panel grey lighten-1 center-align" >
+      <div class = "card-panel transparent center-align" >
         <form  class="register">
           <p>Email: <input type="email" name= "email">  </p>
           <p>Password: <input type="password" name="password"></p>
@@ -61,7 +71,7 @@
   <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s5">
+        <div class="input-field col s6">
         <input id="email" type="email">
         <label class ="black-text" for="email">Email</label>
         </div>
@@ -70,7 +80,7 @@
         <label class ="black-text"
         for="password">Password</label>
         </div>
-        <div class="col s2" >
+        <div class="col s1" >
         <input class= "waves-effect waves-light btn-large"
         type="submit" value="login">
         </div>
@@ -292,13 +302,13 @@
 
 <template name="style_show">
   <style>
-      body {background-color: #b9f6ca;}
+      /*body {background-color: #b9f6ca;}*/
   </style>
 </template>
 
 <template name="style_list">
   <style>
-  body {background-color:  #b3e5fc;}
+  /*body {background-color:  #b3e5fc;}*/
   </style>
 </template>
 
@@ -311,7 +321,7 @@
   margin-right: auto;
   padding-top: 53px;
   padding-bottom: 64px;
-  background-color: #ef5350;
+  /*background-color:#ecf0f1;*/
 }
 
   </style>

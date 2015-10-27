@@ -180,14 +180,8 @@ AutoForm.addHooks('details',{
         var user = Meteor.users.findOne({
         username:Router.current().params.username})._id;
         return Biye.findOne({createdBy:user});
-     },
+     }
 
-    // messages: function () {
-
-    //  return Meteor.user().conversations();
-
-
-    //  }
    });
 
 
@@ -250,6 +244,9 @@ AutoForm.addHooks('details',{
           conversation.addParticipant(user);
           conversation.sendMessage("hi");
           console.log("message sent");
+
+          /*$("#myButton").prop('disabled', true);*/
+          $('[name=chat]').prop('disabled',true);
         },
 
         'keyup [name=formArea]' : function (event) {
