@@ -13,10 +13,18 @@ html {
   bottom: 1px;
 }
 
+#email{
+  border-bottom: 2px solid #000000;
+}
+
+#password{
+  border-bottom: 2px solid #000000;
+}
+
 #biye{
    position:absolute;
    visibility:show;
-   right: 400px;
+   right: 200px;
    top: 300px;
    z-index:200
 }

@@ -2,6 +2,7 @@ Biye = new Meteor.Collection ('biye');
 ChatRooms = new Meteor.Collection("chatrooms");
 ChatInvites = new Meteor.Collection('invites');
 
+
 if(Meteor.isClient) {
 
 // ........................Routing.............................
@@ -24,17 +25,6 @@ Router.route('show',{
   }
 
 });
-
-// Router.route('',{
-//       path:'/list/:username',
-
-//   data: function(){
-//   return Meteor.users.findOne({username: this.params.username});
-//   }
-
-// });
-
-
 
 AutoForm.setDefaultTemplate('materialize');
 
@@ -115,23 +105,35 @@ AutoForm.setDefaultTemplate('materialize');
       }
     });
 
+   Template.list.events({
+       'click [name=logout]': function () {
+         event.preventDefault();
+         Meteor.logout();
+         Router.go("home");
+       },
 
-     Template.list.events({
-         'click [name=logout]': function () {
-           event.preventDefault();
-           Meteor.logout();
-           Router.go("home");
-         },
+       'click [name=chat]': function () {
+         event.preventDefault();
+         Router.go('/chat');
+       }
 
-         'click [name=chat]': function () {
-           event.preventDefault();
-           Router.go('/chat');
-         }
-
-       });
+     });
 
 
 // .......................details autoform....................
+
+Template.details.onRendered(function () {
+  this.autorun(function () {
+    var exists = Biye.findOne({createdBy:Meteor.userId()});
+    if (exists) {
+      console.log("আছে");
+      $('button[type="submit"]').hide();
+
+    } else {
+      console.log("নাই");
+    }
+  });
+});
 
 
 Biye.attachSchema(new SimpleSchema({
@@ -223,56 +225,60 @@ AutoForm.addHooks('details',{
 
         'click [name=chat]': function () {
           event.preventDefault();
-          var conversation = new Conversation().save();
           var currentuser = Meteor.user();
           var user = Meteor.users.findOne({
           username:Router.current().params.username});
+          var conversation = new Conversation().save();
 
+          var linkExists = ChatInvites.findOne({ $or:
+            [{invited:user.username, inviter:currentuser.username},
+            {invited:currentuser.username, inviter:user.username}]
+           });
 
-          // button should disappear after sending once to be implemented
+          if(linkExists){
+            console.log("link exists, hides button");
+            $('[name=chat]').hide();
+          }else{
+            console.log("no link, sends the message");
+            ChatInvites.insert({
+              invited: user.username,
+              inviter: currentuser.username,
+              convoId:conversation._id,
+            });
 
+            conversation.addParticipant(user);
+            conversation.sendMessage("hi");
+            console.log("message sent");
 
-          if (currentuser!= user){
-              ChatInvites.insert({
-                invited: user.username,
-                inviter: currentuser.username,
-                convoId:conversation._id
-              });
-
-          };
-
-          conversation.addParticipant(user);
-          conversation.sendMessage("hi");
-          console.log("message sent");
-
-          /*$("#myButton").prop('disabled', true);*/
-          $('[name=chat]').prop('disabled',true);
+          };/*else ends here*/
         },
+
+     /*............send messages................. */
 
         'keyup [name=formArea]' : function (event) {
           if (event.which == 13) {
-
-       // move away from router.params.username approach
 
         var userId = Meteor.users.findOne({
         username:Router.current().params.username})._id;
         var text =  $('[name="formArea"]').val();
 
-        Meteor.user().findExistingConversationWithUsers([userId],
-        function(error, result){
-          if(result){
-           var convoId = result;
-           var conversation =
-             Meteor.conversations.findOne({id:convoId});
-              if(text !== ''){
-              conversation.sendMessage(text);
-             }//if message
-           }
-          });
+          Meteor.user().findExistingConversationWithUsers([userId],
+          function(error, result){
+            if(result){
+             var convoId = result;
+             var conversation =
+               Meteor.conversations.findOne({id:convoId});
+                if(text !== ''){
+                conversation.sendMessage(text);
+               }//if message
+             }
+            });
 
           $('[name="formArea"]').val('');
         } // if enter
       }, //keyup
+
+    /*..............send messages.............. */
 
        'click [name=logout]': function () {
          event.preventDefault();
@@ -280,9 +286,12 @@ AutoForm.addHooks('details',{
          Router.go("home");
        }
      });
+ /*................. show page ends here...........................*/
 
 
-// .....................header dropdown.............
+
+
+// .....................header template.............
 
 Template.header.onRendered(function(){
   this.$(".dropdown-button").dropdown({
@@ -329,9 +338,7 @@ Template.header.onRendered(function(){
 
   });
 
-
-// .....................Chat .............
-
+// .....................Chat template ...............
 
 Template.sidebar.helpers({
     'conversationsIstarted':function(){
