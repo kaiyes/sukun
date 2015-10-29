@@ -14,16 +14,28 @@ Router.route('/', {
 Router.route('/register');
 Router.route('/login');
 Router.route('/details');
-Router.route('/list');
+
+Router.route('/list',{
+  onBeforeAction: function (){
+  if (!Biye.findOne({createdBy:Meteor.userId()})) {
+  Router.go("details");
+  }else{
+  this.next();
+   }
+  }
+});
+
+/*Router.route('/list',function () {
+  this.redirect('/chat');
+  });*/
+
 Router.route('/chat');
 
 Router.route('show',{
-      path:'/list/:username',
-
+  path:'/list/:username',
   data: function(){
   return Meteor.users.findOne({username: this.params.username});
   }
-
 });
 
 AutoForm.setDefaultTemplate('materialize');
@@ -38,8 +50,7 @@ AutoForm.setDefaultTemplate('materialize');
          var gender = event.target.sex.value;
          var name = event.target.username.value;
          profile = {
-            gender: gender,
-
+            gender: gender
           };
          Accounts.createUser({
                email: email,
@@ -96,6 +107,7 @@ AutoForm.setDefaultTemplate('materialize');
       var gen = Meteor.user().profile.gender;
       var males = Meteor.users.find({"profile.gender": "male"});
       var females = Meteor.users.find({"profile.gender": "female"});
+      var ifHasDb = Biye.findOne({createdBy:Meteor.userId()});
          if (gen==="male") {
           return females;
          } else{
@@ -128,7 +140,6 @@ Template.details.onRendered(function () {
     if (exists) {
       console.log("আছে");
       $('button[type="submit"]').hide();
-
     } else {
       console.log("নাই");
     }

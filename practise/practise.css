@@ -5,7 +5,7 @@ div.card-panel-transparent {
 html {
 
     font-family: Verdana, sans-serif;
-    font-size: 20px;
+
 }
 
 #inputMessage{
@@ -24,15 +24,19 @@ html {
 #biye{
    position:absolute;
    visibility:show;
-   right: 200px;
+   right: 300px;
    top: 300px;
    z-index:200
 }
 
 .tag{
-      font-size: 7rem;
-      font-weight: 600;
+      font-size: 3.56rem;
+      line-height: 3.916rem;
+      font-family: Roboto,sans-serif;
+      font-weight: 100;
       top: 500px;
+      color: rgba(#f4ebeb, 0);
+
 }
 
 .card-panel{
@@ -47,6 +51,7 @@ border-radius: 5px;
 
 .btn {
     border-radius: 10px;
+    left: -7px;
 }
 
 .btn-large {
@@ -74,7 +79,7 @@ border-radius: 5px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #2ecc71;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -107,53 +112,57 @@ border-radius: 5px;
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
+    text-indent: 10px;
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav li h5 {
     display: block;
     text-decoration: none;
     color: #999999;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li h5:hover {
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
+.sidebar-nav li h5:active,
+.sidebar-nav li h5:focus {
     text-decoration: none;
 }
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 18px;
+    font-size: 9px;
     line-height: 60px;
 }
 
-.sidebar-nav > .sidebar-brand a {
+.sidebar-nav > .sidebar-brand h5 {
     color: #999999;
+
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
+.sidebar-nav > .sidebar-brand h5:hover {
     color: #fff;
     background: none;
 }
 
 .nav-wrapper > .brand-logo  {
 
-    padding-left: 25px;
+    padding-left: 15px;
 }
 
 .nav-wrapper  {
 
-    background-color: #09B2A2;
+    background-color: #00bcd4;
 }
 
-
+img.responsive-img, video.responsive-video {
+    max-width: 80%;
+    height: auto;
+}
 
 @media(min-width:768px) {
     #wrapper {

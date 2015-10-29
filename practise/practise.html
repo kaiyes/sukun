@@ -29,7 +29,8 @@
 
   {{>register}}
     <div id="biye" class="col s6">
-      <h1 class="tag"> বিয়ে করুন </h1>
+      <h4 class="tag"> Find Your PureMatch</h4> <br>
+
     </div>
 
     <!-- <div id="arrow">
@@ -45,7 +46,7 @@
 
 <template name="register">
    <div class="row">
-     <div class="col s6">
+     <div class="col s4">
       <div class = "card-panel grey lighten-2 center-align" >
         <form  class="register">
           <p>Email: <input type="email" name= "email">  </p>
@@ -149,16 +150,28 @@
 
 <!-- .................show everything template............... -->
 
-
 <template name="show">
   {{>header}}
   {{>style_show}}
 
 <div class="container">
+
+  <div id="sidebar-wrapper">
+      <ul class="sidebar-nav onlUsers">
+          <li class="sidebar-brand">
+
+          </li>
+         <li>
+           <img class="circle responsive-img" src="/1.jpg">
+         </li>
+      </ul>
+  </div>
+
+
    <div class="row">
 
-    <div class="col s6">
-          <div class="card hoverable teal right">
+    <div class="col s12 m5">
+          <div class="card hoverable purple right">
                <span class="card-title black-text">
                <h1>{{username}}'s profile </h1> </span>
           </div>
@@ -198,34 +211,12 @@
 </div> <!-- finish  -->
 
 
-
-<!--    {{#each this.conversations}}<div class="col s4">
-     <div class="card hoverable">
-         <div class="card-content">
-                   {{#each messages}}
-                      <strong>{{user.username}}:</strong> {{body}}<br>
-                    {{/each}}
-              <p> <input type="text" name="formArea"></p>
-
-         </div>
-       </div>
-     </div>
-   {{/each}}
- -->
-
-
-
   <div class="center-align">
     <a href="#" id="chatbutton" name= "chat"
     class="waves-effect waves-light btn">Chat now</a>
   </div>
 
  </div> <!-- row finished -->
-
-    <div class="center-align">
-      <a href="#" id="button" name= "logout"
-      class="waves-effect waves-light btn">Logout</a>
-    </div>
 
   </div>
 </template>
@@ -244,8 +235,12 @@
         {{/with}}
       </a>
 
-      <ul class="right">
+      <div class="center-align right">
+        <a href="#" id="button" name= "logout"
+         class="waves-effect waves-light btn red">Logout</a>
+      </div>
 
+      <ul class="right">
         <!-- Dropdown Trigger -->
         <li><a class="dropdown-button" name ="photoSent" href="#"
         data-activates="dropdown1">Photo Requests
@@ -254,8 +249,8 @@
         <li><a class="dropdown-button" name ="chatReceived" href="#"
         data-activates="dropdown3">Chat Invitaions
         </a></li>
-
       </ul>
+
     </div>
   </nav>
 </div>
@@ -303,13 +298,13 @@
 
 <template name="style_show">
   <style>
-      /*body {background-color: #b9f6ca;}*/
+      body {background-color: #ecf0f1;}
   </style>
 </template>
 
 <template name="style_list">
   <style>
-  /*body {background-color:  #b3e5fc;}*/
+  body {background-color: #ede7f6;}
   </style>
 </template>
 
