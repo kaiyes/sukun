@@ -28,7 +28,7 @@
 
 
   {{>register}}
-    <div id="biye" class="col s6">
+    <div id="tagline" class="col s6">
       <h4 class="tag"> Find Your PureMatch</h4> <br>
 
     </div>
@@ -155,70 +155,97 @@
   {{>style_show}}
 
 <div class="container">
-
   <div id="sidebar-wrapper">
-      <ul class="sidebar-nav onlUsers">
-          <li class="sidebar-brand">
+      <ul class="sidebar-nav">
+    <li>
+     {{#if this.isFriendsWith currentUser }}
 
-          </li>
-         <li>
-           <img class="circle responsive-img" src="/1.jpg">
-         </li>
-      </ul>
+          {{#with  detailsDb}}
+            <div class="col s4">
+               <img class="circle responsive-img"
+                src=" {{image}}" alt="">
+            </div>
+          {{/with}}
+        <a id="friendship" name= "end-friendship"
+        class="waves-effect waves-light btn red lighten-1">Unfriend</a>
+
+        {{else}}
+
+          {{#if currentUser.hasRequestFrom this}}
+          <img class="circle responsive-img" src="/1.jpg">
+          <a id="friendship" name= "accept"
+          class="waves-effect waves-light btn teal accent-3">দেখেন তাহলে </a>
+
+        {{else}}
+
+        {{#if hasRequestFrom currentUser}}
+         <img class="circle responsive-img" src="/1.jpg">
+         <a id="friendship" name= "cancel-request"
+         class="waves-effect waves-light btn red lighten-1">No  </a>
+
+         {{else}}
+
+         <img class="circle responsive-img" src="/1.jpg">
+         <a id="friendship" name= "add-friend"
+         class="waves-effect waves-light btn green lighten-1">ছবি দেখব </a>
+
+         {{/if}}
+         {{/if}}
+      {{/if}}
+    </li>
+
+   <li>
+      <h5>{{username}}'s profile </h5>
+   </li>
+
+   <li>
+      <a href="#" id="chatButton" name= "chat"
+      class="waves-effect waves-light btn indigo">Chat now</a>
+   </li>
+</ul>
   </div>
 
 
+
+  {{#with detailsDb}}
    <div class="row">
+    <div id="box">
+     <div class="col s12">
+      <h3> Age: </h3>
+      <p>
+        {{age}}
+      </p>
 
-    <div class="col s12 m5">
-          <div class="card hoverable purple right">
-               <span class="card-title black-text">
-               <h1>{{username}}'s profile </h1> </span>
-          </div>
-    </div>
+      <h3> About </h3>
+      <p>
+        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
+      </p>
 
-<div class="col s4">  <!-- start  -->
-  <div class="card hoverable teal">
-    <div class="card-content">
-       {{#if this.isFriendsWith currentUser }}
-          <a id="button" name= "end-friendship"
-          class="waves-effect waves-light btn">Unfriend</a>
+      <h3> profile </h3>
+      <p>
+        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
+      </p>
 
+      <h3> About </h3>
+      <p>
+        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
+      </p>
 
-                {{#with  detailsDb}}
-                  <div class="col s4">
-                      <!-- <img src=" {{image}}" alt="">          -->
-                      <h1> {{age}}</h1>
-                  </div>
-                {{/with}}
+      <h3> profile </h3>
+      <p>
+        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
+      </p>
 
-          {{else}}
-             {{#if currentUser.hasRequestFrom this}}
-              <a id="button" name= "accept"
-              class="waves-effect waves-light btn">Accept Request</a>
-                {{else}}
-                  {{#if hasRequestFrom currentUser}}
-                    <a id="button" name= "cancel-request"
-                     class="waves-effect waves-light btn">cancel Request</a>
-                      {{else}}
-                        <a id="button" name= "add-friend"
-                        class="waves-effect waves-light btn">add-friend</a>
-        {{/if}}
-             {{/if}}
-                  {{/if}}
+      <h3> About </h3>
+      <p>lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
+      </p>
     </div>
   </div>
-</div> <!-- finish  -->
+</div>
+<!-- row finished -->
+  {{/with}}
 
-
-  <div class="center-align">
-    <a href="#" id="chatbutton" name= "chat"
-    class="waves-effect waves-light btn">Chat now</a>
-  </div>
-
- </div> <!-- row finished -->
-
-  </div>
+</div>  {{!-- container --}}
 </template>
 
 
@@ -229,7 +256,7 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" name= "I" class="brand-logo">
+      <a href="#" name= "brand-logo" class="brand-logo">
         {{#with me }}
            <span class= "black-text"> {{username}} </span>
         {{/with}}
@@ -237,7 +264,7 @@
 
       <div class="center-align right">
         <a href="#" id="button" name= "logout"
-         class="waves-effect waves-light btn red">Logout</a>
+         class="waves-effect waves-light btn red lighten-1">Logout</a>
       </div>
 
       <ul class="right">
@@ -340,7 +367,7 @@
   {{/if}}
 
   <style>
-    body {background-color: #2980b9;}
+    body {background-color:  #ede7f6;}
   </style>
 
 </template>
@@ -349,7 +376,7 @@
 
 <template name="sidebar">
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav onlUsers">
+        <ul class="sidebar-nav users">
             <li class="sidebar-brand">
                 <a href=" #">
                      Your conversations
@@ -382,6 +409,6 @@
 
 <template name="input">
   <div id="inputMessage">
-     <p>Message: <input type="text" name="message"></p>
+     <input type="text" name="message">
   </div>
 </template>

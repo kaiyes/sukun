@@ -1,16 +1,21 @@
-div.card-panel-transparent {
-        background: none;
-    }
-
 html {
+    font-family: Roboto, sans-serif;
+}
 
-    font-family: Verdana, sans-serif;
+.nav-wrapper  {
+    background-color:#40c4ff;
+}
 
+.nav-wrapper > .brand-logo  {
+    position: fixed;
+    left: 35px;
+    padding-left: 15px;
 }
 
 #inputMessage{
   position: fixed;
   bottom: 1px;
+
 }
 
 #email{
@@ -21,7 +26,7 @@ html {
   border-bottom: 2px solid #000000;
 }
 
-#biye{
+#tagline{
    position:absolute;
    visibility:show;
    right: 300px;
@@ -47,7 +52,7 @@ border-radius: 5px;
 .row .col.s3 {
     width: 15%;
     margin-left: 0;
-}
+} /*list cards*/
 
 .btn {
     border-radius: 10px;
@@ -56,107 +61,41 @@ border-radius: 5px;
 
 .btn-large {
     border-radius: 10px;
-
 }
 
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+#friendship{
+   left: 30px;
 }
 
-#wrapper.toggled {
-    padding-left: 250px;
+#chatButton{
+  left: 10px;
 }
+/* Sidebar Styles */
 
 #sidebar-wrapper {
     /*z-index: 1000;*/
     position: fixed;
     left: 250px;
-    width: 0;
+    width:15% ;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #2ecc71;
+    background:  #b3e5fc;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
-#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-}
-
-#page-content-wrapper {
-    width: 100%;
-    padding: 15px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-}
-
-/* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
 .sidebar-nav li {
-    text-indent: 10px;
-    line-height: 40px;
+    text-indent: 15px;
+    /*line-height: 100px;*/
 }
 
 .sidebar-nav li h5 {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-}
+    color: #000;
+    margin-left: 15px;
 
-.sidebar-nav li h5:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
-}
-
-.sidebar-nav li h5:active,
-.sidebar-nav li h5:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 9px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand h5 {
-    color: #999999;
-
-}
-
-.sidebar-nav > .sidebar-brand h5:hover {
-    color: #fff;
-    background: none;
-}
-
-.nav-wrapper > .brand-logo  {
-
-    padding-left: 15px;
-}
-
-.nav-wrapper  {
-
-    background-color: #00bcd4;
 }
 
 img.responsive-img, video.responsive-video {
@@ -164,29 +103,14 @@ img.responsive-img, video.responsive-video {
     height: auto;
 }
 
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 250px;
-    }
+#box {
+    background-color: #00BCD4;
+    box-shadow: 5 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 9;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    margin-left: 150px;
 
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
 }

@@ -140,6 +140,7 @@ Template.details.onRendered(function () {
     if (exists) {
       console.log("আছে");
       $('button[type="submit"]').hide();
+      Router.go('/list');
     } else {
       console.log("নাই");
     }
@@ -164,17 +165,15 @@ Biye.attachSchema(new SimpleSchema({
         console.log("no userId entered");;
       }
     }
+   },
+   image: {
+    type: String,
+     autoform: {
+      afFieldInput: {
+        type: 'cloudinary'
+      }
+     }
    }
-
-
-  // image: {
-  //   type: String,
-  //   autoform: {
-  //     afFieldInput: {
-  //       type: 'cloudinary'
-  //     }
-  //   }
-  // }
 
 }));
 
@@ -246,10 +245,7 @@ AutoForm.addHooks('details',{
             {invited:currentuser.username, inviter:user.username}]
            });
 
-          if(linkExists){
-            console.log("link exists, hides button");
-            $('[name=chat]').hide();
-          }else{
+          if(!linkExists){
             console.log("no link, sends the message");
             ChatInvites.insert({
               invited: user.username,
@@ -261,6 +257,13 @@ AutoForm.addHooks('details',{
             conversation.sendMessage("hi");
             console.log("message sent");
 
+            Router.go('/chat');
+
+          }else{
+            console.log("link exists, hides button");
+            event.preventDefault();
+            $('[name=chat]').hide();
+            Router.go('/chat');
           };/*else ends here*/
         },
 
