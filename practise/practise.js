@@ -267,32 +267,6 @@ AutoForm.addHooks('details',{
           };/*else ends here*/
         },
 
-     /*............send messages................. */
-
-        'keyup [name=formArea]' : function (event) {
-          if (event.which == 13) {
-
-        var userId = Meteor.users.findOne({
-        username:Router.current().params.username})._id;
-        var text =  $('[name="formArea"]').val();
-
-          Meteor.user().findExistingConversationWithUsers([userId],
-          function(error, result){
-            if(result){
-             var convoId = result;
-             var conversation =
-               Meteor.conversations.findOne({id:convoId});
-                if(text !== ''){
-                conversation.sendMessage(text);
-               }//if message
-             }
-            });
-
-          $('[name="formArea"]').val('');
-        } // if enter
-      }, //keyup
-
-    /*..............send messages.............. */
 
        'click [name=logout]': function () {
          event.preventDefault();
