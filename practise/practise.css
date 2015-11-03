@@ -12,12 +12,6 @@ html {
     padding-left: 15px;
 }
 
-#inputMessage{
-  position: fixed;
-  bottom: 1px;
-
-}
-
 #email{
   border-bottom: 2px solid #000000;
 }
@@ -87,16 +81,46 @@ border-radius: 5px;
     transition: all 0.5s ease;
 }
 
+
+.conversation {
+    display: block;
+    color: #000;
+    height: 65px;
+    font-size: 20px;
+    line-height: 60px;
+    margin-left:-20px;
+
+}
+
+
 .sidebar-nav li {
     text-indent: 15px;
     /*line-height: 100px;*/
 }
+
+#side li {
+  color: #c1db1d;
+  margin-left: 35px;
+  font-size: 1.64rem;
+}
+
+#side li a:hover {
+    text-decoration: none;
+    background: rgba(176, 14, 14, 0.1);
+}
+
+#side li a:active,
+#side li a:focus {
+    text-decoration: none;
+}
+
 
 .sidebar-nav li h5 {
     color: #000;
     margin-left: 15px;
 
 }
+
 
 img.responsive-img, video.responsive-video {
     max-width: 80%;
@@ -114,3 +138,38 @@ img.responsive-img, video.responsive-video {
     margin-left: 150px;
 
 }
+
+#page-content-wrapper {
+    position: absolute;
+    right: 250px;
+    width: 700px;
+    top: 120px;
+}
+
+#inputMessage{
+  position: fixed;
+  bottom: 1px;
+  right:600px;
+  width: 500px;
+}
+
+#message {
+ font-size: 2rem;
+}
+
+input[type=text], input[type=password], input[type=email] {
+
+    font-size: 2rem;
+}
+
+/*#pic {
+    height: 260px;
+    width: 200px;
+    border: 10px solid white;
+    -webkit-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
+    transform: rotate(-3deg);
+    box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
+    float: right;
+    margin: -30px 0 0 0;
+}*/

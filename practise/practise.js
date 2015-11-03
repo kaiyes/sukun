@@ -342,6 +342,8 @@ Template.sidebar.helpers({
 Template.sidebar.events({
     'click [name=user]':function(){
       Session.set("convoId",this.convoId);
+      console.log("hmmm");
+
     }
 });
 

@@ -376,9 +376,10 @@
 
 <template name="sidebar">
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav users">
-            <li class="sidebar-brand">
-                <a href=" #">
+      <div id="side">
+        <ul>
+            <li>
+                <a class="conversation" href=" #">
                      Your conversations
                 </a>
             </li>
@@ -392,6 +393,7 @@
               <a href='#'>{{inviter}}</a></li>
             {{/each}}
         </ul>
+      </div>
     </div>
 </template>
 
@@ -400,11 +402,12 @@
 <template name="messages">
   {{#with displayMessages}}
       {{#each this.messages}}
+        <div id="message">
           <strong>{{user.username}}:</strong> {{body}}<br>
+        </div>
       {{/each}}
   {{/with}}
 </template>
-
 
 
 <template name="input">
