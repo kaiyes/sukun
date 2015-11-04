@@ -1,4 +1,16 @@
-html {
+.materialboxed {
+    height: 300px;
+    width: 300px;
+    border: 10px solid rgb(18, 41, 217);
+    -webkit-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
+    transform: rotate(-3deg);
+    box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
+    float: right;
+    margin: -30px 0 0 0;
+}
+
+/*html {
     font-family: Roboto, sans-serif;
 }
 
@@ -46,7 +58,7 @@ border-radius: 5px;
 .row .col.s3 {
     width: 15%;
     margin-left: 0;
-} /*list cards*/
+}
 
 .btn {
     border-radius: 10px;
@@ -64,10 +76,10 @@ border-radius: 5px;
 #chatButton{
   left: 10px;
 }
-/* Sidebar Styles */
+
 
 #sidebar-wrapper {
-    /*z-index: 1000;*/
+
     position: fixed;
     left: 250px;
     width:15% ;
@@ -95,7 +107,7 @@ border-radius: 5px;
 
 .sidebar-nav li {
     text-indent: 15px;
-    /*line-height: 100px;*/
+
 }
 
 #side li {
@@ -160,7 +172,7 @@ img.responsive-img, video.responsive-video {
 input[type=text], input[type=password], input[type=email] {
 
     font-size: 2rem;
-}
+}*/
 
 /*#pic {
     height: 260px;

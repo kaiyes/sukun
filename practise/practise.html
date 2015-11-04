@@ -14,6 +14,8 @@
         n.parentNode.insertBefore(s, n);
     })(document, window, 'Chatra');
 </script> -->
+<meta name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body>
@@ -155,6 +157,11 @@
   {{>style_show}}
 
 <div class="container">
+
+<div>
+   <h5>{{username}}'s profile </h5>
+</div>
+
   <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
     <li>
@@ -162,7 +169,7 @@
 
           {{#with  detailsDb}}
             <div class="col s4">
-               <img class="circle responsive-img"
+               <img class="materialboxed" width="400"
                 src=" {{image}}" alt="">
             </div>
           {{/with}}
@@ -172,20 +179,20 @@
         {{else}}
 
           {{#if currentUser.hasRequestFrom this}}
-          <img class="circle responsive-img" src="/1.jpg">
+          <img class="materialboxed" width="400" src="/1.jpg">
           <a id="friendship" name= "accept"
           class="waves-effect waves-light btn teal accent-3">দেখেন তাহলে </a>
 
         {{else}}
 
         {{#if hasRequestFrom currentUser}}
-         <img class="circle responsive-img" src="/1.jpg">
+         <img class="materialboxed" width="400" src="/1.jpg">
          <a id="friendship" name= "cancel-request"
          class="waves-effect waves-light btn red lighten-1">No  </a>
 
          {{else}}
 
-         <img class="circle responsive-img" src="/1.jpg">
+         <img class="materialboxed" width="400" src="/1.jpg">
          <a id="friendship" name= "add-friend"
          class="waves-effect waves-light btn green lighten-1">ছবি দেখব </a>
 
@@ -193,14 +200,10 @@
          {{/if}}
       {{/if}}
     </li>
-
-   <li>
-      <h5>{{username}}'s profile </h5>
-   </li>
-
+          <br>
    <li>
       <a href="#" id="chatButton" name= "chat"
-      class="waves-effect waves-light btn indigo">Chat now</a>
+      class="waves-effect waves-light btn large indigo">Chat</a>
    </li>
 </ul>
   </div>
