@@ -163,9 +163,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
    <h2> {{username}}'s profile </h2>
 </div>
 
-  <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-    <li>
+<div>
      {{#if this.isFriendsWith currentUser }}
 
           {{#with  detailsDb}}
@@ -200,25 +198,24 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
          {{/if}}
          {{/if}}
       {{/if}}
-    </li>
-          <br>
-   <li>
-      <a href="#" id="chatButton" name= "chat"
-      class="waves-effect waves-light btn large indigo">Chat
-      <i class="material-icons">chat_bubble_outline</i>
-    </a>
-   </li>
-</ul>
   </div>
-
+   <br>
+<div>
+  <a href="#" id="chatButton" name= "chat"
+  class="waves-effect waves-light btn large indigo">Chat
+  <i class="material-icons">chat_bubble_outline</i>
+  </a>
+</div>
 
 
   {{#with detailsDb}}
+      {{!-- ......................1st section.......................  --}}
+
   <div class="section processes-container">
     <div class="row">
-      <h2 class="header indigo-text lighten-1 section-title">
-          <span>Details</span>
-      </h2>
+      <h4 class="header indigo-text lighten-1 section-title">
+
+      </h4>
     </div>
 
          <div class="row">
@@ -230,11 +227,11 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                  </div>
                  <div class="card-content">
                    <span class="card-title activator grey-text text-darken-4">
-                     Card Title
+                     Me
                    <i class="small material-icons right">swap_vertical_circle</i></span>
                  </div>
                  <div class="card-reveal">
-                   <span class="card-title grey-text text-darken-4">Card Title
+                   <span class="card-title grey-text text-darken-4">A bit about me
                     <i class="material-icons right">face</i>
                   </span>
                     <p>Here is some more information about this product that
@@ -246,11 +243,11 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
              <div class="col s12 m4">
                  <div class="card small">
                    <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="/certificate.jpg">
+                     <img class="activator" src="/book.jpg">
                    </div>
                    <div class="card-content">
                      <span class="card-title activator grey-text text-darken-4">
-                       Card Title
+                       My Education & Profession
                      <i class="small material-icons right">swap_vertical_circle</i></span>
                    </div>
                    <div class="card-reveal">
@@ -270,7 +267,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                    <div class="card-content">
                      <span class="card-title activator grey-text text-darken-4">
-                       Card Title
+                       My Family
                      <i class="small material-icons right">swap_vertical_circle</i></span>
                    </div>
                    <div class="card-reveal">
@@ -283,8 +280,193 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                 </div>
              </div>
          </div> {{!-- row end --}}
-
      </div>
+
+    {{!-- ......................2nd section.......................  --}}
+
+    <div class="section processes-container">
+      <div class="row">
+        <h4 class="header indigo-text lighten-1 section-title">
+            <span>Personal Details</span>
+        </h4>
+      </div>
+
+           <div class="row">
+
+             <div class="col s12 m4">
+                 <div class="card small">
+                   <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="/certificate.jpg">
+                   </div>
+                   <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">
+                       Me
+                     <i class="small material-icons right">swap_vertical_circle</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Card Title
+                      <i class="material-icons right">face</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
+                   </div>
+                </div>
+             </div>
+
+               <div class="col s12 m4">
+                   <div class="card small">
+                     <div class="card-image waves-effect waves-block waves-light">
+                       <img class="activator" src="/book.jpg">
+                     </div>
+                     <div class="card-content">
+                       <span class="card-title activator grey-text text-darken-4">
+                         My Education & Profession
+                       <i class="small material-icons right">swap_vertical_circle</i></span>
+                     </div>
+                     <div class="card-reveal">
+                       <span class="card-title grey-text text-darken-4">Card Title
+                        <i class="material-icons right">face</i>
+                      </span>
+                        <p>Here is some more information about this product that
+                         is only revealed once clicked on.</p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col s12 m4">
+                   <div class="card small">
+                     <div class="card-image waves-effect waves-block waves-light">
+                       <img class="activator" src="/certificate.jpg">
+                     </div>
+                     <div class="card-content">
+                       <span class="card-title activator grey-text text-darken-4">
+                         My Family
+                       <i class="small material-icons right">swap_vertical_circle</i></span>
+                     </div>
+                     <div class="card-reveal">
+                       <span class="card-title grey-text text-darken-4">Card Title
+                        <i class="material-icons right">face</i>
+                      </span>
+                        <p>Here is some more information about this product that
+                         is only revealed once clicked on.</p>
+                     </div>
+                  </div>
+               </div>
+           </div> {{!-- row end --}}
+       </div>
+    {{!-- ......................3rd section.......................  --}}
+
+     <div class="section fun-facts">
+       <div class="row">
+         <h4 class="header indigo-text lighten-1 section-title">
+             <span>Personal Details</span>
+         </h4>
+       </div>
+
+           <div class="row">
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">Dragging</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Current Mood
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <a href="#modal1" class="modal-trigger">
+                           <div class="card-content white-text">
+                                <i class="material-icons ">face</i>
+                               <span class="card-title">550</span>
+                               <p class="bounceEffect animated bounceIn">
+                                   Calories Burned
+                               </p>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <a href="#modal1" class="modal-trigger">
+                           <div class="card-content white-text">
+                                 <i class="material-icons ">face</i>
+                               <span class="card-title">550</span>
+                               <p class="bounceEffect animated bounceIn">
+                                   Calories Burned
+                               </p>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">0</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Drinks Consumed
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">92</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Heart Beat
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">396</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Steps Walk
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <a href="/moves">
+                           <div class="card-content white-text">
+                                 <i class="material-icons ">face</i>
+                               <span class="card-title">N/A</span>
+                               <p class="bounceEffect animated bounceIn">
+                                   Current Location
+                               </p>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card pink accent-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">45</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Git Repos
+                           </p>
+                       </div>
+                   </div>
+               </div>
+         </div>
+       </div>
+
+       <div class="row">
+         <h4 class="header indigo-text lighten-1 section-title">
+             <span>Personal Details</span>
+         </h4>
+       </div> 
+    {{!-- ......................3rd section.......................  --}}
   {{/with}}
 
 </div>  {{!-- container --}}
