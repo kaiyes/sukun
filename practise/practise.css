@@ -1,6 +1,6 @@
 .materialboxed {
-    height: 300px;
-    width: 300px;
+    /*height: 300px;
+    width: 300px;*/
     border: 10px solid rgb(18, 41, 217);
     -webkit-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
@@ -8,7 +8,61 @@
     box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
     float: right;
     margin: -30px 0 0 0;
+    top:
 }
+
+.card-panel{
+border-radius: 5px;
+}
+
+.side-nav {
+    background-color: rgb(175, 149, 231);
+}
+
+
+#brandLogo{
+  left: 10px;
+  font-size: 25px;
+}
+
+#inputMessage{
+  position: fixed;
+  bottom: 1px;
+  margin-left: 300px;
+  width: 500px;
+}
+
+.mess{
+ font-size: 25px;
+}
+
+.bodyOfMessage{
+  font-size: 25px;
+}
+
+.listText{
+  font-size: 15px;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    font-size: 2rem;
+}
+
+#buttonlist {
+  bottom: 30px;
+}
+
+#buttonLogout {
+  right: 10px;
+}
+
+@media (max-width: 992px) {
+.side-nav.fixed {
+    left: -1%;
+    width: 50px;
+  }
+}
+
 
 /*html {
     font-family: Roboto, sans-serif;

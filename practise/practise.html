@@ -14,6 +14,9 @@
         n.parentNode.insertBefore(s, n);
     })(document, window, 'Chatra');
 </script> -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
@@ -25,20 +28,12 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 <template name="home">
  {{>style}}
-  <div class="container">
-  {{>login}}
-
-
-  {{>register}}
-    <div id="tagline" class="col s6">
-      <h4 class="tag"> Find Your PureMatch</h4> <br>
-
-    </div>
-
-    <!-- <div id="arrow">
-
-    </div> -->
-
+<div class="container">
+  {{>login}} {{>register}}
+  <div id="tagline" class="col s6">
+    <h4 class="tag"> Find Your PureMatch</h4>
+    <br>
+  </div>
 </div>
 </template>
 
@@ -113,7 +108,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
   {{>header}}
 
 {{#if currentUser}}
-    <ul>
+    <ul class="hide-on-med-and-down">
          <div class="row">
         {{#each people}}
             <div class="col s3">
@@ -133,17 +128,23 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         {{/each}}
           </div>
     </ul>
+
+    <div class="container">
+      {{#each people}}
+        <ul class="collection hide-on-large-only">
+          <li class="collection-item avatar">
+            <img src="/1.jpg" alt="" class="circle">
+            <span class="title">{{username}}</span>
+            <p>{{profile.gender}}
+            </p>
+             <a href="{{pathFor 'show'}}" id="buttonlist"
+             class="waves-effect waves-light btn right" >See More</a>
+          </li>
+        </ul>
+      {{/each}}
+    </div>
+
 <!-- {{pathFor 'show'}} -->
-  <div class="center-align">
-    <a href="#" id="button" name= "logout"
-    class="waves-effect waves-light btn">Logout</a>
-  </div>
-
-  <div class="center-align">
-    <a href="{{pathFor 'chat'}}" id="button" name= "chat"
-    class="waves-effect waves-light btn">Chat now</a>
-  </div>
-
 
 {{/if}}
 
@@ -159,7 +160,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <div class="container">
 
 <div>
-   <h5>{{username}}'s profile </h5>
+   <h2> {{username}}'s profile </h2>
 </div>
 
   <div id="sidebar-wrapper">
@@ -169,7 +170,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
           {{#with  detailsDb}}
             <div class="col s4">
-               <img class="materialboxed" width="400"
+               <img class="responsive-img materialboxed initialized" width="400"
                 src=" {{image}}" alt="">
             </div>
           {{/with}}
@@ -203,7 +204,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
           <br>
    <li>
       <a href="#" id="chatButton" name= "chat"
-      class="waves-effect waves-light btn large indigo">Chat</a>
+      class="waves-effect waves-light btn large indigo">Chat
+      <i class="material-icons">chat_bubble_outline</i>
+    </a>
    </li>
 </ul>
   </div>
@@ -211,41 +214,77 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 
   {{#with detailsDb}}
-   <div class="row">
-    <div id="box">
-     <div class="col s12">
-      <h3> Age: </h3>
-      <p>
-        {{age}}
-      </p>
-
-      <h3> About </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> profile </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> About </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> profile </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> About </h3>
-      <p>lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
+  <div class="section processes-container">
+    <div class="row">
+      <h2 class="header indigo-text lighten-1 section-title">
+          <span>Details</span>
+      </h2>
     </div>
-  </div>
-</div>
-<!-- row finished -->
+
+         <div class="row">
+
+           <div class="col s12 m4">
+               <div class="card small">
+                 <div class="card-image waves-effect waves-block waves-light">
+                   <img class="activator" src="/certificate.jpg">
+                 </div>
+                 <div class="card-content">
+                   <span class="card-title activator grey-text text-darken-4">
+                     Card Title
+                   <i class="small material-icons right">swap_vertical_circle</i></span>
+                 </div>
+                 <div class="card-reveal">
+                   <span class="card-title grey-text text-darken-4">Card Title
+                    <i class="material-icons right">face</i>
+                  </span>
+                    <p>Here is some more information about this product that
+                     is only revealed once clicked on.</p>
+                 </div>
+              </div>
+           </div>
+
+             <div class="col s12 m4">
+                 <div class="card small">
+                   <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="/certificate.jpg">
+                   </div>
+                   <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">
+                       Card Title
+                     <i class="small material-icons right">swap_vertical_circle</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Card Title
+                      <i class="material-icons right">face</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
+                   </div>
+                </div>
+             </div>
+
+             <div class="col s12 m4">
+                 <div class="card small">
+                   <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="/certificate.jpg">
+                   </div>
+                   <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">
+                       Card Title
+                     <i class="small material-icons right">swap_vertical_circle</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Card Title
+                      <i class="material-icons right">face</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
+                   </div>
+                </div>
+             </div>
+         </div> {{!-- row end --}}
+
+     </div>
   {{/with}}
 
 </div>  {{!-- container --}}
@@ -259,14 +298,15 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" name= "brand-logo" class="brand-logo">
+      <a href="#" id="brandLogo"
+      name= "brand-logo" class="brand-logo left hide-on-med-and-down">
         {{#with me }}
-           <span class= "black-text"> {{username}} </span>
+            {{username}}
         {{/with}}
       </a>
 
       <div class="center-align right">
-        <a href="#" id="button" name= "logout"
+        <a href="#" id="buttonLogout" name= "logout"
          class="waves-effect waves-light btn red lighten-1">Logout</a>
       </div>
 
@@ -360,13 +400,12 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <template name="chat">
  {{#if currentUser}}
     {{>header}}
-    <div id="wrapper">
+    <div class="container">
             {{> sidebar }}
-         <div id="page-content-wrapper">
             {{> messages }}
-             {{> input }}
-        </div>
+            {{> input }}
     </div>
+
   {{/if}}
 
   <style>
@@ -380,20 +419,21 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <template name="sidebar">
     <div id="sidebar-wrapper">
       <div id="side">
-        <ul>
+        <ul id="nav-mobile" class="side-nav fixed" style="width:250px;">
             <li>
-                <a class="conversation" href=" #">
-                     Your conversations
+                <a class="brand-logo " style="font-size:25px;" href=" #">
+                    conversations
                 </a>
             </li>
+
             {{#each conversationsIstarted}}
                 <li name="user">
-                <a href='#'>{{invited}}</a></li>
+                <a href='#' style="font-size:17px;">{{invited}}</a></li>
             {{/each}}
 
             {{#each conversationsIwasInvited}}
               <li name="user">
-              <a href='#'>{{inviter}}</a></li>
+              <a href='#' style="font-size:17px;">{{inviter}}</a></li>
             {{/each}}
         </ul>
       </div>
@@ -405,9 +445,12 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <template name="messages">
   {{#with displayMessages}}
       {{#each this.messages}}
-        <div id="message">
-          <strong>{{user.username}}:</strong> {{body}}<br>
+      <div class="row">
+        <div id="message" class="col s8">
+          <strong class="mess">{{user.username}}:</strong>
+           <span class="bodyOfMessage"> {{body}} </span><br>
         </div>
+      </div>
       {{/each}}
   {{/with}}
 </template>
