@@ -234,8 +234,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    <span class="card-title grey-text text-darken-4">A bit about me
                     <i class="material-icons right">face</i>
                   </span>
-                    <p>Here is some more information about this product that
-                     is only revealed once clicked on.</p>
+                    <p>{{age}}</p>
                  </div>
               </div>
            </div>
@@ -293,8 +292,15 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                    <div class="card-content">
                      <span class="card-title activator grey-text text-darken-4">
-                       Marital Status
-                    <i class="material-icons right">favorite</i></span>
+                       Religious Facts
+                    <i class="material-icons right">brightness_3</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Card Title
+                      <i class="material-icons right">brightness_3</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
                    </div>
                 </div>
              </div>
@@ -345,7 +351,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
      <div class="section fun-facts">
            <div class="row">
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card pink lighten-3">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
                            <span class="card-title">Dragging</span>
@@ -356,7 +362,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card purple lighten-3">
                        <a href="#modal1" class="modal-trigger">
                            <div class="card-content white-text">
                                 <i class="material-icons ">face</i>
@@ -369,7 +375,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card blue lighten-2">
                        <a href="#modal1" class="modal-trigger">
                            <div class="card-content white-text">
                                  <i class="material-icons ">face</i>
@@ -382,7 +388,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card green lighten-2">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
                            <span class="card-title">0</span>
@@ -393,7 +399,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card orange lighten-2">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
                            <span class="card-title">92</span>
@@ -404,7 +410,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card indigo lighten-3">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
                            <span class="card-title">396</span>
@@ -415,7 +421,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card red lighten-2">
                        <a href="/moves">
                            <div class="card-content white-text">
                                  <i class="material-icons ">face</i>
@@ -428,7 +434,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    </div>
                </div>
                <div class="col s12 m3">
-                   <div class="card pink accent-3">
+                   <div class="card cyan lighten-3">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
                            <span class="card-title">45</span>
@@ -454,7 +460,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" id="brandLogo"
+      <a href="{{pathFor 'list'}}" id="brandLogo"
       name= "brand-logo" class="brand-logo left hide-on-med-and-down">
         {{#with me }}
             {{username}}
