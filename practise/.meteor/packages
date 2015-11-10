@@ -11,8 +11,6 @@ accounts-password
 aldeed:collection2
 aldeed:autoform
 gildaspk:autoform-materialize
-cfs:standard-packages
-cfs:gridfs
 cosio55:autoform-cloudinary
 ejson
 standard-minifiers
