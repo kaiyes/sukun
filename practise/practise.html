@@ -14,6 +14,11 @@
         n.parentNode.insertBefore(s, n);
     })(document, window, 'Chatra');
 </script> -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body>
@@ -23,20 +28,12 @@
 
 <template name="home">
  {{>style}}
-  <div class="container">
-  {{>login}}
-
-
-  {{>register}}
-    <div id="tagline" class="col s6">
-      <h4 class="tag"> Find Your PureMatch</h4> <br>
-
-    </div>
-
-    <!-- <div id="arrow">
-
-    </div> -->
-
+<div class="container">
+  {{>login}} {{>register}}
+  <div id="tagline" class="col s6">
+    <h4 class="tag"> Find Your PureMatch</h4>
+    <br>
+  </div>
 </div>
 </template>
 
@@ -91,6 +88,19 @@
 </template>
 
 
+ <!-- .........................verify Email .............. -->
+
+<template name="verifyEmail">
+  <div class="container">
+    <div class="card-panel">
+        <div class="card-content">
+             <h1> Please verify your mail.</h1>
+        </div>
+    </div>
+  </div>
+</template>
+
+
  <!-- .........................Details input form............... -->
 
 <template name="details">
@@ -111,7 +121,7 @@
   {{>header}}
 
 {{#if currentUser}}
-    <ul>
+    <ul class="hide-on-med-and-down">
          <div class="row">
         {{#each people}}
             <div class="col s3">
@@ -131,16 +141,33 @@
         {{/each}}
           </div>
     </ul>
-<!-- {{pathFor 'show'}} -->
-  <div class="center-align">
-    <a href="#" id="button" name= "logout"
-    class="waves-effect waves-light btn">Logout</a>
-  </div>
 
-  <div class="center-align">
-    <a href="{{pathFor 'chat'}}" id="button" name= "chat"
-    class="waves-effect waves-light btn">Chat now</a>
-  </div>
+    <div class="container">
+      {{#each people}}
+        <ul class="collection hide-on-large-only">
+          <li class="collection-item avatar">
+            <img src="/1.jpg" alt="" class="circle">
+            <span class="title">{{username}}</span>
+            <p>{{profile.gender}}
+            </p>
+             <a href="{{pathFor 'show'}}" id="buttonlist"
+             class="waves-effect waves-light btn right" >See More</a>
+          </li>
+        </ul>
+      {{/each}}
+    </div>
+
+    <ul>
+      {{#each mail}}
+         {{address}}
+
+      {{/each}}
+    </ul>
+
+  {{!-- <div id="name">
+    <a id="friendship" name= "accept"
+    class="waves-effect waves-light btn teal accent-3">দেখেন তাহলে </a>
+  </div> --}}
 
 
 {{/if}}
@@ -155,14 +182,17 @@
   {{>style_show}}
 
 <div class="container">
-  <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-    <li>
+
+<div>
+   <h2> {{username}}'s profile </h2>
+</div>
+
+<div>
      {{#if this.isFriendsWith currentUser }}
 
           {{#with  detailsDb}}
             <div class="col s4">
-               <img class="circle responsive-img"
+               <img class="responsive-img materialboxed initialized" width="400"
                 src=" {{image}}" alt="">
             </div>
           {{/with}}
@@ -172,77 +202,275 @@
         {{else}}
 
           {{#if currentUser.hasRequestFrom this}}
-          <img class="circle responsive-img" src="/1.jpg">
+          <img class="materialboxed" width="400" src="/1.jpg">
           <a id="friendship" name= "accept"
           class="waves-effect waves-light btn teal accent-3">দেখেন তাহলে </a>
 
         {{else}}
 
         {{#if hasRequestFrom currentUser}}
-         <img class="circle responsive-img" src="/1.jpg">
+         <img class="materialboxed" width="400" src="/1.jpg">
          <a id="friendship" name= "cancel-request"
          class="waves-effect waves-light btn red lighten-1">No  </a>
 
          {{else}}
 
-         <img class="circle responsive-img" src="/1.jpg">
+         <img class="materialboxed" width="400" src="/1.jpg">
          <a id="friendship" name= "add-friend"
          class="waves-effect waves-light btn green lighten-1">ছবি দেখব </a>
 
          {{/if}}
          {{/if}}
       {{/if}}
-    </li>
-
-   <li>
-      <h5>{{username}}'s profile </h5>
-   </li>
-
-   <li>
-      <a href="#" id="chatButton" name= "chat"
-      class="waves-effect waves-light btn indigo">Chat now</a>
-   </li>
-</ul>
   </div>
-
+   <br>
+<div>
+  <a href="#" id="chatButton" name= "chat"
+  class="waves-effect waves-light btn large indigo">Chat
+  <i class="material-icons">chat_bubble_outline</i>
+  </a>
+</div>
 
 
   {{#with detailsDb}}
-   <div class="row">
-    <div id="box">
-     <div class="col s12">
-      <h3> Age: </h3>
-      <p>
-        {{age}}
-      </p>
+      {{!-- ......................1st section.......................  --}}
 
-      <h3> About </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
+  <div class="section processes-container">
+    <div class="row">
+      <h4 class="header indigo-text lighten-1 section-title">
 
-      <h3> profile </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> About </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> profile </h3>
-      <p>
-        lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
-
-      <h3> About </h3>
-      <p>lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum l rem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum lrem ipsum
-      </p>
+      </h4>
     </div>
-  </div>
-</div>
-<!-- row finished -->
+
+         <div class="row">
+
+           <div class="col s12 m4">
+               <div class="card small">
+                 <div class="card-image waves-effect waves-block waves-light">
+                   <img class="activator" src="/certificate.jpg">
+                 </div>
+                 <div class="card-content">
+                   <span class="card-title activator grey-text text-darken-4">
+                     Me
+                   <i class="small material-icons right">face</i></span>
+                 </div>
+                 <div class="card-reveal">
+                   <span class="card-title grey-text text-darken-4">A bit about me
+                    <i class="material-icons right">face</i>
+                  </span>
+                    <p>{{age}}</p>
+                 </div>
+              </div>
+           </div>
+
+             <div class="col s12 m4">
+                 <div class="card small">
+                   <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="/book.jpg">
+                   </div>
+                   <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">
+                      Education
+                     <i class="small material-icons right">receipt</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Degrees & Institution
+                      <i class="material-icons right">receipt</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
+                   </div>
+                </div>
+             </div>
+
+             <div class="col s12 m4">
+                 <div class="card small">
+                   <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="/certificate.jpg">
+                   </div>
+                   <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">
+                       Profession
+                     <i class="small material-icons right">attach_money</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Job Title
+                      <i class="material-icons right">attach_money</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
+                   </div>
+                </div>
+             </div>
+         </div> {{!-- row end --}}
+     </div>
+
+    {{!-- ......................2nd section.......................  --}}
+
+    <div class="section processes-container">
+           <div class="row">
+             <div class="col s12 m4">
+                 <div class="card small">
+                   <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="/certificate.jpg">
+                   </div>
+                   <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">
+                       Religious Facts
+                    <i class="material-icons right">brightness_3</i></span>
+                   </div>
+                   <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4">Card Title
+                      <i class="material-icons right">brightness_3</i>
+                    </span>
+                      <p>Here is some more information about this product that
+                       is only revealed once clicked on.</p>
+                   </div>
+                </div>
+             </div>
+
+               <div class="col s12 m4">
+                   <div class="card small">
+                     <div class="card-image waves-effect waves-block waves-light">
+                       <img class="activator" src="/book.jpg">
+                     </div>
+                     <div class="card-content">
+                       <span class="card-title activator grey-text text-darken-4">
+                         Family Background
+                       <i class="small material-icons right">account_box</i></span>
+                     </div>
+                     <div class="card-reveal">
+                       <span class="card-title grey-text text-darken-4">Parents
+                        <i class="material-icons right">account_box</i>
+                      </span>
+                        <p>Here is some more information about this product that
+                         is only revealed once clicked on.</p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col s12 m4">
+                   <div class="card small">
+                     <div class="card-image waves-effect waves-block waves-light">
+                       <img class="activator" src="/certificate.jpg">
+                     </div>
+                     <div class="card-content">
+                       <span class="card-title activator grey-text text-darken-4">
+                        Siblings
+                       <i class="small material-icons right">supervisor_account</i></span>
+                     </div>
+                     <div class="card-reveal">
+                       <span class="card-title grey-text text-darken-4">Card Title
+                        <i class="material-icons right">supervisor_account</i>
+                      </span>
+                        <p>Here is some more information about this product that
+                         is only revealed once clicked on.</p>
+                     </div>
+                  </div>
+               </div>
+           </div> {{!-- row end --}}
+       </div>
+    {{!-- ......................3rd section.......................  --}}
+
+     <div class="section fun-facts">
+           <div class="row">
+               <div class="col s12 m3">
+                   <div class="card pink lighten-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">Dragging</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Current Mood
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card purple lighten-3">
+                       <a href="#modal1" class="modal-trigger">
+                           <div class="card-content white-text">
+                                <i class="material-icons ">face</i>
+                               <span class="card-title">550</span>
+                               <p class="bounceEffect animated bounceIn">
+                                   Calories Burned
+                               </p>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card blue lighten-2">
+                       <a href="#modal1" class="modal-trigger">
+                           <div class="card-content white-text">
+                                 <i class="material-icons ">face</i>
+                               <span class="card-title">550</span>
+                               <p class="bounceEffect animated bounceIn">
+                                   Calories Burned
+                               </p>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card green lighten-2">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">0</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Drinks Consumed
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card orange lighten-2">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">92</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Heart Beat
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card indigo lighten-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">396</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Steps Walk
+                           </p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card red lighten-2">
+                       <a href="/moves">
+                           <div class="card-content white-text">
+                                 <i class="material-icons ">face</i>
+                               <span class="card-title">N/A</span>
+                               <p class="bounceEffect animated bounceIn">
+                                   Current Location
+                               </p>
+                           </div>
+                       </a>
+                   </div>
+               </div>
+               <div class="col s12 m3">
+                   <div class="card cyan lighten-3">
+                       <div class="card-content white-text">
+                             <i class="material-icons ">face</i>
+                           <span class="card-title">45</span>
+                           <p class="bounceEffect animated bounceIn">
+                               Git Repos
+                           </p>
+                       </div>
+                   </div>
+               </div>
+         </div>
+       </div>
+    {{!-- ......................3rd section.......................  --}}
   {{/with}}
 
 </div>  {{!-- container --}}
@@ -256,14 +484,15 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" name= "brand-logo" class="brand-logo">
+      <a href="{{pathFor 'list'}}" id="brandLogo"
+      name= "brand-logo" class="brand-logo left hide-on-med-and-down">
         {{#with me }}
-           <span class= "black-text"> {{username}} </span>
+            {{username}}
         {{/with}}
       </a>
 
       <div class="center-align right">
-        <a href="#" id="button" name= "logout"
+        <a href="#" id="buttonLogout" name= "logout"
          class="waves-effect waves-light btn red lighten-1">Logout</a>
       </div>
 
@@ -357,13 +586,12 @@
 <template name="chat">
  {{#if currentUser}}
     {{>header}}
-    <div id="wrapper">
+    <div class="container">
             {{> sidebar }}
-         <div id="page-content-wrapper">
             {{> messages }}
-             {{> input }}
-        </div>
+            {{> input }}
     </div>
+
   {{/if}}
 
   <style>
@@ -376,24 +604,23 @@
 
 <template name="sidebar">
     <div id="sidebar-wrapper">
-      <div id="side">
-        <ul>
+        <ul id="nav-mobile" class="side-nav fixed">
             <li>
-                <a class="conversation" href=" #">
-                     Your conversations
+                <a class="brand-logo" style="font-size:25px;" href=" #">
+                    conversations
                 </a>
             </li>
+
             {{#each conversationsIstarted}}
                 <li name="user">
-                <a href='#'>{{invited}}</a></li>
+                <a href='#' style="font-size:17px;">{{invited}}</a></li>
             {{/each}}
 
             {{#each conversationsIwasInvited}}
               <li name="user">
-              <a href='#'>{{inviter}}</a></li>
+              <a href='#' style="font-size:17px;">{{inviter}}</a></li>
             {{/each}}
         </ul>
-      </div>
     </div>
 </template>
 
@@ -401,11 +628,16 @@
 
 <template name="messages">
   {{#with displayMessages}}
+     <div id="chatWrapper">
       {{#each this.messages}}
-        <div id="message">
-          <strong>{{user.username}}:</strong> {{body}}<br>
+        <div class="row">
+          <div id="message" class="col s12">
+            <strong class="mess">{{user.username}}:</strong>
+             <span class="bodyOfMessage"> {{body}} </span><br>
+          </div>
         </div>
       {{/each}}
+     </div>
   {{/with}}
 </template>
 
