@@ -29,3 +29,5 @@ check
 materialize:materialize@=0.97.0
 socialize:friendships
 socialize:messaging
+ixdi:material-design-iconic-font
+email
