@@ -164,11 +164,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
       {{/each}}
     </ul>
 
-  {{!-- <div id="name">
-    <a id="friendship" name= "accept"
-    class="waves-effect waves-light btn teal accent-3">দেখেন তাহলে </a>
-  </div> --}}
-
 
 {{/if}}
 
@@ -646,4 +641,42 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
   <div id="inputMessage">
      <input type="text" name="message">
   </div>
+</template>
+
+<template name="payment">
+    {{>style_show}}
+     <div class="container">
+       <div class="card-panel">
+         <h4> টাঁকা দেন ? ফেল কড়ি মাখ তেল </h4>
+         <p>
+           Please Use BIKASH to pay &  fillup the form bellow to enter your BIKASH payment number
+         </p>
+         {{#if currentUser }}
+          {{> quickForm collection="WantToPay" id="payment" type="insert" omitFields="createdBy,paid,email"}}
+         {{/if}}
+       </div>
+     </div>
+</template>
+
+<template name="admin">
+  {{>style_show}}
+   <div class="container">
+     <div class="card-panel">
+       <h4> Admin</h4>
+          <h4> Wants to Pay</h4>
+          {{#each wantsToPay}}
+              <ul class="collection">
+                <li class="collection-item avatar">
+                  <span class="title">Bikash Id : {{bikash}}</span>
+                  <p>createdBy : {{createdBy}}</p>
+
+                  <a href="#" id="makePaid" name= "paid"
+                  class="waves-effect waves-light btn large indigo">Make Member
+                  </a>
+
+                </li>
+              </ul>
+          {{/each}}
+     </div>
+   </div>
 </template>

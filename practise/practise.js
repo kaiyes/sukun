@@ -1,6 +1,10 @@
 Biye = new Meteor.Collection('biye');
 ChatRooms = new Meteor.Collection("chatrooms");
 ChatInvites = new Meteor.Collection('invites');
+WantToPay = new Meteor.Collection("wantopay");
+Paid = new Meteor.Collection("paid");
+
+
 
 
 if (Meteor.isClient) {
@@ -28,6 +32,8 @@ if (Meteor.isClient) {
 
   Router.route('/register');
   Router.route('/login');
+  Router.route('/payment');
+  Router.route('/admin');
   Router.route('/details',{
     onBeforeAction: function() {
       var verify = Meteor.user().emails[0].verified;
@@ -51,9 +57,6 @@ if (Meteor.isClient) {
   });
 
 
-  /*Router.route('/list',function () {
-    this.redirect('/chat');
-    });*/
 
   Router.route('/chat');
 
@@ -146,33 +149,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.list.events({
-    'click [name=logout]': function() {
-      event.preventDefault();
-      Meteor.logout();
-      Router.go("home");
-    },
-
-    'click [name=chat]': function() {
-      event.preventDefault();
-      Router.go('/chat');
-    }
-
-    /*'click  [name=accept]': function() {
-      var toAddress = Meteor.user().emails[0].address;
-      console.log(toAddress);
-
-      Meteor.call('sendEmail',
-        toAddress,
-        'kaiyes@example.com',
-        'Hello from Meteor!',
-        'This is a test of kenshiro.');
-
-    }*/
-
-  });
-
-
   // .......................details autoform....................
 
   Template.details.onRendered(function() {
@@ -242,7 +218,12 @@ if (Meteor.isClient) {
   Template.show.events({
 
     'click  [name=add-friend]': function() {
-      this.requestFriendship();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+        if(paidUser){
+          this.requestFriendship();
+        }else{
+          Router.go('/payment');
+        };
     },
 
     'click  [name=cancel-request]': function() {
@@ -281,7 +262,6 @@ if (Meteor.isClient) {
       var user = Meteor.users.findOne({
         username: Router.current().params.username
       });
-      var conversation = new Conversation().save();
 
       var linkExists = ChatInvites.findOne({
         $or: [{
@@ -293,39 +273,81 @@ if (Meteor.isClient) {
         }]
       });
 
-      if (!linkExists) {
-        console.log("no link, sends the message");
-        ChatInvites.insert({
-          invited: user.username,
-          inviter: currentuser.username,
-          convoId: conversation._id,
-        });
+      var paidUser = Paid.findOne({user:Meteor.userId()});
 
-        conversation.addParticipant(user);
-        conversation.sendMessage("hi");
-        console.log("message sent");
+        if(paidUser){
 
-        Router.go('/chat');
+            if (!linkExists) {
+              console.log("no link, sends the message");
+              var conversation = new Conversation().save();
+              ChatInvites.insert({
+                invited: user.username,
+                inviter: currentuser.username,
+                convoId: conversation._id,
+              });
 
-      } else {
-        console.log("link exists, hides button");
-        event.preventDefault();
-        $('[name=chat]').hide();
-        Router.go('/chat');
-      }; /*else ends here*/
+              conversation.addParticipant(user);
+              conversation.sendMessage("hi");
+              console.log("message sent");
+              Router.go('/chat');
+
+            } else {
+              console.log("link exists, hides button");
+              event.preventDefault();
+              $('[name=chat]').hide();
+              Router.go('/chat');
+            }; /*else ends here*/
+
+        }else{
+           Router.go('/payment');
+        };
+     }
+  });
+  /*................. payment template..........................*/
+
+  WantToPay.attachSchema(new SimpleSchema({
+
+    bikash: {
+      type: Number,
+      max: 999999999999999
     },
 
+    createdBy: {
+      type: String,
+      autoValue: function() {
+        if (this.isInsert) {
+          console.log( "paid" );
+          return this.userId;
+        } else {
+          console.log("no payment entered");;
+        }
+      }
+    }
+  }));
 
-    'click [name=logout]': function() {
-      event.preventDefault();
-      Meteor.logout();
-      Router.go("home");
+  AutoForm.addHooks('payment', {
+    onSuccess: function() {
+      Router.go("/list");
     }
   });
-  /*................. show page ends here...........................*/
 
 
+// .....................admin template............
 
+  Template.admin.helpers({
+    wantsToPay: function() {
+    return WantToPay.find({});
+    }
+  });
+
+  Template.admin.events({
+    'click [name=paid]': function() {
+      event.preventDefault();
+      Paid.insert({ user:this.createdBy ,paid:true});
+      console.log("This one has been made a member and can now access everything");
+
+    }
+  });
 
   // .....................header template.............
 
