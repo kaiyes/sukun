@@ -509,17 +509,17 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <!-- dropdown1 structure -->
 
 <ul id="dropdown1" class="dropdown-content">
-    {{#each requestFromMe}}
-      <li>
-      <span class="black-text">
-      You have requested to view {{user.username}}'s photo</span>
+    {{#each requestFromPeople}}
+      <li name="viewRouteAsked">
+        <a href="/list/{{requester.username}}" class="black-text">
+          {{requester.username}} wants to view you photo</a>
       </li>
     {{/each}}
 
-    {{#each requestFromPeople}}
-      <li>
-      <span class="black-text">
-        {{requester.username}} wants to view you photo</span>
+    {{#each requestFromMe}}
+      <li name="viewRouteAsk">
+        <a href="/list/{{user.username}}" class="black-test">
+        You have requested to view {{user.username}}'s photo </a>
       </li>
     {{/each}}
 
@@ -528,52 +528,20 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 <ul id="dropdown3" class="dropdown-content">
     {{#each  youAreInvited}}
-       <li> <a href="{{pathFor 'chat'}}"> <span class="black-text">
-       {{inviter}} wants to chat with You</span></a>
+       <li name="chatRoute">  <span class="black-text">
+       {{inviter}} wants to chat with You</span>
       </li>
     {{/each}}
 
     {{#each  ihaveInvited}}
-        <li> <a href="{{pathFor 'chat'}}">
+        <li name="chatRoute">
         <span class="black-text">
-        You have invited {{this.invited}}</span></a>
+        You have invited {{this.invited}}</span>
         </li>
     {{/each}}
 
 </ul>
 </template>
-
-
-
-<!-- .....................StyleSheet............. -->
-
-<template name="style_show">
-  <style>
-      body {background-color: #ecf0f1;}
-  </style>
-</template>
-
-<template name="style_list">
-  <style>
-  body {background-color: #ede7f6;}
-  </style>
-</template>
-
-<template name="style">
-  <style>
-      body {
-  height: 100%;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 53px;
-  padding-bottom: 64px;
-  background-color:#4aa3df;
-}
-
-  </style>
-</template>
-
 
 <!-- // .....................Chat .............// -->
 
@@ -642,6 +610,37 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
      <input type="text" name="message">
   </div>
 </template>
+
+<!-- .....................StyleSheet............. -->
+
+<template name="style_show">
+  <style>
+      body {background-color: #ecf0f1;}
+  </style>
+</template>
+
+<template name="style_list">
+  <style>
+  body {background-color: #ede7f6;}
+  </style>
+</template>
+
+<template name="style">
+  <style>
+      body {
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 53px;
+  padding-bottom: 64px;
+  background-color:#4aa3df;
+}
+
+  </style>
+</template>
+
+<!-- .....................Admin & Payment ............. -->
 
 <template name="payment">
     {{>style_show}}

@@ -402,7 +402,45 @@ if (Meteor.isClient) {
       event.preventDefault();
       Meteor.logout();
       Router.go("home");
+    },
+
+    'click [name=chatRoute]': function() {
+      event.preventDefault();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+      if(paidUser){
+        Router.go("chat");
+      }else{
+        Router.go("payment");
+      }
     }
+
+    /*'click [name=viewRouteAsked]': function() {
+      event.preventDefault();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+      if(paidUser){
+        var request =  this.username;
+        console.log(request);
+        //Router.go("chat");
+      }else{
+        //Router.go("payment");
+        console.log("message");
+
+      }
+    },
+
+    'click [name=viewRouteAsk]': function() {
+      event.preventDefault();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+      if(paidUser){
+        var u =  this.user.username;
+        console.log(u);
+        //Router.go("chat");
+      }else{
+        //Router.go("payment");
+        console.log("nai");
+
+      }
+    }*/
 
   });
 
