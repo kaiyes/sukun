@@ -1,6 +1,7 @@
 <head>
   <title>practise</title>
- <!--  <script>
+
+  <script>
     ChatraID = 'xsLe7wa4iLw3bL6G3';
     (function(d, w, c) {
         var n = d.getElementsByTagName('script')[0],
@@ -13,7 +14,8 @@
             + '//chat.chatra.io/chatra.js';
         n.parentNode.insertBefore(s, n);
     })(document, window, 'Chatra');
-</script> -->
+</script>
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 rel="stylesheet">
 
@@ -31,7 +33,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <div class="container">
   {{>login}} {{>register}}
   <div id="tagline" class="col s6">
-    <h4 class="tag"> Find Your PureMatch</h4>
+    <h4 class="tag"> Find Your Pure Match</h4>
     <br>
   </div>
 </div>
@@ -134,7 +136,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                      <p>{{profile.gender}}</p>
                     </div>
                    <div class="card-action">
-                  <a href="{{pathFor 'show'}}">Yes</a>
+                  <a href="{{pathFor 'show'}}"> See More </a>
                 </div>
               </div>
             </div>
@@ -156,14 +158,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         </ul>
       {{/each}}
     </div>
-
-    <ul>
-      {{#each mail}}
-         {{address}}
-
-      {{/each}}
-    </ul>
-
 
 {{/if}}
 
@@ -192,27 +186,27 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
             </div>
           {{/with}}
         <a id="friendship" name= "end-friendship"
-        class="waves-effect waves-light btn red lighten-1">Unfriend</a>
+        class="waves-effect waves-light btn red lighten-1"> Revoke Photo Access</a>
 
         {{else}}
 
           {{#if currentUser.hasRequestFrom this}}
           <img class="materialboxed" width="400" src="/1.jpg">
           <a id="friendship" name= "accept"
-          class="waves-effect waves-light btn teal accent-3">দেখেন তাহলে </a>
+          class="waves-effect waves-light btn teal accent-3">Grant Photo Access </a>
 
         {{else}}
 
         {{#if hasRequestFrom currentUser}}
          <img class="materialboxed" width="400" src="/1.jpg">
          <a id="friendship" name= "cancel-request"
-         class="waves-effect waves-light btn red lighten-1">No  </a>
+         class="waves-effect waves-light btn red lighten-1"> Cancel Photo Request  </a>
 
          {{else}}
 
          <img class="materialboxed" width="400" src="/1.jpg">
          <a id="friendship" name= "add-friend"
-         class="waves-effect waves-light btn green lighten-1">ছবি দেখব </a>
+         class="waves-effect waves-light btn green lighten-1">Request Photo Access </a>
 
          {{/if}}
          {{/if}}
@@ -242,18 +236,18 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
            <div class="col s12 m4">
                <div class="card small">
                  <div class="card-image waves-effect waves-block waves-light">
-                   <img class="activator" src="/certificate.jpg">
+                   <img class="activator" src="/personal.jpg">
                  </div>
                  <div class="card-content">
                    <span class="card-title activator grey-text text-darken-4">
-                     Me
+                     Personal Info
                    <i class="small material-icons right">face</i></span>
                  </div>
                  <div class="card-reveal">
                    <span class="card-title grey-text text-darken-4">A bit about me
                     <i class="material-icons right">face</i>
                   </span>
-                    <p>{{age}}</p>
+                    <p>Age : {{age}}</p>
                  </div>
               </div>
            </div>
@@ -261,7 +255,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
              <div class="col s12 m4">
                  <div class="card small">
                    <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="/book.jpg">
+                     <img class="activator" src="/education.jpg">
                    </div>
                    <div class="card-content">
                      <span class="card-title activator grey-text text-darken-4">
@@ -272,8 +266,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                      <span class="card-title grey-text text-darken-4">Degrees & Institution
                       <i class="material-icons right">receipt</i>
                     </span>
-                      <p>Here is some more information about this product that
-                       is only revealed once clicked on.</p>
+                      <p>My Education</p>
                    </div>
                 </div>
              </div>
@@ -281,7 +274,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
              <div class="col s12 m4">
                  <div class="card small">
                    <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="/certificate.jpg">
+                     <img class="activator" src="/business.jpg">
                    </div>
                    <div class="card-content">
                      <span class="card-title activator grey-text text-darken-4">
@@ -292,8 +285,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                      <span class="card-title grey-text text-darken-4">Job Title
                       <i class="material-icons right">attach_money</i>
                     </span>
-                      <p>Here is some more information about this product that
-                       is only revealed once clicked on.</p>
+                      <p>This is What I do </p>
                    </div>
                 </div>
              </div>
@@ -307,7 +299,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
              <div class="col s12 m4">
                  <div class="card small">
                    <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="/certificate.jpg">
+                     <img class="activator" src="/islam.jpg">
                    </div>
                    <div class="card-content">
                      <span class="card-title activator grey-text text-darken-4">
@@ -315,11 +307,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                     <i class="material-icons right">brightness_3</i></span>
                    </div>
                    <div class="card-reveal">
-                     <span class="card-title grey-text text-darken-4">Card Title
+                     <span class="card-title grey-text text-darken-4">Practising Details
                       <i class="material-icons right">brightness_3</i>
                     </span>
-                      <p>Here is some more information about this product that
-                       is only revealed once clicked on.</p>
+                      <p> A bit about my deen</p>
                    </div>
                 </div>
              </div>
@@ -338,8 +329,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                        <span class="card-title grey-text text-darken-4">Parents
                         <i class="material-icons right">account_box</i>
                       </span>
-                        <p>Here is some more information about this product that
-                         is only revealed once clicked on.</p>
+                        <p>My Jannah is under their feet</p>
                      </div>
                   </div>
                </div>
@@ -347,19 +337,18 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                <div class="col s12 m4">
                    <div class="card small">
                      <div class="card-image waves-effect waves-block waves-light">
-                       <img class="activator" src="/certificate.jpg">
+                       <img class="activator" src="/family.jpg">
                      </div>
                      <div class="card-content">
                        <span class="card-title activator grey-text text-darken-4">
-                        Siblings
+                        Hobbies
                        <i class="small material-icons right">supervisor_account</i></span>
                      </div>
                      <div class="card-reveal">
-                       <span class="card-title grey-text text-darken-4">Card Title
+                       <span class="card-title grey-text text-darken-4">Brothers & Sisters
                         <i class="material-icons right">supervisor_account</i>
                       </span>
-                        <p>Here is some more information about this product that
-                         is only revealed once clicked on.</p>
+                        <p>My Hobbies</p>
                      </div>
                   </div>
                </div>
@@ -373,9 +362,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    <div class="card pink lighten-3">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
-                           <span class="card-title">Dragging</span>
+                           <span class="card-title"> Marital Status</span>
                            <p class="bounceEffect animated bounceIn">
-                               Current Mood
+
                            </p>
                        </div>
                    </div>
@@ -385,9 +374,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                        <a href="#modal1" class="modal-trigger">
                            <div class="card-content white-text">
                                 <i class="material-icons ">face</i>
-                               <span class="card-title">550</span>
+                               <span class="card-title">Children</span>
                                <p class="bounceEffect animated bounceIn">
-                                   Calories Burned
+
                                </p>
                            </div>
                        </a>
@@ -398,9 +387,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                        <a href="#modal1" class="modal-trigger">
                            <div class="card-content white-text">
                                  <i class="material-icons ">face</i>
-                               <span class="card-title">550</span>
+                               <span class="card-title">Highest Degree</span>
                                <p class="bounceEffect animated bounceIn">
-                                   Calories Burned
+
                                </p>
                            </div>
                        </a>
@@ -410,9 +399,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    <div class="card green lighten-2">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
-                           <span class="card-title">0</span>
+                           <span class="card-title">Live with In-laws</span>
                            <p class="bounceEffect animated bounceIn">
-                               Drinks Consumed
+
                            </p>
                        </div>
                    </div>
@@ -421,9 +410,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    <div class="card orange lighten-2">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
-                           <span class="card-title">92</span>
+                           <span class="card-title">Age</span>
                            <p class="bounceEffect animated bounceIn">
-                               Heart Beat
+
                            </p>
                        </div>
                    </div>
@@ -432,9 +421,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    <div class="card indigo lighten-3">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
-                           <span class="card-title">396</span>
+                           <span class="card-title">Profession</span>
                            <p class="bounceEffect animated bounceIn">
-                               Steps Walk
+
                            </p>
                        </div>
                    </div>
@@ -444,9 +433,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                        <a href="/moves">
                            <div class="card-content white-text">
                                  <i class="material-icons ">face</i>
-                               <span class="card-title">N/A</span>
+                               <span class="card-title">Complexion</span>
                                <p class="bounceEffect animated bounceIn">
-                                   Current Location
+
                                </p>
                            </div>
                        </a>
@@ -456,9 +445,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                    <div class="card cyan lighten-3">
                        <div class="card-content white-text">
                              <i class="material-icons ">face</i>
-                           <span class="card-title">45</span>
+                           <span class="card-title">Height</span>
                            <p class="bounceEffect animated bounceIn">
-                               Git Repos
+
                            </p>
                        </div>
                    </div>
