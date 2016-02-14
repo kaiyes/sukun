@@ -3,6 +3,7 @@ ChatRooms = new Meteor.Collection("chatrooms");
 ChatInvites = new Meteor.Collection('invites');
 WantToPay = new Meteor.Collection("wantopay");
 Paid = new Meteor.Collection("paid");
+Notification = new Meteor.Collection("notification");
 
 
 
@@ -190,7 +191,90 @@ if (Meteor.isClient) {
           type: 'cloudinary'
         }
       }
-    }
+    },
+
+
+     /*profession: {
+         type: String
+     },
+
+     currentResidence: {
+         type: String
+     },
+
+   originalResidence : {
+         type: String
+     },
+
+     familyMembers: {
+         type: String
+     },
+
+     lastOrNextDegree: {
+        type: String,
+        allowedValues: ['Phd','Doctor','Engineer','Masters','Honours','Diploma','HSC','SSC']
+     },
+
+     dateOfBirth: {
+        type: Date,
+     },
+
+     religiousHistory: {
+        type: String,
+        allowedValues: ['Started practising 1 or 2 years back',
+                         'Been practising for more than 5 years',
+                         'Revert Muslim','Have not started practising yet but want too soon',
+                         'I have faith in my heart']
+     },
+
+     sect: {
+        type: String,
+        allowedValues: ['Salafi/Ahle Hadeeth', 'Hanafi',
+                         'Tablig','Pir','Shia','I do not know']
+     },
+
+     prayer: {
+        type: String,
+        allowedValues: ['Always pray', 'Sometimes miss fajr',
+                         'Often pray','Before exam, I pray',
+                          'Eid only','Jumuah Only',
+                          'Will start praying very soon']
+     },
+
+     maritalStatus: {
+        type: String,
+        allowedValues: ['Never Married', 'Annulled (Khula)',
+                       'Divorced','widowed','Married']
+     },
+
+     numberOfChildren: {
+        type: Number
+     },
+
+     Hijab: {
+        type: String,
+        allowedValues: ['Always With Burkha/Abaya face open',
+                        'Always with Burkha/Abaya with Niqab',
+                        'Always with Scraf only',
+                      'I dress modestly but not Burkha/Abaya/niqab',
+                        'I dress modestly but Sometimes I wear Hijab',
+                        '(Male only) Shirt,trousers,casual clothing',
+                        '(Male only) Panjabi','(Male only) Jobba']
+     },
+
+     height: {
+        type: String
+     },
+
+     beard:{
+       type: String,
+
+       allowedValues: ['I have let my beard grow','I trim my beard',
+                       'No beaerd, shaved, will not keep beard',
+                       'No beaerd, shaved, will keep beard in future',
+                       'I am a woman, I CAN NOT HAVE BEARD you silly']
+     }*/
+
 
   }));
 
@@ -219,8 +303,17 @@ if (Meteor.isClient) {
 
     'click  [name=add-friend]': function() {
       var paidUser = Paid.findOne({user:Meteor.userId()});
+      var currentuser = Meteor.user();
+      var user = Meteor.users.findOne({
+      username: Router.current().params.username});
+
         if(paidUser){
           this.requestFriendship();
+          Notification.insert({
+            invited: user.username,
+            inviter: currentuser.username,
+            seen: false
+          });
         }else{
           Router.go('/payment');
         };
@@ -303,6 +396,84 @@ if (Meteor.isClient) {
         };
      }
   });
+
+  // .....................header template.............
+
+  Template.header.helpers({
+    me: function() {
+      return Meteor.users.findOne({
+        _id: Meteor.userId()
+      });
+    },
+
+    counter: function() {
+      return Notification.find({
+        invited: Meteor.user().username,
+        seen:false}).count();
+    },
+
+    requestFromMe: function() {
+      // if (true) {}; put both in one place
+      return Meteor.requests.find({
+        requesterId: Meteor.userId()
+      });
+    },
+
+    requestFromPeople: function() {
+      return Meteor.requests.find({
+        userId: Meteor.userId()
+      });
+    },
+
+    youAreInvited: function() {
+      var currentUsersName = Meteor.user().username;
+      return ChatInvites.find({
+        'invited': currentUsersName
+      });
+
+    },
+
+    ihaveInvited: function() {
+      var currentUsersName = Meteor.user().username;
+      return ChatInvites.find({
+        'inviter': currentUsersName
+      });
+
+    }
+  });
+
+  Template.header.events({
+
+    'click [name=logout]': function() {
+      event.preventDefault();
+      Meteor.logout();
+      Router.go("home");
+    },
+
+    'click [name=photoSent]': function() {
+      event.preventDefault();
+      Meteor.call("clearNotification")
+
+    },
+
+    'click [name=viewRouteAsk]': function() {
+      event.preventDefault();
+      console.log("works");
+    },
+
+
+    'click [name=chatRoute]': function() {
+      event.preventDefault();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+      if(paidUser){
+        Router.go("chat");
+      }else{
+        Router.go("payment");
+      }
+    }
+
+  });
+
   /*................. payment template..........................*/
 
   WantToPay.attachSchema(new SimpleSchema({
@@ -349,100 +520,6 @@ if (Meteor.isClient) {
     }
   });
 
-  // .....................header template.............
-
-  Template.header.onRendered(function() {
-    this.$(".dropdown-button").dropdown({
-      hover: true,
-      belowOrigin: true // Displays dropdown below the button
-    });
-  });
-
-
-  Template.header.helpers({
-    me: function() {
-      return Meteor.users.findOne({
-        _id: Meteor.userId()
-      });
-    },
-
-    requestFromMe: function() {
-      // if (true) {}; put both in one place
-      return Meteor.requests.find({
-        requesterId: Meteor.userId()
-      });
-    },
-
-    requestFromPeople: function() {
-      return Meteor.requests.find({
-        userId: Meteor.userId()
-      });
-    },
-
-    youAreInvited: function() {
-      var currentUsersName = Meteor.user().username;
-      return ChatInvites.find({
-        'invited': currentUsersName
-      });
-
-    },
-
-    ihaveInvited: function() {
-      var currentUsersName = Meteor.user().username;
-      return ChatInvites.find({
-        'inviter': currentUsersName
-      });
-
-    }
-  });
-
-  Template.header.events({
-
-    'click [name=logout]': function() {
-      event.preventDefault();
-      Meteor.logout();
-      Router.go("home");
-    },
-
-    'click [name=chatRoute]': function() {
-      event.preventDefault();
-      var paidUser = Paid.findOne({user:Meteor.userId()});
-      if(paidUser){
-        Router.go("chat");
-      }else{
-        Router.go("payment");
-      }
-    }
-
-    /*'click [name=viewRouteAsked]': function() {
-      event.preventDefault();
-      var paidUser = Paid.findOne({user:Meteor.userId()});
-      if(paidUser){
-        var request =  this.username;
-        console.log(request);
-        //Router.go("chat");
-      }else{
-        //Router.go("payment");
-        console.log("message");
-
-      }
-    },
-
-    'click [name=viewRouteAsk]': function() {
-      event.preventDefault();
-      var paidUser = Paid.findOne({user:Meteor.userId()});
-      if(paidUser){
-        var u =  this.user.username;
-        console.log(u);
-        //Router.go("chat");
-      }else{
-        //Router.go("payment");
-        console.log("nai");
-
-      }
-    }*/
-
-  });
 
   // .....................Chat template ...............
 
@@ -509,114 +586,42 @@ if (Meteor.isServer) {
 
   });
 
-  /*Meteor.methods({
-    sendEmail: function(toAddress, from, subject, text) {
-      check([toAddress, from, subject, text], [String]);
-      this.unblock();
 
-      Email.send({
-        to: toAddress,
-        from: from,
-        subject: subject,
-        text: text
-      });
-    }
-  });*/
-
+  Meteor.methods({
+   clearNotification: function(){
+    Notification.update({invited:Meteor.user().username},
+    {$set:{seen:true}}, { multi: true });
+    console.log("from server yo");
+   }
+ });
 }
 
 
-// userName: {
-//     type: String
-// },
 
-// gender: {
-//    type: String,
-//    allowedValues: ['Male', 'Female']
-// },
+    /*'click [name=viewRouteAsked]': function() {
+      event.preventDefault();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+      if(paidUser){
+        var request =  this.username;
+        console.log(request);
+        //Router.go("chat");
+      }else{
+        //Router.go("payment");
+        console.log("message");
 
-// age: {
-//     type: Number,
-//     max: 60
-// },
+      }
+    },
 
-// profession: {
-//     type: String
-// },
+    'click [name=viewRouteAsk]': function() {
+      event.preventDefault();
+      var paidUser = Paid.findOne({user:Meteor.userId()});
+      if(paidUser){
+        var u =  this.user.username;
+        console.log(u);
+        //Router.go("chat");
+      }else{
+        //Router.go("payment");
+        console.log("nai");
 
-// currentResidence: {
-//     type: String
-// },
-
-// originalResidence : {
-//     type: String
-// },
-
-// familyMembers: {
-//     type: String
-// },
-
-// lastOrNextDegree: {
-//    type: String,
-//    allowedValues: ['Phd','Doctor','Engineer','Masters','Honours','Diploma','HSC','SSC']
-// },
-
-// dateOfBirth: {
-//    type: Date,
-// },
-
-// religiousHistory: {
-//    type: String,
-//    allowedValues: ['Started practising 1 or 2 years back',
-//                     'Been practising for more than 5 years',
-//                     'Revert Muslim','Have not started practising yet but want too soon',
-//                     'I have faith in my heart']
-// },
-
-// sect: {
-//    type: String,
-//    allowedValues: ['Salafi/Ahle Hadeeth', 'Hanafi',
-//                     'Tablig','Pir','Shia','I do not know']
-// },
-
-// prayer: {
-//    type: String,
-//    allowedValues: ['Always pray', 'Sometimes miss fajr',
-//                     'Often pray','Before exam, I pray',
-//                      'Eid only','Jumuah Only',
-//                      'Will start praying very soon']
-// },
-
-// maritalStatus: {
-//    type: String,
-//    allowedValues: ['Never Married', 'Annulled (Khula)',
-//                   'Divorced','widowed','Married']
-// },
-
-// numberOfChildren: {
-//    type: Number
-// },
-
-// Hijab: {
-//    type: String,
-//    allowedValues: ['Always With Burkha/Abaya face open',
-//                    'Always with Burkha/Abaya with Niqab',
-//                    'Always with Scraf only',
-//                    'I dress modestly but not Burkha/Abaya/niqab',
-//                    'I dress modestly but Sometimes I wear Hijab',
-//                    '(Male only) Shirt,trousers,casual clothing',
-//                    '(Male only) Panjabi','(Male only) Jobba']
-// },
-
-// height: {
-//    type: String
-// },
-
-// beard:{
-//   type: String,
-
-//   allowedValues: ['I have let my beard grow','I trim my beard',
-//                   'No beaerd, shaved, will not keep beard',
-//                   'No beaerd, shaved, will keep beard in future',
-//                   'I am a woman, I CAN NOT HAVE BEARD you silly']
-// },
+      }
+    }*/

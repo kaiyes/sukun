@@ -1,7 +1,7 @@
 <head>
-  <title>practise</title>
+  <title>Matrimony</title>
 
-  <script>
+<script>
     ChatraID = 'xsLe7wa4iLw3bL6G3';
     (function(d, w, c) {
         var n = d.getElementsByTagName('script')[0],
@@ -221,76 +221,79 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 </div>
 
 
-  {{#with detailsDb}}
+{{#with detailsDb}}
       {{!-- ......................1st section.......................  --}}
 
-  <div class="section processes-container">
-    <div class="row">
-      <h4 class="header indigo-text lighten-1 section-title">
+<div class="section processes-container">
+  <div class="row">
+    <h4 class="header indigo-text lighten-1 section-title">
 
-      </h4>
-    </div>
+    </h4>
+  </div>
 
-         <div class="row">
+   <div class="row">
 
-           <div class="col s12 m4">
-               <div class="card small">
-                 <div class="card-image waves-effect waves-block waves-light">
-                   <img class="activator" src="/personal.jpg">
-                 </div>
-                 <div class="card-content">
-                   <span class="card-title activator grey-text text-darken-4">
-                     Personal Info
-                   <i class="small material-icons right">face</i></span>
-                 </div>
-                 <div class="card-reveal">
-                   <span class="card-title grey-text text-darken-4">A bit about me
-                    <i class="material-icons right">face</i>
-                  </span>
-                    <p>Age : {{age}}</p>
-                 </div>
-              </div>
+     <div class="col s12 m4">
+         <div class="card small">
+           <div class="card-image waves-effect waves-block waves-light">
+             <img class="activator" src="/personal.jpg">
            </div>
-
-             <div class="col s12 m4">
-                 <div class="card small">
-                   <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="/education.jpg">
-                   </div>
-                   <div class="card-content">
-                     <span class="card-title activator grey-text text-darken-4">
-                      Education
-                     <i class="small material-icons right">receipt</i></span>
-                   </div>
-                   <div class="card-reveal">
-                     <span class="card-title grey-text text-darken-4">Degrees & Institution
-                      <i class="material-icons right">receipt</i>
-                    </span>
-                      <p>My Education</p>
-                   </div>
-                </div>
-             </div>
-
-             <div class="col s12 m4">
-                 <div class="card small">
-                   <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="/business.jpg">
-                   </div>
-                   <div class="card-content">
-                     <span class="card-title activator grey-text text-darken-4">
-                       Profession
-                     <i class="small material-icons right">attach_money</i></span>
-                   </div>
-                   <div class="card-reveal">
-                     <span class="card-title grey-text text-darken-4">Job Title
-                      <i class="material-icons right">attach_money</i>
-                    </span>
-                      <p>This is What I do </p>
-                   </div>
-                </div>
-             </div>
-         </div> {{!-- row end --}}
+           <div class="card-content">
+             <span class="card-title activator grey-text text-darken-4">
+               Personal Info
+             <i class="small material-icons right">face</i></span>
+           </div>
+           <div class="card-reveal">
+             <span class="card-title grey-text text-darken-4">A bit about me
+              <i class="material-icons right">face</i>
+            </span>
+              <p>Age : {{age}}</p>
+           </div>
+        </div>
      </div>
+
+       <div class="col s12 m4">
+           <div class="card small">
+             <div class="card-image waves-effect waves-block waves-light">
+               <img class="activator" src="/education.jpg">
+             </div>
+             <div class="card-content">
+               <span class="card-title activator grey-text text-darken-4">
+                Education
+               <i class="small material-icons right">receipt</i></span>
+             </div>
+             <div class="card-reveal">
+               <span class="card-title grey-text text-darken-4">Degrees & Institution
+                <i class="material-icons right">receipt</i>
+              </span>
+                <p>My Education</p>
+             </div>
+          </div>
+       </div>
+
+       <div class="col s12 m4">
+           <div class="card small">
+             <div class="card-image waves-effect
+             waves-block waves-light">
+               <img class="activator" src="/business.jpg">
+             </div>
+             <div class="card-content">
+               <span class="card-title activator
+               grey-text text-darken-4">
+                 Profession
+               <i class="small material-icons right">attach_money</i>
+              </span>
+             </div>
+             <div class="card-reveal">
+               <span class="card-title grey-text text-darken-4">Job Title
+                <i class="material-icons right">attach_money</i>
+              </span>
+                <p>This is What I do </p>
+             </div>
+          </div>
+       </div>
+   </div> {{!-- row end --}}
+</div>
 
     {{!-- ......................2nd section.......................  --}}
 
@@ -477,19 +480,52 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
       <div class="center-align right">
         <a href="#" id="buttonLogout" name= "logout"
-         class="waves-effect waves-light btn red lighten-1">Logout</a>
+         class="waves-effect waves-light btn red lighten-1">
+         Logout
+       </a>
       </div>
 
-      <ul class="right">
+<ul class="right">
         <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button" name ="photoSent" href="#"
-        data-activates="dropdown1">Photo Requests
-        </a></li>
 
-        <li><a class="dropdown-button" name ="chatReceived" href="#"
-        data-activates="dropdown3">Chat Invitaions
-        </a></li>
-      </ul>
+<li>
+
+      {{#if counter}}
+        {{#notificationBadge count=counter }}
+           {{#dropdownTrigger name="dropdownTest" }}
+           <a href="#">Notifications</a>
+           {{/dropdownTrigger}}
+        {{/notificationBadge}}
+      {{else}}
+        {{#dropdownTrigger name="dropdownTest" }}
+            <a href="#">Notifications</a>
+        {{/dropdownTrigger}}
+      {{/if}}
+
+
+    {{#dropdown name="dropdownTest" classes="dropdown--menu"}}
+    <ul class="dropdown__menu">
+   {{#each requestFromPeople}}
+      <li role="menuItem">
+        <a href="/list/{{requester.username}}" class="black-text">
+          {{requester.username}} <br> wants to view you photo
+        </a>
+      </li>
+   {{/each}}    
+    </ul>
+    {{/dropdown}}
+
+
+</li>
+
+
+<li>
+  <a class="dropdown-button" name ="chatReceived"
+  href="#" data-activates="dropdown3">Chat Invitaions
+  </a>
+</li>
+
+</ul>
 
     </div>
   </nav>
@@ -497,13 +533,15 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 <!-- dropdown1 structure -->
 
-<ul id="dropdown1" class="dropdown-content">
+{{!-- <ul id="dropdown1" class="dropdown-content">
     {{#each requestFromPeople}}
       <li name="viewRouteAsked">
         <a href="/list/{{requester.username}}" class="black-text">
           {{requester.username}} wants to view you photo</a>
       </li>
     {{/each}}
+
+     <li class="divider"></li>
 
     {{#each requestFromMe}}
       <li name="viewRouteAsk">
@@ -512,7 +550,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
       </li>
     {{/each}}
 
-</ul>
+</ul> --}}
 
 
 <ul id="dropdown3" class="dropdown-content">
