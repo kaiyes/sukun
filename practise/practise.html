@@ -487,38 +487,11 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 <ul class="right">
         <!-- Dropdown Trigger -->
-<li>
 
-  {{#if counter}}
-    {{#notificationBadge count=counter }}
-       {{#dropdownTrigger name="dropdownTest" }}
-       <a href="#" name="notification">Notifications</a>
-       {{/dropdownTrigger}}
-    {{/notificationBadge}}
-  {{else}}
-    {{#dropdownTrigger name="dropdownTest" }}
-        <a href="#" name="notification">Notifications</a>
-    {{/dropdownTrigger}}
-  {{/if}}
-
-
-  {{#dropdown name="dropdownTest" classes="dropdown--menu"}}
-    <ul class="dropdown__menu">
-       {{#each requestFromPeople}}
-          <li role="menuItem" name="dropdown">
-            <a href="/list/{{requester.username}}" class="black-text">
-              {{requester.username}} <br> wants to view you photo
-            </a>
-          </li>
-          <br>
-
-       {{/each}}
-    </ul>
-  {{/dropdown}}
-
-
+  <li><a class="dropdown-button" name ="photoSent" href="#"
+      data-activates="dropdown1">Photo Requests
+      </a>
   </li>
-
 
   <li>
     <a class="dropdown-button" name ="chatReceived"
