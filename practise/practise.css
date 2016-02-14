@@ -93,3 +93,10 @@ input[type=text], input[type=password], input[type=email] {
     top: 11px;
     right: 1px;
 }
+
+#dropdown-test {
+   margin-left: 1500px;
+   opacity: 70;
+   border-style:solid;
+   color: black;
+}

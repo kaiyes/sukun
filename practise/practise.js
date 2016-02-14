@@ -450,7 +450,7 @@ if (Meteor.isClient) {
       Router.go("home");
     },
 
-    'click [name=photoSent]': function() {
+    'click [name=notification]': function() {
       event.preventDefault();
       Meteor.call("clearNotification")
 
