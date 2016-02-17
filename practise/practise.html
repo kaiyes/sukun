@@ -2,7 +2,7 @@
   <title>Matrimony</title>
 
 <script>
-    ChatraID = 'xsLe7wa4iLw3bL6G3';
+    /*ChatraID = 'xsLe7wa4iLw3bL6G3';
     (function(d, w, c) {
         var n = d.getElementsByTagName('script')[0],
             s = d.createElement('script');
@@ -13,7 +13,7 @@
         s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
             + '//chat.chatra.io/chatra.js';
         n.parentNode.insertBefore(s, n);
-    })(document, window, 'Chatra');
+    })(document, window, 'Chatra');*/
 </script>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -465,37 +465,40 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 
 
-<!-- .....................navbar............................. -->
+<!-- ......................navbar template..................... -->
 
 <template name="header">
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <a href="{{pathFor 'list'}}" id="brandLogo"
-      name= "brand-logo" class="brand-logo left hide-on-med-and-down">
+
+ <div class="navbar-fixed">
+   <nav>
+  <div class="nav-wrapper">
+    <a href="{{pathFor 'list'}}" id="brandLogo"
+    name="brand-logo" class="brand-logo left hide-on-med-and-down">
         {{#with me }}
             {{username}}
         {{/with}}
-      </a>
+    </a>
 
-      <div class="center-align right">
-        <a href="#" id="buttonLogout" name= "logout"
-         class="waves-effect waves-light btn red lighten-1">
-         Logout
-       </a>
-      </div>
+    <div class="center-align right">
+      <a href="#" id="buttonLogout" name="logout"
+       class="waves-effect waves-light btn red lighten-1">Logout
+      </a>
+    </div>
 
 <ul class="right">
-        <!-- Dropdown Trigger -->
+ <li>
+  {{#if counter}}
+    {{>notificationBadge count=counter }}
+  {{/if}}
+        <a class="dropdown-button" name ="photoSent" href="#"
+          data-activates="dropdown1">Photo Requests
+        </a>
+ </li>
 
-  <li><a class="dropdown-button" name ="photoSent" href="#"
-      data-activates="dropdown1">Photo Requests
-      </a>
-  </li>
 
   <li>
     <a class="dropdown-button" name ="chatReceived"
-    href="#" data-activates="dropdown3">Chat Invitaions
+    href="#" data-activates="dropdown2">Chat Invitaions
     </a>
   </li>
 
@@ -511,11 +514,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     {{#each requestFromPeople}}
       <li name="viewRouteAsked">
         <a href="/list/{{requester.username}}" class="black-text">
-          {{requester.username}} wants to view you photo</a>
+          {{requester.username}} wants to view your photo</a>
       </li>
     {{/each}}
 
-     <li class="divider"></li>
 
     {{#each requestFromMe}}
       <li name="viewRouteAsk">
@@ -526,7 +528,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 </ul>
 
 
-<ul id="dropdown3" class="dropdown-content">
+<ul id="dropdown2" class="dropdown-content">
     {{#each  youAreInvited}}
        <li name="chatRoute">  <span class="black-text">
        {{inviter}} wants to chat with You</span>

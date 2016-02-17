@@ -399,6 +399,23 @@ if (Meteor.isClient) {
 
   // .....................header template.............
 
+  Template.header.onRendered(function() {
+
+    this.autorun(function(){
+      var requests = Notification.find({
+        invited: Meteor.user().username,
+        seen:false});
+        Tracker.afterFlush(function() {
+          $('.dropdown-button').dropdown({
+            hover: true,
+            belowOrigin: true
+          });
+        });
+    })
+
+   });
+
+
   Template.header.helpers({
     me: function() {
       return Meteor.users.findOne({
@@ -450,7 +467,7 @@ if (Meteor.isClient) {
       Router.go("home");
     },
 
-    'click [name=notification]': function() {
+    'click [name=photoSent]': function() {
       event.preventDefault();
       Meteor.call("clearNotification")
 
