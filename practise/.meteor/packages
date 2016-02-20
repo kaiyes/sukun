@@ -1,0 +1,40 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+
+insecure
+iron:router
+accounts-password
+aldeed:collection2
+aldeed:autoform
+gildaspk:autoform-materialize
+cosio55:autoform-cloudinary
+ejson
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+spacebars
+check
+materialize:materialize@=0.97.0
+socialize:friendships
+socialize:messaging
+ixdi:material-design-iconic-font
+email
+
+
+momentjs:moment
+lbee:moment-helpers
+erasaur:notification-badge
+
+babrahams:constellation
