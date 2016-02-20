@@ -1,0 +1,44 @@
+<template name="list">
+ {{>style_list}}
+  {{>header}}
+
+{{#if currentUser}}
+    <ul class="hide-on-med-and-down">
+         <div class="row">
+         {{#each people}}
+            <div class="col s3">
+              <div class="card small hoverable">
+                <div class="card-image">
+                  <img src="/1.jpg">
+                   <span class="card-title">   {{username}} </span>
+                    </div>
+                     <div class="card-content">
+                     <p>{{profile.gender}}</p>
+                    </div>
+                   <div class="card-action">
+                  <a href="{{pathFor 'show'}}"> See More </a>
+                </div>
+              </div>
+            </div>
+        {{/each}}
+          </div>
+    </ul>
+
+    <div class="container">
+      {{#each people}}
+        <ul class="collection hide-on-large-only">
+          <li class="collection-item avatar">
+            <img src="/1.jpg" alt="" class="circle">
+            <span class="title">{{username}}</span>
+            <p>{{profile.gender}}
+            </p>
+             <a href="{{pathFor 'show'}}" id="buttonlist"
+             class="waves-effect waves-light btn right" >See More</a>
+          </li>
+        </ul>
+      {{/each}}
+    </div>
+
+{{/if}}
+
+</template>

@@ -1,0 +1,77 @@
+<template name="header">
+
+ <div class="navbar-fixed">
+   <nav>
+  <div class="nav-wrapper">
+    <a href="{{pathFor 'list'}}" id="brandLogo"
+    name="brand-logo" class="brand-logo left hide-on-med-and-down">
+        {{#with me }}
+            {{username}}
+        {{/with}}
+    </a>
+
+    <div class="center-align right">
+      <a href="#" id="buttonLogout" name="logout"
+       class="waves-effect waves-light btn red lighten-1">Logout
+      </a>
+    </div>
+
+<ul class="right">
+ <li>
+  {{#if counter}}
+    {{>notificationBadge count=counter }}
+  {{/if}}
+        <a class="dropdown-button" name ="photoSent" href="#"
+          data-activates="dropdown1">Photo Requests
+        </a>
+ </li>
+
+
+  <li>
+    <a class="dropdown-button" name ="chatReceived"
+    href="#" data-activates="dropdown2">Chat Invitaions
+    </a>
+  </li>
+
+</ul>
+
+    </div>
+  </nav>
+</div>
+
+<!-- dropdown1 structure -->
+
+<ul id="dropdown1" class="dropdown-content">
+    {{#each requestFromPeople}}
+      <li name="viewRouteAsked">
+        <a href="/list/{{requester.username}}" class="black-text">
+          {{requester.username}} wants to view your photo</a>
+      </li>
+    {{/each}}
+
+
+    {{#each requestFromMe}}
+      <li name="viewRouteAsk">
+        <a href="/list/{{user.username}}" class="black-test">
+        You have requested to view {{user.username}}'s photo </a>
+      </li>
+    {{/each}}
+</ul>
+
+
+<ul id="dropdown2" class="dropdown-content">
+    {{#each  youAreInvited}}
+       <li name="chatRoute">  <span class="black-text">
+       {{inviter}} wants to chat with You</span>
+      </li>
+    {{/each}}
+
+    {{#each  ihaveInvited}}
+        <li name="chatRoute">
+        <span class="black-text">
+        You have invited {{this.invited}}</span>
+        </li>
+    {{/each}}
+
+</ul>
+</template>

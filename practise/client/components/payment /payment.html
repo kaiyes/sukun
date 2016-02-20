@@ -1,0 +1,15 @@
+
+<template name="payment">
+    {{>style_show}}
+     <div class="container">
+       <div class="card-panel">
+         <h4> টাঁকা দেন ? ফেল কড়ি মাখ তেল </h4>
+         <p>
+           Please Use BIKASH to pay &  fillup the form bellow to enter your BIKASH payment number
+         </p>
+         {{#if currentUser }}
+          {{> quickForm collection="WantToPay" id="payment" type="insert" omitFields="createdBy,paid,email"}}
+         {{/if}}
+       </div>
+     </div>
+</template>

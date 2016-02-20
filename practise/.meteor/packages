@@ -4,7 +4,7 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-autopublish
+
 insecure
 iron:router
 accounts-password
@@ -36,3 +36,5 @@ email
 momentjs:moment
 lbee:moment-helpers
 erasaur:notification-badge
+
+babrahams:constellation
