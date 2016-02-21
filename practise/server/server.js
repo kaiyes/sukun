@@ -16,22 +16,20 @@ Meteor.startup(function() {
    }
  });
 
- Meteor.publish("checkIfUserHasDb", function(){
-   return Biye.findOne({createdBy: Meteor.userId()});
+
+ Meteor.publish("findMales", function(){
+  return  Meteor.users.find({"profile.gender": "male",
+  "profile.hasDb":true});
  });
 
 
- Meteor.publish("findThem", function(){
-   var gen = Meteor.user().profile.gender;
-   var findMale = Meteor.users.find({"profile.gender": "male", "profile.hasDb":true});
-   var findFemale = Meteor.users.find({"profile.gender": "female", "profile.hasDb":true});
-
-     if (gen === "male") {
-       return findFemale;
-      } else {
-       return findMale;
-     }
-
-     /*return Meteor.users.find({"profile.gender": "female", "profile.hasDb":true});*/
-
+ Meteor.publish("findFemales", function(){
+  return  Meteor.users.find({"profile.gender": "female",
+  "profile.hasDb":true});
  });
+
+ /*Meteor.publish("params", function(argument){
+   return Meteor.users.findOne({
+     username: this.params.username
+     });
+ });*/

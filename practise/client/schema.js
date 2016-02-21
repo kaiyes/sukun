@@ -18,15 +18,15 @@
           console.log("no userId entered");;
         }
       }
-    },
-    image: {
+    }
+    /*image: {
       type: String,
       autoform: {
         afFieldInput: {
           type: 'cloudinary'
         }
       }
-    },
+    },*/
 
 
      /*profession: {

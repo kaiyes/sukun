@@ -19,7 +19,7 @@ Template.register.events({
         if (error) {
           console.log(error.reason);
         } else {
-          Router.go('list');
+          Router.go('details');
         }
       });
 

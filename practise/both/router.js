@@ -16,23 +16,27 @@ Router.route('/details',{
        if(!verify){
          Router.go('verifyEmail');
        }else{
-         this.next();
-       }
+        console.log("veried, going to details");
+      };
+      this.next();
     }
   });
 
 Router.route('/list', {
   onBeforeAction: function() {
-    var check = Meteor.subscribe("checkIfUserHasDb");
+    var check = Meteor.user().profile.hasDb;
     if (!check) {
       Router.go("details");
     } else {
-      this.next();
+      console.log("hasDb, going to list");
     }
+    this.next();
   },
-  waitOn: function(){
-      return Meteor.subscribe('findThem');
-  }
+
+  waitOn: function() {
+    return [Meteor.subscribe('findFemales'),
+    Meteor.subscribe('findMales')];
+    }
 });
 
 Router.route('show', {
