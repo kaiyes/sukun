@@ -19,6 +19,7 @@
         }
       }
     }
+
     /*image: {
       type: String,
       autoform: {
@@ -26,7 +27,7 @@
           type: 'cloudinary'
         }
       }
-    },*/
+    }*/
 
 
      /*profession: {
