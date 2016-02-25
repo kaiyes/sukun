@@ -28,8 +28,10 @@ Meteor.startup(function() {
   "profile.hasDb":true});
  });
 
- /*Meteor.publish("params", function(argument){
-   return Meteor.users.findOne({
-     username: this.params.username
-     });
- });*/
+ Meteor.publish("users", function(argument){
+   return Meteor.users.find({});
+ });
+
+ Meteor.publish("biye", function(){
+    return Biye.find();
+ });
