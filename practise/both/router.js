@@ -41,6 +41,12 @@ Router.route('/list', {
 
 Router.route('show', {
   path: '/list/:username',
+
+  waitOn: function() {
+    return [Meteor.subscribe('users'),
+    Meteor.subscribe("biye")]
+  },
+
   data: function() {
     return Meteor.users.findOne({
       username: this.params.username
