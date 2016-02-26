@@ -140,6 +140,11 @@
             console.log("no payment entered");;
           }
         }
+      },
+
+      paid:{
+        type: Boolean,
+        defaultValue:false
       }
     }));
 

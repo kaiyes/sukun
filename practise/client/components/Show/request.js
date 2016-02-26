@@ -11,7 +11,9 @@ Template.show.helpers({
 Template.show.events({
 
   'click  [name=add-friend]': function() {
-    var paidUser = Paid.findOne({user:Meteor.userId()});
+   var paidUser = WantToPay.findOne({
+    createdBy:Meteor.userId(),
+    "paid":true});
     var currentuser = Meteor.user();
     var user = Meteor.users.findOne({
     username: Router.current().params.username});

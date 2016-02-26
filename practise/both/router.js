@@ -6,7 +6,6 @@ Router.route('/', {
 Router.route('/register');
 Router.route('/login');
 Router.route('/payment');
-Router.route('/admin');
 Router.route('/verifyEmail');
 Router.route('/chat');
 
@@ -44,7 +43,8 @@ Router.route('show', {
 
   waitOn: function() {
     return [Meteor.subscribe('users'),
-    Meteor.subscribe("biye")]
+    Meteor.subscribe("biye"),
+    Meteor.subscribe("notPaid")]
   },
 
   data: function() {
@@ -53,3 +53,10 @@ Router.route('show', {
     });
   }
 });
+
+Router.route('/admin',{
+  waitOn: function() {
+    return Meteor.subscribe("notPaid");
+  }
+}
+);

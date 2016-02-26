@@ -13,8 +13,13 @@ Meteor.startup(function() {
    clearNotification: function(){
     Notification.update({invited:Meteor.user().username},
     {$set:{seen:true}}, { multi: true });
+   },
+
+   makePaidUser: function(){
+   Paid.insert({ user:this.createdBy ,paid:true});
    }
  });
+
 
 
  Meteor.publish("findMales", function(){
@@ -34,4 +39,12 @@ Meteor.startup(function() {
 
  Meteor.publish("biye", function(){
     return Biye.find();
+ });
+
+ Meteor.publish("paid", function(){
+   return Paid.find({user:this.userId});
+ });
+
+ Meteor.publish("notPaid", function(){
+   return WantToPay.find();
  });

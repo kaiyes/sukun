@@ -8,12 +8,12 @@ Template.list.helpers({
 
           return Meteor.users.find({
             "profile.gender": "female",
-            "profile.hasDb":true});;
+            "profile.hasDb":true});
          } else {
 
           return Meteor.users.find({
             "profile.gender": "male",
-            "profile.hasDb":true});;
+            "profile.hasDb":true});
         }
   }
 });
