@@ -11,12 +11,15 @@ Meteor.startup(function() {
 
   Meteor.methods({
    clearNotification: function(){
-    Notification.update({invited:Meteor.user().username},
-    {$set:{seen:true}}, { multi: true });
+    Notification.update(
+      {invited:Meteor.user().username},
+      {$set:{seen:true}}, { multi: true });
    },
 
    makePaidUser: function(){
-   Paid.insert({ user:this.createdBy ,paid:true});
+   Payment.update(
+     {createdBy:this.userId},
+     {$set:{paid:true}});
    }
  });
 
@@ -41,10 +44,6 @@ Meteor.startup(function() {
     return Biye.find();
  });
 
- Meteor.publish("paid", function(){
-   return Paid.find({user:this.userId});
- });
-
- Meteor.publish("notPaid", function(){
-   return WantToPay.find();
+ Meteor.publish("payment", function(){
+   return Payment.find();
  });

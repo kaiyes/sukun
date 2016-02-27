@@ -8,7 +8,7 @@
            Please Use BIKASH to pay &  fillup the form bellow to enter your BIKASH payment number
          </p>
          {{#if currentUser }}
-          {{> quickForm collection="WantToPay" id="payment" type="insert" omitFields="createdBy,paid,email"}}
+          {{> quickForm collection="Payment" id="payment" type="insert" omitFields="createdBy,paid"}}
          {{/if}}
        </div>
      </div>

@@ -123,7 +123,7 @@
   });
 
 
-  WantToPay.attachSchema(new SimpleSchema({
+  Payment.attachSchema(new SimpleSchema({
 
       bikash: {
         type: Number,

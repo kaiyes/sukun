@@ -11,7 +11,7 @@ Template.show.helpers({
 Template.show.events({
 
   'click  [name=add-friend]': function() {
-   var paidUser = WantToPay.findOne({
+   var paidUser = Payment.findOne({
     createdBy:Meteor.userId(),
     "paid":true});
     var currentuser = Meteor.user();
@@ -77,8 +77,9 @@ Template.show.events({
       }]
     });
 
-    var paidUser = Paid.findOne({user:Meteor.userId()});
-
+    var paidUser = Payment.findOne({
+      createdBy:Meteor.userId(),"paid":true
+    });
       if(paidUser){
 
           if (!linkExists) {
@@ -96,7 +97,7 @@ Template.show.events({
             Router.go('/chat');
 
           } else {
-            console.log("link exists, hides button");
+            console.log("link exists, hide button");
             event.preventDefault();
             $('[name=chat]').hide();
             Router.go('/chat');

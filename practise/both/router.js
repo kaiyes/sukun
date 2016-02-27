@@ -44,7 +44,7 @@ Router.route('show', {
   waitOn: function() {
     return [Meteor.subscribe('users'),
     Meteor.subscribe("biye"),
-    Meteor.subscribe("notPaid")]
+    Meteor.subscribe("payment")]
   },
 
   data: function() {
@@ -56,7 +56,9 @@ Router.route('show', {
 
 Router.route('/admin',{
   waitOn: function() {
-    return Meteor.subscribe("notPaid");
+     
+    return [Meteor.subscribe('users'),
+    Meteor.subscribe("payment")]
   }
 }
 );
