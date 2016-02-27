@@ -11,20 +11,20 @@ Template.show.helpers({
 Template.show.events({
 
   'click  [name=add-friend]': function() {
+    event.preventDefault();
    var paidUser = Payment.findOne({
     createdBy:Meteor.userId(),
     "paid":true});
-    var currentuser = Meteor.user();
-    var user = Meteor.users.findOne({
-    username: Router.current().params.username});
+
+    var users = {
+      invited:Router.current().params.username,
+      inviter: Meteor.user().username,
+      seen:false
+    }
 
       if(paidUser){
         this.requestFriendship();
-        Notification.insert({
-          invited: user.username,
-          inviter: currentuser.username,
-          seen: false
-        });
+        Meteor.call('insertNotification', users);
       }else{
         Router.go('/payment');
       };
@@ -85,6 +85,7 @@ Template.show.events({
           if (!linkExists) {
             console.log("no link, sends the message");
             var conversation = new Conversation().save();
+
             ChatInvites.insert({
               invited: user.username,
               inviter: currentuser.username,

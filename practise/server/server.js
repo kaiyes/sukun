@@ -10,6 +10,7 @@ Meteor.startup(function() {
 
 
   Meteor.methods({
+
    clearNotification: function(){
     Notification.update(
       {invited:Meteor.user().username},
@@ -20,10 +21,13 @@ Meteor.startup(function() {
    Payment.update(
      {createdBy:this.userId},
      {$set:{paid:true}});
-   }
+   },
+
+   insertNotification: function(users){
+      check(users, Object);
+      Notification.insert(users);
+  }
  });
-
-
 
  Meteor.publish("findMales", function(){
   return  Meteor.users.find({"profile.gender": "male",
