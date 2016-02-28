@@ -9,41 +9,49 @@
 </div>
 
 <div>
-     {{#if this.isFriendsWith currentUser }}
+{{#if this.isFriendsWith currentUser }}
 
-          {{#with  detailsDb}}
-            <div class="col s4">
-               <img class="responsive-img materialboxed initialized" width="400"
-                src=" {{image}}" alt="">
-            </div>
-          {{/with}}
-        <a id="friendship" name= "end-friendship"
-        class="waves-effect waves-light btn red lighten-1"> Revoke Photo Access</a>
+    {{#with  detailsDb}}
+      <div class="col s4">
+         <img class="responsive-img
+         materialboxed initialized" width="400"
+          src=" {{image}}" alt="">
+      </div>
+    {{/with}}
 
-        {{else}}
+  <a id="friendship" name= "end-friendship"
+  class="waves-effect waves-light
+  btn red lighten-1"> Revoke Photo Access</a>
 
-          {{#if currentUser.hasRequestFrom this}}
-          <img class="materialboxed" width="400" src="/1.jpg">
-          <a id="friendship" name= "accept"
-          class="waves-effect waves-light btn teal accent-3">Grant Photo Access </a>
+  {{else}}
 
-        {{else}}
+    {{#if currentUser.hasRequestFrom this}}
+      <img class="materialboxed" width="400" src="/1.jpg">
 
-        {{#if hasRequestFrom currentUser}}
-         <img class="materialboxed" width="400" src="/1.jpg">
-         <a id="friendship" name= "cancel-request"
-         class="waves-effect waves-light btn red lighten-1"> Cancel Photo Request  </a>
+        <a id="friendship" name= "accept"
+        class="waves-effect waves-light
+        btn teal accent-3">Grant Photo Access </a>
 
-         {{else}}
+  {{else}}
 
-         <img class="materialboxed" width="400" src="/1.jpg">
-         <a id="friendship" name= "add-friend"
-         class="waves-effect waves-light btn green lighten-1">Request Photo Access </a>
+  {{#if hasRequestFrom currentUser}}
+   <img class="materialboxed" width="400" src="/1.jpg">
 
-         {{/if}}
-         {{/if}}
-      {{/if}}
-  </div>
+       <a id="friendship" name= "cancel-request"
+       class="waves-effect waves-light
+       btn red lighten-1"> Cancel Photo Request  </a>
+
+   {{else}}
+
+   <img class="materialboxed" width="400" src="/1.jpg">
+   <a id="friendship" name= "add-friend"
+   class="waves-effect waves-light
+   btn green lighten-1">Request Photo Access </a>
+   {{/if}}
+   {{/if}}
+{{/if}}
+
+</div>
    <br>
 <div>
   <a href="#" id="chatButton" name= "chat"

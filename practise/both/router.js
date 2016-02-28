@@ -9,6 +9,14 @@ Router.route('/payment');
 Router.route('/verifyEmail');
 Router.route('/chat');
 
+Router.route('/admin',{
+  waitOn: function() {
+
+    return [Meteor.subscribe('users'),
+    Meteor.subscribe("payment")]
+  }
+});
+
 Router.route('/details',{
   onBeforeAction: function() {
     var verify = Meteor.user().emails[0].verified;
@@ -42,23 +50,19 @@ Router.route('show', {
   path: '/list/:username',
 
   waitOn: function() {
-    return [Meteor.subscribe('users'),
-    Meteor.subscribe("biye"),
-    Meteor.subscribe("payment")]
+    return [
+      Meteor.subscribe('users'),
+      Meteor.subscribe("biye"),
+      Meteor.subscribe("payment"),
+      Meteor.subscribe("request"),
+      Meteor.subscribe("friends")
+   ]
   },
 
-  data: function() {
-    return Meteor.users.findOne({
+  data: function(){
+    var user = Meteor.users.findOne({
       username: this.params.username
-    });
-  }
-});
-
-Router.route('/admin',{
-  waitOn: function() {
-     
-    return [Meteor.subscribe('users'),
-    Meteor.subscribe("payment")]
-  }
-}
-);
+     });
+    return user;
+   }
+ });

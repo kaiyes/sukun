@@ -51,3 +51,11 @@ Meteor.startup(function() {
  Meteor.publish("payment", function(){
    return Payment.find();
  });
+
+Meteor.publish("request", function(){
+    return Meteor.requests.find();
+});
+
+Meteor.publish("friends", function(){
+    return Meteor.friends.find();
+});

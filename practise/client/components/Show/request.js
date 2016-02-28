@@ -20,7 +20,7 @@ Template.show.events({
       invited:Router.current().params.username,
       inviter: Meteor.user().username,
       seen:false
-    }
+    };
 
       if(paidUser){
         this.requestFriendship();
@@ -43,10 +43,12 @@ Template.show.events({
   },
 
   'click  [name=accept]': function() {
-    var request = Meteor.requests.findOne({
+    var user = Meteor.users.findOne({
+    username: Router.current().params.username})._id;
 
+    var request = Meteor.requests.findOne({
       userId: Meteor.userId(),
-      requesterId: this._id
+      requesterId: user
     });
     request && request.accept();
   },
