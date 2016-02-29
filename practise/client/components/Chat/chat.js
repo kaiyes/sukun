@@ -1,4 +1,6 @@
 
+
+
   Template.sidebar.helpers({
     'conversationsIstarted': function() {
       return ChatInvites.find({
@@ -17,7 +19,7 @@
   Template.sidebar.events({
     'click [name=user]': function() {
       Session.set("convoId", this.convoId);
-      console.log("hmmm");
+      console.log(this.convoId);
 
     }
   });

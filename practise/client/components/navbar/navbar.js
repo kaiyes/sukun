@@ -1,10 +1,9 @@
 Template.header.onRendered(function() {
 
   this.autorun(function(){
-    var requests = Notification.find({
-      invited: Meteor.user().username,
-      seen:false});
+    var subs = Meteor.subscribe("notification");
       Tracker.afterFlush(function() {
+
         $('.dropdown-button').dropdown({
           hover: true,
           belowOrigin: true

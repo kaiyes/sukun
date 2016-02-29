@@ -7,7 +7,6 @@ Router.route('/register');
 Router.route('/login');
 Router.route('/payment');
 Router.route('/verifyEmail');
-Router.route('/chat');
 
 Router.route('/admin',{
   waitOn: function() {
@@ -42,7 +41,8 @@ Router.route('/list', {
 
   waitOn: function() {
     return [Meteor.subscribe('findFemales'),
-    Meteor.subscribe('findMales')];
+    Meteor.subscribe('findMales'),
+    Meteor.subscribe("request")];
     }
 });
 
@@ -66,3 +66,13 @@ Router.route('show', {
     return user;
    }
  });
+
+ Router.route('/chat',{
+
+   waitOn: function() {
+     return [
+       Meteor.subscribe("chatInvites"),
+       Meteor.subscribe("conversation")
+    ]
+   }
+  });

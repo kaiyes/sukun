@@ -40,7 +40,7 @@ Meteor.startup(function() {
   "profile.hasDb":true});
  });
 
- Meteor.publish("users", function(argument){
+ Meteor.publish("users", function(){
    return Meteor.users.find({});
  });
 
@@ -58,4 +58,16 @@ Meteor.publish("request", function(){
 
 Meteor.publish("friends", function(){
     return Meteor.friends.find();
+});
+
+Meteor.publish("notification", function(){
+   return Notification.find({});
+});
+
+Meteor.publish("chatInvites", function(){
+    return ChatInvites.find();
+});
+
+Meteor.publish("conversation", function(){
+    return Meteor.conversations.find({});
 });
