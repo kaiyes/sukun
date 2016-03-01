@@ -26,7 +26,12 @@ Meteor.startup(function() {
    insertNotification: function(users){
       check(users, Object);
       Notification.insert(users);
-  }
+  },
+
+  startChat:function(chatId){
+    check(chatId, Object);
+    ChatInvites.insert(chatId);
+   }
  });
 
  Meteor.publish("findMales", function(){
@@ -70,4 +75,8 @@ Meteor.publish("chatInvites", function(){
 
 Meteor.publish("conversation", function(){
     return Meteor.conversations.find({});
+});
+
+Meteor.publish("messages", function(){
+    return Meteor.messages.find({});
 });

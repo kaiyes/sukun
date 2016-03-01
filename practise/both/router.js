@@ -42,8 +42,10 @@ Router.route('/list', {
   waitOn: function() {
     return [Meteor.subscribe('findFemales'),
     Meteor.subscribe('findMales'),
-    Meteor.subscribe("request")];
-    }
+    Meteor.subscribe("request"),
+    Meteor.subscribe("chatInvites")
+    ]
+  }
 });
 
 Router.route('show', {
@@ -55,7 +57,8 @@ Router.route('show', {
       Meteor.subscribe("biye"),
       Meteor.subscribe("payment"),
       Meteor.subscribe("request"),
-      Meteor.subscribe("friends")
+      Meteor.subscribe("friends"),
+      Meteor.subscribe("chatInvites")
    ]
   },
 
@@ -72,7 +75,9 @@ Router.route('show', {
    waitOn: function() {
      return [
        Meteor.subscribe("chatInvites"),
-       Meteor.subscribe("conversation")
+       Meteor.subscribe("conversation"),
+       Meteor.subscribe("messages"),
+       Meteor.subscribe('users')
     ]
    }
   });

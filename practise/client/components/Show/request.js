@@ -82,30 +82,27 @@ Template.show.events({
     var paidUser = Payment.findOne({
       createdBy:Meteor.userId(),"paid":true
     });
-      if(paidUser){
 
+      if(paidUser){
           if (!linkExists) {
             console.log("no link, sends the message");
             var conversation = new Conversation().save();
-
-            ChatInvites.insert({
+            var chatId = {
               invited: user.username,
               inviter: currentuser.username,
-              convoId: conversation._id,
-            });
-
+              convoId: conversation._id
+            };
+            Meteor.call("startChat", chatId);
             conversation.addParticipant(user);
             conversation.sendMessage("hi");
             console.log("message sent");
             Router.go('/chat');
-
           } else {
             console.log("link exists, hide button");
             event.preventDefault();
             $('[name=chat]').hide();
             Router.go('/chat');
           }; /*else ends here*/
-
       }else{
          Router.go('/payment');
       };
