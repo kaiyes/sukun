@@ -19,7 +19,8 @@ Template.show.events({
     var users = {
       invited:Router.current().params.username,
       inviter: Meteor.user().username,
-      seen:false
+      seen:false,
+      type:"photo"
     };
 
       if(paidUser){
@@ -87,12 +88,23 @@ Template.show.events({
           if (!linkExists) {
             console.log("no link, sends the message");
             var conversation = new Conversation().save();
+
             var chatId = {
               invited: user.username,
               inviter: currentuser.username,
               convoId: conversation._id
             };
+
+            var users = {
+              invited:Router.current().params.username,
+              inviter: Meteor.user().username,
+              seen:false,
+              type:"chat"
+            };
+
             Meteor.call("startChat", chatId);
+            Meteor.call('insertNotification', users);
+
             conversation.addParticipant(user);
             conversation.sendMessage("hi");
             console.log("message sent");

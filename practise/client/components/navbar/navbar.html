@@ -18,23 +18,27 @@
 
 <ul class="right">
  <li>
-  {{#if counter}}
-    {{>notificationBadge count=counter }}
+  {{#if photoCounter}}
+    {{>notificationBadge count=photoCounter }}
   {{/if}}
-        <a class="dropdown-button" name ="photoSent" href="#"
-          data-activates="dropdown1">Photo Requests
-        </a>
+    <a
+      class="dropdown-button"
+      name ="photoSent" href="#"
+      data-activates="dropdown1">Photo Requests
+    </a>
  </li>
 
-
   <li>
+    {{#if chatCounter}}
+      {{>notificationBadge count=chatCounter }}
+    {{/if}}
     <a class="dropdown-button" name ="chatReceived"
-    href="#" data-activates="dropdown2">Chat Invitaions
+    href="#" data-activates="dropdown2">
+     Chat Invitaions
     </a>
   </li>
 
 </ul>
-
     </div>
   </nav>
 </div>
@@ -44,16 +48,20 @@
 <ul id="dropdown1" class="dropdown-content">
     {{#each requestFromPeople}}
       <li name="viewRouteAsked">
-        <a href="/list/{{requester.username}}" class="black-text">
-          {{requester.username}} wants to view your photo</a>
+        <a href="/list/{{requester.username}}"
+        class="black-text">
+          {{requester.username}} wants to
+          view your photo</a>
       </li>
     {{/each}}
 
 
     {{#each requestFromMe}}
       <li name="viewRouteAsk">
-        <a href="/list/{{user.username}}" class="black-test">
-        You have requested to view {{user.username}}'s photo </a>
+        <a href="/list/{{user.username}}"
+        class="black-test">
+        You have requested to
+        view {{user.username}}'s photo </a>
       </li>
     {{/each}}
 </ul>

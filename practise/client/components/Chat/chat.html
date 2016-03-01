@@ -13,25 +13,32 @@
 </template>
 
 <template name="sidebar">
-    <div id="sidebar-wrapper">
-        <ul id="nav-mobile" class="side-nav fixed">
-            <li>
-                <a class="brand-logo" style="font-size:25px;" href=" #">
-                    conversations
-                </a>
-            </li>
+<div id="sidebar-wrapper">
+  <ul id="nav-mobile" class="side-nav fixed">
+    <li>
+        <a class="brand-logo"
+         style="font-size:25px;" href=" #">
+          conversations
+        </a>
+    </li>
 
-            {{#each conversationsIstarted}}
-                <li name="user">
-                <a href='#' style="font-size:17px;">{{invited}}</a></li>
-            {{/each}}
+    {{#each conversationsIstarted}}
+        <li name="user">
+           <a href='#' style="font-size:17px;">
+            {{invited}}
+          </a>
+        </li>
+    {{/each}}
 
-            {{#each conversationsIwasInvited}}
-              <li name="user">
-              <a href='#' style="font-size:17px;">{{inviter}}</a></li>
-            {{/each}}
-        </ul>
-    </div>
+     {{#each conversationsIwasInvited}}
+        <li name="user">
+          <a href='#' style="font-size:17px;">
+            {{inviter}}
+          </a>
+        </li>
+     {{/each}}
+  </ul>
+</div>
 </template>
 
 <template name="messages">

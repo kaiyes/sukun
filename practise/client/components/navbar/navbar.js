@@ -1,9 +1,9 @@
 Template.header.onRendered(function() {
 
   this.autorun(function(){
-    var subs = Meteor.subscribe("notification");
+    var NotiSubs = Meteor.subscribe("notification");
+    var PaymentSubs =   Meteor.subscribe("payment");
       Tracker.afterFlush(function() {
-
         $('.dropdown-button').dropdown({
           hover: true,
           belowOrigin: true
@@ -21,10 +21,16 @@ Template.header.helpers({
     });
   },
 
-  counter: function() {
+  photoCounter: function() {
     return Notification.find({
       invited: Meteor.user().username,
-      seen:false}).count();
+      seen:false, type:"photo"}).count();
+  },
+
+  chatCounter: function() {
+    return Notification.find({
+      invited: Meteor.user().username,
+      seen:false, type:"chat"}).count();
   },
 
   requestFromMe: function() {
@@ -67,19 +73,19 @@ Template.header.events({
 
   'click [name=photoSent]': function() {
     event.preventDefault();
-    Meteor.call("clearNotification")
-
+    Meteor.call("clearPhotoNotification")
   },
 
-  'click [name=viewRouteAsk]': function() {
+  'click [name=chatReceived]': function() {
     event.preventDefault();
-    console.log("works");
+    Meteor.call("clearChatNotification")
   },
-
 
   'click [name=chatRoute]': function() {
     event.preventDefault();
-    var paidUser = Paid.findOne({user:Meteor.userId()});
+    var paidUser = Payment.findOne({
+      createdBy:Meteor.userId(),  "paid":true
+      });
     if(paidUser){
       Router.go("chat");
     }else{

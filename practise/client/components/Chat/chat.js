@@ -1,7 +1,4 @@
-
-
-
-  Template.sidebar.helpers({
+ Template.sidebar.helpers({
     'conversationsIstarted': function() {
       return ChatInvites.find({
         inviter: Meteor.user().username

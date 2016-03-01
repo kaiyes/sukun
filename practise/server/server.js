@@ -11,9 +11,15 @@ Meteor.startup(function() {
 
   Meteor.methods({
 
-   clearNotification: function(){
+   clearPhotoNotification: function(){
     Notification.update(
-      {invited:Meteor.user().username},
+      {invited:Meteor.user().username,type:"photo"},
+      {$set:{seen:true}}, { multi: true });
+   },
+
+   clearChatNotification: function(){
+    Notification.update(
+      {invited:Meteor.user().username,type:"chat"},
       {$set:{seen:true}}, { multi: true });
    },
 
