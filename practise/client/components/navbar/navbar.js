@@ -1,8 +1,11 @@
 Template.header.onRendered(function() {
 
   this.autorun(function(){
-    var NotiSubs = Meteor.subscribe("notification");
-    var PaymentSubs =   Meteor.subscribe("payment");
+    var notification = Meteor.subscribe("notification");
+    var Payment =   Meteor.subscribe("payment");
+    var reqest = Meteor.subscribe("request");
+    var chatInvites = Meteor.subscribe("chatInvites");
+
       Tracker.afterFlush(function() {
         $('.dropdown-button').dropdown({
           hover: true,

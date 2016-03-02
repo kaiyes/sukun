@@ -37,13 +37,6 @@ Router.route('/list', {
       console.log("hasDb, going to list");
     }
     this.next();
-  },
-
-  waitOn: function() {
-    return [
-    Meteor.subscribe("request"),
-    Meteor.subscribe("chatInvites")
-    ]
   }
 });
 
