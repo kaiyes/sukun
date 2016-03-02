@@ -40,16 +40,18 @@ Meteor.startup(function() {
    }
  });
 
- Meteor.publish("findMales", function(){
-  return  Meteor.users.find({"profile.gender": "male",
-  "profile.hasDb":true});
- });
 
+Meteor.publish("find", function(gender){
+check(gender, String);
+ return  Meteor.users.find({"profile.gender": gender,
+ "profile.hasDb":true},{
+    fields: {
+      "username": 1,
+      "profile": 1,
+    }
+  });
+});
 
- Meteor.publish("findFemales", function(){
-  return  Meteor.users.find({"profile.gender": "female",
-  "profile.hasDb":true});
- });
 
  Meteor.publish("users", function(){
    return Meteor.users.find({});

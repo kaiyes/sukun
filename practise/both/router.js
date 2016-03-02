@@ -40,13 +40,14 @@ Router.route('/list', {
   },
 
   waitOn: function() {
-    return [Meteor.subscribe('findFemales'),
-    Meteor.subscribe('findMales'),
+    return [
     Meteor.subscribe("request"),
     Meteor.subscribe("chatInvites")
     ]
   }
 });
+
+
 
 Router.route('show', {
   path: '/list/:username',
