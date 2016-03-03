@@ -1,5 +1,4 @@
 
-
 Template.show.helpers({
   detailsDb: function() {
     var user = Meteor.users.findOne({
@@ -88,7 +87,17 @@ Template.show.events({
     });
 
       if(paidUser){
-          if (!linkExists) {
+          if (!linkExists) {Template.list.onRendered(function () {
+  this.autorun(function() {
+  var check = Meteor.user().profile.gender;
+
+   if (check==="male") {
+     Meteor.subscribe('find',"female");
+   } else {
+      Meteor.subscribe('find',"male");
+   }
+ })
+});
             console.log("no link, sends the message");
             var conversation = new Conversation().save();
 

@@ -27,8 +27,13 @@ Meteor.publish("payment", function(){
    });
 });
 
- Meteor.publish("users", function(){
-   return Meteor.users.find({});
+ Meteor.publish("users", function(username){
+   check(username, String);
+   return Meteor.users.find({username:username},{
+      fields: {
+        "username": 1
+      }
+    });
  });
 
  Meteor.publish("biye", function(){

@@ -39,13 +39,12 @@ Router.route('/list', {
   }
 });
 
-
-
 Router.route('show', {
   path: '/list/:username',
   waitOn: function() {
+    var username = Router.current().params.username;
     return [
-      Meteor.subscribe('users'),
+      Meteor.subscribe('users',username),
       Meteor.subscribe("biye"),
       Meteor.subscribe("payment"),
       Meteor.subscribe("request"),
