@@ -45,7 +45,6 @@ Router.route('show', {
     var username = Router.current().params.username;
     return [
       Meteor.subscribe('users',username),
-      Meteor.subscribe("biye"),
       Meteor.subscribe("payment"),
       Meteor.subscribe("request"),
       Meteor.subscribe("friends"),

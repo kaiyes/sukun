@@ -1,9 +1,10 @@
 
 Template.show.helpers({
   detailsDb: function() {
-    var user = Meteor.users.findOne({
+    var userId = Meteor.users.findOne({
       username: Router.current().params.username})._id;
-    return Biye.findOne({createdBy: user});
+    Meteor.subscribe('biye',userId);  
+    return Biye.findOne({createdBy: userId});
   }
 
 });
