@@ -101,3 +101,11 @@ input[type=text], input[type=password], input[type=email] {
   display: block;
 
   }
+
+  nav {
+      background-color:#75BAEC;
+  }
+/*
+  [name="logout"] {
+      color: black;
+  }*/

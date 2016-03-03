@@ -1,3 +1,5 @@
+
+
 Template.show.helpers({
   detailsDb: function() {
     var user = Meteor.users.findOne({
@@ -52,6 +54,7 @@ Template.show.events({
       requesterId: user
     });
     request && request.accept();
+
   },
 
 

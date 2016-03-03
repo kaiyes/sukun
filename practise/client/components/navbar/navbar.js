@@ -1,7 +1,8 @@
 Template.header.onRendered(function() {
 
   this.autorun(function(){
-    var notification = Meteor.subscribe("notification");
+    var username = Meteor.user().username;
+    var notification = Meteor.subscribe("notification",username);
     var Payment =   Meteor.subscribe("payment");
     var reqest = Meteor.subscribe("request");
     var chatInvites = Meteor.subscribe("chatInvites");
@@ -27,7 +28,8 @@ Template.header.helpers({
   photoCounter: function() {
     return Notification.find({
       invited: Meteor.user().username,
-      seen:false, type:"photo"}).count();
+      seen:false, type:"photo"
+      }).count();
   },
 
   chatCounter: function() {
@@ -37,7 +39,6 @@ Template.header.helpers({
   },
 
   requestFromMe: function() {
-    // if (true) {}; put both in one place
     return Meteor.requests.find({
       requesterId: Meteor.userId()
     });

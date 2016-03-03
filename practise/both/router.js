@@ -10,7 +10,6 @@ Router.route('/verifyEmail');
 
 Router.route('/admin',{
   waitOn: function() {
-
     return [Meteor.subscribe('users'),
     Meteor.subscribe("payment")]
   }
@@ -44,7 +43,6 @@ Router.route('/list', {
 
 Router.route('show', {
   path: '/list/:username',
-
   waitOn: function() {
     return [
       Meteor.subscribe('users'),
@@ -67,6 +65,7 @@ Router.route('show', {
  Router.route('/chat',{
 
    waitOn: function() {
+
      return [
        Meteor.subscribe("chatInvites"),
        Meteor.subscribe("conversation"),
