@@ -54,7 +54,15 @@ Meteor.publish("request", function(){
 });
 
 Meteor.publish("friends", function(){
-    return Meteor.friends.find();
+    return Meteor.friends.find({
+      $or: [{friendId: this.userId},
+           {userId: this.userId}]
+    },{
+       fields: {
+         "friendId": 1,
+         "userId": 1
+       }
+    });
 });
 
 Meteor.publish("chatInvites", function(){
