@@ -42,7 +42,15 @@ Meteor.publish("payment", function(){
  });
 
 Meteor.publish("request", function(){
-    return Meteor.requests.find();
+    return Meteor.requests.find({
+      $or: [{requesterId: this.userId},
+           {userId: this.userId}]
+    },{
+       fields: {
+         "requesterId": 1,
+         "userId": 1
+       }
+     });
 });
 
 Meteor.publish("friends", function(){
