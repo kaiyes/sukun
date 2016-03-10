@@ -1,12 +1,16 @@
 Template.messages.onRendered(function () {
+
     this.autorun(function () {
-        $('#chatWrapper').slimScroll({
-         height: '400px',
-         railVisible: true,
-         alwaysVisible: true,
-         start: 'bottom'
+      var conversationId = Session.get('convoId');
+         Tracker.afterFlush(function() {
+           $('#chatWrapper').slimScroll({
+            height: '400px',
+            railVisible: true,
+            alwaysVisible: true,
+            start: 'bottom'
+         });
       });
-  });
+   });
 });
 
  Template.sidebar.helpers({
