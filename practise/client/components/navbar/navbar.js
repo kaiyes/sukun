@@ -5,7 +5,7 @@ Template.header.onRendered(function() {
     var notification = Meteor.subscribe("notification",username);
     var Payment =   Meteor.subscribe("payment");
     var reqest = Meteor.subscribe("request");
-    var chatInvites = Meteor.subscribe("chatInvites");
+    var chatInvites = Meteor.subscribe("chatInvites",username);
 
       Tracker.afterFlush(function() {
         $('.dropdown-button').dropdown({

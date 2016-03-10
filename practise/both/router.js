@@ -43,12 +43,13 @@ Router.route('show', {
   path: '/list/:username',
   waitOn: function() {
     var username = Router.current().params.username;
+    var user = Meteor.user().username;
     return [
       Meteor.subscribe('users',username),
       Meteor.subscribe("payment"),
       Meteor.subscribe("request"),
       Meteor.subscribe("friends"),
-      Meteor.subscribe("chatInvites")
+      Meteor.subscribe("chatInvites",user)
    ]
   },
 
@@ -63,12 +64,12 @@ Router.route('show', {
  Router.route('/chat',{
 
    waitOn: function() {
+   var user = Meteor.user().username;
 
      return [
-       Meteor.subscribe("chatInvites"),
+       Meteor.subscribe("chatInvites",user),
        Meteor.subscribe("conversation"),
-       Meteor.subscribe("messages"),
-       Meteor.subscribe('users',Meteor.user().username)
+       Meteor.subscribe('chatUsers')
     ]
    }
   });

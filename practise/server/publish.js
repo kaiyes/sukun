@@ -36,6 +36,15 @@ Meteor.publish("payment", function(){
     });
  });
 
+ Meteor.publish("chatUsers", function(){
+
+   return Meteor.users.find({},{
+      fields: {
+        "username": 1
+      }
+    });
+ });
+
  Meteor.publish("biye", function(userId){
     check(userId, String);
     return Biye.find({createdBy: userId});
@@ -65,14 +74,22 @@ Meteor.publish("friends", function(){
     });
 });
 
-Meteor.publish("chatInvites", function(){
-    return ChatInvites.find();
+Meteor.publish("chatInvites", function(user){
+    check(user, String);
+    return ChatInvites.find({
+      $or: [{invited: user},
+           {inviter: user}]
+    });
 });
 
 Meteor.publish("conversation", function(){
-    return Meteor.conversations.find({});
+    return Meteor.conversations.find({
+      _participants: this.userId});
 });
 
-Meteor.publish("messages", function(){
-    return Meteor.messages.find({});
+Meteor.publish("messages", function(conversationId){
+    check(conversationId, String);
+    return Meteor.messages.find({
+      conversationId: conversationId
+    });
 });

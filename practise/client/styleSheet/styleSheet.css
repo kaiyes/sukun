@@ -33,10 +33,6 @@ border-radius: 5px;
   width: 500px;
 }
 
-.mess{
- font-size: 25px;
-}
-
 .bodyOfMessage{
   font-size: 25px;
 }
@@ -109,3 +105,22 @@ input[type=text], input[type=password], input[type=email] {
   [name="logout"] {
       color: black;
   }*/
+
+  .bodyOfMessage {
+    position:relative;
+    padding:15px;
+    margin:1em 0 3em;
+    color:#fff;
+    background:#075698;
+    border-radius:10px;
+  }
+
+  .user {
+    position:relative;
+    padding:15px;
+    margin:1em 0 3em;
+    color:#fff;
+    background:#848ED8;
+    border-radius:10px;
+    font-size: 25px;
+  }

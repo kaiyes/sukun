@@ -3,7 +3,7 @@ Template.show.helpers({
   detailsDb: function() {
     var userId = Meteor.users.findOne({
       username: Router.current().params.username})._id;
-    Meteor.subscribe('biye',userId);
+      Meteor.subscribe('biye',userId);
     return Biye.findOne({createdBy: userId});
   }
 
@@ -111,12 +111,12 @@ Template.show.events({
            conversation.addParticipant(user);
            conversation.sendMessage("Assalamu Alaikum");
            console.log("message sent");
-           Router.go('/chat');
+           Router.go('chat');
          } else {
            console.log("link exists, hide button");
            event.preventDefault();
            $('[name=chat]').hide();
-           Router.go('/chat');
+           Router.go('chat');
          }; /*else ends here*/
      }else{
         Router.go('/payment');

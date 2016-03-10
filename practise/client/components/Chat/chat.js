@@ -1,3 +1,14 @@
+Template.messages.onRendered(function () {
+    this.autorun(function () {
+        $('#chatWrapper').slimScroll({
+         height: '400px',
+         railVisible: true,
+         alwaysVisible: true,
+         start: 'bottom'
+      });
+  });
+});
+
  Template.sidebar.helpers({
     'conversationsIstarted': function() {
       return ChatInvites.find({
@@ -13,20 +24,20 @@
 
   });
 
+  Template.messages.helpers({
+    'displayMessages': function() {
+      var conversationId = Session.get("convoId");
+      Meteor.subscribe("messages",conversationId);
+      return Meteor.conversations.findOne({
+        _id: conversationId
+      });
+    }
+  });
+
   Template.sidebar.events({
     'click [name=user]': function() {
       Session.set("convoId", this.convoId);
       console.log(this.convoId);
-
-    }
-  });
-
-  Template.messages.helpers({
-    'displayMessages': function() {
-      var conversationId = Session.get("convoId");
-      return Meteor.conversations.findOne({
-        _id: conversationId
-      });
     }
   });
 
