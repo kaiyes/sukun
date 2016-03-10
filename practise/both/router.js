@@ -68,8 +68,7 @@ Router.route('show', {
 
      return [
        Meteor.subscribe("chatInvites",user),
-       Meteor.subscribe("conversation"),
-       Meteor.subscribe('chatUsers')
+       Meteor.subscribe("conversation")
     ]
    }
   });

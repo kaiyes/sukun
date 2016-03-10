@@ -36,15 +36,6 @@ Meteor.publish("payment", function(){
     });
  });
 
- Meteor.publish("chatUsers", function(){
-
-   return Meteor.users.find({},{
-      fields: {
-        "username": 1
-      }
-    });
- });
-
  Meteor.publish("biye", function(userId){
     check(userId, String);
     return Biye.find({createdBy: userId});
@@ -93,3 +84,11 @@ Meteor.publish("messages", function(conversationId){
       conversationId: conversationId
     });
 });
+
+// Meteor.publish("chatUsers", function(){
+//   return Meteor.users.find({},{
+//      fields: {
+//        "username": 1
+//      }
+//    });
+// });
