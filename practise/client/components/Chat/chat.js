@@ -5,13 +5,30 @@ Template.messages.onRendered(function () {
          Tracker.afterFlush(function() {
            $('#chatWrapper').slimScroll({
             height: '400px',
+            width: '1000px',
             railVisible: true,
             alwaysVisible: true,
-            start: 'bottom'
+            //start: 'bottom',
+            size: '20px',
+            wheelStep: 70
+            //scrollTo: '350px',
          });
       });
    });
 });
+
+Template.messages.onCreated(function () {
+
+    this.autorun(function () {
+      var conversationId = Session.get('convoId');
+         Tracker.afterFlush(function() {
+           $('#chatWrapper').scrollTop();
+
+      });
+   });
+});
+
+
 
  Template.sidebar.helpers({
     'conversationsIstarted': function() {
