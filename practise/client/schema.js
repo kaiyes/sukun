@@ -27,7 +27,23 @@
           type: 'cloudinary'
         }
       }
-    }
+    },
+
+    aboutMe: {
+       type: String,
+       max: 20000,
+       autoform: {
+         rows: 50
+       }
+    },
+
+    lookingFor: {
+       type: String,
+       max: 20000,
+       autoform: {
+         rows: 50
+       }
+    },
 
 
      /*profession: {
