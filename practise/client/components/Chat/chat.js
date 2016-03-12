@@ -2,6 +2,7 @@ Template.messages.onRendered(function () {
 
     this.autorun(function () {
       var conversationId = Session.get('convoId');
+
          Tracker.afterFlush(function() {
            $('#chatWrapper').slimScroll({
             height: '400px',
@@ -10,8 +11,8 @@ Template.messages.onRendered(function () {
             alwaysVisible: true,
             //start: 'bottom',
             size: '20px',
-            wheelStep: 70
-            //scrollTo: '350px',
+            wheelStep: 70,
+          //  scrollTo: "110px",
          });
       });
    });
@@ -22,8 +23,7 @@ Template.messages.onCreated(function () {
     this.autorun(function () {
       var conversationId = Session.get('convoId');
          Tracker.afterFlush(function() {
-           $('#chatWrapper').scrollTop();
-
+           $('.slimScrollBar').scrollTop((350));
       });
    });
 });

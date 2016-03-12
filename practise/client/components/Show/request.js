@@ -22,7 +22,8 @@ Template.show.events({
       invited:Router.current().params.username,
       inviter: Meteor.user().username,
       seen:false,
-      type:"photo"
+      type:"photo",
+      action:"add"
     };
 
       if(paidUser){
@@ -38,10 +39,30 @@ Template.show.events({
       requesterId: Meteor.userId(),
       userId: this._id
     });
+
+    var users = {
+      invited:Router.current().params.username,
+      inviter: Meteor.user().username,
+      seen:false,
+      type:"photo",
+      action:"cancel"
+    };
+
+    Meteor.call('insertNotification', users);
     request && request.cancel();
   },
 
   'click  [name=end-friendship]': function() {
+
+    var users = {
+      invited:Router.current().params.username,
+      inviter: Meteor.user().username,
+      seen:false,
+      type:"photo",
+      action:"revoke"
+    };
+
+    Meteor.call('insertNotification', users);
     this.unfriend();
   },
 
@@ -49,22 +70,37 @@ Template.show.events({
     var user = Meteor.users.findOne({
     username: Router.current().params.username})._id;
 
+    var users = {
+      invited:Router.current().params.username,
+      inviter: Meteor.user().username,
+      seen:false,
+      type:"photo",
+      action:"accepted"
+    };
+
     var request = Meteor.requests.findOne({
       userId: Meteor.userId(),
       requesterId: user
     });
+
+    Meteor.call('insertNotification', users);
     request && request.accept();
 
   },
 
 
-  'click  [name=deny]': function() {
-    var request = Meteor.requests.findOne({
-      requesterId: Meteor.userId(),
-      userId: this._id
-    });
-    request && request.deny();
-  },
+  // 'click  [name=deny]': function() {
+  //   var user = Meteor.users.findOne({
+  //   username: Router.current().params.username})._id;
+  //
+  //   var request = Meteor.requests.findOne({
+  //     requesterId: user,
+  //     userId: Meteor.userId()
+  //   });
+  //
+  //
+  //   request && request.deny();
+  // },
 
   'click [name=chat]': function() {
     event.preventDefault();

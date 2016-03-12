@@ -63,8 +63,29 @@ Template.header.helpers({
     return ChatInvites.find({
       'inviter': currentUsersName
     });
+  },
 
+  accepted:function () {
+    return Notification.find({
+      invited: Meteor.user().username,
+      seen:false, type:"photo", action:"accepted"
+    });
+  },
+
+  cancelled:function () {
+    return Notification.find({
+      invited: Meteor.user().username,
+      seen:false, type:"photo", action:"cancel"
+    });
+  },
+
+  revoked:function () {
+    return Notification.find({
+      invited: Meteor.user().username,
+      seen:false, type:"photo", action:"revoke"
+    });
   }
+
 });
 
 Template.header.events({
