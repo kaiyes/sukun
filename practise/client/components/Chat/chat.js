@@ -1,34 +1,3 @@
-Template.messages.onRendered(function () {
-
-    this.autorun(function () {
-      var conversationId = Session.get('convoId');
-
-         Tracker.afterFlush(function() {
-           $('#chatWrapper').slimScroll({
-            height: '400px',
-            width: '1000px',
-            railVisible: true,
-            alwaysVisible: true,
-            //start: 'bottom',
-            size: '20px',
-            wheelStep: 70,
-          //  scrollTo: "110px",
-         });
-      });
-   });
-});
-
-Template.messages.onCreated(function () {
-
-    this.autorun(function () {
-      var conversationId = Session.get('convoId');
-         Tracker.afterFlush(function() {
-           $('.slimScrollBar').scrollTop((350));
-      });
-   });
-});
-
-
 
  Template.sidebar.helpers({
     'conversationsIstarted': function() {
@@ -49,8 +18,28 @@ Template.messages.onCreated(function () {
     'displayMessages': function() {
       var conversationId = Session.get("convoId");
       Meteor.subscribe("messages",conversationId);
-      return Meteor.conversations.findOne({
-        _id: conversationId
+      Meteor.subscribe('participants');
+      Meteor.subscribe('viewingConversation',conversationId);
+
+      var user = Meteor.participants.findOne({
+        conversationId:conversationId,
+        userId:{$ne:Meteor.userId()}
+      });
+
+      var unread = user.read;
+      if(unread==false){
+        var users = {
+          invited:user.user().username,
+          inviter: Meteor.user().username,
+          seen:false,
+          type:"chat"
+        };
+        Meteor.call('insertNotification',users);
+        console.log("not seeing");
+      };
+
+      return Meteor.messages.find({
+        conversationId:conversationId
       });
     }
   });

@@ -105,5 +105,12 @@
         </li>
     {{/each}}
 
+    {{#each newMessage}}
+        <li name="chatRoute">
+        <span class="black-text">
+         {{this.inviter}} messaged you</span>
+        </li>
+    {{/each}}
+
 </ul>
 </template>

@@ -49,7 +49,10 @@ Router.route('show', {
       Meteor.subscribe("payment"),
       Meteor.subscribe("request"),
       Meteor.subscribe("friends"),
-      Meteor.subscribe("chatInvites",user)
+      Meteor.subscribe("chatInvites",user),
+      Meteor.subscribe('conversation'),
+      Meteor.subscribe('participants')
+
    ]
   },
 
@@ -68,7 +71,8 @@ Router.route('show', {
 
      return [
        Meteor.subscribe("chatInvites",user),
-       Meteor.subscribe("conversation")
+       Meteor.subscribe("conversation"),
+       Meteor.subscribe('chatUsers')
     ]
    }
   });

@@ -65,6 +65,14 @@ Template.header.helpers({
     });
   },
 
+  newMessage: function() {
+    var currentUsersName = Meteor.user().username;
+    return Notification.find({
+      'invited': currentUsersName,
+       seen:false, type:"chat"
+    });
+  },
+
   accepted:function () {
     return Notification.find({
       invited: Meteor.user().username,
