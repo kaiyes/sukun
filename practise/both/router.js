@@ -50,9 +50,7 @@ Router.route('show', {
       Meteor.subscribe("request"),
       Meteor.subscribe("friends"),
       Meteor.subscribe("chatInvites",user),
-      Meteor.subscribe('conversation'),
-      Meteor.subscribe('participants')
-
+      Meteor.subscribe('conversation')
    ]
   },
 

@@ -18,28 +18,6 @@
     'displayMessages': function() {
       var conversationId = Session.get("convoId");
       Meteor.subscribe("messages",conversationId);
-      Meteor.subscribe('viewingConversation',conversationId);
-
-      var user = Meteor.participants.findOne({
-        conversationId:conversationId,
-        userId:{$ne:Meteor.userId()}
-      });
-
-      var unread = user.read;
-      var users = {
-        invited:user.user().username,
-        inviter: Meteor.user().username,
-        seen:false,
-        type:"chat"
-      };
-
-      if(unread){
-        Meteor.call('insertNotification',users);
-        console.log(unread);
-      }else {
-        Meteor.call('insertNotification',users);
-        console.log(unread);
-      };
 
       return Meteor.messages.find({
         conversationId:conversationId
@@ -66,6 +44,27 @@
             conversation.sendMessage(text);
           } //if message
           $('[name="message"]').val('');
+
+// code for unread messaging notification
+          var user = Meteor.participants.findOne({
+            conversationId:conversationId,
+            userId:{$ne:Meteor.userId()}
+          });
+
+          var unread = user.read;
+          var users = {
+            invited:user.user().username,
+            inviter: Meteor.user().username,
+            seen:false,
+            type:"chat"
+          };
+
+          if(unread===false){
+            console.log(unread);
+            Meteor.call('insertNotification',users);
+          }
+  // code for unread messaging notification
+
         } // if event
       } // if keyup
   });
