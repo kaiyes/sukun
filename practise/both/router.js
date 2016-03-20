@@ -8,6 +8,18 @@ Router.route('/login');
 Router.route('/payment');
 Router.route('/verifyEmail');
 
+Router.route('/adminChat', {
+  onBeforeAction: function() {
+    var check = Meteor.user().username;
+    if (check === "admin") {
+      this.next();
+    } else {
+      sweetAlert("you got lost !! Go Back");
+      Router.go("/list");
+    }
+  }
+});
+
 Router.route('/details',{
   onBeforeAction: function() {
     var verify = Meteor.user().emails[0].verified;

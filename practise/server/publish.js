@@ -89,7 +89,7 @@ Meteor.publish("messages", function(conversationId){
 Meteor.publish('participants', function (conversationId){
     check(conversationId, String);
     return Meteor.participants.find({
-      conversationId:conversationId  
+      conversationId:conversationId
     },{
        fields: {
          "conversationId": 1,
@@ -98,4 +98,16 @@ Meteor.publish('participants', function (conversationId){
          "userId":1
        }
   });
+});
+
+Meteor.publish("allConversations", function(){
+    return Meteor.conversations.find({});
+});
+
+Meteor.publish('allUsers', function () {
+    return Meteor.users.find({},{
+       fields: {
+         "username": 1,
+       }
+     });
 });

@@ -1,0 +1,57 @@
+<template name="adminChat">
+ {{#if currentUser}}
+    <div class="container">
+            {{> adminSidebar }}
+            {{> adminMessages }}
+            {{> adminInput }}
+    </div>
+  {{/if}}
+  <style>
+    body {background-color:  #ede7f6;}
+  </style>
+</template>
+
+<template name="adminSidebar">
+<div id="sidebar-wrapper">
+  <ul id="nav-mobile" class="side-nav fixed">
+    <li>
+        <a class="brand-logo"
+         style="font-size:25px;" href=" #">
+          conversations
+        </a>
+    </li>
+
+     {{#each allConversations}}
+        <li name="user">
+          <a href='#' style="font-size:17px;">
+            {{_id}}
+          </a>
+        </li>
+     {{/each}}
+  </ul>
+</div>
+</template>
+
+<template name="adminMessages">
+
+  {{#each displayMessages}}
+   <span class="bodyOfMessage">
+     {{user.username}}:
+     {{body}}
+   </span>
+   <br> <br> <br>
+  {{/each}}
+
+</template>
+
+<template name="adminInput">
+  <div id="inputMessage">
+    <label for="textarea">
+      Write your message here
+    </label>
+    <textarea id="textarea"
+      class="materialize-textarea"
+      name="message">
+    </textarea>
+  </div>
+</template>
