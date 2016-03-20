@@ -17,7 +17,7 @@ Template.register.events({
       },
       function(error) {
         if (error) {
-          console.log(error.reason);
+          sweetAlert(error.reason);
         } else {
           Router.go('details');
         }
@@ -42,7 +42,7 @@ Template.login.events({
       function(error) {
 
         if (error) {
-          console.log(error.reason);
+          sweetAlert(error.reason);
         } else {
           Router.go('list');
         };

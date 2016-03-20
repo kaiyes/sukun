@@ -3,10 +3,10 @@ Template.home.onCreated(function() {
       Accounts.verifyEmail(Accounts._verifyEmailToken, function(err) {
         if (err != null) {
           if (err.message = 'Verify email link expired [403]') {
-            console.log('Sorry this verification link has expired.')
+            sweetAlert("Sorry this verification link has expired.");
           }
         } else {
-          console.log('Thank you! Your email address has been confirmed.')
+          sweetAlert('Thank you! Your email address has been confirmed.');
         }
       });
     }

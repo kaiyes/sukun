@@ -126,6 +126,7 @@ Template.show.events({
     if(paidUser){
          if (!linkExists) {
            console.log("no link, sends the message");
+           sweetAlert("chat started, Fear Allah & keep it minimum");
            var conversation = new Conversation().save();
 
            var chatId = {
