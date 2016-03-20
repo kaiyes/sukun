@@ -86,8 +86,16 @@ Meteor.publish("messages", function(conversationId){
 });
 
 
-Meteor.publish('participants', function () {
+Meteor.publish('participants', function (conversationId){
+    check(conversationId, String);
     return Meteor.participants.find({
-
-    });
+      conversationId:conversationId  
+    },{
+       fields: {
+         "conversationId": 1,
+         "userId": 1,
+         "read":1,
+         "userId":1
+       }
+  });
 });

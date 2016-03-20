@@ -30,7 +30,8 @@ Template.chat.onRendered(function () {
     'displayMessages': function() {
       var conversationId = Session.get("convoId");
       Meteor.subscribe("messages",conversationId);
-
+      Meteor.subscribe('participants',conversationId);
+      
       return Meteor.messages.find({
         conversationId:conversationId
       });
@@ -58,6 +59,7 @@ Template.chat.onRendered(function () {
           $('[name="message"]').val('');
 
 // code for unread messaging notification
+
           var user = Meteor.participants.findOne({
             conversationId:conversationId,
             userId:{$ne:Meteor.userId()}
