@@ -18,7 +18,6 @@
     'displayMessages': function() {
       var conversationId = Session.get("convoId");
       Meteor.subscribe("messages",conversationId);
-      Meteor.subscribe('participants');
       Meteor.subscribe('viewingConversation',conversationId);
 
       var user = Meteor.participants.findOne({
@@ -27,15 +26,19 @@
       });
 
       var unread = user.read;
-      if(unread==false){
-        var users = {
-          invited:user.user().username,
-          inviter: Meteor.user().username,
-          seen:false,
-          type:"chat"
-        };
+      var users = {
+        invited:user.user().username,
+        inviter: Meteor.user().username,
+        seen:false,
+        type:"chat"
+      };
+
+      if(unread){
         Meteor.call('insertNotification',users);
-        console.log("not seeing");
+        console.log(unread);
+      }else {
+        Meteor.call('insertNotification',users);
+        console.log(unread);
       };
 
       return Meteor.messages.find({
