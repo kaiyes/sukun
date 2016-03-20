@@ -85,13 +85,6 @@ Meteor.publish("messages", function(conversationId){
     });
 });
 
-Meteor.publish("chatUsers", function(){
-  return Meteor.users.find({},{
-     fields: {
-       "username": 1
-     }
-   });
-});
 
 Meteor.publish('participants', function () {
     return Meteor.participants.find({

@@ -1,3 +1,15 @@
+Template.chat.onRendered(function () {
+  this.autorun(function() {
+  var check = Meteor.user().profile.gender;
+
+   if (check==="male") {
+     Meteor.subscribe('find',"female");
+   } else {
+      Meteor.subscribe('find',"male");
+   }
+ })
+});
+
 
  Template.sidebar.helpers({
     'conversationsIstarted': function() {

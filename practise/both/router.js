@@ -8,13 +8,6 @@ Router.route('/login');
 Router.route('/payment');
 Router.route('/verifyEmail');
 
-Router.route('/admin',{
-  waitOn: function() {
-    return [Meteor.subscribe('users'),
-    Meteor.subscribe("payment")]
-  }
-});
-
 Router.route('/details',{
   onBeforeAction: function() {
     var verify = Meteor.user().emails[0].verified;
@@ -70,7 +63,6 @@ Router.route('show', {
      return [
        Meteor.subscribe("chatInvites",user),
        Meteor.subscribe("conversation"),
-       Meteor.subscribe('chatUsers'),
        Meteor.subscribe('participants')
     ]
    }
