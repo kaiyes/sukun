@@ -7,6 +7,9 @@ Router.route('/register');
 Router.route('/login');
 Router.route('/payment');
 Router.route('/verifyEmail');
+Router.route('/forgotPassword');
+Router.route('/resetPassword');
+
 
 Router.route('/adminChat', {
   onBeforeAction: function() {

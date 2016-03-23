@@ -1,6 +1,6 @@
 <template name="register">
    <div class="row">
-     <div class="col s4">
+     <div class="col s6">
       <div class = "card-panel grey lighten-2 center-align" >
         <form  class="register">
           <p>Email: <input type="email" name= "email">  </p>
@@ -20,7 +20,7 @@
 </template>
 
 
-<!-- .........................Login............... -->
+<!-- ..................Login............... -->
 
 <template name="login">
   <div class="row">
@@ -39,6 +39,12 @@
         <input class= "waves-effect waves-light btn-large"
         type="submit" value="login">
         </div>
+      </div>
+      <div class="row">
+        <div class="right-align" >
+         <a name="forgot" class="black-text"
+         href="{{pathFor 'forgotPassword'}}"> <u> forgot password ? </u></a>
+       </div>
       </div>
     </form>
   </div>

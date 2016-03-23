@@ -50,5 +50,4 @@ Template.login.events({
     $('[name="listName"]').val('');
     $('[name = password]').val('');
   }
-
 });

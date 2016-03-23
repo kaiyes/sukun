@@ -10,4 +10,9 @@ Template.home.onCreated(function() {
         }
       });
     }
+
+    if (Accounts._resetPasswordToken) {
+    Session.set('resetPassword', Accounts._resetPasswordToken);
+    Router.go("/resetPassword")
+   }
   });
