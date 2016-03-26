@@ -24,6 +24,7 @@ border-radius: 5px;
 #brandLogo{
   left: 10px;
   font-size: 25px;
+  color:black
 }
 
 #inputMessage{
@@ -43,6 +44,7 @@ border-radius: 5px;
 
 input[type=text], input[type=password], input[type=email] {
     font-size: 2rem;
+    color: black;
 }
 
 
@@ -102,6 +104,11 @@ input[type=text], input[type=password], input[type=email] {
   nav {
       background-color:#75BAEC;
   }
+
+  #navHome {
+    background-color:#326E97;
+
+  }
 /*
   [name="logout"] {
       color: black;
@@ -126,3 +133,18 @@ input[type=text], input[type=password], input[type=email] {
     border-radius:10px;
     font-size: 25px;
   }
+
+#signUp{
+   margin-right:10px;
+   font-size: 17px;
+}
+
+#loginNav{
+  margin-right:80px;
+}
+
+#forgot{
+  position:relative;;
+  left: 560px;
+  top: 25px;
+}

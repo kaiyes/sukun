@@ -1,11 +1,55 @@
 <template name="home">
- {{>style}}
+ {{>style_home}}
+ {{>homeNavbar}}
 <div class="container">
-  {{>login}} {{>register}}
 
   <div id="tagline" class="col s6">
-    <h4 class="tag"> Find Your Pure Match</h4>
-    <br>
+    <h4 class="center-align"> An Islamic Match-Making Platform </h4>
+    <h5 class="center-align"> For <i>Practising</i> Muslims</h5>
   </div>
+
+
+
+
+  <div class="center-align " id="signUp">
+    <a href="{{pathFor 'signUp'}}"
+    class="waves-effect waves-light btn btn-large orange darken-3">
+      Sign Up for Free
+    </a>
+  </div>
+
 </div>
+</template>
+
+
+
+
+<template name="homeNavbar">
+
+   <div class="navbar-fixed">
+     <nav id="navHome">
+    <div class="nav-wrapper">
+
+         <a href="#" id="brandLogo"
+         name="brand-logo" class="brand-logo left
+         hide-on-med-and-down">
+            <b>Sukun Matrimony </b>
+         </a>
+
+         <div class="center-align right" id="loginNav">
+            {{>login}}
+         </div>
+
+         <div id="forgot">
+           <div class="right">
+             <a class="black-text"
+             href="{{pathFor 'forgotPassword'}}">
+               <u> forgot password ? </u>
+             </a>
+           </div>
+         </div>
+      </div>
+    </nav>
+  </div>
+
 </template>

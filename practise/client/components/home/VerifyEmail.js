@@ -7,12 +7,13 @@ Template.home.onCreated(function() {
           }
         } else {
           sweetAlert('Thank you! Your email address has been confirmed.');
+          Router.go("/details");
         }
       });
     }
 
     if (Accounts._resetPasswordToken) {
     Session.set('resetPassword', Accounts._resetPasswordToken);
-    Router.go("/resetPassword")
+    Router.go("/resetPassword");
    }
   });

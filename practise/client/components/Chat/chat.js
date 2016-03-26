@@ -28,10 +28,11 @@ Template.chat.onRendered(function () {
 
   Template.messages.helpers({
     'displayMessages': function() {
-      var conversationId = Session.get("convoId");
+      var convoId = Session.get("convoId");
+      var conversationId = convoId.toString();
       Meteor.subscribe("messages",conversationId);
       Meteor.subscribe('participants',conversationId);
-      
+
       return Meteor.messages.find({
         conversationId:conversationId
       });
@@ -48,7 +49,8 @@ Template.chat.onRendered(function () {
   Template.input.events({
     'keyup [name=message]': function(event) {
         if (event.which == 13) {
-          var conversationId = Session.get("convoId");
+          var convoId = Session.get("convoId");
+          var conversationId = convoId.toString();
           var conversation = Meteor.conversations.findOne({
             _id: conversationId
           });
