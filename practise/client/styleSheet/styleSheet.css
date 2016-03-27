@@ -5,7 +5,7 @@
     border-radius: 10px;
     -webkit-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
-    transform: rotate(-3deg);
+    /*transform: rotate(3deg);*/
     box-shadow: 4px 4px 20px -4px rgba(0,0,0,0.75);
     float: right;
     margin: -30px 0 0 0;
@@ -52,7 +52,7 @@ border-radius: 5px;
 }
 
 .listText{
-  font-size: 15px;
+  font-size: 18px;
 }
 
 input[type=text], input[type=password], input[type=email] {
@@ -81,6 +81,11 @@ input[type=text], input[type=password], input[type=email] {
  }
 }
 
+@media only screen and (min-width: 1200px){
+html {
+    font-size: 13px;
+ }
+}
 
 @media (max-width: 650px) {
 
@@ -158,7 +163,7 @@ input[type=text], input[type=password], input[type=email] {
 
 #forgot{
   position:relative;;
-  left: 560px;
+  left: 416px;
   top: 25px;
 }
 
@@ -168,10 +173,32 @@ input[type=text], input[type=password], input[type=email] {
   margin-bottom: 47px;
 }
 
-#jumbo{
+#jumbo {
   margin-top: 35px;
 }
 
-#examplePic{
+#examplePic {
   margin-top: 45px;
+  margin-right: -94px;
+}
+
+#chatPic {
+  margin-top: 5px;
+  margin-right: 220px;
+}
+
+.collection {
+    margin: 1.5rem 0 1rem 0;
+    border: 3px solid #FFACAC;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+*, *:before, *:after {
+    box-sizing: initial;
+}
+
+.collection .collection-item.avatar .title {
+    font-size: 22px;
 }
