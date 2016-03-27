@@ -3,12 +3,28 @@
     {{>style_show}}
      <div class="container">
        <div class="card-panel">
-         <h4> টাঁকা দেন ? ফেল কড়ি মাখ তেল </h4>
-         <p>
-           Please Use BIKASH to pay &  fillup the form bellow to enter your BIKASH payment number
+         <h4> Please make payment through
+           Bikash number 01861005555 (মার্চেন্ট বিকাশ নম্বর)
+
+              </h4>
+         <p id="payment">
+           fillup the form bellow to enter your
+           BIKASH payment number. Then Message
+           your username,amount and "Sukun"
+           @ 01703305288, or you can just message us through the
+           website messaging system.
+           <br> <br>
+
+           After paying, You <b>must </b> let us know that you have paid
+           either through the messaging service in the website, or
+           via text message or phone.  <br> <br>
+
+           Barakallahu fik.
          </p>
          {{#if currentUser }}
-          {{> quickForm collection="Payment" id="payment" type="insert" omitFields="createdBy,paid"}}
+          {{> quickForm collection="Payment"
+          id="payment" type="insert"
+          omitFields="createdBy,paid"}}
          {{/if}}
        </div>
      </div>
