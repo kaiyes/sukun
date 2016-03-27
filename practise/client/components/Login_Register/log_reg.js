@@ -5,9 +5,11 @@ Template.register.events({
     var password = event.target.password.value;
     var gender = event.target.sex.value;
     var name = event.target.username.value;
+    var age = event.target.age.value;
     profile = {
       gender: gender,
-      hasDb:false
+      hasDb:false,
+      age:age
     };
     Accounts.createUser({
         email: email,

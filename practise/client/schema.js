@@ -3,11 +3,6 @@
 
   Biye.attachSchema(new SimpleSchema({
 
-    age: {
-      type: Number,
-      max: 60
-    },
-
     createdBy: {
       type: String,
       autoValue: function() {

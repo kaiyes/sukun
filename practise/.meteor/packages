@@ -32,12 +32,10 @@ socialize:messaging
 ixdi:material-design-iconic-font
 email
 
-
-momentjs:moment
-lbee:moment-helpers
 erasaur:notification-badge
 
 
 houston:admin
 kevohagan:sweetalert
 astronomerio:core
+meteorhacks:kadira@2.21.0
