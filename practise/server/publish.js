@@ -100,6 +100,30 @@ Meteor.publish('participants', function (conversationId){
   });
 });
 
+Meteor.publish("whoViewed", function(username){
+  check(username, String);
+
+   return DashBoard.find({
+     profileOf: username,
+     seen:false,
+     type:"profileView"
+    });
+});
+
+Meteor.publish("didIview", function(profileOwner,viewer){
+  check(profileOwner, String);
+  check(viewer, String);
+
+   return DashBoard.find({
+     profileOf: profileOwner,
+     viewer:viewer,
+     seen:false,
+     type:"profileView"
+    });
+});
+
+// below subs are for for admin
+
 Meteor.publish("allConversations", function(){
     return Meteor.conversations.find({});
 });

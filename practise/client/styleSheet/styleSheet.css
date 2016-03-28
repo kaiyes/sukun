@@ -65,8 +65,8 @@ input[type=text], input[type=password], input[type=email] {
   bottom: 30px;
 }
 
-#buttonLogout {
-  right: 10px;
+#logout {
+  margin-right: 20px;
 }
 
 #chatWrapper   {
@@ -119,7 +119,7 @@ html {
 
   }
 
-  nav {
+nav {
       background-color:#75BAEC;
   }
 
@@ -127,10 +127,11 @@ html {
     background-color:#66A8DC;
 
   }
-/*
+
   [name="logout"] {
       color: black;
-  }*/
+      font-size: small;
+  }
 
   .bodyOfMessage {
     position:relative;
@@ -205,4 +206,19 @@ html {
 
 #payment{
   font-size: 20px;
+}
+
+#photoRequest{
+  color:black;
+  font-size: small;
+}
+
+#chatRequest{
+  color:black;
+  font-size: small;
+}
+
+#dashBoard{
+  
+  font-size: small;
 }

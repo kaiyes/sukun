@@ -10,7 +10,7 @@
         {{/with}}
     </a>
 
-    <div class="center-align right">
+    <div id="logout" class="center-align right">
       <a href="#"  name="logout">Logout
       </a>
     </div>
@@ -21,7 +21,7 @@
     {{>notificationBadge count=photoCounter }}
   {{/if}}
     <a
-      class="dropdown-button"
+      class="dropdown-button" id="photoRequest"
       name ="photoSent" href="#"
       data-activates="dropdown1">Photo Requests
     </a>
@@ -31,13 +31,20 @@
     {{#if chatCounter}}
       {{>notificationBadge count=chatCounter }}
     {{/if}}
-    <a class="dropdown-button" name ="chatReceived"
+    <a class="dropdown-button"
+     name ="chatReceived" id = "chatRequest"
     href="#" data-activates="dropdown2">
      Chat Invitations
     </a>
   </li>
 
 </ul>
+
+<div id="dashBoard" class="center-align right">
+  <a href="{{pathFor 'dashBoard'}}" class="black-text">DashBoard
+  </a>
+</div>
+
     </div>
   </nav>
 </div>

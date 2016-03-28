@@ -26,5 +26,11 @@ Meteor.methods({
 startChat:function(chatId){
   check(chatId, Object);
   ChatInvites.insert(chatId);
- }
+},
+
+dashBoard: function(info){
+   check(info, Object);
+   DashBoard.insert(info);
+}
+
 });

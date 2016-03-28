@@ -1,3 +1,33 @@
+Template.show.onRendered(function() {
+
+    var profileOwner = Router.current().params.username;
+    var viewer = Meteor.user().username;
+
+    var info = {
+      profileOf:profileOwner,
+      viewer: viewer,
+      seen:false,
+      type:"profileView"
+    };
+
+    Meteor.subscribe('didIview', profileOwner,viewer);
+    var exists = DashBoard.findOne({
+        profileOf: profileOwner,
+        viewer:viewer,
+        seen:false,
+        type:"profileView"
+     });
+
+    if (exists) {
+         sweetAlert("exists");
+    }else{
+      Meteor.call('dashBoard', info);
+      sweetAlert("worked");
+    }
+
+
+});
+
 
 Template.show.helpers({
   detailsDb: function() {
