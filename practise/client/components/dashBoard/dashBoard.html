@@ -7,6 +7,7 @@
 
 <!-- ..........1st  section............  -->
 
+
 <div class="section fun-facts">
 <div class="row">
 <div class="col s12 m12">
@@ -17,12 +18,12 @@
  </span>
  <br> <br>
   {{#each whoViewed}}
-  <div class="col s12 m4">
+  <div class="col s2">
        <div class="card   blue lighten-2">
          <div class="card-content black-text">
            <span class="card-title black-text">
              <a href="/list/{{viewer}}" class="black-text">
-               <b>{{viewer}}</b> viewed your profile
+               <b>{{viewer}}</b>
              </a>
              <a href="#" id="delete"
              class="btn-floating btn-small
@@ -40,20 +41,21 @@
 </div>
 </div>
 
+
      <!-- ............2nd section............ -->
 
 <div class="section fun-facts">
 <div class="row">
 <div class="col s12 m12">
-<div class="card  purple lighten-3">
+<div class="card  green lighten-2">
 <div class="card-content black-text">
  <span class="card-title black-text">
    <b>You are currently messaging: </b>
  </span>
  <br> <br>
   {{#each conversationsIstarted}}
-  <div class="col s12 m4">
-       <div class="card orange lighten-2">
+  <div class="col s2">
+       <div class="card blue lighten-2">
          <div class="card-content black-text">
            <span class="card-title black-text">
              <a href="/chat" class="black-text">
@@ -65,8 +67,8 @@
   </div>
   {{/each}}
   {{#each conversationsIwasInvited}}
-  <div class="col s12 m4">
-       <div class="card orange lighten-2">
+  <div class="col s2">
+       <div class="card blue lighten-2">
          <div class="card-content black-text">
            <span class="card-title center-align">
              <a href="/chat"
@@ -90,15 +92,15 @@
 <div class="section fun-facts">
 <div class="row">
 <div class="col s12 m12">
-<div class="card  indigo lighten-3">
+<div class="card  green lighten-2">
 <div class="card-content black-text">
 <span class="card-title black-text">
-<b>You are currently messaging: </b>
+<b>You currently have photo access to: </b>
 </span>
 <br> <br>
 {{#each conversationsIstarted}}
-<div class="col s12 m4">
-  <div class="card light-blue darken-2">
+<div class="col s2">
+  <div class="card blue lighten-2">
     <div class="card-content black-text">
       <span class="card-title black-text">
         <a href="/chat" class="black-text">
@@ -110,8 +112,8 @@
 </div>
 {{/each}}
 {{#each conversationsIwasInvited}}
-<div class="col s12 m4">
-  <div class="card light-blue darken-2">
+<div class="col s2">
+  <div class="card blue lighten-2">
     <div class="card-content black-text">
       <span class="card-title center-align">
         <a href="/chat"

@@ -25,6 +25,7 @@ Template.dashBoard.helpers({
   }
 });
 
+
 Template.dashBoard.events({
   'click #delete': function() {
     event.preventDefault();
