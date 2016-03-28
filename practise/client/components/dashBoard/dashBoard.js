@@ -11,7 +11,8 @@ Template.dashBoard.helpers({
   },
 
   'conversationsIstarted': function() {
-    Meteor.subscribe("ChatInvites", Meteor.user().username);
+    var username = Meteor.user().username;
+    Meteor.subscribe("ChatInvites", username );
     return ChatInvites.find({
       inviter: Meteor.user().username
     });
