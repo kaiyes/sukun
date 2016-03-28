@@ -8,7 +8,19 @@ Template.dashBoard.helpers({
        type:"profileView",
        seen:true
       });
+  },
 
+  'conversationsIstarted': function() {
+    Meteor.subscribe("ChatInvites", Meteor.user().username);
+    return ChatInvites.find({
+      inviter: Meteor.user().username
+    });
+  },
+
+  'conversationsIwasInvited': function() {
+    return ChatInvites.find({
+      invited: Meteor.user().username
+    });
   }
 });
 

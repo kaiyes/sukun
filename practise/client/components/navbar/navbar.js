@@ -144,7 +144,6 @@ Template.header.events({
   'click  #dashBoard': function() {
     event.preventDefault();
     Meteor.call("clearDashNotification");
-    Router.go('/dashBoard')
   },
 
 });

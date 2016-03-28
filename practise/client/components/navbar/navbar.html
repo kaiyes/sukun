@@ -20,7 +20,7 @@
      {{#if dashBoardCounter}}
        {{>notificationBadge count=dashBoardCounter }}
      {{/if}}
-     <a href="{{pathFor 'dashBoard'}}"
+     <a href="#"
      class="dropdown-button" id = "dashBoard"
      data-activates="dropdown3">
        DashBoard
@@ -56,7 +56,7 @@
   </nav>
 </div>
 
-<!-- dropdown structure -->
+<!-- .........photo dropdown .............. -->
 
 <ul id="dropdown1" class="dropdown-content">
     {{#each requestFromPeople}}
@@ -104,6 +104,32 @@
     {{/each}}
 </ul>
 
+<!-- .........chat dropdown .............. -->
+
+<ul id="dropdown2" class="dropdown-content">
+    {{#each  youAreInvited}}
+       <li name="chatRoute">  <span class="black-text">
+       {{inviter}} wants to chat with You</span>
+      </li>
+    {{/each}}
+
+    {{#each  ihaveInvited}}
+        <li name="chatRoute">
+        <span class="black-text">
+        You have invited {{this.invited}}</span>
+        </li>
+    {{/each}}
+
+    {{#each newMessage}}
+        <li name="chatRoute">
+        <span class="black-text">
+         {{this.inviter}} messaged you</span>
+        </li>
+    {{/each}}
+
+</ul>
+
+<!-- .........dashBoard dropdown .............. -->
 
 <ul id="dropdown3" class="dropdown-content">
   {{#each dashBoard}}
