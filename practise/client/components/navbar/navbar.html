@@ -16,6 +16,17 @@
     </div>
 
 <ul class="right">
+  <li>
+     {{#if dashBoardCounter}}
+       {{>notificationBadge count=dashBoardCounter }}
+     {{/if}}
+     <a href="{{pathFor 'dashBoard'}}"
+     class="dropdown-button" id = "dashBoard"
+     data-activates="dropdown3">
+       DashBoard
+     </a>
+   </li>
+
  <li>
   {{#if photoCounter}}
     {{>notificationBadge count=photoCounter }}
@@ -40,16 +51,12 @@
 
 </ul>
 
-<div id="dashBoard" class="center-align right">
-  <a href="{{pathFor 'dashBoard'}}" class="black-text">DashBoard
-  </a>
-</div>
 
     </div>
   </nav>
 </div>
 
-<!-- dropdown1 structure -->
+<!-- dropdown structure -->
 
 <ul id="dropdown1" class="dropdown-content">
     {{#each requestFromPeople}}
@@ -65,7 +72,7 @@
     {{#each requestFromMe}}
       <li name="viewRouteAsk">
         <a href="/list/{{user.username}}"
-        class="black-test">
+        class="black-text">
         You have requested to
         view {{user.username}}'s photo </a>
       </li>
@@ -98,26 +105,14 @@
 </ul>
 
 
-<ul id="dropdown2" class="dropdown-content">
-    {{#each  youAreInvited}}
-       <li name="chatRoute">  <span class="black-text">
-       {{inviter}} wants to chat with You</span>
-      </li>
-    {{/each}}
-
-    {{#each  ihaveInvited}}
-        <li name="chatRoute">
-        <span class="black-text">
-        You have invited {{this.invited}}</span>
-        </li>
-    {{/each}}
-
-    {{#each newMessage}}
-        <li name="chatRoute">
-        <span class="black-text">
-         {{this.inviter}} messaged you</span>
-        </li>
-    {{/each}}
+<ul id="dropdown3" class="dropdown-content">
+  {{#each dashBoard}}
+    <li name="dashBoardList">
+      <a href="{{pathFor 'dashBoard'}}"
+      class="black-text">
+       {{viewer}} viewed your profile </a>
+    </li>
+  {{/each}}
 
 </ul>
 </template>

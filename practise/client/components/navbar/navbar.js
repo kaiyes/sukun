@@ -6,6 +6,7 @@ Template.header.onRendered(function() {
     var Payment =   Meteor.subscribe("payment");
     var reqest = Meteor.subscribe("request");
     var chatInvites = Meteor.subscribe("chatInvites",username);
+    var dashBoard = Meteor.subscribe('whoViewed',username);
 
       Tracker.afterFlush(function() {
         $('.dropdown-button').dropdown({
@@ -92,7 +93,21 @@ Template.header.helpers({
       invited: Meteor.user().username,
       seen:false, type:"photo", action:"revoke"
     });
-  }
+  },
+
+  dashBoardCounter:function () {
+    return DashBoard.find({
+      profileOf: Meteor.user().username,
+      seen:false, type:"profileView"
+    }).count();
+  },
+
+  dashBoard:function () {
+    return DashBoard.find({
+      profileOf: Meteor.user().username,
+      seen:false, type:"profileView"
+    });
+  },
 
 });
 
@@ -124,6 +139,12 @@ Template.header.events({
     }else{
       Router.go("payment");
     }
-  }
+  },
+
+  'click  #dashBoard': function() {
+    event.preventDefault();
+    Meteor.call("clearDashNotification");
+    Router.go('/dashBoard')
+  },
 
 });

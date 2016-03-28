@@ -31,6 +31,18 @@ startChat:function(chatId){
 dashBoard: function(info){
    check(info, Object);
    DashBoard.insert(info);
+},
+
+clearDashNotification: function(){
+ DashBoard.update(
+   {profileOf:Meteor.user().username,type:"profileView"},
+   {$set:{seen:true}}, { multi: true });
+},
+
+remove: function(id){
+  check(id, String);
+  DashBoard.remove({_id:id});
 }
+
 
 });

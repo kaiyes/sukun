@@ -11,6 +11,7 @@ Template.show.onRendered(function() {
     };
 
     Meteor.subscribe('didIview', profileOwner,viewer);
+
     var exists = DashBoard.findOne({
         profileOf: profileOwner,
         viewer:viewer,

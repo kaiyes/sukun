@@ -105,10 +105,21 @@ Meteor.publish("whoViewed", function(username){
 
    return DashBoard.find({
      profileOf: username,
-     seen:false,
-     type:"profileView"
+     type:"profileView",
+     seen:false
     });
 });
+
+Meteor.publish("dashBoard", function(username){
+  check(username, String);
+
+   return DashBoard.find({
+     profileOf: username,
+     type:"profileView",
+     seen:true
+    });
+});
+
 
 Meteor.publish("didIview", function(profileOwner,viewer){
   check(profileOwner, String);
