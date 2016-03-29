@@ -3,57 +3,67 @@
  {{>homeNavbar}}
 <div class="container">
 
-  <div id="jumbo" class="row">
+<div class="section">
+  <div class="row">
+   <div class="col s12 m12">
     <div class="center-align">
-      <h3 class="center-align"> An Islamic Match-Making Platform </h3>
-      <h4 class="center-align"> For <i>Practising</i> Muslims</h4>
+      <h2 class="center-align"> An Islamic Match-Making Platform </h2>
+      <h3 class="center-align"> For <i>Practising</i> Muslims</h3>
     </div>
-  </div>
-
-<div class="row">
-  <div id="ico" class="center-align">
-      <span class="left">
-      <img height="33" src="http://res-2.cloudinary.com/cloudinary/image/asset/c_scale,dpr_2.0,h_33,w_39/ico-powerful-admin-sm-2x-a49fc8b85b7373b2f69d48b28513556e.png" width="39">
-       <h5>Chat Monitoring </h5>
-      </span>
-
-      <span class="right">
-      <img height="33" src="http://res-4.cloudinary.com/cloudinary/image/asset/c_scale,dpr_2.0,h_29,w_38/ico-image-transform-sm-2x-6b6099d88e2bf4b010f62d25018eacb0.png" width="38">
-      <h5>Image Request-Deny System </h5>
-      </span>
+   </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="center-align " id="signUp">
-    <a href="{{pathFor 'signUp'}}"
-    class="waves-effect waves-light btn btn-large orange darken-3">
-      Sign Up for Free
-    </a>
+<div class="section">
+  <div class="row">
+    <div class="center-align " id="signUp">
+      <a href="{{pathFor 'signUp'}}"
+      class="waves-effect waves-light btn btn-large orange darken-3">
+        Sign Up for Free
+      </a>
+    </div>
   </div>
 </div>
-
-  <div id="examplePic" class="row">
-    <div class="col s6">
-       <img class="responsive-img
-       materialbox initialized" width="600"
-        src="/revoke.png">
+<br><br>
+<div class="section">
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="center">
+        <i class="large material-icons">notifications_active</i>
+        <h4 class="center">Notification System</h4>
+        <p id="paragraph" class="center">
+          You will be notified instantly if any user sends you a message
+          or asks permission for your photo. You will also be notified if
+          someone views your profile. This real-time notification makes sure
+          that you do not miss anything important !
+        </p>
+      </div>
     </div>
-
-    <div class="col s6">
-       <img class="responsive-img
-       materialbox initialized" width="600"
-        src="/grant.png">
+    <div class="col s12 m4">
+      <div class="center">
+        <i class="large material-icons">chat</i>
+        <h4 class="center">Chat Monitoring</h4>
+        <p id="paragraph" class="center">
+          All the chats are monitored by the admin. Also, only paid members can
+         chat, and we know only those serious for marriage becomes a paid memeber.
+         If anyone behaves out of line, you can contact the admin through the pink
+         message box on the bottom right corner.</p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="center">
+        <i class="large material-icons">camera_front</i>
+        <h4 class="center">Image Request-Deny System</h4>
+        <p id="paragraph" class="center">
+         We have a state of the art image request-deny-revoke system.
+         No one can view your photo unless you give them access. Also
+         you can revoke access to your photo anytime you choose to do so.
+        </p>
+      </div>
     </div>
   </div>
+ </div>
 
-  <div id="chatPic" class="row">
-    <div class="center-align">
-       <img class="responsive-img
-       materialbox initialized" width="600"
-        src="/chat.png">
-    </div>
-  </div>
 
 
 

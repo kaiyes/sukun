@@ -5,9 +5,9 @@
   <div class="nav-wrapper">
     <a href="{{pathFor 'list'}}" id="brandLogo"
     name="brand-logo" class="brand-logo left hide-on-med-and-down">
-        {{#with me }}
-            {{username}}
-        {{/with}}
+
+            {{currentUser.username}}
+
     </a>
 
     <div id="logout" class="center-align right">

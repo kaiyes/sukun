@@ -28,11 +28,6 @@ Template.header.onRendered(function() {
 
 
 Template.header.helpers({
-  me: function() {
-    return Meteor.users.findOne({
-      _id: Meteor.userId()
-    });
-  },
 
   photoCounter: function() {
     return Notification.find({

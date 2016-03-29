@@ -211,14 +211,10 @@
 <div id="myProfile" class="col s12">
 
     <div>
-      {{#with me}}
-        <h2> {{username}}'s profile </h2>
-      {{/with}}
-
-
+        <h2> {{currentUser.username}}'s profile </h2>
     </div>
     {{#with  myProfile}}
-        <div class="col s4">
+        <div class="col s4 right">
            <img class="responsive-img
            materialboxed initialized" width="400"
             src=" {{image}}" alt="">
