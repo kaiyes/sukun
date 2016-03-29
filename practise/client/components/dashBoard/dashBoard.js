@@ -65,6 +65,17 @@ Template.dashBoard.helpers({
      });
   },
 
+  myProfile: function() {
+    Meteor.subscribe('biye',Meteor.userId());
+    return Biye.findOne({createdBy: Meteor.userId()});
+  },
+
+  me: function() {
+    return Meteor.users.findOne({
+      _id: Meteor.userId()
+    });
+  }, 
+
 
 });
 
