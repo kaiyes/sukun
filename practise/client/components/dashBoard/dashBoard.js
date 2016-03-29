@@ -1,3 +1,12 @@
+
+Template.dashBoard.onRendered(function(){
+  $(document).ready(function(){
+      $('ul.tabs').tabs();
+    });
+
+});
+
+
 Template.dashBoard.helpers({
    whoViewed: function() {
      var username = Meteor.user().username;
