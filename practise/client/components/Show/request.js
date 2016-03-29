@@ -20,10 +20,9 @@ Template.show.onRendered(function() {
      });
 
     if (exists) {
-         sweetAlert("exists");
+        console.log("exists");
     }else{
-      Meteor.call('dashBoard', info);
-      sweetAlert("worked");
+        Meteor.call('dashBoard', info);
     }
 
 

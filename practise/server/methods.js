@@ -42,6 +42,11 @@ clearDashNotification: function(){
 remove: function(id){
   check(id, String);
   DashBoard.remove({_id:id});
+},
+
+removeRevoke: function(id){
+  check(id, String);
+  Notification.remove({_id:id});
 }
 
 

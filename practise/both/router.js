@@ -8,7 +8,16 @@ Router.route('/payment');
 Router.route('/verifyEmail');
 Router.route('/forgotPassword');
 Router.route('/resetPassword');
-Router.route('/dashBoard');
+Router.route('/dashBoard',{
+
+  waitOn: function() {
+    var user = Meteor.user().username;
+    return [
+    //  Meteor.subscribe("request"),
+      Meteor.subscribe("friends")
+   ]
+  }
+  });
 
 Router.route('/adminChat', {
   onBeforeAction: function() {
@@ -53,10 +62,10 @@ Router.route('show', {
     var user = Meteor.user().username;
     return [
       Meteor.subscribe('users',username),
-      Meteor.subscribe("payment"),
-      Meteor.subscribe("request"),
+    //  Meteor.subscribe("payment"),
+      //Meteor.subscribe("request"),
       Meteor.subscribe("friends"),
-      Meteor.subscribe("chatInvites",user),
+    //  Meteor.subscribe("chatInvites",user),
       Meteor.subscribe('conversation')
    ]
   },

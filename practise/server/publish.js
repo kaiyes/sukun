@@ -133,6 +133,15 @@ Meteor.publish("didIview", function(profileOwner,viewer){
     });
 });
 
+Meteor.publish("revokeNotification", function(username){
+  check(username, String);
+
+   return Notification.find({
+     invited: username,seen:true,
+     type:"photo", action:"revoke"
+    });
+});
+
 // below subs are for for admin
 
 Meteor.publish("allConversations", function(){

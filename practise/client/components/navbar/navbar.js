@@ -2,11 +2,19 @@ Template.header.onRendered(function() {
 
   this.autorun(function(){
     var username = Meteor.user().username;
+    var gender = Meteor.user().profile.gender;
     var notification = Meteor.subscribe("notification",username);
     var Payment =   Meteor.subscribe("payment");
     var reqest = Meteor.subscribe("request");
     var chatInvites = Meteor.subscribe("chatInvites",username);
     var dashBoard = Meteor.subscribe('whoViewed',username);
+
+    if (gender==="male") {
+      Meteor.subscribe('find',"female");
+    } else {
+       Meteor.subscribe('find',"male");
+    };
+
 
       Tracker.afterFlush(function() {
         $('.dropdown-button').dropdown({

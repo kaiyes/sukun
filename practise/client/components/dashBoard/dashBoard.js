@@ -22,7 +22,33 @@ Template.dashBoard.helpers({
     return ChatInvites.find({
       invited: Meteor.user().username
     });
-  }
+  },
+
+  'requestFromMe': function() {
+    return Meteor.requests.find({
+      requesterId: Meteor.userId()
+    });
+  },
+
+  'requestFromPeople': function() {
+    return Meteor.requests.find({
+      userId: Meteor.userId()
+    });
+  },
+
+  'friends': function() {
+    return Meteor.user().friendsAsUsers()
+  },
+
+  'revokedNotify': function() {
+    Meteor.subscribe("revokeNotification", Meteor.user().username );
+    return Notification.find({
+      invited: Meteor.user().username,
+      seen:true,
+      action:"revoke"
+     });
+  },
+
 });
 
 
@@ -31,5 +57,13 @@ Template.dashBoard.events({
     event.preventDefault();
     var id = this._id;
     Meteor.call('remove', id);
-  }
+  },
+
+  'click #deleteRevoke': function() {
+    event.preventDefault();
+    var id = this._id;
+    Meteor.call('removeRevoke', id);
+  },
+
+
 });
