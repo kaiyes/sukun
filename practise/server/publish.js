@@ -142,6 +142,13 @@ Meteor.publish("revokeNotification", function(username){
     });
 });
 
+Meteor.publish("fav", function(){
+
+   return Favourite.find({
+       whosFav: this.userId
+    });
+});
+
 // below subs are for for admin
 
 Meteor.publish("allConversations", function(){

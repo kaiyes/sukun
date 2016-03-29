@@ -49,6 +49,14 @@ Template.dashBoard.helpers({
      });
   },
 
+  'favourite': function() {
+    Meteor.subscribe("fav");
+    return Favourite.find({
+        whosFav: Meteor.userId()
+     });
+  },
+
+
 });
 
 
@@ -63,7 +71,8 @@ Template.dashBoard.events({
     event.preventDefault();
     var id = this._id;
     Meteor.call('removeRevoke', id);
-  },
+  }
+
 
 
 });

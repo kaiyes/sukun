@@ -226,3 +226,7 @@ nav {
 #tables{
   font-size: large;
 }
+
+#favourite{
+  border-radius: 12px;
+}

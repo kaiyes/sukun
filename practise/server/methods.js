@@ -47,6 +47,11 @@ remove: function(id){
 removeRevoke: function(id){
   check(id, String);
   Notification.remove({_id:id});
+},
+
+insertFavourite: function(info){
+   check(info, Object);
+   Favourite.insert(info);
 }
 
 

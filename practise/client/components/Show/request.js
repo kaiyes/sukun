@@ -188,5 +188,14 @@ Template.show.events({
      }else{
         Router.go('/payment');
      };
+  },
+
+  'click #favourite': function() {
+    event.preventDefault();
+    var info = {
+      username: Router.current().params.username,
+      whosFav : Meteor.userId()
+    }
+    Meteor.call('insertFavourite', info);
   }
 });
