@@ -1,0 +1,102 @@
+<template name="photo">
+  {{>style_list}}
+   {{>header}}
+
+
+<div class="container">
+
+{{#if currentUser}}
+
+
+ <div class="section fun-facts">
+  <div class="row">
+   <div class="col s12 m12">
+    <div class="card  green lighten-2">
+     <div id="tables" class="card-content black-text">
+     <span class="card-title black-text">
+       <b>You currently have photo access to: </b>
+      </span>
+
+ <table class="responsive-table centered">
+  <thead>
+    <tr>
+        <th data-field="requested">Requested</th>
+        <th data-field="accessed">Granted Access</th>
+        <th data-field="revoked">Revoked</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+         <td>
+           {{#each requestFromMe}}
+             <a href="/list/{{user.username}}"
+             class="btn indigo black-text">
+               {{user.username}}
+             </a>
+             <br><br>
+           {{/each}}
+
+           {{#each requestFromPeople}}
+             <a href="/list/{{requester.username}}"
+             class="btn indigo black-text">
+               {{requester.username}}
+             </a>
+             <br><br>
+           {{/each}}
+         </td>
+
+         <td>
+           {{#each friends}}
+             <a href="/list/{{username}}"
+             class="btn indigo black-text">
+               {{username}}
+             </a>
+             <br><br>
+           {{/each}}
+         </td>
+
+         <td>
+           {{#each theyRevoked}}
+           <div class="btn">
+             <a href="/list/{{inviter}}"
+             class="btn indigo black-text">
+               {{inviter}}
+             </a>
+             <a href="#" id="deleteRevoke"
+             class="btn-floating btn-small
+             waves-effect waves-light red right">
+               <i class="material-icons">cancel</i>
+             </a>
+           </div>
+           <br><br>
+           {{/each}}
+            
+           {{#each iRevoked}}
+           <div class="btn">
+             <a href="/list/{{inviter}}"
+             class="btn indigo black-text">
+               {{invited}}
+             </a>
+             <a href="#" id="deleteRevoke"
+             class="btn-floating btn-small
+             waves-effect waves-light red right">
+               <i class="material-icons">cancel</i>
+             </a>
+           </div>
+           <br><br>
+           {{/each}}
+         </td>
+    </tr>
+  </tbody>
+    </table>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ {{/if}}
+
+</div>
+</template>

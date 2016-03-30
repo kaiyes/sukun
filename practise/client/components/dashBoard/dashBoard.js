@@ -33,31 +33,6 @@ Template.dashBoard.helpers({
     });
   },
 
-  'requestFromMe': function() {
-    return Meteor.requests.find({
-      requesterId: Meteor.userId()
-    });
-  },
-
-  'requestFromPeople': function() {
-    return Meteor.requests.find({
-      userId: Meteor.userId()
-    });
-  },
-
-  'friends': function() {
-    return Meteor.user().friendsAsUsers()
-  },
-
-  'revokedNotify': function() {
-    Meteor.subscribe("revokeNotification", Meteor.user().username );
-    return Notification.find({
-      invited: Meteor.user().username,
-      seen:true,
-      action:"revoke"
-     });
-  },
-
   'favourite': function() {
     Meteor.subscribe("fav");
     return Favourite.find({
@@ -68,14 +43,7 @@ Template.dashBoard.helpers({
   myProfile: function() {
     Meteor.subscribe('biye',Meteor.userId());
     return Biye.findOne({createdBy: Meteor.userId()});
-  },
-
-  me: function() {
-    return Meteor.users.findOne({
-      _id: Meteor.userId()
-    });
-  }, 
-
+  }
 
 });
 

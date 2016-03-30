@@ -8,16 +8,8 @@ Router.route('/payment');
 Router.route('/verifyEmail');
 Router.route('/forgotPassword');
 Router.route('/resetPassword');
-Router.route('/dashBoard',{
-
-  waitOn: function() {
-    var user = Meteor.user().username;
-    return [
-    //  Meteor.subscribe("request"),
-      Meteor.subscribe("friends")
-   ]
-  }
-  });
+Router.route('/photo');
+Router.route('/dashBoard');
 
 Router.route('/adminChat', {
   onBeforeAction: function() {
@@ -62,10 +54,7 @@ Router.route('show', {
     var user = Meteor.user().username;
     return [
       Meteor.subscribe('users',username),
-    //  Meteor.subscribe("payment"),
-      //Meteor.subscribe("request"),
       Meteor.subscribe("friends"),
-    //  Meteor.subscribe("chatInvites",user),
       Meteor.subscribe('conversation')
    ]
   },
@@ -78,14 +67,4 @@ Router.route('show', {
    }
  });
 
- Router.route('/chat',{
-
-   waitOn: function() {
-   var user = Meteor.user().username;
-
-     return [
-       Meteor.subscribe("chatInvites",user),
-       Meteor.subscribe("conversation")
-    ]
-   }
-  });
+ Router.route('/chat');

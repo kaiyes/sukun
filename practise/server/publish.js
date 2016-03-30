@@ -137,8 +137,12 @@ Meteor.publish("revokeNotification", function(username){
   check(username, String);
 
    return Notification.find({
-     invited: username,seen:true,
-     type:"photo", action:"revoke"
+
+     $or: [{invited: username,seen:true,
+           type:"photo", action:"revoke"},
+          {inviter: username,seen:true,
+          type:"photo", action:"revoke"}]
+
     });
 });
 

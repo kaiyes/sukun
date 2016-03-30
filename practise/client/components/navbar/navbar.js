@@ -124,12 +124,14 @@ Template.header.events({
 
   'click [name=photoSent]': function() {
     event.preventDefault();
-    Meteor.call("clearPhotoNotification")
+    Meteor.call("clearPhotoNotification");
+    Router.go('/photo');
   },
 
   'click [name=chatReceived]': function() {
     event.preventDefault();
-    Meteor.call("clearChatNotification")
+    Meteor.call("clearChatNotification");
+    Router.go('/chat');
   },
 
   'click [name=chatRoute]': function() {

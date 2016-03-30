@@ -1,18 +1,8 @@
-Template.chat.onRendered(function () {
-  this.autorun(function() {
-  var check = Meteor.user().profile.gender;
-
-   if (check==="male") {
-     Meteor.subscribe('find',"female");
-   } else {
-      Meteor.subscribe('find',"male");
-   }
- })
-});
-
 
  Template.sidebar.helpers({
     'conversationsIstarted': function() {
+      var user = Meteor.user().username;
+      Meteor.subscribe("conversation");
       return ChatInvites.find({
         inviter: Meteor.user().username
       });
