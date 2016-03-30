@@ -6,6 +6,7 @@ check(gender, String);
     fields: {
       "username": 1,
       "profile": 1,
+      createdAt:-1
     }
   });
 });

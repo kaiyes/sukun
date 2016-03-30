@@ -59,8 +59,13 @@ Template.dashBoard.events({
     event.preventDefault();
     var id = this._id;
     Meteor.call('removeRevoke', id);
-  }
+  },
 
+  'click #deleteFav': function() {
+    event.preventDefault();
+    var id = this._id;
+    Meteor.call('removeFavourite', id);
+  }
 
 
 });

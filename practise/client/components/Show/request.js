@@ -11,6 +11,7 @@ Template.show.onRendered(function() {
     };
 
     Meteor.subscribe('didIview', profileOwner,viewer);
+    Meteor.subscribe("fav");
 
     var exists = DashBoard.findOne({
         profileOf: profileOwner,
@@ -113,9 +114,16 @@ Template.show.events({
       requesterId: user
     });
 
-    Meteor.call('insertNotification', users);
-    request && request.accept();
+    var paidUser = Payment.findOne({
+     createdBy:Meteor.userId(),
+     "paid":true});
 
+   if(paidUser){
+     Meteor.call('insertNotification', users);
+     request && request.accept();
+   }else{
+     Router.go('/payment');
+   };
   },
 
 
@@ -196,6 +204,17 @@ Template.show.events({
       username: Router.current().params.username,
       whosFav : Meteor.userId()
     }
-    Meteor.call('insertFavourite', info);
+
+    var exists = Favourite.findOne({
+      username: Router.current().params.username,
+      whosFav : Meteor.userId()
+      });
+
+      if(!exists){
+        Meteor.call('insertFavourite', info);
+      }else{
+        sweetAlert("subhanallah,I know you like this person. But you can only favourite just once !!")
+      }
+
   }
 });

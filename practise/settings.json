@@ -1,0 +1,16 @@
+
+{
+  "public": {
+    "CLOUDINARY_API_KEY": "274143427529475",
+    "CLOUDINARY_CLOUD_NAME": "kaiyes",
+
+    "astronomer": {
+      "appId": "f5TjeHBkR9dcTPoT8",
+      "disableUserTracking": false,
+      "disableRouteTracking": false,
+      "disableMethodTracking": false
+    }
+  },
+
+  "CLOUDINARY_API_SECRET": "PriWX5dZ_2gozkekITMnShwW5J8"
+}

@@ -131,7 +131,14 @@ Template.header.events({
   'click [name=chatReceived]': function() {
     event.preventDefault();
     Meteor.call("clearChatNotification");
-    Router.go('/chat');
+    var paidUser = Payment.findOne({
+      createdBy:Meteor.userId(),  "paid":true
+      });
+    if(paidUser){
+      Router.go("chat");
+    }else{
+      Router.go("payment");
+    }
   },
 
   'click [name=chatRoute]': function() {

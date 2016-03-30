@@ -52,6 +52,11 @@ removeRevoke: function(id){
 insertFavourite: function(info){
    check(info, Object);
    Favourite.insert(info);
+},
+
+removeFavourite: function(id){
+  check(id, String);
+  Favourite.remove({_id:id});
 }
 
 
