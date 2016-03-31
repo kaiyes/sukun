@@ -1,5 +1,5 @@
 
- Template.sidebar.helpers({
+ Template.chat.helpers({
     'conversationsIstarted': function() {
       var user = Meteor.user().username;
       Meteor.subscribe("conversation");
@@ -12,11 +12,8 @@
       return ChatInvites.find({
         invited: Meteor.user().username
       });
-    }
+    },
 
-  });
-
-  Template.messages.helpers({
     'displayMessages': function() {
       var convoId = Session.get("convoId");
       var conversationId = convoId.toString();
@@ -27,16 +24,17 @@
         conversationId:conversationId
       });
     }
+
   });
 
-  Template.sidebar.events({
+
+
+  Template.chat.events({
     'click [name=user]': function() {
       Session.set("convoId", this.convoId);
       console.log(this.convoId);
-    }
-  });
+    },
 
-  Template.input.events({
     'keyup [name=message]': function(event) {
         if (event.which == 13) {
           var convoId = Session.get("convoId");

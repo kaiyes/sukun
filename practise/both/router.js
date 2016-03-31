@@ -3,6 +3,7 @@ Router.route('/', {
   template: "home"
 });
 
+Router.route('/loginPage');
 Router.route('/signUp');
 Router.route('/payment');
 Router.route('/verifyEmail');

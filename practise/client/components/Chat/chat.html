@@ -1,66 +1,64 @@
 <template name="chat">
+  {{>style_chat}}
  {{#if currentUser}}
-    {{>header}}
-    <div class="container">
-            {{> sidebar }}
-            {{> messages }}
-            {{> input }}
-    </div>
-  {{/if}}
-  <style>
-    body {background-color:  #ede7f6;}
-  </style>
-</template>
+       {{>header}}
 
-<template name="sidebar">
-<div id="sidebar-wrapper">
-  <ul id="nav-mobile" class="side-nav fixed">
-    <li>
-        <a class="brand-logo"
-         style="font-size:25px;" href=" #">
-          conversations
-        </a>
-    </li>
+<div class="row">
+ <div id="sidebar-wrapper" class="col s3">
+   <ul id="nav-mobile" class="side-nav fixed">
+     <li>
+         <a class="brand-logo hide-on-med-and-down"
+          style="font-size:25px;" href=" #">
+           conversations
+         </a>
+     </li>
 
-    {{#each conversationsIstarted}}
-        <li name="user">
-           <a href='#' style="font-size:17px;">
-            {{invited}}
-          </a>
-        </li>
-    {{/each}}
-
-     {{#each conversationsIwasInvited}}
-        <li name="user">
-          <a href='#' style="font-size:17px;">
-            {{inviter}}
-          </a>
-        </li>
+     {{#each conversationsIstarted}}
+         <li name="user">
+            <a href='#' style="font-size:17px;">
+             {{invited}}
+           </a>
+         </li>
      {{/each}}
-  </ul>
+
+      {{#each conversationsIwasInvited}}
+         <li name="user">
+           <a href='#' style="font-size:17px;">
+             {{inviter}}
+           </a>
+         </li>
+      {{/each}}
+   </ul>
+ </div>
+
+ <div class="col s9 m9 right">
+   <div class="container">
+   {{#each displayMessages}}
+    <span class="bodyOfMessage">
+      {{user.username}}:
+      {{body}}
+    </span>
+    <br> <br> <br>
+   {{/each}}
+ </div>
+  </div>
 </div>
+
+<footer>
+<div class="row">
+  <div id="inputMessage" class="input-field col s9 m9 right">
+    <input id="mesasges" type="text" name="message">
+    <label for="messages"> Write you messages here</label>
+  </div>
+</div>
+</footer>
+
+{{/if}}
 </template>
 
-<template name="messages">
 
-  {{#each displayMessages}}
-   <span class="bodyOfMessage">
-     {{user.username}}:
-     {{body}}
-   </span>
-   <br> <br> <br>
-  {{/each}}
-
-</template>
 
 <template name="input">
-  <div id="inputMessage">
-    <label for="textarea">
-      Write your message here
-    </label>
-    <textarea id="textarea"
-      class="materialize-textarea"
-      name="message">
-    </textarea>
-  </div>
+
+
 </template>

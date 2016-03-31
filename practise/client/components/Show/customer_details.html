@@ -99,9 +99,10 @@ class="waves-effect waves-light btn small orange">
               <span class="card-title black-text">Personal Info
                <i class="small material-icons right">face</i>
               </span>
-              <p> Age:{{age}}</p>
-              <p> Age:{{age}}</p>
-              <p> Age:{{age}}</p>
+              <p id="bigText"> Age:{{age}}</p>
+              <p id="bigText"> Height:{{height}}</p>
+              <p id="bigText"> Present Residence: {{PresentResidence}}</p>
+              <p id="bigText"> Original Residence: {{originalResidence}}</p>
             </div>
           </div>
      </div>
@@ -112,9 +113,10 @@ class="waves-effect waves-light btn small orange">
               <span class="card-title black-text">Education
                <i class="small material-icons right">receipt</i>
               </span>
-                <p> Age:{{age}}</p>
-                <p> Age:{{age}}</p>
-                <p> Age:{{age}}</p>
+                <p id="bigText"> last/Next Degree:{{lastOrNextDegree}}</p>
+                <p id="bigText"> School:{{school}}</p>
+                <p id="bigText"> College:{{college}}</p>
+                <p id="bigText"> University:{{university}}</p>
             </div>
           </div>
      </div>
@@ -125,9 +127,11 @@ class="waves-effect waves-light btn small orange">
               <span class="card-title black-text">Religious Facts
                <i class="material-icons right">brightness_3</i>
               </span>
-                <p> Age:{{age}}</p>
-                <p> Age:{{age}}</p>
-                <p> Age:{{age}}</p>
+                <p id="bigText"> Prayer:{{prayer}}</p>
+                <p id="bigText"> Religious History:{{religiousHistory}}</p>
+                <p id="bigText"> Hijab:{{ Hijab}}</p>
+                <p id="bigText"> Beard : {{beard}} </p>
+
             </div>
           </div>
      </div>
@@ -142,9 +146,8 @@ class="waves-effect waves-light btn small orange">
                <span class="card-title black-text">Family
               <i class="small material-icons right">account_box</i>
                </span>
-               <p> Age:{{age}}</p>
-               <p> Age:{{age}}</p>
-               <p> Age:{{age}}</p>
+               <p id="bigText"> Father:{{fathersJobDescription}}</p>
+               <p id="bigText"> Brother:{{ brothersJobDescription}}</p>
              </div>
            </div>
       </div>
@@ -155,9 +158,8 @@ class="waves-effect waves-light btn small orange">
                <span class="card-title black-text">Marital Status
                 <i class="small material-icons right">supervisor_account</i>
                </span>
-                 <p> Age:{{age}}</p>
-                 <p> Age:{{age}}</p>
-                 <p> Age:{{age}}</p>
+                 <p id="bigText"> Marital Status:{{maritalStatus}}</p>
+                 <p id="bigText"> Children(if any):{{numberOfChildren}}</p>
              </div>
            </div>
       </div>
@@ -165,12 +167,11 @@ class="waves-effect waves-light btn small orange">
       <div class="col s12 m4">
            <div class="card green lighten-2">
              <div class="card-content black-text">
-               <span class="card-title black-text">Religious Facts
+               <span class="card-title black-text">Job
                 <i class="material-icons right">brightness_3</i>
                </span>
-                 <p> Age:{{age}}</p>
-                 <p> Age:{{age}}</p>
-                 <p> Age:{{age}}</p>
+                 <p id="bigText">  Profession:{{ profession}}</p>
+                 <p id="bigText"> Job Title:{{jobTitle}}</p>
              </div>
            </div>
       </div>
@@ -184,8 +185,8 @@ class="waves-effect waves-light btn small orange">
          <div class="card green lighten-2">
              <div class="card-content black-text">
                    <i class="material-icons">face</i>
-                 <span class="card-title black-text">
-                   About Me
+                     <span class="card-title black-text">
+                   {{ aboutMe}}
                  </span>
              </div>
          </div>
@@ -207,7 +208,9 @@ class="waves-effect waves-light btn small orange">
    <div class="card blue lighten-2">
     <div class="card-content black-text">
       <i class="material-icons ">face</i>
-       <span class="card-title black-text">Looking For</span>
+       <span class="card-title black-text">
+         {{lookingFor}}
+       </span>
 
     </div>
    </div>
@@ -216,47 +219,35 @@ class="waves-effect waves-light btn small orange">
 </div>
 
    {{!-- ...................... section.......................  --}}
-           <div class="row">
+ <div class="row">
 
-             <div class="col s12 m4">
-                  <div class="card   blue lighten-2">
-                    <div class="card-content black-text">
-                      <span class="card-title black-text">Personal Info
-                       <i class="small material-icons right">face</i>
-                      </span>
-                      <p> Age:{{age}}</p>
-                      <p> Age:{{age}}</p>
-                      <p> Age:{{age}}</p>
-                    </div>
-                  </div>
-             </div>
+   <div class="col s12 m6">
+        <div class="card   blue lighten-2">
+          <div class="card-content black-text">
+            <span class="card-title black-text">Personal Info
+             <i class="small material-icons right">face</i>
+            </span>
+            <p id="bigText"> Age:{{mySpousesAgeShouldBe}}</p>
+            <p id="bigText"> Height:{{ mySpousesHeightShouldBe}}</p>
+            <p id="bigText"> Last/Next Degree:{{lastOrNextDegreeShouldBe}}</p>
+          </div>
+        </div>
+   </div>
 
-             <div class="col s12 m4">
-                  <div class="card blue lighten-2">
-                    <div class="card-content black-text">
-                      <span class="card-title black-text">Education
-                       <i class="small material-icons right">receipt</i>
-                      </span>
-                        <p> Age:{{age}}</p>
-                        <p> Age:{{age}}</p>
-                        <p> Age:{{age}}</p>
-                    </div>
-                  </div>
-             </div>
 
-             <div class="col s12 m4">
-                  <div class="card blue lighten-2">
-                    <div class="card-content black-text">
-                      <span class="card-title black-text">Religious Facts
-                       <i class="material-icons right">brightness_3</i>
-                      </span>
-                        <p> Age:{{age}}</p>
-                        <p> Age:{{age}}</p>
-                        <p> Age:{{age}}</p>
-                    </div>
-                  </div>
-             </div>
-           </div> {{!-- row end --}}
+   <div class="col s12 m6">
+        <div class="card blue lighten-2">
+          <div class="card-content black-text">
+            <span class="card-title black-text">Religious Facts
+             <i class="material-icons right">brightness_3</i>
+            </span>
+              <p id="bigText"> Hijab:{{whatKindOfHijabYourSpouseShouldWear}}</p>
+              <p id="bigText"> Prayer:{{youWantYourSpousesPrayerToBe}}</p>
+              <p id="bigText"> Beard:{{HeShouldHaveThisKindOfBeard}}</p>
+          </div>
+        </div>
+   </div>
+ </div> {{!-- row end --}}
 
 
  {{!-- ...................... section.......................  --}}

@@ -1,10 +1,11 @@
 <template name="details">
  {{>style_show}}
   <div class="container">
-    <div class="card-panel">
+    <div class="card-panel" id="form">
       {{#if currentUser }}
-       {{> quickForm collection="Biye" id="details" type="insert" omitFields="createdBy"}}
+        {{> quickForm collection="Biye" id="details" type="insert" omitFields="createdBy"}} 
       {{/if}}
+
     </div>
   </div>
 </template>

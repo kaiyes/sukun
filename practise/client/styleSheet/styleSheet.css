@@ -18,7 +18,6 @@ border-radius: 5px;
 
 .side-nav {
     background-color: rgb(175, 149, 231);
-    width:250px;
 }
 
 
@@ -29,14 +28,18 @@ border-radius: 5px;
 }
 
 #inputMessage{
-  position: fixed;
-  bottom: 1px;
-  margin-left: 300px;
-  width: 500px;
+margin-bottom: 1px;
 }
 
-.bodyOfMessage{
-  font-size: 25px;
+
+.bodyOfMessage {
+    font-size: 25px;
+    padding: 11px;
+    /*margin: 1em 0 3em;*/
+    color: #fff;
+    background: #075698;
+    border-radius: 10px;
+    /*left: 54px;*/
 }
 
 .listText{
@@ -53,20 +56,12 @@ input[type=text], input[type=password], input[type=email] {
   bottom: 30px;
 }
 
-#logout {
-  margin-right: 20px;
-}
-
-#chatWrapper   {
-    position: fixed;
-    left: 380px;
-    /*padding-left: 15px;*/
-}
 
 @media (max-width: 992px){
 .side-nav.fixed {
     left: 0%;
  }
+
 }
 
 @media only screen and (min-width: 1200px){
@@ -87,9 +82,8 @@ html {
   font-size: 14px;
  }
 
- #chatWrapper{
-     position: fixed;
-     left: 150 px;
+ nav ul a {
+     padding: 14px 15px;
  }
 
 }
@@ -100,7 +94,11 @@ html {
   right: 15px;
   display: block;
 
-  }
+}
+
+.notification-badge {
+    top: -10px;
+}
 
 nav {
       background-color:#75BAEC;
@@ -113,27 +111,8 @@ nav {
 
   [name="logout"] {
       color: black;
-      font-size: small;
-  }
-
-  .bodyOfMessage {
-    position:relative;
-    padding:15px;
-    margin:1em 0 3em;
-    color:#fff;
-    background:#075698;
-    border-radius:10px;
-    left: 50px;
-  }
-
-  .user {
-    position:relative;
-    padding:15px;
-    margin:1em 0 3em;
-    color:#fff;
-    background:#848ED8;
-    border-radius:10px;
-    font-size: 25px;
+      font-size: larger;
+      margin-right: 20px;
   }
 
 #signUp{
@@ -143,6 +122,7 @@ nav {
 
 #loginNav{
   margin-right:80px;
+  font-size: x-large;
 }
 
 #forgot{
@@ -172,20 +152,10 @@ nav {
   font-size: 20px;
 }
 
-#photoRequest{
-  color:black;
-  font-size: small;
+nav ul a {
+    color: black;
 }
 
-#chatRequest{
-  color:black;
-  font-size: small;
-}
-
-#dashBoard{
-  font-size: small;
-  color: black;
-}
 
 #tables{
   font-size: large;
@@ -201,4 +171,12 @@ nav {
 
 #paragraph{
   font-size: large;
+}
+
+#form{
+  font-size: large;
+}
+
+#bigText{
+  font-size: 24px;
 }
