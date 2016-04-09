@@ -5,6 +5,7 @@
 
     image: {
       type: String,
+      optional: true,
       autoform: {
         afFieldInput: {
           type: 'cloudinary'
@@ -15,43 +16,65 @@
     age: {
        type: Number,
        max: 55,
-       min:15
+       min:15,
+       optional: true
     },
 
     height: {
-       type: String
+       type: String,
+       optional: true
     },
 
      PresentResidence : {
-         type: String
+         type: String,
+         optional: true,
+         allowedValues: ['Dhaka-District',
+         'Chittagong-District','RajShahi-District',
+         'Sylhet-District','Khulna-District',
+         'Borishal-District','Rangpur-District','Mymensingh-District']
      },
 
     originalResidence : {
-         type: String
+         type: String,
+         optional: true,
+         allowedValues: ['Dhaka-District',
+         'Chittagong-District','RajShahi-District',
+         'Sylhet-District','Khulna-District',
+         'Borishal-District','Rangpur-District','Mymensingh-District']
      },
 
      lastOrNextDegree: {
         type: String,
-        allowedValues: ['Phd',
-        'Doctor','Engineer',
-        'Masters','Honours',
-        'Diploma','HSC','SSC']
+        optional: true,
+        allowedValues: ['Phd-completed','Phd-studying',
+                        'MBBS-completed','MBBS-studying',
+                        'BEng-completed','BEng-studying',
+                        'BSc-completed','BSc-studying',
+                        'Masters-completed','Masters-studying',
+                        'Honours-completed','Honours-studying',
+                        'Diploma-completed','Diploma-studying',
+                        'HSC-completed','HSC-studying',
+                        'SSC-completed','SSC-studying']
      },
 
      school : {
-         type: String
+         type: String,
+         optional: true
      },
 
      college : {
-         type: String
+         type: String,
+         optional: true
      },
 
      university : {
-         type: String
+         type: String,
+         optional: true
      },
 
      prayer: {
         type: String,
+        optional: true,
         allowedValues: ['Always pray', 'Sometimes miss fajr',
                          'Often pray','Before exam, I pray',
                           'Eid only','Jumuah Only',
@@ -60,8 +83,9 @@
 
      religiousHistory: {
         type: String,
+        optional: true,
         allowedValues: ['Started practising 1 or 2 years back',
-                          'Been practising for more than 3 years',
+                         'Been practising for more than 3 years',
                          'Been practising for more than 5 years',
                          'Revert Muslim','Have not started practising yet but want too soon',
                          'I have faith in my heart']
@@ -69,6 +93,7 @@
 
      hijab: {
         type: String,
+        optional: true,
         allowedValues: ['Always With Burkha/Abaya face open',
                         'Always with Burkha/Abaya with Niqab',
                         'Always with Scraf only',
@@ -81,76 +106,87 @@
 
      beard:{
        type: String,
-
+       optional: true,
        allowedValues: ['I have let my beard grow','I trim my beard',
-                       'No beaerd, shaved, will not keep beard',
-                       'No beaerd, shaved, will keep beard in future',
-                       'N/A']
+                       'No beard, shaved, will not keep beard',
+                       'No beard, shaved, will keep beard in future',
+                       'Not applicable for me as I am a girl']
      },
 
      fathersJobDescription: {
-         type: String
+         type: String,
+         optional: true
      },
-
-     brothersJobDescription: {
-         type: String
-     },
-
 
      maritalStatus: {
         type: String,
+        optional: true,
         allowedValues: ['Never Married', 'Annulled (Khula)',
                        'Divorced','widowed','Married']
      },
 
      numberOfChildren: {
-        type: Number
+        type: String,
+        optional: true,
+        allowedValues: ['Dont have children', '1',
+                       '2','3','4','5','6','7','8','9']
      },
 
       profession: {
-          type: String
+          type: String,
+          optional: true
       },
-
-     jobTitle: {
-         type: String
-     },
 
      aboutMe: {
         type: String,
         max: 20000,
+        optional: true,
         autoform: {
           rows: 50
         }
      },
 
      mySpousesAgeShouldBe: {
-        type: Number,
-        max: 55,
-        min:15
+        type: String,
+        optional: true,
+        allowedValues: [
+        '18-23',
+        '20-25',
+        '25-30','30-35',
+        '35-40',
+        '40-45','45-50']
      },
 
-     mySpousesHeightShouldBe: {
-        type: String
-     },
+     /*mySpousesHeightShouldBe: {
+        type: String,
+        optional: true
+     },*/
 
-     lastOrNextDegreeShouldBe: {
+     myPartnerShouldHaveThisDegree: {
        type: String,
-       allowedValues: ['Phd',
-       'Doctor','Engineer',
-       'Masters','Honours',
-       'Diploma','HSC','SSC']
+       optional: true,
+       allowedValues: ['Phd-completed','Phd-studying',
+       'MBBS-completed','Doctor',
+       'BEng-completed','BEng-studying',
+       'Masters-completed','Masters-studying',
+       'Honours-completed','Honours-studying',
+       'Diploma-completed','Diploma-completed',
+       'HSC-completed','HSC-completed',
+       'SSC-studying','SSC-completed']
     },
 
     youWantYourSpousesPrayerToBe: {
        type: String,
+       optional: true,
        allowedValues: ['Always pray', 'Sometimes miss fajr',
                         'Often pray','Before exam, I pray',
                          'Eid only','Jumuah Only',
                          'Will start praying very soon']
     },
 
-    whatKindOfHijabYourSpouseShouldWear: {
+    /*whatKindOfHijabYourSpouseShouldWear: {
        type: String,
+       optional: true,
        allowedValues: ['Always With Burkha/Abaya face open',
                        'Always with Burkha/Abaya with Niqab',
                        'Always with Scraf only',
@@ -159,21 +195,22 @@
                        '(Male only) Shirt,trousers,casual clothing',
                        '(Male only) Panjabi','(Male only) Jobba',
                         'anything that maintains Sunnah']
-    },
+    },*/
 
-    HeShouldHaveThisKindOfBeard:{
+    /*HeShouldHaveThisKindOfBeard:{
       type: String,
-
+      optional: true,
       allowedValues: ['I have let my beard grow','I trim my beard',
                       'No beaerd, shaved, will not keep beard',
                       'No beaerd, shaved, will keep beard in future',
                       'n/a']
-    },
+    },*/
 
 
      lookingFor: {
         type: String,
         max: 20000,
+        optional: true,
         autoform: {
           rows: 50
        }
