@@ -1,7 +1,5 @@
 # Matrimony
 
-# Matrimony
-
 This is a web app made entirely with Meteor. This app is a basic matchmaking app. 
 
 To run this app, 
