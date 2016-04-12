@@ -57,12 +57,12 @@ Template.show.events({
       action:"add"
     };
 
-      if(paidUser){
+      /*if(paidUser){*/
         this.requestFriendship();
         Meteor.call('insertNotification', users);
-      }else{
+      /*}else{
         Router.go('/payment');
-      };
+      };*/
   },
 
   'click  [name=cancel-request]': function() {
@@ -118,12 +118,12 @@ Template.show.events({
      createdBy:Meteor.userId(),
      "paid":true});
 
-   if(paidUser){
+   /*if(paidUser){*/
      Meteor.call('insertNotification', users);
      request && request.accept();
-   }else{
+   /*}else{
      Router.go('/payment');
-   };
+   };*/
   },
 
 
@@ -161,7 +161,7 @@ Template.show.events({
       createdBy:Meteor.userId(),"paid":true
     });
 
-    if(paidUser){
+    /*if(paidUser){*/
          if (!linkExists) {
            console.log("no link, sends the message");
            sweetAlert("chat started, Fear Allah & keep it minimum");
@@ -193,9 +193,9 @@ Template.show.events({
            $('[name=chat]').hide();
            Router.go('chat');
          }; /*else ends here*/
-     }else{
+     /*}else{
         Router.go('/payment');
-     };
+     };*/
   },
 
   'click #favourite': function() {

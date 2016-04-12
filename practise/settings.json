@@ -1,0 +1,18 @@
+
+{
+  "galaxy.meteor.com": {
+     "env": {
+       "ROOT_URL": "http://www.sukunmatrimony.com",
+       "MONGO_URL": "mongodb://kaiyes_ansary:84pk8uu3@ds021510-a0.mlab.com:21510,ds021510-a1.mlab.com:21510/sukun?replicaSet=rs-ds021510",
+       "MONGO_OPLOG_URL": "mongodb://oplog-reader:84pk8uu3@ds021510-a0.mlab.com:21510,ds021510-a1.mlab.com:21510/local?replicaSet=rs-ds021510&authSource=admin"
+     }
+   },
+
+  "public": {
+    "CLOUDINARY_API_KEY": "274143427529475",
+    "CLOUDINARY_CLOUD_NAME": "kaiyes"
+
+  },
+
+  "CLOUDINARY_API_SECRET": "PriWX5dZ_2gozkekITMnShwW5J8"
+}

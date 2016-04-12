@@ -131,26 +131,26 @@ Template.header.events({
   'click [name=chatReceived]': function() {
     event.preventDefault();
     Meteor.call("clearChatNotification");
-    var paidUser = Payment.findOne({
+    /*var paidUser = Payment.findOne({
       createdBy:Meteor.userId(),  "paid":true
       });
-    if(paidUser){
+    if(paidUser){*/
       Router.go("chat");
-    }else{
+    /*}else{
       Router.go("payment");
-    }
+    }*/
   },
 
   'click [name=chatRoute]': function() {
     event.preventDefault();
-    var paidUser = Payment.findOne({
+    /*var paidUser = Payment.findOne({
       createdBy:Meteor.userId(),  "paid":true
       });
-    if(paidUser){
+    if(paidUser){*/
       Router.go("chat");
-    }else{
+    /*}else{
       Router.go("payment");
-    }
+    }*/
   },
 
   'click  #dashBoard': function() {

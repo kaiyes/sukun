@@ -43,7 +43,7 @@
          'Borishal-District','Rangpur-District','Mymensingh-District']
      },
 
-     lastOrNextDegree: {
+     education: {
         type: String,
         optional: true,
         allowedValues: ['Phd-completed','Phd-studying',
