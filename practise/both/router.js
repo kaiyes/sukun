@@ -11,6 +11,7 @@ Router.route('/forgotPassword');
 Router.route('/resetPassword');
 Router.route('/photo');
 Router.route('/dashBoard');
+Router.route('/updateDetails');
 
 Router.route('/adminChat', {
   onBeforeAction: function() {

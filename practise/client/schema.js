@@ -237,10 +237,17 @@
   AutoForm.addHooks('details', {
     onSuccess: function() {
       Meteor.users.update(Meteor.userId(), {$set: {"profile.hasDb": true}});
+      sweetAlert('created your profile, Alhamdulillah')
       Router.go("/list");
     }
   });
 
+  AutoForm.addHooks('updateDetails', {
+    onSuccess: function() {
+      sweetAlert('updated your profile, Alhamdulillah')
+      Router.go("/dashBoard");
+    }
+  });
 
   Payment.attachSchema(new SimpleSchema({
 

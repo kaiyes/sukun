@@ -11,3 +11,12 @@ Template.details.onRendered(function() {
    }
  })
 });
+
+
+
+Template.updateDetails.helpers({
+   updateProfile: function(){
+     Meteor.subscribe('biye',Meteor.userId());
+     return Biye.findOne({createdBy: Meteor.userId()});
+  }
+});
