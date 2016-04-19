@@ -5,13 +5,9 @@
 # but you can also edit it by hand.
 
 
-
+# core meteor packages except router
 iron:router
 accounts-password
-aldeed:collection2
-aldeed:autoform
-gildaspk:autoform-materialize
-cosio55:autoform-cloudinary
 ejson
 standard-minifiers
 meteor-base
@@ -26,19 +22,38 @@ reload
 random
 spacebars
 check
-materialize:materialize@=0.97.0
-socialize:friendships
-socialize:messaging
-ixdi:material-design-iconic-font
 email
 
+# Forms packages
+aldeed:collection2
+aldeed:autoform
+gildaspk:autoform-materialize
+materialize:materialize
+cosio55:autoform-cloudinary
+
+#fabienb4:autoform-semantic-ui
+#semantic:ui
+#flemay:less-autoprefixer
+#semantic:ui-css
+
+
+
+
+# Icons package
+ixdi:material-design-iconic-font
+
+# Huge impact chat and social features packages
+socialize:friendships
+socialize:messaging
+
+# notification
 erasaur:notification-badge
 
-
-
+# admin
 houston:admin
 kevohagan:sweetalert
 
-
+# Analytics
 astronomerio:core
 meteorhacks:kadira@2.21.0
+raix:handlebar-helpers

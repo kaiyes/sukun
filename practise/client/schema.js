@@ -13,66 +13,115 @@
       }
     },
 
-    age: {
-       type: Number,
-       max: 55,
-       min:15,
-       optional: true
+    personalInformation: {
+      type: Object
     },
 
-    height: {
-       type: String,
-       optional: true
+    'personalInformation.age': {
+      type: Number,
     },
 
-     PresentResidence : {
-         type: String,
-         optional: true,
-         allowedValues: ['Dhaka-District',
-         'Chittagong-District','RajShahi-District',
-         'Sylhet-District','Khulna-District',
-         'Borishal-District','Rangpur-District','Mymensingh-District']
-     },
-
-    originalResidence : {
-         type: String,
-         optional: true,
-         allowedValues: ['Dhaka-District',
-         'Chittagong-District','RajShahi-District',
-         'Sylhet-District','Khulna-District',
-         'Borishal-District','Rangpur-District','Mymensingh-District']
-     },
-
-     education: {
+    'personalInformation.height': {
         type: String,
         optional: true,
-        allowedValues: ['Phd-completed','Phd-studying',
-                        'MBBS-completed','MBBS-studying',
-                        'BEng-completed','BEng-studying',
-                        'BSc-completed','BSc-studying',
-                        'Masters-completed','Masters-studying',
-                        'Honours-completed','Honours-studying',
-                        'Diploma-completed','Diploma-studying',
-                        'HSC-completed','HSC-studying',
-                        'SSC-completed','SSC-studying']
-     },
+        allowedValues: ["4 feet", "4 feet 1 inch", "4 feet 2 inch",
+        "4 feet 3 inch","4 feet 4 inch","4 feet 5 inch","4 feet 6 inch",
+        "4 feet 7 inch", "4 feet 8 inch","4 feet 9 inch", "4 feet 10 inch","4 feet 11 inch",
+        "5 feet",
+        "5 feet 1 inch", "5 feet 2 inch", "5 feet 3 inch",
+        "5 feet 4 inch", "5 feet 5 inch", "5 feet 6 inch", "5 feet 7 inch",
+        "5 feet 8 inch", "5 feet 9 inch", "5 feet 10 inch","5 feet 11 inch",
+        "6 feet",
+        "6 feet 1 inch", "6 feet 2 inch", "6 feet 3 inch",
+        "6 feet 4 inch", "6 feet 5 inch", "6 feet 6 inch", "6 feet 7 inch",
+        "6 feet 8 inch", "6 feet 9 inch", "6 feet 10 inch","6 feet 11 inch",
+        ],
+         autoform: {
+           afFieldInput: {
+             firstOption: "(Select your Height)"
+           }
+         }
+    },
 
-     school : {
+    'personalInformation.presentResidence': {
+      type: String,
+      allowedValues: ['Dhaka','Faridpur','Gazipur','Gopalganj',
+      'Jamalpur','Kishoreganj','Madaripur','Manikganj','Munshiganj',
+      'Mymensingh','Narayanganj','Narsingdi','Netrakona','Rajbari',
+      'Shariatpur','Sherpur','Tangail','Bagerhat','Chuadanga',
+      'Jessore','Jhenaidah','Khulna','Kushtia','Magura','Meherpur',
+      'Narail','Satkhira','Bogra','Joypurhat','Naogaon','Natore',
+      'Nawabganj','Pabna','Rajshahi','Sirajganj','Dinajpur','Gaibandha',
+      'Kurigram','Lalmonirhat','Nilphamari','Panchagarh','Rangpur',
+      'Thakurgaon','Habiganj','Moulvibazar','Sunamganj','Sylhet',
+      'Barguna','Barisal','Bhola','Jhalokati','Patuakhali','Pirojpur',
+      'Bandarban','Brahmanbaria','Chandpur','Chittagong','Comilla',
+      'Coxs Bazar','Feni','Khagrachhari', 'Lakshmipur','Noakhali',
+      'Rangamati'],
+
+      autoform: {
+        afFieldInput: {
+          firstOption: "(বর্তমান বাসস্থান)"
+        }
+      }
+    },
+
+    'personalInformation.originalResidence': {
+      type: String,
+      allowedValues: ['Dhaka','Faridpur','Gazipur','Gopalganj',
+      'Jamalpur','Kishoreganj','Madaripur','Manikganj','Munshiganj',
+      'Mymensingh','Narayanganj','Narsingdi','Netrakona','Rajbari',
+      'Shariatpur','Sherpur','Tangail','Bagerhat','Chuadanga',
+      'Jessore','Jhenaidah','Khulna','Kushtia','Magura','Meherpur',
+      'Narail','Satkhira','Bogra','Joypurhat','Naogaon','Natore',
+      'Nawabganj','Pabna','Rajshahi','Sirajganj','Dinajpur','Gaibandha',
+      'Kurigram','Lalmonirhat','Nilphamari','Panchagarh','Rangpur',
+      'Thakurgaon','Habiganj','Moulvibazar','Sunamganj','Sylhet',
+      'Barguna','Barisal','Bhola','Jhalokati','Patuakhali','Pirojpur',
+      'Bandarban','Brahmanbaria','Chandpur','Chittagong','Comilla',
+      'Coxs Bazar','Feni','Khagrachhari', 'Lakshmipur','Noakhali',
+      'Rangamati'],
+      autoform: {
+        afFieldInput: {
+          firstOption: "(দেশের বাড়ী )"
+        }
+      }
+    },
+
+    education: {
+      type: Object
+    },
+
+    'education.college' : {
+        type: String,
+        optional: true
+    },
+
+     'education.university' : {
          type: String,
          optional: true
      },
 
-     college : {
-         type: String,
-         optional: true
+    'education.degree': {
+      type: String,
+      optional: true,
+      allowedValues: ['Phd-completed','Phd-studying',
+                      'MBBS-completed','MBBS-studying',
+                      'BEng-completed','BEng-studying',
+                      'BSc-completed','BSc-studying',
+                      'Masters-completed','Masters-studying',
+                      'Honours-completed','Honours-studying',
+                      'Diploma-completed','Diploma-studying',
+                      'HSC-completed','HSC-studying',
+                      'SSC-completed','SSC-studying']
+    },
+
+     religiousFacts: {
+       type: Object
      },
 
-     university : {
-         type: String,
-         optional: true
-     },
 
-     prayer: {
+     'religiousFacts.prayer': {
         type: String,
         optional: true,
         allowedValues: ['Always pray', 'Sometimes miss fajr',
@@ -81,58 +130,69 @@
                           'Will start praying very soon']
      },
 
-     religiousHistory: {
+     'religiousFacts.religiousHistory': {
         type: String,
         optional: true,
         allowedValues: ['Started practising 1 or 2 years back',
                          'Been practising for more than 3 years',
                          'Been practising for more than 5 years',
-                         'Revert Muslim','Have not started practising yet but want too soon',
+                         'Revert Muslim',
+                         'Have not started practising yet but want to, soon',
                          'I have faith in my heart']
      },
 
-     hijab: {
+
+
+     'religiousFacts.hijab': {
         type: String,
         optional: true,
         allowedValues: ['Always With Burkha/Abaya face open',
                         'Always with Burkha/Abaya with Niqab',
-                        'Always with Scraf only',
+                        'Always with Scarf only',
                         'I dress modestly but not Burkha/Abaya/niqab',
-                        'I dress modestly but Sometimes I wear Hijab',
-                        '(Male only) Shirt,trousers,casual clothing',
-                        '(Male only) Panjabi','(Male only) Jobba',
-                        'I follow sunnah clothing']
-     },
+                        'I dress modestly but Sometimes I wear scarf'],
+          },
 
-     beard:{
+     'religiousFacts.beard':{
        type: String,
        optional: true,
        allowedValues: ['I have let my beard grow','I trim my beard',
                        'No beard, shaved, will not keep beard',
-                       'No beard, shaved, will keep beard in future',
-                       'Not applicable for me as I am a girl']
+                       'No beard, shaved, will keep beard in future']
+        },
+
+     family: {
+       type: Object
      },
 
-     fathersJobDescription: {
+     'family.fathersJobDescription': {
          type: String,
          optional: true
      },
 
      maritalStatus: {
+       type: Object
+     },
+
+     'maritalStatus.maritalStatus': {
         type: String,
         optional: true,
         allowedValues: ['Never Married', 'Annulled (Khula)',
                        'Divorced','widowed','Married']
      },
 
-     numberOfChildren: {
+     'maritalStatus.numberOfChildren': {
         type: String,
         optional: true,
         allowedValues: ['Dont have children', '1',
                        '2','3','4','5','6','7','8','9']
      },
 
-      profession: {
+     profession: {
+       type: Object
+     },
+
+      'profession.profession': {
           type: String,
           optional: true
       },
@@ -142,11 +202,29 @@
         max: 20000,
         optional: true,
         autoform: {
-          rows: 50
+          rows: 5
         }
      },
 
-     mySpousesAgeShouldBe: {
+     lookingFor: {
+        type: String,
+        max: 20000,
+        optional: true,
+        autoform: {
+          rows: 5
+       }
+     },
+
+     mySpouseShouldBe: {
+       type: Object
+     },
+
+     'mySpouseShouldBe.height': {
+        type: String,
+        optional: true
+     },
+
+     'mySpouseShouldBe.age': {
         type: String,
         optional: true,
         allowedValues: [
@@ -157,25 +235,21 @@
         '40-45','45-50']
      },
 
-     /*mySpousesHeightShouldBe: {
-        type: String,
-        optional: true
-     },*/
-
-     myPartnerShouldHaveThisDegree: {
+     'mySpouseShouldBe.degree': {
        type: String,
        optional: true,
        allowedValues: ['Phd-completed','Phd-studying',
-       'MBBS-completed','Doctor',
-       'BEng-completed','BEng-studying',
-       'Masters-completed','Masters-studying',
-       'Honours-completed','Honours-studying',
-       'Diploma-completed','Diploma-completed',
-       'HSC-completed','HSC-completed',
-       'SSC-studying','SSC-completed']
+                       'MBBS-completed','MBBS-studying',
+                       'BEng-completed','BEng-studying',
+                       'BSc-completed','BSc-studying',
+                       'Masters-completed','Masters-studying',
+                       'Honours-completed','Honours-studying',
+                       'Diploma-completed','Diploma-studying',
+                       'HSC-completed','HSC-studying',
+                       'SSC-completed','SSC-studying']
     },
 
-    youWantYourSpousesPrayerToBe: {
+    'mySpouseShouldBe.prayer': {
        type: String,
        optional: true,
        allowedValues: ['Always pray', 'Sometimes miss fajr',
@@ -184,38 +258,31 @@
                          'Will start praying very soon']
     },
 
-    /*whatKindOfHijabYourSpouseShouldWear: {
+    'mySpouseShouldBe.religiousHistory': {
+       type: String,
+       optional: true,
+       allowedValues: ['Started practising 1 or 2 years back',
+                        'Been practising for more than 3 years',
+                        'Been practising for more than 5 years',
+                        'Revert Muslim','will start practising soon',
+                        'has faith in the heart']
+    },
+
+    'mySpouseShouldBe.hijab': {
        type: String,
        optional: true,
        allowedValues: ['Always With Burkha/Abaya face open',
                        'Always with Burkha/Abaya with Niqab',
-                       'Always with Scraf only',
-                       'I dress modestly but not Burkha/Abaya/niqab',
-                       'I dress modestly but Sometimes I wear Hijab',
-                       '(Male only) Shirt,trousers,casual clothing',
-                       '(Male only) Panjabi','(Male only) Jobba',
-                        'anything that maintains Sunnah']
-    },*/
+                       'Always with Scraf only','Sometimes wears Hijab',
+                       'modest clothing but not Burkha/Abaya/niqab']
+    },
 
-    /*HeShouldHaveThisKindOfBeard:{
+    'mySpouseShouldBe.beard':{
       type: String,
       optional: true,
-      allowedValues: ['I have let my beard grow','I trim my beard',
-                      'No beaerd, shaved, will not keep beard',
-                      'No beaerd, shaved, will keep beard in future',
-                      'n/a']
-    },*/
-
-
-     lookingFor: {
-        type: String,
-        max: 20000,
-        optional: true,
-        autoform: {
-          rows: 50
-       }
-     },
-
+      allowedValues: ['full beard','trimmed beard',
+                      'shaved']
+    },
 
      createdBy: {
        type: String,

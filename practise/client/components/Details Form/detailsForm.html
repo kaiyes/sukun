@@ -2,11 +2,17 @@
  {{>style_show}}
   <div class="container">
     <div class="card-panel" id="form">
-      {{#if currentUser }}
+    {{#if currentUser}}
+      {{#if $eq currentUser.profile.gender "male"}}
+        {{>  quickForm collection="Biye"
+            id="details" type="insert"
+            omitFields="createdBy,religiousFacts.hijab, mySpouseShouldBe.beard   "}}
+          {{else}}
         {{> quickForm collection="Biye"
             id="details" type="insert"
-            omitFields="createdBy"}}
+            omitFields="createdBy, religiousFacts.beard, mySpouseShouldBe.hijab "}}
       {{/if}}
+    {{/if}}
     </div>
   </div>
 </template>
@@ -18,11 +24,16 @@
     <div class="card-panel" id="form">
       {{#if currentUser }}
         {{#with updateProfile}}
+        {{#if $eq currentUser.profile.gender "male"}}
           {{> quickForm collection="Biye"
-             doc=this id="updateDetails"
-             type="update" omitFields="createdBy"}}
+             doc=this id="updateDetails" type="update"
+              omitFields="createdBy, religiousFacts.hijab,mySpouseShouldBe.beard   "}}
+            {{else}}
+          {{> quickForm collection="Biye"
+             doc=this id="updateDetails" type="update"
+              omitFields="createdBy, religiousFacts.beard,mySpouseShouldBe.hijab "}}
+        {{/if}}
         {{/with}}
-
       {{/if}}
     </div>
   </div>
