@@ -14,11 +14,13 @@
     },
 
     personalInformation: {
-      type: Object
+      type: Object,
+      optional: true
     },
 
     'personalInformation.age': {
       type: Number,
+      optional: true
     },
 
     'personalInformation.height': {
@@ -45,6 +47,7 @@
 
     'personalInformation.presentResidence': {
       type: String,
+      optional: true,
       allowedValues: ['Dhaka','Faridpur','Gazipur','Gopalganj',
       'Jamalpur','Kishoreganj','Madaripur','Manikganj','Munshiganj',
       'Mymensingh','Narayanganj','Narsingdi','Netrakona','Rajbari',
@@ -68,6 +71,7 @@
 
     'personalInformation.originalResidence': {
       type: String,
+      optional: true,
       allowedValues: ['Dhaka','Faridpur','Gazipur','Gopalganj',
       'Jamalpur','Kishoreganj','Madaripur','Manikganj','Munshiganj',
       'Mymensingh','Narayanganj','Narsingdi','Netrakona','Rajbari',
@@ -89,7 +93,8 @@
     },
 
     education: {
-      type: Object
+      type: Object,
+      optional: true
     },
 
     'education.college' : {
@@ -117,7 +122,8 @@
     },
 
      religiousFacts: {
-       type: Object
+       type: Object,
+       optional: true
      },
 
 
@@ -162,7 +168,8 @@
         },
 
      family: {
-       type: Object
+       type: Object,
+       optional: true
      },
 
      'family.fathersJobDescription': {
@@ -171,7 +178,8 @@
      },
 
      maritalStatus: {
-       type: Object
+       type: Object,
+       optional: true
      },
 
      'maritalStatus.maritalStatus': {
@@ -189,7 +197,8 @@
      },
 
      profession: {
-       type: Object
+       type: Object,
+       optional: true
      },
 
       'profession.profession': {
@@ -216,7 +225,8 @@
      },
 
      mySpouseShouldBe: {
-       type: Object
+       type: Object,
+       optional: true
      },
 
      'mySpouseShouldBe.height': {

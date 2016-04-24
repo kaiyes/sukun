@@ -42,6 +42,26 @@ margin-bottom: 1px;
     /*left: 54px;*/
 }
 
+.maleMessage {
+    font-size: 25px;
+    padding: 11px;
+    /*margin: 1em 0 3em;*/
+    color: #fff;
+    background: #075698;
+    border-radius: 10px;
+    /*left: 54px;*/
+}
+
+.femaleMessage {
+    font-size: 25px;
+    padding: 11px;
+    /*margin: 1em 0 3em;*/
+    color: #fff;
+    background: #D15A82;
+    border-radius: 10px;
+    /*left: 54px;*/
+}
+
 .listText{
   font-size: 18px;
 }
@@ -70,23 +90,44 @@ html {
  }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 750px) {
 
 .side-nav.fixed {
     left: 0%;
     width: 100px;
   }
 
-.brand-logo{
-  left: -5px;
-  font-size: 14px;
- }
 
  nav ul a {
-     padding: 14px 15px;
+     padding: 5px 15px;
  }
 
 }
+
+@media (max-width: 400px) {
+
+.side-nav.fixed {
+    left: 0%;
+    width: 70px;
+  }
+
+
+ nav ul a {
+     padding: 5px 15px;
+ }
+
+ .side-nav.fixed a {
+    display: block;
+    padding: 0 15px;
+    padding-top: 0px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    color: #444;
+}
+
+}
+
 
 .notification-container {
   position: relative;

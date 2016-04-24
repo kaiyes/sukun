@@ -7,10 +7,7 @@
  <div id="sidebar-wrapper" class="col s3">
    <ul id="nav-mobile" class="side-nav fixed">
      <li>
-         <a class="brand-logo hide-on-med-and-down"
-          style="font-size:25px;" href=" #">
-           conversations
-         </a>
+        <i class="medium material-icons">person_pin</i>
      </li>
 
      {{#each conversationsIstarted}}
@@ -34,10 +31,22 @@
  <div class="col s9 m9 right">
    <div class="container">
    {{#each displayMessages}}
-    <span class="bodyOfMessage">
-      {{user.username}}:
-      {{body}}
-    </span>
+    {{#if $eq user.profile.gender "male"}}
+      <span class="maleMessage">
+       {{user.username}} :
+     </span>
+      <span class="maleMessage">
+        {{body}}
+      </span>
+      {{else}}
+      <span class="femaleMessage">
+         {{user.username}} :
+       </span>
+       <span class="femaleMessage">
+         {{body}}
+       </span>
+    {{/if}}
+
     <br> <br> <br>
    {{/each}}
  </div>

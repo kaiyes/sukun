@@ -1,3 +1,10 @@
+Template.chat.onRendered(function() {
+
+    sweetAlert("click username in the left column to view the messages   ");
+
+});
+
+
 
  Template.chat.helpers({
     'conversationsIstarted': function() {
