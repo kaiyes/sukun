@@ -1,6 +1,7 @@
 Template.chat.onRendered(function() {
 
-    sweetAlert("click username in the left column to view the messages   ");
+    sweetAlert("click username in the left column to view the messages");
+
 
 });
 
@@ -52,6 +53,8 @@ Template.chat.onRendered(function() {
           var text = $('[name="message"]').val();
           if (text !== '') {
             conversation.sendMessage(text);
+            var scrollHeight = document.body.scrollHeight;
+            window.scrollTo(0,scrollHeight);
           } //if message
           $('[name="message"]').val('');
 

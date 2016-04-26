@@ -4,70 +4,67 @@
        {{>header}}
 
 <div class="row">
- <div id="sidebar-wrapper" class="col s3">
-   <ul id="nav-mobile" class="side-nav fixed">
+ <div class="col s3">
+   <ul id="border" class="center">
      <li>
         <i class="medium material-icons">person_pin</i>
      </li>
 
      {{#each conversationsIstarted}}
-         <li name="user">
-            <a href='#' style="font-size:17px;">
-             {{invited}}
+         <li name="user" >
+            <a href='#'>
+              <h4 class="hide-on-med-and-down">{{invited}}  </h4>
+              <h5 class="hide-on-large-only">{{invited}}  </h5>
            </a>
          </li>
      {{/each}}
 
       {{#each conversationsIwasInvited}}
          <li name="user">
-           <a href='#' style="font-size:17px;">
-             {{inviter}}
+           <a href='#'>
+             <h4 class="hide-on-med-and-down"> {{inviter}}  </h4>
+             <h5 class="hide-on-large-only">{{inviter}}  </h5>
            </a>
          </li>
       {{/each}}
    </ul>
  </div>
 
- <div class="col s9 m9 right">
+ <div class="col s9 right">
    <div class="container">
-   {{#each displayMessages}}
-    {{#if $eq user.profile.gender "male"}}
-      <span class="maleMessage">
-       {{user.username}} :
-     </span>
-      <span class="maleMessage">
-        {{body}}
-      </span>
-      {{else}}
-      <span class="femaleMessage">
-         {{user.username}} :
-       </span>
-       <span class="femaleMessage">
-         {{body}}
-       </span>
-    {{/if}}
-
-    <br> <br> <br>
-   {{/each}}
+      <div id='messagebox'>
+       {{#each displayMessages}}
+        {{#if $eq user.profile.gender "male"}}
+          <span class="maleMessage">
+           {{user.username}} :
+         </span>
+          <span class="maleMessage">
+            {{body}}
+          </span>
+          {{else}}
+          <span class="femaleMessage">
+             {{user.username}} :
+           </span>
+           <span class="femaleMessage">
+             {{body}}
+           </span>
+        {{/if}}
+        <br> <br> <br>
+       {{/each}}
+    </div>
  </div>
   </div>
 </div>
 
-<footer>
-<div class="row">
-  <div id="inputMessage" class="input-field col s9 m9 right">
-    <input id="mesasges" type="text" name="message">
-    <label for="messages"> Write you messages here</label>
+<div class="col s9">
+  <div class="container">
+   {{!-- <label for="messages"> Write you messages here</label> --}}
+    <input type="text" id="chatBox" name="message"
+    placeholder="write your messages here">
   </div>
 </div>
-</footer>
+
+
 
 {{/if}}
-</template>
-
-
-
-<template name="input">
-
-
 </template>

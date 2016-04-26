@@ -16,10 +16,14 @@
 border-radius: 5px;
 }
 
-.side-nav {
-    background-color: rgb(175, 149, 231);
+#border{
+  border-right: thick solid 	#000000;
+  height: 600px;
 }
 
+#messagebox{
+  padding-top: 20px;
+}
 
 #brandLogo{
   left: 10px;
@@ -27,8 +31,15 @@ border-radius: 5px;
   color:black
 }
 
-#inputMessage{
-margin-bottom: 1px;
+
+#chatBox{
+  border: 5px solid #694A4A;
+  display: inline-block;
+  vertical-align: bottom;
+  position: relative;
+  margin: 0 5px;
+  pointer-events: auto;
+  border-radius: 5px;
 }
 
 
@@ -76,14 +87,6 @@ input[type=text], input[type=password], input[type=email] {
   bottom: 30px;
 }
 
-
-@media (max-width: 992px){
-.side-nav.fixed {
-    left: 0%;
- }
-
-}
-
 @media only screen and (min-width: 1200px){
 html {
     font-size: 13px;
@@ -91,12 +94,6 @@ html {
 }
 
 @media (max-width: 750px) {
-
-.side-nav.fixed {
-    left: 0%;
-    width: 100px;
-  }
-
 
  nav ul a {
      padding: 5px 15px;
@@ -106,25 +103,11 @@ html {
 
 @media (max-width: 400px) {
 
-.side-nav.fixed {
-    left: 0%;
-    width: 70px;
-  }
-
 
  nav ul a {
      padding: 5px 15px;
  }
 
- .side-nav.fixed a {
-    display: block;
-    padding: 0 15px;
-    padding-top: 0px;
-    padding-right: 15px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    color: #444;
-}
 
 }
 
