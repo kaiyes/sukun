@@ -6,7 +6,7 @@
 
 
 # core meteor packages except router
-iron:router
+iron:router@1.0.9
 accounts-password
 ejson
 standard-minifiers
@@ -31,13 +31,6 @@ gildaspk:autoform-materialize
 materialize:materialize
 cosio55:autoform-cloudinary
 
-#fabienb4:autoform-semantic-ui
-#semantic:ui
-#flemay:less-autoprefixer
-#semantic:ui-css
-
-
-
 
 # Icons package
 ixdi:material-design-iconic-font
@@ -60,3 +53,5 @@ meteorhacks:kadira@2.21.0
 
 
 raix:handlebar-helpers
+
+service-configuration
