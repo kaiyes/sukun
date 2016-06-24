@@ -7,16 +7,6 @@
 
 <!-- ..........1st  section............  -->
 <div class="row">
-  <div class="col s12">
-    <ul class="tabs indigo">
-      <li class="tab col s6">
-        <a class="active" href="#act">My Activity </a>
-       </li>
-      <li class="tab col s6">
-        <a href="#myProfile">My Profile</a>
-      </li>
-    </ul>
-  </div>
   <div id="act" class="col s12">
 
     <div class="section fun-facts">
@@ -26,32 +16,32 @@
     <div class="card-content black-text">
      <span class="card-title black-text">
        <b>Your Profile has been viewed by : </b>
-     </span>
-     <br> <br>
-      {{#each whoViewed}}
-      <div class="col s12 m4">
-            <div class="card   blue lighten-2">
-              <div class="card-content black-text">
-                <span class="card-title black-text">
-                  <a href="/list/{{viewer}}" class="black-text">
-                    <b>{{viewer}}</b> viewed your profile
-                  </a>
-                  <a href="#" id="delete"
-                  class="btn-floating btn-small
-                  waves-effect waves-light red">
-                    <i class="material-icons">close</i>
-                  </a>
-                </span>
+     </span> <br>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-              </div>
+    {{#each whoViewed}}
+    <div class="col s12 m4">
+          <div class="card   blue lighten-2">
+            <div class="card-content black-text">
+              <span class="card-title black-text">
+                <a href="/list/{{viewer}}" class="black-text">
+                  <b>{{viewer}}</b> viewed your profile
+                </a>
+                <a href="#" id="delete"
+                class="btn-floating btn-small
+                waves-effect waves-light red">
+                  <i class="material-icons">close</i>
+                </a>
+              </span>
+
             </div>
-       </div>
-      {{/each}}
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+          </div>
+     </div>
+    {{/each}}
 
       <div class="divider"></div>
          <!-- ............2nd section............ -->
@@ -63,39 +53,40 @@
     <div class="card-content black-text">
      <span class="card-title black-text">
        <b>You are currently messaging: </b>
-     </span>
-     <br> <br>
-      {{#each conversationsIstarted}}
-      <div class="col s12 m3">
-            <div class="card blue lighten-2">
-              <div class="card-content black-text">
-                <span class="card-title black-text">
-                  <a href="/chat" class="black-text">
-                  <b>{{invited}}</b>
-                  </a>
-                </span>
-              </div>
+     </span> <br>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    {{#each conversationsIstarted}}
+    <div class="col s12 m3">
+          <div class="card blue lighten-2">
+            <div class="card-content black-text">
+              <span class="card-title black-text">
+                <a href="/chat" class="black-text">
+                <b>{{invited}}</b>
+                </a>
+              </span>
             </div>
-       </div>
-      {{/each}}
-      {{#each conversationsIwasInvited}}
-      <div class="col s12 m3">
-            <div class="card   blue lighten-2">
-              <div class="card-content black-text">
-                <span class="card-title black-text">
-                  <a href="/chat" class="black-text">
-                   <b>{{inviter}}</b>
-                  </a>
-                </span>
-              </div>
+          </div>
+     </div>
+    {{/each}}
+    {{#each conversationsIwasInvited}}
+    <div class="col s12 m3">
+          <div class="card   blue lighten-2">
+            <div class="card-content black-text">
+              <span class="card-title black-text">
+                <a href="/chat" class="black-text">
+                 <b>{{inviter}}</b>
+                </a>
+              </span>
             </div>
-       </div>
-      {{/each}}
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+          </div>
+     </div>
+    {{/each}}
+
 
       <div class="divider"></div>
 
@@ -108,241 +99,37 @@
      <span class="card-title black-text">
        <b>Your favourited persons : </b>
      </span>
-     <br> <br>
-      {{#each favourite}}
-      <div class="col s12 m3">
-            <div class="card orange">
-              <div class="card-content black-text">
-                <span class="card-title black-text">
-                  <a href="/list/{{username}}" class="black-text">
-                    <b>{{username}}</b>
-                  </a>
-                  <a href="#" id="deleteFav"
-                  class="btn-floating btn-small
-                  waves-effect waves-light red">
-                    <i class="material-icons">close</i>
-                  </a>
-                </span>
-              </div>
-            </div>
-       </div>
-      {{/each}}
+     <br>
     </div>
     </div>
     </div>
     </div>
     </div>
-  </div>
 
-
-{{!-- ...............my profile .......... --}}
-
-<div id="myProfile" class="col s12">
-
-    <div>
-        <h2> {{currentUser.username}}'s profile </h2>
-    </div>
-    {{#with  myProfile}}
-        <div class="col s4 right">
-           <img class="responsive-img
-           materialboxed initialized" width="400"
-            src=" {{image}}" alt="">
-        </div>
-
-          <a name= "editProfile"
-          href="{{pathFor 'updateDetails'}}"
-          class="waves-effect waves-light
-          btn purple lighten-1"> Edit profile</a>
-
-
-{{!-- ......................1st section.......................  --}}
-<div class="row">
-  <h4 class="header indigo-text lighten-1 section-title">
-  </h4>
-</div>
-
-<div class="row">
-  <h4 class="header Black-text lighten-1 section-title">
-        About Me
-  </h4>
-</div>
-
-
-  <div class="row">
-   <div class="col s12 m4">
-        <div class="card green lighten-2">
-          <div class="card-content black-text">
-            <span class="card-title black-text">Personal Info
-
-            </span>
-            <p id="bigText"> Age:{{personalInformation.age}}</p>
-            <p id="bigText"> Height:{{personalInformation.height}}</p>
-            <p id="bigText"> Present Residence: {{personalInformation.presentResidence}}</p>
-            <p id="bigText"> Original Residence: {{personalInformation.originalResidence}}</p>
-          </div>
-        </div>
-   </div>
-
-   <div class="col s12 m4">
-        <div class="card green lighten-2">
-          <div class="card-content black-text">
-            <span class="card-title black-text">Education
-
-            </span>
-              <p id="bigText"> Degree:{{education.degree}}</p>
-              <p id="bigText"> College:{{education.college}}</p>
-              <p id="bigText"> University:{{education.university}}</p>
-          </div>
-        </div>
-   </div>
-
-   <div class="col s12 m4">
-        <div class="card green lighten-2">
-          <div class="card-content black-text">
-            <span class="card-title black-text">Religious Facts
-
-            </span>
-              <p id="bigText"> Prayer:{{religiousFacts.prayer}}</p>
-              <p id="bigText"> Religious History:{{religiousFacts.religiousHistory}}</p>
-
-              {{#if $eq currentUser.profile.gender "female"}}
-                    <p id="bigText"> Hijab:{{religiousFacts.hijab}}</p>
-                 {{else}}
-                    <p id="bigText"> Beard : {{religiousFacts.beard}} </p>
-              {{/if}}
-
-          </div>
-        </div>
-   </div>
-  </div> {{!-- row end --}}
-
-  {{!-- ......................2nd section.......................  --}}
-
-  <div class="row">
-
-    <div class="col s12 m4">
-         <div class="card green lighten-2">
-           <div class="card-content black-text">
-             <span class="card-title black-text">Family
-
-             </span>
-             <p id="bigText"> Father:{{family.fathersJobDescription}}</p>
-           </div>
-         </div>
-    </div>
-
-    <div class="col s12 m4">
-         <div class="card green lighten-2">
-           <div class="card-content black-text">
-             <span class="card-title black-text">Marital Status
-
-             </span>
-               <p id="bigText"> Marital Status:{{maritalStatus.maritalStatus}}</p>
-
-               {{#if $neq maritalStatus.maritalStatus 'Never Married'}}
-                   <p id="bigText"> Children(if any):{{numberOfChildren}}</p>
-               {{/if}}
-
-           </div>
-         </div>
-    </div>
-
-    <div class="col s12 m4">
-         <div class="card green lighten-2">
-           <div class="card-content black-text">
-             <span class="card-title black-text">Job
-
-             </span>
-               <p id="bigText">  Profession:{{ profession.profession}}</p>
-           </div>
-         </div>
-    </div>
-  </div> {{!-- row end --}}
-
-  {{!-- ...................... section.......................  --}}
-
-  <div class="section fun-facts">
-  <div class="row">
-   <div class="col s12 m12">
-       <div class="card green lighten-2">
-           <div class="card-content black-text">
+    {{#each favourite}}
+    <div class="col s12 m3">
+          <div class="card orange">
+            <div class="card-content black-text">
               <span class="card-title black-text">
-                     {{aboutMe}}
-               </span>
-           </div>
-       </div>
-   </div>
-  </div>
-  </div>
-  {{!-- ......................Looking For.......................  --}}
-
-  <div class="row">
-   <h4 class="header Black-text
-   lighten-1 section-title">
-       Looking For
-   </h4>
-  </div>
-
-  <div class="section fun-facts">
-    <div class="row">
-      <div class="col s12 m12">
-        <div class="card blue lighten-2">
-          <div class="card-content black-text">
-
-            <span class="card-title black-text">
-              {{lookingFor}}
-            </span>
-
+                <a href="/list/{{username}}" class="black-text">
+                  <b>{{username}}</b>
+                </a>
+                <a href="#" id="deleteFav"
+                class="btn-floating btn-small
+                waves-effect waves-light red">
+                  <i class="material-icons">close</i>
+                </a>
+              </span>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{!-- ...................... section.......................  --}}
-  <div class="row">
-
-  <div class="col s12 m6">
-      <div class="card   blue lighten-2">
-        <div class="card-content black-text">
-          <span class="card-title black-text">Personal Info
-
-          </span>
-          <p id="bigText"> Age:{{mySpouseShouldBe.age}}</p>
-          <p id="bigText"> Height:{{mySpouseShouldBe.height}}</p>
-          <p id="bigText"> Degree:{{mySpouseShouldBe.degree}}</p>
-        </div>
-      </div>
-  </div>
-
-
-   <div class="col s12 m6">
-      <div class="card blue lighten-2">
-        <div class="card-content black-text">
-          <span class="card-title black-text">Religious Facts
-
-          </span>
-            <p id="bigText"> Prayer:{{mySpouseShouldBe.prayer}}</p>
-            <p id="bigText"> Religious History:{{mySpouseShouldBe.religiousHistory}}</p>
-            {{#if $eq currentUser.profile.gender "female"}}
-                  <p id="bigText"> Beard:{{mySpouseShouldBe.beard}}</p>
-               {{else}}
-                 <p id="bigText"> Hijab:{{mySpouseShouldBe.hijab}}</p>
-            {{/if}}
-        </div>
-      </div>
-  </div>
-  </div> {{!-- row end --}}
-
-
-    {{/with}}
-{{!-- ...................... section.......................  --}}
+     </div>
+    {{/each}}
 
 
   </div>
-</div>
+</div><!-- row ends -->
 
 
-</div>
+</div><!-- container ends -->
 {{/if}}
 </template>

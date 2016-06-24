@@ -1,13 +1,18 @@
-Router.route('/', {name: 'home',template: "home"},function() {});
-Router.route('/loginPage',{name: 'loginPage'}, function() {});
-Router.route('/signUp',{name: 'signUp'}, function() {});
-Router.route('/payment',{name: 'payment'}, function() {});
-Router.route('/verifyEmail',{name: 'verifyEmail'}, function() {});
-Router.route('/forgotPassword',{name: 'forgotPassword'}, function() {});
-Router.route('/resetPassword', {name: 'resetPassword'}, function() {});
-Router.route('/photo',{name: 'photo'}, function() {});
-Router.route('/dashBoard',{name: 'dashBoard'}, function() {});
-Router.route('/updateDetails',{name: 'updateDetails'}, function() {});
+Router.route('/', {
+  name: 'home',
+  template: "home"
+});
+
+Router.route('/loginPage');
+Router.route('/signUp');
+Router.route('/payment');
+Router.route('/verifyEmail');
+Router.route('/forgotPassword');
+Router.route('/resetPassword');
+Router.route('/photo');
+Router.route('/dashBoard');
+Router.route('/updateDetails');
+Router.route('/myProfile');
 
 Router.route('/adminChat',{
   onBeforeAction: function() {
@@ -19,9 +24,9 @@ Router.route('/adminChat',{
       Router.go("/list");
     }
   }
-},{name: 'adminChat'});
+});
 
-Router.route('/details', {name: 'details'}, {
+Router.route('/details',  {
   onBeforeAction: function() {
     var verify = Meteor.user().emails[0].verified;
        if(!verify){
@@ -33,7 +38,8 @@ Router.route('/details', {name: 'details'}, {
     }
   });
 
-Router.route('/list', {name: 'list'},{
+
+Router.route('/list',{
   onBeforeAction: function() {
     var check = Meteor.user().profile.hasDb;
     if (!check) {
@@ -65,4 +71,4 @@ Router.route('show', {
    }
  });
 
- Router.route('/chat', {name: 'chat'}, function() {});
+ Router.route('/chat');

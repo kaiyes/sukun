@@ -6,7 +6,7 @@
 
 
 # core meteor packages except router
-iron:router@1.0.9
+iron:router
 accounts-password
 ejson
 standard-minifiers
