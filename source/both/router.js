@@ -9,7 +9,7 @@ Router.route('/photo',{name: 'photo'}, function() {});
 Router.route('/dashBoard',{name: 'dashBoard'}, function() {});
 Router.route('/updateDetails',{name: 'updateDetails'}, function() {});
 
-Router.route('/adminChat', {name: 'adminChat'},{
+Router.route('/adminChat',{
   onBeforeAction: function() {
     var check = Meteor.user().username;
     if (check === "admin") {
@@ -19,9 +19,9 @@ Router.route('/adminChat', {name: 'adminChat'},{
       Router.go("/list");
     }
   }
-});
+},{name: 'adminChat'});
 
-Router.route('/details',{name: 'details'}, {
+Router.route('/details', {name: 'details'}, {
   onBeforeAction: function() {
     var verify = Meteor.user().emails[0].verified;
        if(!verify){
