@@ -57,7 +57,11 @@ insertFavourite: function(info){
 removeFavourite: function(id){
   check(id, String);
   Favourite.remove({_id:id});
-}
+},
 
+reSendVerificationEmail: function(email){
+  check(email, String);
+  Accounts.sendVerificationEmail(this.userId,email);
+},
 
 });

@@ -13,9 +13,6 @@ Router.route('/photo');
 Router.route('/dashBoard');
 Router.route('/updateDetails');
 Router.route('/myProfile');
-Router.route('/reSendVerificationEmail');
-
-
 
 Router.route('/adminChat',{
   onBeforeAction: function() {
@@ -44,12 +41,11 @@ Router.route('/details',  {
 
 Router.route('/list',{
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
-    var hasDb = Meteor.user().profile.hasDb;
-    if (!verify) {
-      Router.go('verifyEmail');
-    } else if (!hasDb) {
+    var check = Meteor.user().profile.hasDb;
+    if (!check) {
       Router.go("details");
+    } else {
+      console.log("hasDb, going to list");
     }
     this.next();
   }

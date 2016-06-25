@@ -1,0 +1,151 @@
+<template name="header">
+
+ <div class="navbar-fixed">
+   <nav>
+  <div class="nav-wrapper">
+    <a href="{{pathFor 'list'}}" id="brandLogo"
+    name="brand-logo" class="brand-logo left">
+      <i class="large material-icons">contacts</i>
+    </a>
+
+    <div id="logout" class="center-align right">
+      <a href="#"  name="logout">Logout
+      </a>
+    </div>
+
+<ul class="right">
+  <li>
+    <a href="{{pathFor 'myProfile'}}">
+     <i class="large material-icons">account_circle</i>
+    </a>
+  </li>
+
+  <li>
+     {{#if dashBoardCounter}}
+       {{>notificationBadge count=dashBoardCounter }}
+     {{/if}}
+     <a href="#"
+     class="dropdown-button" id = "dashBoard"
+     data-activates="dropdown3">
+      <i class="large material-icons">dashboard</i>
+     </a>
+   </li>
+
+ <li>
+  {{#if photoCounter}}
+    {{>notificationBadge count=photoCounter }}
+  {{/if}}
+    <a
+      class="dropdown-button" id="photoRequest"
+      name ="photoSent" href="#"
+      data-activates="dropdown1">
+        <i class="large material-icons">insert_photo</i>
+    </a>
+ </li>
+
+  <li>
+    {{#if chatCounter}}
+      {{>notificationBadge count=chatCounter }}
+    {{/if}}
+    <a class="dropdown-button"
+     name ="chatReceived" id = "chatRequest"
+    href="#" data-activates="dropdown2">
+     <i class="large material-icons">chat</i>
+    </a>
+  </li>
+
+</ul>
+
+
+    </div>
+  </nav>
+</div>
+
+<!-- .........photo dropdown .............. -->
+
+<ul id="dropdown1" class="dropdown-content">
+    {{#each requestFromPeople}}
+      <li name="viewRouteAsked">
+        <a href="/list/{{requester.username}}"
+        class="black-text">
+          {{requester.username}} wants to
+          view your photo
+        </a>
+      </li>
+    {{/each}}
+
+
+    {{#each requestFromMe}}
+      <li name="viewRouteAsk">
+        <a href="/list/{{user.username}}"
+          class="black-text">
+          You have requested to
+          view {{user.username}}'s photo
+        </a>
+      </li>
+    {{/each}}
+
+    {{#each accepted}}
+      <li name="viewRouteAsk">
+        <a href="/list/{{inviter}}"
+        class="black-text">
+         {{inviter}} has accepted your
+         photo request </a>
+      </li>
+    {{/each}}
+
+    {{#each cancelled}}
+      <li name="viewRouteAsk">
+        <a href="/list/{{inviter}}"
+        class="black-text">
+         {{inviter}} has cancelled the request </a>
+      </li>
+    {{/each}}
+
+    {{#each revoked}}
+      <li name="viewRouteAsk">
+        <a href="/list/{{inviter}}"
+        class="black-text">
+         {{inviter}} has revoked your photo access </a>
+      </li>
+    {{/each}}
+</ul>
+
+<!-- .........chat dropdown .............. -->
+
+<ul id="dropdown2" class="dropdown-content">
+    {{#each  youAreInvited}}
+       <li name="chatRoute">  <span class="black-text">
+       {{inviter}} wants to chat with You</span>
+      </li>
+    {{/each}}
+
+    {{#each  ihaveInvited}}
+        <li name="chatRoute">
+        <span class="black-text">
+        You have invited {{this.invited}}</span>
+        </li>
+    {{/each}}
+
+    {{#each newMessage}}
+        <li name="chatRoute">
+        <span class="black-text">
+         {{this.inviter}} messaged you</span>
+        </li>
+    {{/each}}
+
+</ul>
+
+<!-- .........dashBoard dropdown .............. -->
+
+<ul id="dropdown3" class="dropdown-content">
+  {{#each dashBoard}}
+    <li name="dashBoardList">
+      <a href="{{pathFor 'dashBoard'}}"
+      class="black-text">
+       {{viewer}} viewed your profile </a>
+    </li>
+  {{/each}}
+
+</ul>
+</template>

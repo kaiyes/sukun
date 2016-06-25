@@ -6,12 +6,13 @@ Template.list.helpers({
           return Meteor.users.find({
             "profile.gender": "female",
             "profile.hasDb":true,
-             },{sort: {createdAt: -1}}).fetch()
+             },{sort: {createdAt: 1}})
          } else {
 
           return Meteor.users.find({
             "profile.gender": "male",
-            "profile.hasDb":true});
+            /*"emails.0.verified": true,*/
+            "profile.hasDb":true},{sort: {createdAt: 1}});
         }
   }
 });

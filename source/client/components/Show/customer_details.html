@@ -9,15 +9,16 @@
 </div>
 
 <div>
-{{#if this.isFriendsWith currentUser }}
 
-    {{#with  detailsDb}}
-      <div class="col s4">
-         <img class="responsive-img
-         materialboxed initialized" width="400"
-          src=" {{image}}" alt="">
-      </div>
-    {{/with}}
+
+{{#if this.isFriendsWith currentUser }}
+  {{#with  detailsDb}}
+    <div class="col s4">
+       <img class="responsive-img
+       materialboxed initialized" width="400"
+        src=" {{image}}" alt="">
+    </div>
+  {{/with}}
 
   <a id="friendship" name= "end-friendship"
   class="waves-effect waves-light
@@ -43,15 +44,19 @@
    <img class="materialboxed" width="400" src="/1.jpg">
 
        <a id="friendship" name= "cancel-request"
-       class="waves-effect waves-light
-       btn red lighten-1"> Cancel Photo Request  </a>
+         class="waves-effect waves-light
+         btn red lighten-1"> Cancel Photo Request
+       </a>
 
    {{else}}
 
+
      <img class="materialboxed" width="400" src="/1.jpg">
+
      <a id="friendship" name= "add-friend"
-     class="waves-effect waves-light
-     btn indigo">Request Photo Access </a>
+        class="waves-effect waves-light
+        btn indigo">Request Photo Access
+     </a>
 
     {{/if}}
    {{/if}}
@@ -61,13 +66,13 @@
    <br>
 <div>
   <a href="#" id="chatButton" name= "chat"
-  class="waves-effect waves-light btn large indigo">Chat
-  <i class="material-icons">chat_bubble_outline</i>
-</a> <br><br>
+    class="waves-effect waves-light btn large indigo">Chat
+    <i class="material-icons">chat_bubble_outline</i>
+  </a> <br><br>
 
 <a href="#" id="favourite"
-class="waves-effect waves-light btn small orange">
-<i class="material-icons large">stars</i>
+   class="waves-effect waves-light btn small orange">
+   <i class="material-icons large">stars</i>
 </a>
 
 </div>
