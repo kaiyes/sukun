@@ -11,7 +11,7 @@ Template.list.helpers({
 
           return Meteor.users.find({
             "profile.gender": "male",
-            "emails.0.verified": true,
+            /*"emails.0.verified": true,*/
             "profile.hasDb":true},{sort: {createdAt: 1}});
         }
   }

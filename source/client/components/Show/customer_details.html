@@ -27,7 +27,18 @@
   {{else}}
 
     {{#if currentUser.hasRequestFrom this}}
-      <img class="materialboxed" width="400" src="/1.jpg">
+
+      {{#if $eq currentUser.profile.gender "male"}}
+         <img class="materialboxed" width="400" src="/1.jpg">
+      {{else}}
+         {{#with  detailsDb}}
+           <div class="col s4">
+              <img class="responsive-img
+              materialboxed initialized" width="400"
+               src=" {{image}}" alt="">
+           </div>
+         {{/with}}
+      {{/if}}
 
         <a id="friendship" name= "accept"
         class="waves-effect waves-light
@@ -41,7 +52,17 @@
   {{else}}
 
   {{#if hasRequestFrom currentUser}}
-   <img class="materialboxed" width="400" src="/1.jpg">
+    {{#if $eq currentUser.profile.gender "male"}}
+       <img class="materialboxed" width="400" src="/1.jpg">
+    {{else}}
+       {{#with  detailsDb}}
+         <div class="col s4">
+            <img class="responsive-img
+            materialboxed initialized" width="400"
+             src=" {{image}}" alt="">
+         </div>
+       {{/with}}
+    {{/if}}
 
        <a id="friendship" name= "cancel-request"
          class="waves-effect waves-light
@@ -50,13 +71,22 @@
 
    {{else}}
 
+{{#if $eq currentUser.profile.gender "male"}}
+   <img class="materialboxed" width="400" src="/1.jpg">
+   <a id="friendship" name= "add-friend"
+      class="waves-effect waves-light
+      btn indigo">Request Photo Access
+   </a>
+{{else}}
+   {{#with  detailsDb}}
+     <div class="col s4">
+        <img class="responsive-img
+        materialboxed initialized" width="400"
+         src=" {{image}}" alt="">
+     </div>
+   {{/with}}
+{{/if}}
 
-     <img class="materialboxed" width="400" src="/1.jpg">
-
-     <a id="friendship" name= "add-friend"
-        class="waves-effect waves-light
-        btn indigo">Request Photo Access
-     </a>
 
     {{/if}}
    {{/if}}
@@ -72,7 +102,7 @@
 
 <a href="#" id="favourite"
    class="waves-effect waves-light btn small orange">
-   <i class="material-icons large">stars</i>
+   Make Favourite
 </a>
 
 </div>
