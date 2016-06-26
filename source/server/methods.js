@@ -59,9 +59,8 @@ removeFavourite: function(id){
   Favourite.remove({_id:id});
 },
 
-reSendVerificationEmail: function(email){
-  check(email, String);
-  Accounts.sendVerificationEmail(this.userId,email);
+reSendVerificationEmail: function(){
+  Accounts.sendVerificationEmail(this.userId);
 },
 
 });
