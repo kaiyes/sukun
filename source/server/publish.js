@@ -167,3 +167,11 @@ Meteor.publish('allUsers', function () {
        }
      });
 });
+
+Meteor.publish('admin', function () {
+    return Meteor.users.find({ username:"admin" },{
+       fields: {
+         "username": 1,
+       }
+     });
+});

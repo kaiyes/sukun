@@ -34,21 +34,13 @@
    <div class="container">
       <div id='messagebox'>
        {{#each displayMessages}}
-        {{#if $eq user.profile.gender "male"}}
-          <span class="maleMessage">
-           {{user.username}} :
-         </span>
-          <span class="maleMessage">
-            {{body}}
-          </span>
-          {{else}}
-          <span class="femaleMessage">
-             {{user.username}} :
-           </span>
-           <span class="femaleMessage">
-             {{body}}
-           </span>
-        {{/if}}
+
+              <span class="{{#if $eq user.profile.gender "male"}} maleMessage {{else}} femaleMessage {{/if}}">
+               {{user.username}} :
+             </span>
+              <span class="{{#if $eq user.profile.gender "male"}} maleMessage {{else}} femaleMessage {{/if}}">
+                {{body}}
+              </span>
         <br> <br> <br>
        {{/each}}
     </div>

@@ -12,6 +12,7 @@ Template.show.onRendered(function() {
 
     Meteor.subscribe('didIview', profileOwner,viewer);
     Meteor.subscribe("fav");
+    Meteor.subscribe("admin");
 
     var exists = DashBoard.findOne({
         profileOf: profileOwner,
@@ -164,8 +165,8 @@ Template.show.events({
     /*if(paidUser){*/
          if (!linkExists) {
            console.log("no link, sends the message");
-           sweetAlert("chat started, Fear Allah & keep it minimum");
            var conversation = new Conversation().save();
+           var admin = Meteor.users.findOne({username:"admin"});
 
            var chatId = {
              invited: Router.current().params.username,
@@ -184,8 +185,8 @@ Template.show.events({
            Meteor.call('insertNotification', users);
 
            conversation.addParticipant(user);
+           conversation.addParticipant(admin);
            conversation.sendMessage("Assalamu Alaikum");
-           console.log("message sent");
            Router.go('chat');
          } else {
            console.log("link exists, hide button");

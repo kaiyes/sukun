@@ -1,5 +1,6 @@
 Template.chat.onRendered(function() {
     sweetAlert(" Fear Allah and keep the chatting to minimum.click username in the left column to view the messages");
+
 });
 
 
@@ -24,6 +25,7 @@ Template.chat.onRendered(function() {
       var conversationId = convoId.toString();
       Meteor.subscribe("messages",conversationId);
       Meteor.subscribe('participants',conversationId);
+      Meteor.subscribe("admin");
 
       return Meteor.messages.find({
         conversationId:conversationId
