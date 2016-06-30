@@ -40,6 +40,22 @@ startChat:function(chatId){
   ChatInvites.insert(chatId);
 },
 
+deleteChat:function(chatId){
+  check(chatId, String);
+  ChatInvites.remove({ convoId:chatId });
+  Meteor.messages.remove({
+    conversationId: chatId
+  });
+  Meteor.participants.remove({
+    conversationId:chatId
+  });
+  Meteor.conversations.remove({
+    _id:chatId
+  });
+  Notification.remove({ convoId : chatId });
+
+},
+
 dashBoard: function(info){
    check(info, Object);
    DashBoard.insert(info);

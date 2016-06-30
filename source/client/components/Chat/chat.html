@@ -11,22 +11,29 @@
      </li>
 
      {{#each conversationsIstarted}}
-         <li name="user" >
-            <a href='#'>
-              <h4 class="hide-on-med-and-down">{{invited}}  </h4>
-              <h5 class="hide-on-large-only">{{invited}}  </h5>
-           </a>
-         </li>
+       <li name="user" class="border">
+          <a href='#'>
+            <h4 class="hide-on-med-and-down">{{invited}}  </h4>
+            <h5 class="hide-on-large-only">{{invited}}  </h5>
+         </a>
+         <a href="#" id="delete">
+           <i class="small material-icons">delete_forever</i>
+         </a>
+       </li>
      {{/each}}
 
       {{#each conversationsIwasInvited}}
-         <li name="user">
-           <a href='#'>
-             <h4 class="hide-on-med-and-down"> {{inviter}}  </h4>
-             <h5 class="hide-on-large-only">{{inviter}}  </h5>
-           </a>
-         </li>
+        <li name="user" class="border">
+         <a href='#'>
+           <h4 class="hide-on-med-and-down"> {{inviter}}  </h4>
+           <h5 class="hide-on-large-only">{{inviter}}  </h5>
+         </a>
+         <a href="#" id="delete">
+           <i class="small material-icons">delete_forever</i>
+         </a>
+       </li>
       {{/each}}
+
    </ul>
  </div>
 

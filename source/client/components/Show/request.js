@@ -170,13 +170,13 @@ Template.show.events({
            var chatId = {
              invited: Router.current().params.username,
              inviter: currentuser.username,
-             admin:admin.username,
              convoId: conversation._id
            };
            var users = {
              invited:Router.current().params.username,
              inviter: currentuser.username,
              seen:false,
+             convoId:conversation._id,
              type:"chat"
            };
 

@@ -43,6 +43,15 @@ Template.chat.onRendered(function() {
       console.log(this.convoId);
     },
 
+    'click #delete': function() {
+      var chat = ChatInvites.findOne({
+        _id:this._id
+      });
+      Meteor.call("deleteChat",chat.convoId );
+      console.log(chat._id);
+
+    },
+
     'keyup [name=message]': function(event) {
         if (event.which == 13) {
           var convoId = Session.get("convoId");
@@ -70,6 +79,7 @@ Template.chat.onRendered(function() {
             invited:user.user().username,
             inviter: Meteor.user().username,
             seen:false,
+            convoId:conversationId,
             type:"chat"
           };
 

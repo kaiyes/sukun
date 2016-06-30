@@ -27,3 +27,9 @@
     border-radius: 10px;
     /*left: 54px;*/
 }
+
+.border {
+  background: rgb(110, 44, 99);
+  border-radius: 10px;
+  border-style: solid;
+}
