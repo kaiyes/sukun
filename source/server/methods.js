@@ -12,6 +12,13 @@ Meteor.methods({
     {$set:{seen:true}}, { multi: true });
  },
 
+ clearAdminChatNotification: function(convoId){
+  check(convoId, String);
+  Notification.update(
+    { convoId: convoId },
+    { $set: { seen:true }}, { multi: true });
+ },
+
  makePaidUser: function(){
  Payment.update(
    {createdBy:this.userId},
@@ -21,6 +28,11 @@ Meteor.methods({
  insertNotification: function(users){
     check(users, Object);
     Notification.insert(users);
+},
+
+insertAdminNotification: function(adminInfo){
+   check(adminInfo, Object);
+   AdminNotification.insert(adminInfo);
 },
 
 startChat:function(chatId){

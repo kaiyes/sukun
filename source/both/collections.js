@@ -3,6 +3,7 @@ ChatRooms = new Meteor.Collection("chatrooms");
 ChatInvites = new Meteor.Collection('invites');
 Payment = new Meteor.Collection("payment");
 Notification = new Meteor.Collection("notification");
+AdminNotification = new Meteor.Collection("adminNotification");
 DashBoard =  new Mongo.Collection("dashBoard");
 Favourite = new Mongo.Collection("favourite");
 

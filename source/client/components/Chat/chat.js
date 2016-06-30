@@ -1,4 +1,5 @@
 Template.chat.onRendered(function() {
+    Meteor.subscribe("admin");
     sweetAlert(" Fear Allah and keep the chatting to minimum.click username in the left column to view the messages");
 
 });
@@ -72,9 +73,18 @@ Template.chat.onRendered(function() {
             type:"chat"
           };
 
+          var adminInfo = {
+            invited:user.user().username,
+            inviter: Meteor.user().username,
+            convoId:conversationId,
+            seen:false,
+            type:"chat"
+          }
+
           if(unread===false){
             console.log(unread);
             Meteor.call('insertNotification',users);
+            Meteor.call('insertAdminNotification',adminInfo);
           }
   // code for unread messaging notification
 

@@ -167,13 +167,12 @@ Template.show.events({
            console.log("no link, sends the message");
            var conversation = new Conversation().save();
            var admin = Meteor.users.findOne({username:"admin"});
-
            var chatId = {
              invited: Router.current().params.username,
              inviter: currentuser.username,
+             admin:admin.username,
              convoId: conversation._id
            };
-
            var users = {
              invited:Router.current().params.username,
              inviter: currentuser.username,
@@ -181,12 +180,23 @@ Template.show.events({
              type:"chat"
            };
 
+           var adminInfo = {
+             invited:user.username,
+             inviter: Meteor.user().username,
+             convoId:conversation._id,
+             seen:false,
+             type:"chat"
+           }
+
            Meteor.call("startChat", chatId);
-           Meteor.call('insertNotification', users);
 
            conversation.addParticipant(user);
            conversation.addParticipant(admin);
-           conversation.sendMessage("Assalamu Alaikum");
+
+           Meteor.call('insertNotification', users);
+           Meteor.call("insertAdminNotification", adminInfo);
+
+           /*conversation.sendMessage("Assalamu Alaikum");*/
            Router.go('chat');
          } else {
            console.log("link exists, hide button");

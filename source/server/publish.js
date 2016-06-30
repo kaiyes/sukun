@@ -19,6 +19,14 @@ Meteor.publish("notification", function(username){
     });
 });
 
+Meteor.publish("adminNotification", function(convoId){
+  check(convoId, String);
+
+   return Notification.find({
+      convoId:convoId,seen:false
+    });
+});
+
 Meteor.publish("payment", function(){
   return Payment.find({createdBy:this.userId},{
      fields: {
