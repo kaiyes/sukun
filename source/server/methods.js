@@ -12,17 +12,17 @@ Meteor.methods({
     {$set:{seen:true}}, { multi: true });
  },
 
- clearAdminChatNotification: function(convoId){
+ clearAdminNotification: function(convoId){
   check(convoId, String);
-  Notification.update(
+  AdminNotification.update(
     { convoId: convoId },
     { $set: { seen:true }}, { multi: true });
  },
 
  makePaidUser: function(){
  Payment.update(
-   {createdBy:this.userId},
-   {$set:{paid:true}});
+   { createdBy:this.userId },
+   { $set:{paid:true }});
  },
 
  insertNotification: function(users){

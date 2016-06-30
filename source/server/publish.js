@@ -19,11 +19,10 @@ Meteor.publish("notification", function(username){
     });
 });
 
-Meteor.publish("adminNotification", function(convoId){
-  check(convoId, String);
+Meteor.publish("adminNotification", function(){
 
-   return Notification.find({
-      convoId:convoId,seen:false
+   return AdminNotification.find({
+      convoId:{$ne: null},seen:false
     });
 });
 

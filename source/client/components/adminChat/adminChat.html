@@ -4,7 +4,7 @@
             {{> adminSidebar }}
             {{> adminMessages }}
             {{> adminInput }}
-            
+
     </div>
   {{/if}}
   <style>
@@ -25,6 +25,9 @@
      {{#each allConversations}}
         <li name="user">
           <a href='#' style="font-size:17px;">
+            {{#if chatCounter}}
+              {{>notificationBadge count=chatCounter }}
+            {{/if}}
             {{_id}}
           </a>
         </li>

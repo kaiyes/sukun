@@ -1,17 +1,31 @@
 Template.adminChat.onRendered(function () {
-   Meteor.subscribe('allConversations');
+
+   this.autorun(function(){
+
+     Meteor.subscribe('allConversations');
+     Meteor.subscribe("adminNotification");
+   })
 });
 
  Template.adminSidebar.helpers({
     'allConversations': function() {
       return Meteor.conversations.find({});
     },
+
+    chatCounter: function() {
+      return AdminNotification.find({
+        convoId: this._id,
+        seen:false, type:"chat"}).count();
+    },
   });
 
   Template.adminSidebar.events({
     'click [name=user]': function() {
       Session.set("id", this._id);
-    }
+      var convoId = this._id;
+      Meteor.call("clearAdminNotification",convoId);
+    },
+
   });
 
 
