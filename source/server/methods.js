@@ -14,9 +14,7 @@ Meteor.methods({
 
  clearAdminNotification: function(convoId){
   check(convoId, String);
-  AdminNotification.update(
-    { convoId: convoId },
-    { $set: { seen:true }}, { multi: true });
+  AdminNotification.remove({ convoId: convoId });
  },
 
  makePaidUser: function(){
