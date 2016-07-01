@@ -90,7 +90,7 @@ Meteor.publish("messages", function(conversationId){
     check(conversationId, String);
     return Meteor.messages.find({
       conversationId: conversationId
-    });
+    },{sort: {date: 1}});
 });
 
 

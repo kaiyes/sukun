@@ -1,7 +1,5 @@
 Template.chat.onRendered(function() {
-    Meteor.subscribe("admin");
-    sweetAlert(" Fear Allah and keep the chatting to minimum.click username in the left column to view the messages");
-
+  sweetAlert(" Fear Allah and keep the chatting to minimum.click username in the left column to view the messages");
 });
 
 
