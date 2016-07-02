@@ -29,9 +29,22 @@ Template.chat.onRendered(function() {
       return Meteor.messages.find({
         conversationId:conversationId
       });
-    }
+    },
 
-  });
+    messageClass: function(gender){
+       var user = this.user();
+
+       if (user.username === "admin") {
+         return "adminMessage";
+       } else{
+         if (user.profile.gender === "male") {
+            return "maleMessage";
+          } else {
+            return "femaleMessage";
+          }   
+        }
+     },
+    });
 
 
 
