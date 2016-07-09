@@ -8,7 +8,6 @@ Template.list.helpers({
             "profile.hasDb":true,
              },{sort: {createdAt: 1}})
          } else {
-
           return Meteor.users.find({
             "profile.gender": "male",
             /*"emails.0.verified": true,*/

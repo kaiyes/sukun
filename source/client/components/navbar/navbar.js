@@ -1,6 +1,7 @@
 Template.header.onRendered(function() {
 
   this.autorun(function(){
+
     var username = Meteor.user().username;
     var gender = Meteor.user().profile.gender;
     var notification = Meteor.subscribe("notification",username);

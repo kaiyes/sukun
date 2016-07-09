@@ -41,7 +41,7 @@ Template.chat.onRendered(function() {
             return "maleMessage";
           } else {
             return "femaleMessage";
-          }   
+          }
         }
      },
     });
@@ -81,9 +81,10 @@ Template.chat.onRendered(function() {
 // code for unread messaging notification
 
           var user = Meteor.participants.findOne({
-            conversationId:conversationId,
-            userId:{$ne:Meteor.userId()}
+            conversationId: conversationId,
+            userId: { $nin: [ Meteor.userId() , "6BD5M2JDT5jHXhYPY" ] }
           });
+
 
           var unread = user.read;
           var users = {
