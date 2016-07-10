@@ -28,14 +28,20 @@
           <div class="card   blue lighten-2">
             <div class="card-content black-text">
               <span class="card-title black-text">
-                <a href="/list/{{viewer}}" class="black-text">
-                  <b>{{viewer}}</b> viewed your profile
-                </a>
-                <a href="#" id="delete"
-                class="btn-floating btn-small
-                waves-effect waves-light red">
-                  <i class="material-icons">close</i>
-                </a>
+                {{#if currentUser.profile.approved }}
+                  <a href="/list/{{viewer}}" class="black-text">
+                    <b>{{viewer}}</b> viewed your profile
+                  </a>
+                  <a href="#" id="delete"
+                  class="btn-floating btn-small
+                  waves-effect waves-light red">
+                    <i class="material-icons">close</i>
+                  </a>
+                  {{else}}
+                  <a href="{{pathFor 'updateDetails'}}" class="black-text">
+                   Finish profile to see who viewed your profile
+                  </a>
+               {{/if}}
               </span>
 
             </div>
@@ -65,9 +71,9 @@
           <div class="card blue lighten-2">
             <div class="card-content black-text">
               <span class="card-title black-text">
-                <a href="/chat" class="black-text">
-                <b>{{invited}}</b>
-                </a>
+                  <a href="/chat" class="black-text">
+                  <b>{{invited}}</b>
+                  </a>
               </span>
             </div>
           </div>
@@ -111,14 +117,20 @@
           <div class="card orange">
             <div class="card-content black-text">
               <span class="card-title black-text">
-                <a href="/list/{{username}}" class="black-text">
-                  <b>{{username}}</b>
-                </a>
-                <a href="#" id="deleteFav"
-                class="btn-floating btn-small
-                waves-effect waves-light red">
-                  <i class="material-icons">close</i>
-                </a>
+                {{#if currentUser.profile.approved }}
+                  <a href="/list/{{username}}" class="black-text">
+                    <b>{{username}}</b>
+                  </a>
+                  <a href="#" id="deleteFav"
+                  class="btn-floating btn-small
+                  waves-effect waves-light red">
+                    <i class="material-icons">close</i>
+                  </a>
+                  {{else}}
+                  <a href="{{pathFor 'updateDetails'}}" class="black-text">
+                   Finish profile to see your favourites
+                  </a>
+                {{/if}}
               </span>
             </div>
           </div>

@@ -1,4 +1,4 @@
-Template.show.onCreated(function() {
+Template.show.onRendered(function() {
 
     var profileOwner = Router.current().params.username;
     var viewer = Meteor.user().username;

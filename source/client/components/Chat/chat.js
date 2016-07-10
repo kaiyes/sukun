@@ -1,5 +1,6 @@
 Template.chat.onRendered(function() {
   sweetAlert(" Fear Allah and keep the chatting to minimum.click username in the left column to view the messages");
+
 });
 
 
@@ -50,7 +51,6 @@ Template.chat.onRendered(function() {
   Template.chat.events({
     'click [name=user]': function() {
       Session.set("convoId", this.convoId);
-      console.log(this.convoId);
     },
 
     'click #delete': function() {
@@ -71,7 +71,14 @@ Template.chat.onRendered(function() {
           });
           var text = $('[name="message"]').val();
           if (text !== '') {
-            conversation.sendMessage(text);
+            var approved = Meteor.user().profile.approved;
+            if (approved===true) {
+              conversation.sendMessage(text);
+            } else {
+              sweetAlert("Please finish your profile. you can't contact this person because your profile hasn't been approved");
+              Router.go('updateDetails');
+            }
+            /*conversation.sendMessage(text);*/
             var scrollHeight = document.body.scrollHeight;
             window.scrollTo(0,scrollHeight);
           } //if message

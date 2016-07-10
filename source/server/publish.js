@@ -1,8 +1,9 @@
 
 Meteor.publish("find", function(gender){
 check(gender, String);
- return  Meteor.users.find({"profile.gender": gender,
- "profile.hasDb":true},{
+ return  Meteor.users.find({
+   "profile.gender": gender,
+   "profile.hasDb":true},{
     fields: {
       "username": 1,
       "profile": 1,
