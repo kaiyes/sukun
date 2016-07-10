@@ -5,7 +5,7 @@ Template.chat.onRendered(function() {
 
 
  Template.chat.helpers({
-    'conversationsIstarted': function() {
+    conversationsIstarted: function() {
       var user = Meteor.user().username;
       Meteor.subscribe("conversation");
       return ChatInvites.find({
@@ -13,13 +13,13 @@ Template.chat.onRendered(function() {
       });
     },
 
-    'conversationsIwasInvited': function() {
+    conversationsIwasInvited: function() {
       return ChatInvites.find({
         invited: Meteor.user().username
       });
     },
 
-    'displayMessages': function() {
+    displayMessages: function() {
       var convoId = Session.get("convoId");
       var conversationId = convoId.toString();
       Meteor.subscribe("messages",conversationId);
@@ -33,7 +33,6 @@ Template.chat.onRendered(function() {
 
     messageClass: function(gender){
        var user = this.user();
-
        if (user.username === "admin") {
          return "adminMessage";
        } else{

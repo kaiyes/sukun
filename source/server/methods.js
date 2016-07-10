@@ -1,5 +1,15 @@
 Meteor.methods({
 
+addUser: function(email,password,username,profile){
+  check(profile, Object);
+  Accounts.createUser({
+        email: email,
+        password: password,
+        username: username,
+        profile: profile
+      });
+},
+
  clearPhotoNotification: function(){
   Notification.update(
     {invited:Meteor.user().username,type:"photo"},
