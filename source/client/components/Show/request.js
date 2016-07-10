@@ -1,7 +1,9 @@
-Template.show.onRendered(function() {
+Template.show.onCreated(function() {
 
     var profileOwner = Router.current().params.username;
     var viewer = Meteor.user().username;
+    var approved = Meteor.user().profile.approved;
+    var paid = Meteor.user().profile.paid;
 
     var info = {
       profileOf:profileOwner,
@@ -21,11 +23,16 @@ Template.show.onRendered(function() {
         type:"profileView"
      });
 
-    if (exists) {
-        console.log("exists");
-    }else{
-        Meteor.call('dashBoard', info);
-    }
+     if (approved) {
+       if (exists) {
+           console.log("exists");
+       } else {
+           Meteor.call('dashBoard', info);
+       }
+     } else {
+       console.log("not approved,skipping notification");
+     }
+
 
 
 });

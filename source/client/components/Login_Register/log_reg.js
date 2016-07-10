@@ -13,6 +13,7 @@ Template.register.events({
       age:age,
       approved:false,
       banned:false,
+      paid:false,
     };
 
     Meteor.call("addUser", email,password,username,profile, function(error,result){

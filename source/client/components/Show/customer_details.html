@@ -71,22 +71,28 @@
 
    {{else}}
 
-{{#if $eq currentUser.profile.gender "male"}}
-   <img class="materialboxed" width="400" src="/1.jpg">
-   <a id="friendship" name= "add-friend"
-      class="waves-effect waves-light
-      btn indigo">Request Photo Access
-   </a>
-{{else}}
-   {{#with  detailsDb}}
-     <div class="col s4">
-        <img class="responsive-img
-        materialboxed initialized" width="400"
-         src=" {{image}}" alt="">
-     </div>
-   {{/with}}
+{{#if currentUser.profile.approved }}
+  {{#if $eq currentUser.profile.gender "male"}}
+     <img class="materialboxed" width="400" src="/1.jpg">
+     <a id="friendship" name= "add-friend"
+        class="waves-effect waves-light
+        btn indigo">Request Photo Access
+     </a>
+  {{else}}
+     {{#with  detailsDb}}
+       <div class="col s4">
+          <img class="responsive-img
+          materialboxed initialized" width="400"
+           src=" {{image}}" alt="">
+       </div>
+     {{/with}}
+  {{/if}}
+    {{else}}
+    <a href="{{pathFor 'updateDetails'}}"
+    class="waves-effect waves-light btn red">
+    Finish profile to ask photo permission
+    </a>
 {{/if}}
-
 
     {{/if}}
    {{/if}}
@@ -95,15 +101,24 @@
 </div>
    <br>
 <div>
+
+{{#if currentUser.profile.approved }}
   <a href="#" id="chatButton" name= "chat"
     class="waves-effect waves-light btn large indigo">Chat
     <i class="material-icons">chat_bubble_outline</i>
   </a> <br><br>
+  <a href="#" id="favourite"
+     class="waves-effect waves-light btn small orange">
+     Make Favourite
+  </a>
+  {{else}}
+  <a href="{{pathFor 'updateDetails'}}"
+  class="waves-effect waves-light btn indigo">
+  Finish own profile to chat
+  </a><br><br>
+{{/if}}
 
-<a href="#" id="favourite"
-   class="waves-effect waves-light btn small orange">
-   Make Favourite
-</a>
+
 
 </div>
 
