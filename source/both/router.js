@@ -13,9 +13,20 @@ Router.route('/photo');
 Router.route('/dashBoard');
 Router.route('/updateDetails');
 Router.route('/myProfile');
-Router.route('/reSendVerificationEmail');
+Router.route('/chat');
 
 
+Router.route('/adminApprove',{
+  onBeforeAction: function() {
+    var check = Meteor.user().username;
+    if (check === "admin") {
+      this.next();
+    } else {
+      sweetAlert("you got lost !! Go Back");
+      Router.go("home");
+    }
+  }
+});
 
 Router.route('/adminChat',{
   onBeforeAction: function() {
@@ -24,7 +35,7 @@ Router.route('/adminChat',{
       this.next();
     } else {
       sweetAlert("you got lost !! Go Back");
-      Router.go("/list");
+      Router.go("home");
     }
   }
 });
@@ -75,5 +86,3 @@ Router.route('show', {
     return user;
    }
  });
-
- Router.route('/chat');

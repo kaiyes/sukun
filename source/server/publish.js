@@ -3,11 +3,11 @@ Meteor.publish("find", function(gender){
 check(gender, String);
  return  Meteor.users.find({
    "profile.gender": gender,
-   "profile.hasDb":true},{
+   "profile.hasDb":true },{
     fields: {
       "username": 1,
       "profile": 1,
-      "createdAt":-1
+      "createdAt": -1,
     }
   });
 });
@@ -46,8 +46,8 @@ Meteor.publish("payment", function(){
  });
 
  Meteor.publish("biye", function(userId){
-    check(userId, String);
-    return Biye.find({createdBy: userId});
+    /*check(userId, String);*/
+    return Biye.find({ createdBy: userId });
  });
 
 Meteor.publish("request", function(){
@@ -182,4 +182,12 @@ Meteor.publish('admin', function () {
          "username": 1,
        }
      });
+});
+
+Meteor.publish('allUsersForAdmin', function () {
+    return Meteor.users.find({});
+});
+
+Meteor.publish("biyeForAdmin", function(){
+   return Biye.find({ });
 });

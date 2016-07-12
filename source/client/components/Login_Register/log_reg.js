@@ -9,11 +9,10 @@ Template.register.events({
 
     profile = {
       gender: gender,
-      hasDb:false,
       age:age,
+      hasDb:false,
       approved:false,
       banned:false,
-      paid:false,
     };
 
     Meteor.call("addUser", email,password,username,profile, function(error,result){

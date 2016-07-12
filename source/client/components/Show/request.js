@@ -41,9 +41,9 @@ Template.show.onRendered(function() {
 Template.show.helpers({
   detailsDb: function() {
     var userId = Meteor.users.findOne({
-      username: Router.current().params.username})._id;
-      Meteor.subscribe('biye',userId);
-    return Biye.findOne({createdBy: userId});
+    username: Router.current().params.username})._id;
+    Meteor.subscribe('biye',userId);
+    return Biye.findOne({ createdBy: userId });
   }
 
 });
