@@ -28,6 +28,30 @@ Router.route('/adminApprove',{
   }
 });
 
+Router.route('/adminApproved',{
+  onBeforeAction: function() {
+    var check = Meteor.user().username;
+    if (check === "admin") {
+      this.next();
+    } else {
+      sweetAlert("you got lost !! Go Back");
+      Router.go("home");
+    }
+  }
+});
+
+Router.route('/adminBan',{
+  onBeforeAction: function() {
+    var check = Meteor.user().username;
+    if (check === "admin") {
+      this.next();
+    } else {
+      sweetAlert("you got lost !! Go Back");
+      Router.go("home");
+    }
+  }
+});
+
 Router.route('/adminChat',{
   onBeforeAction: function() {
     var check = Meteor.user().username;

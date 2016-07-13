@@ -1,12 +1,11 @@
-Template.adminApprove.helpers({
+Template.adminBan.helpers({
 
   male: function () {
     Meteor.subscribe('find', "male");
     return Meteor.users.find({
       "profile.gender": "male",
       "profile.hasDb":true,
-      "profile.approved":false,
-      "profile.banned":false,
+      "profile.banned":true,
      },{ sort: { createdAt: -1 }})
     },
 
@@ -15,8 +14,7 @@ Template.adminApprove.helpers({
     return Meteor.users.find({
       "profile.gender": "female",
       "profile.hasDb":true,
-      "profile.approved":false,
-      "profile.banned":false,
+      "profile.banned":true,
     },{ sort: { createdAt: -1 }});
   },
 
@@ -24,11 +22,7 @@ Template.adminApprove.helpers({
    var id = Session.get('id');
    Meteor.subscribe('biyeForAdmin');
    var user = Meteor.users.findOne({_id: id });
-     if (user.profile.approved === false) {
-      return Biye.findOne({ createdBy: id });
-     } else {
-       console.log("user is already approved");
-     }
+   return Biye.findOne({ createdBy: id });
   },
 
   user: function () {
@@ -39,17 +33,18 @@ Template.adminApprove.helpers({
 
 });
 
-Template.adminApprove.events({
+Template.adminBan.events({
   "click [name=user]": function(){
     Session.set('id', this._id );
+    console.log(this._id);
+
   },
   "click [name=approve]": function(){
     var id = Session.get('id');
     Meteor.call("approve", id);
-
   },
-  "click [name=ban]": function(){
+  "click [name=unBan]": function(){
     var id = Session.get('id');
-    Meteor.call("ban", id);
+    Meteor.call("unBan", id);
   },
 });

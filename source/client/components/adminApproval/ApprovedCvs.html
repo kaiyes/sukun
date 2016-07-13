@@ -1,4 +1,4 @@
-<template name="adminApprove">
+<template name="adminApproved">
  {{#if currentUser}}
 
  <div class="container">
@@ -6,7 +6,7 @@
          <div class="col s3 right">
            <h2>Male users</h2>
            <ul>
-             {{#each male}}
+             {{#each approvedMale}}
                <li name="user">
                  <a href="#">
                    {{username}}
@@ -18,7 +18,7 @@
          <div class="col s3 left">
            <h2>Female users</h2>
            <ul>
-            {{#each female}}
+            {{#each approvedFemale}}
              <li name="user">
                <a href="#">
                    {{username}}
@@ -32,7 +32,7 @@
          <div class="col s6">
            <h2>cv of users </h2>
 
-           {{#with cv}}
+           {{#with approvedCv}}
               <h4> {{user}}'s profile </h4>
             <br><br>
            <div class="col s12">
@@ -48,7 +48,7 @@
 
             <a name= "approve"
               class="waves-effect waves-light
-              btn green lighten-1"> approve
+              btn red lighten-1"> Don't Approve
             </a>
             <a name= "ban"
               class="waves-effect waves-light
