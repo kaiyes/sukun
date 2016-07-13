@@ -6,7 +6,7 @@ Template.list.helpers({
             "profile.gender": "female",
             "profile.hasDb":true,
             /*"profile.approved":true,*/
-            "profile.approved":false,
+            "profile.banned":false,
            },{ sort: { createdAt: 1 }})
          } else {
           return Meteor.users.find({

@@ -28,7 +28,7 @@
           <div class="card   blue lighten-2">
             <div class="card-content black-text">
               <span class="card-title black-text">
-                {{#if currentUser.profile.approved }}
+                {{!-- {{#if currentUser.profile.approved }} --}}
                   <a href="/list/{{viewer}}" class="black-text">
                     <b>{{viewer}}</b> viewed your profile
                   </a>
@@ -37,11 +37,11 @@
                   waves-effect waves-light red">
                     <i class="material-icons">close</i>
                   </a>
-                  {{else}}
+                  {{!-- {{else}}
                   <a href="{{pathFor 'updateDetails'}}" class="black-text">
                    Finish profile to see who viewed your profile
                   </a>
-               {{/if}}
+               {{/if}} --}}
               </span>
 
             </div>
@@ -117,7 +117,7 @@
           <div class="card orange">
             <div class="card-content black-text">
               <span class="card-title black-text">
-                {{#if currentUser.profile.approved }}
+                {{!-- {{#if currentUser.profile.approved }} --}}
                   <a href="/list/{{username}}" class="black-text">
                     <b>{{username}}</b>
                   </a>
@@ -126,11 +126,11 @@
                   waves-effect waves-light red">
                     <i class="material-icons">close</i>
                   </a>
-                  {{else}}
+                  {{!-- {{else}}
                   <a href="{{pathFor 'updateDetails'}}" class="black-text">
                    Finish profile to see your favourites
                   </a>
-                {{/if}}
+                {{/if}} --}}
               </span>
             </div>
           </div>
