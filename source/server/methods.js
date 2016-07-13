@@ -99,4 +99,10 @@ reSendVerificationEmail: function(){
   Accounts.sendVerificationEmail(this.userId);
 },
 
+approve: function(id){
+ Meteor.users.update(
+   { _id:id },
+   { $set: { "profile.approved": true }});
+},
+
 });
