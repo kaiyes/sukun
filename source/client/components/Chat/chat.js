@@ -3,7 +3,6 @@ Template.chat.onRendered(function() {
 });
 
 
-
  Template.chat.helpers({
     conversationsIstarted: function() {
       var user = Meteor.user().username;
@@ -50,7 +49,6 @@ Template.chat.onRendered(function() {
   Template.chat.events({
     'click [name=user]': function() {
       Session.set("convoId", this.convoId);
-      console.log(this.convoId);
     },
 
     'click #delete': function() {
@@ -69,9 +67,16 @@ Template.chat.onRendered(function() {
           var conversation = Meteor.conversations.findOne({
             _id: conversationId
           });
+          var approved = Meteor.user().profile.approved;
           var text = $('[name="message"]').val();
+
           if (text !== '') {
-            conversation.sendMessage(text);
+            if (approved===true) {
+              conversation.sendMessage(text);
+            } else {
+              sweetAlert("Please finish your profile. you can't contact this person because your profile hasn't been approved");
+              Router.go('updateDetails');
+            }
             var scrollHeight = document.body.scrollHeight;
             window.scrollTo(0,scrollHeight);
           } //if message
@@ -102,11 +107,10 @@ Template.chat.onRendered(function() {
             type:"chat"
           }
 
-          if(unread===false){
-            console.log(unread);
+          if(unread===false && approved===true ){
             Meteor.call('insertNotification',users);
             Meteor.call('insertAdminNotification',adminInfo);
-          }
+           }
   // code for unread messaging notification
 
         } // if event

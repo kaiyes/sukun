@@ -30,7 +30,7 @@ addUser: function(email,password,username,profile){
  makePaidUser: function(){
  Payment.update(
    { createdBy:this.userId },
-   { $set:{paid:true }});
+   { $set: { paid:true }});
  },
 
  insertNotification: function(users){
@@ -97,6 +97,34 @@ removeFavourite: function(id){
 
 reSendVerificationEmail: function(){
   Accounts.sendVerificationEmail(this.userId);
+},
+
+approve: function(id){
+ Meteor.users.update(
+   { _id: id },
+   { $set: { "profile.approved": true }}
+  );
+},
+
+disApprove: function(id){
+ Meteor.users.update(
+   { _id: id },
+   { $set: { "profile.approved": false }}
+  );
+},
+
+ban: function(id){
+ Meteor.users.update(
+   { _id: id },
+   { $set: { "profile.banned": true }}
+  );
+},
+
+unBan: function(id){
+ Meteor.users.update(
+   { _id: id },
+   { $set: { "profile.banned": false }}
+  );
 },
 
 });

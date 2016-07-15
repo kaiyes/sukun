@@ -1,0 +1,236 @@
+<template name="adminApproved">
+ {{#if currentUser}}
+
+ <div class="container">
+       <div class="row">
+         <div class="col s3 right">
+           <h2>Male users</h2>
+           <ul>
+             {{#each approvedMale}}
+               <li name="user">
+                 <a href="#">
+                   {{username}}
+                 </a>
+               </li>
+             {{/each}}
+           </ul>
+         </div>
+         <div class="col s3 left">
+           <h2>Female users</h2>
+           <ul>
+            {{#each approvedFemale}}
+             <li name="user">
+               <a href="#">
+                   {{username}}
+               </a>
+             </li>
+           {{/each}}
+           </ul>
+         </div>
+
+
+         <div class="col s6">
+           <h2>cv of users </h2>
+
+           {{#with approvedCv}}
+              <h4> {{user}}'s profile </h4>
+            <br><br>
+           <div class="col s12">
+           <img class="responsive-img
+           materialboxed initialized" width="400"
+            src=" {{image}}" alt="">
+           </div>
+
+           <div class="row">
+            <h4 class="header Black-text lighten-1 section-title">
+                  About Me
+            </h4>
+
+            <a name= "approve"
+              class="waves-effect waves-light
+              btn red lighten-1"> Don't Approve
+            </a>
+            <a name= "ban"
+              class="waves-effect waves-light
+              btn red lighten-1"> Ban
+            </a>
+           </div>
+
+           <div class="row">
+           <div class="col s12">
+                <div class="card green lighten-2">
+                  <div class="card-content black-text">
+                    <span class="card-title black-text">Personal Info
+
+                    </span>
+                    <p id="bigText"> Age:{{personalInformation.age}}</p>
+                    <p id="bigText"> Height:{{personalInformation.height}}</p>
+                    <p id="bigText"> Present Residence: {{personalInformation.presentResidence}}</p>
+                    <p id="bigText"> Original Residence: {{personalInformation.originalResidence}}</p>
+                  </div>
+                </div>
+           </div>
+
+           <div class="col s12">
+                <div class="card green lighten-2">
+                  <div class="card-content black-text">
+                    <span class="card-title black-text">Education
+
+                    </span>
+                      <p id="bigText"> Degree:{{education.degree}}</p>
+                      <p id="bigText"> College:{{education.college}}</p>
+                      <p id="bigText"> University:{{education.university}}</p>
+                  </div>
+                </div>
+           </div>
+
+           <div class="col s12">
+                <div class="card green lighten-2">
+                  <div class="card-content black-text">
+                    <span class="card-title black-text">Religious Facts
+
+                    </span>
+                      <p id="bigText"> Prayer:{{religiousFacts.prayer}}</p>
+                      <p id="bigText"> Religious History:{{religiousFacts.religiousHistory}}</p>
+
+
+                            <p id="bigText"> Beard : {{religiousFacts.beard}} </p>
+
+                            <p id="bigText"> Hijab:{{religiousFacts.hijab}}</p>
+
+
+                  </div>
+                </div>
+           </div>
+           </div> {{!-- row end --}}
+
+           {{!-- ......................2nd section.......................  --}}
+
+           <div class="row">
+
+            <div class="col s12">
+                 <div class="card green lighten-2">
+                   <div class="card-content black-text">
+                     <span class="card-title black-text">Family
+
+                     </span>
+                     <p id="bigText"> Father:{{family.fathersJobDescription}}</p>
+                   </div>
+                 </div>
+            </div>
+
+            <div class="col s12">
+                 <div class="card green lighten-2">
+                   <div class="card-content black-text">
+                     <span class="card-title black-text">Marital Status
+
+                     </span>
+                       <p id="bigText"> Marital Status:{{maritalStatus.maritalStatus}}</p>
+
+                       {{#if $neq maritalStatus.maritalStatus 'Never Married'}}
+                           <p id="bigText"> Children(if any):{{numberOfChildren}}</p>
+                       {{/if}}
+
+                   </div>
+                 </div>
+            </div>
+
+            <div class="col s12">
+                 <div class="card green lighten-2">
+                   <div class="card-content black-text">
+                     <span class="card-title black-text">Job
+
+                     </span>
+                       <p id="bigText">  Profession:{{ profession.profession}}</p>
+                   </div>
+                 </div>
+            </div>
+           </div> {{!-- row end --}}
+
+           {{!-- ...................... section.......................  --}}
+
+           <div class="section fun-facts">
+           <div class="row">
+           <div class="col s12">
+               <div class="card green lighten-2">
+                   <div class="card-content black-text">
+                      <span class="card-title black-text">
+                        about me:
+                             {{aboutMe}}
+                       </span>
+                   </div>
+               </div>
+           </div>
+           </div>
+           </div>
+           {{!-- ......................Looking For.......................  --}}
+
+           <div class="row">
+           <h4 class="header Black-text
+           lighten-1 section-title">
+               Looking For
+           </h4>
+           </div>
+
+           <div class="section fun-facts">
+            <div class="row">
+              <div class="col s12">
+                <div class="card blue lighten-2">
+                  <div class="card-content black-text">
+
+                    <span class="card-title black-text">
+                      Looking for
+                      {{lookingFor}}
+                    </span>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+
+           <div class="row">
+
+           <div class="col s12">
+               <div class="card   blue lighten-2">
+                 <div class="card-content black-text">
+                   <span class="card-title black-text">Personal Info
+
+                   </span>
+                   <p id="bigText"> Age:{{mySpouseShouldBe.age}}</p>
+                   <p id="bigText"> Height:{{mySpouseShouldBe.height}}</p>
+                   <p id="bigText"> Degree:{{mySpouseShouldBe.degree}}</p>
+                 </div>
+               </div>
+           </div>
+
+
+            <div class="col s12">
+               <div class="card blue lighten-2">
+                 <div class="card-content black-text">
+                   <span class="card-title black-text">Religious Facts
+
+                   </span>
+                     <p id="bigText"> Prayer:{{mySpouseShouldBe.prayer}}</p>
+                     <p id="bigText"> Religious History:{{mySpouseShouldBe.religiousHistory}}</p>
+
+                          <p id="bigText"> Hijab:{{mySpouseShouldBe.hijab}}</p>
+
+                          <p id="bigText"> Beard:{{mySpouseShouldBe.beard}}</p>
+
+                 </div>
+               </div>
+               </div>
+              </div>
+           {{/with}}
+
+         </div>
+       </div>
+     </div>
+
+
+  {{/if}}
+  <style>
+    body { background-color:  #ede7f6;}
+  </style>
+</template>

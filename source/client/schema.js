@@ -13,6 +13,37 @@
       }
     },
 
+    /*nationalIdCardNumber: {
+      type: String,
+      optional: true,
+      custom: function() {
+        var gender = Meteor.user().profile.gender;
+        if ( gender === 'male' && !this.isSet ) {
+         return 'required';
+        } else {
+          return true;
+        }
+      }
+    },
+
+    scanOfNationalIdCard: {
+      type: String,
+      optional: true,
+      autoform: {
+        afFieldInput: {
+          type: 'cloudinary'
+        }
+      },
+      custom: function() {
+        var gender = Meteor.user().profile.gender;
+        if (!this.isSet && gender === 'male') {
+        return 'required';
+        } else {
+          return true;
+        }
+      }
+    },*/
+
     personalInformation: {
       type: Object,
       optional: true
@@ -313,7 +344,7 @@
 
   AutoForm.addHooks('details', {
     onSuccess: function() {
-      Meteor.users.update(Meteor.userId(), {$set: {"profile.hasDb": true}});
+      Meteor.users.update( Meteor.userId(), { $set: { "profile.hasDb": true }});
       sweetAlert('created your profile, Alhamdulillah')
       Router.go("/list");
     }
@@ -321,8 +352,9 @@
 
   AutoForm.addHooks('updateDetails', {
     onSuccess: function() {
-      sweetAlert('updated your profile, Alhamdulillah')
-      Router.go("/dashBoard");
+      Meteor.users.update( Meteor.userId(), { $set: { "profile.approved":false }});
+      sweetAlert('updated your profile, Awaiting approval from admin')
+      Router.go("/list");
     }
   });
 
@@ -361,3 +393,13 @@
         Router.go("/list");
       }
     });
+
+
+    /*custom: function() {
+      var gender = Meteor.user().profile.gender;
+      if (!this.isSet && gender === 'male') {
+      return 'required';
+      } else {
+        return true;
+      }
+    }*/

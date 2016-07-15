@@ -1,4 +1,4 @@
-Template.show.onCreated(function() {
+Template.show.onRendered(function() {
 
     var profileOwner = Router.current().params.username;
     var viewer = Meteor.user().username;
@@ -41,9 +41,9 @@ Template.show.onCreated(function() {
 Template.show.helpers({
   detailsDb: function() {
     var userId = Meteor.users.findOne({
-      username: Router.current().params.username})._id;
-      Meteor.subscribe('biye',userId);
-    return Biye.findOne({createdBy: userId});
+    username: Router.current().params.username})._id;
+    Meteor.subscribe('biye',userId);
+    return Biye.findOne({ createdBy: userId });
   }
 
 });
@@ -203,7 +203,6 @@ Template.show.events({
            Meteor.call('insertNotification', users);
            Meteor.call("insertAdminNotification", adminInfo);
 
-           /*conversation.sendMessage("Assalamu Alaikum");*/
            Router.go('chat');
          } else {
            console.log("link exists, hide button");

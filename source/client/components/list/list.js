@@ -6,12 +6,15 @@ Template.list.helpers({
             "profile.gender": "female",
             "profile.hasDb":true,
             "profile.approved":true,
-             },{ sort: { createdAt: 1 }})
+            "profile.banned":false,
+           },{ sort: { createdAt: 1 }})
          } else {
           return Meteor.users.find({
             "profile.gender": "male",
+            "profile.hasDb":true,
             "profile.approved":true,
-            "profile.hasDb":true },{ sort: { createdAt: 1 }});
+            "profile.banned":false,
+          },{ sort: { createdAt: 1 }});
         }
   },
 

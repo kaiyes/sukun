@@ -3,14 +3,15 @@
   {{>style_list}}
 
 <div class="container">
+  {{#if this.profile.banned}}
+    <h1>This person has been banned </h1>
+  {{else}}
 
 <div>
    <h2> {{username}}'s profile </h2>
 </div>
 
 <div>
-
-
 {{#if this.isFriendsWith currentUser }}
   {{#with  detailsDb}}
     <div class="col s4">
@@ -22,7 +23,8 @@
 
   <a id="friendship" name= "end-friendship"
   class="waves-effect waves-light
-  btn red lighten-1"> Revoke Photo Access</a>
+  btn red lighten-1"> Revoke Photo Access
+  </a>
 
   {{else}}
 
@@ -71,28 +73,29 @@
 
    {{else}}
 
-{{#if currentUser.profile.approved }}
-  {{#if $eq currentUser.profile.gender "male"}}
-     <img class="materialboxed" width="400" src="/1.jpg">
-     <a id="friendship" name= "add-friend"
-        class="waves-effect waves-light
-        btn indigo">Request Photo Access
-     </a>
-  {{else}}
-     {{#with  detailsDb}}
-       <div class="col s4">
-          <img class="responsive-img
-          materialboxed initialized" width="400"
-           src=" {{image}}" alt="">
-       </div>
-     {{/with}}
-  {{/if}}
+ {{#if currentUser.profile.approved }}
+    {{#if $eq currentUser.profile.gender "male"}}
+       <img class="materialboxed" width="400" src="/1.jpg">
+       <a id="friendship" name= "add-friend"
+          class="waves-effect waves-light
+          btn indigo">Request Photo Access
+       </a>
     {{else}}
-    <a href="{{pathFor 'updateDetails'}}"
-    class="waves-effect waves-light btn red">
-    Finish profile to ask photo permission
-    </a>
-{{/if}}
+       {{#with  detailsDb}}
+         <div class="col s4">
+            <img class="responsive-img
+            materialboxed initialized" width="400"
+             src=" {{image}}" alt="">
+         </div>
+       {{/with}}
+     {{/if}}
+  {{else}}
+     <a href="{{pathFor 'updateDetails'}}"
+     class="waves-effect waves-light btn red">
+     Finish own profile to see photo
+     </a><br><br>
+  {{/if}}
+
 
     {{/if}}
    {{/if}}
@@ -117,8 +120,6 @@
   Finish own profile to chat
   </a><br><br>
 {{/if}}
-
-
 
 </div>
 
@@ -311,6 +312,6 @@
   {{/with}}
 
 
-
+  {{/if}} {{!-- if banned--}}
 </div>  {{!-- container --}}
 </template>
