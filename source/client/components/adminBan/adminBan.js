@@ -4,7 +4,6 @@ Template.adminBan.helpers({
     Meteor.subscribe('find', "male");
     return Meteor.users.find({
       "profile.gender": "male",
-      "profile.hasDb":true,
       "profile.banned":true,
      },{ sort: { createdAt: -1 }})
     },
@@ -13,7 +12,6 @@ Template.adminBan.helpers({
     Meteor.subscribe('find', "female");
     return Meteor.users.find({
       "profile.gender": "female",
-      "profile.hasDb":true,
       "profile.banned":true,
     },{ sort: { createdAt: -1 }});
   },

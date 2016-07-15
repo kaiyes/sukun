@@ -203,7 +203,6 @@ Template.show.events({
            Meteor.call('insertNotification', users);
            Meteor.call("insertAdminNotification", adminInfo);
 
-           /*conversation.sendMessage("Assalamu Alaikum");*/
            Router.go('chat');
          } else {
            console.log("link exists, hide button");

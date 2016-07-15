@@ -46,7 +46,7 @@ Meteor.publish("payment", function(){
  });
 
  Meteor.publish("biye", function(userId){
-    /*check(userId, String);*/
+    check(userId, String);
     return Biye.find({ createdBy: userId });
  });
 

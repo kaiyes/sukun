@@ -93,13 +93,8 @@
                       <p id="bigText"> Prayer:{{religiousFacts.prayer}}</p>
                       <p id="bigText"> Religious History:{{religiousFacts.religiousHistory}}</p>
 
-                      {{#if $eq currentUser.profile.gender "female"}}
-
                             <p id="bigText"> Beard : {{religiousFacts.beard}} </p>
-                         {{else}}
                             <p id="bigText"> Hijab:{{religiousFacts.hijab}}</p>
-                      {{/if}}
-
                   </div>
                 </div>
            </div>
@@ -214,11 +209,11 @@
                    </span>
                      <p id="bigText"> Prayer:{{mySpouseShouldBe.prayer}}</p>
                      <p id="bigText"> Religious History:{{mySpouseShouldBe.religiousHistory}}</p>
-                     {{#if $eq currentUser.profile.gender "female"}}
+
                           <p id="bigText"> Hijab:{{mySpouseShouldBe.hijab}}</p>
-                        {{else}}
+                      
                           <p id="bigText"> Beard:{{mySpouseShouldBe.beard}}</p>
-                     {{/if}}
+
                  </div>
                </div>
                </div>
