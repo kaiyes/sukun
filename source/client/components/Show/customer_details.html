@@ -19,6 +19,12 @@
        materialboxed initialized" width="400"
         src=" {{image}}" alt="">
     </div>
+
+    <a name= "end-friendship" href="{{personalInformation.cv}}"
+    class="waves-effect waves-light
+    btn yellow lighten-1"> Download
+    </a>
+
   {{/with}}
 
   <a id="friendship" name= "end-friendship"
@@ -87,6 +93,12 @@
             materialboxed initialized" width="400"
              src=" {{image}}" alt="">
          </div>
+
+         <a href="{{personalInformation.cv}}"
+          class="waves-effect waves-light btn red"
+          download="{{personalInformation.cv}}">
+          Download cv </a>
+
        {{/with}}
      {{/if}}
   {{else}}
@@ -117,7 +129,7 @@
   {{else}}
   <a href="{{pathFor 'updateDetails'}}"
   class="waves-effect waves-light btn indigo">
-  Finish own profile to chat
+  Your Profile is incomplete. Please Complete your profile to chat
   </a><br><br>
 {{/if}}
 

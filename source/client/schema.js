@@ -1,4 +1,3 @@
-
   AutoForm.setDefaultTemplate('materialize');
 
   Biye.attachSchema(new SimpleSchema({
@@ -13,7 +12,7 @@
       }
     },
 
-    /*nationalIdCardNumber: {
+    nationalIdCardNumber: {
       type: String,
       optional: true,
       custom: function() {
@@ -26,7 +25,7 @@
       }
     },
 
-    scanOfNationalIdCard: {
+    /*scanOfNationalIdCard: {
       type: String,
       optional: true,
       autoform: {
@@ -47,6 +46,16 @@
     personalInformation: {
       type: Object,
       optional: true
+    },
+
+    'personalInformation.cv': {
+      type: String,
+      optional: true,
+      autoform: {
+        afFieldInput: {
+          type: 'cloudinary'
+        }
+      }
     },
 
     'personalInformation.age': {

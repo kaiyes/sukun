@@ -13,7 +13,6 @@ Template.details.onRendered(function() {
 });
 
 
-
 Template.updateDetails.helpers({
    updateProfile: function(){
      Meteor.subscribe('biye',Meteor.userId());

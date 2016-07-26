@@ -74,7 +74,7 @@ Template.chat.onRendered(function() {
             if (approved===true) {
               conversation.sendMessage(text);
             } else {
-              sweetAlert("Please finish your profile. you can't contact this person because your profile hasn't been approved");
+              sweetAlert("your profile is incomplete. Please complete your profile to contact this person");
               Router.go('updateDetails');
             }
             var scrollHeight = document.body.scrollHeight;
