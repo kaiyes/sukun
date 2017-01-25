@@ -7,14 +7,14 @@ Template.list.helpers({
             "profile.hasDb":true,
             "profile.approved":true,
             "profile.banned":false,
-           },{ sort: { createdAt: 1 }})
+          },{ sort: { createdAt: -1 }})
          } else {
           return Meteor.users.find({
             "profile.gender": "male",
             "profile.hasDb":true,
             "profile.approved":true,
             "profile.banned":false,
-          },{ sort: { createdAt: 1 }});
+          },{ sort: { createdAt: -1 }});
         }
   },
 

@@ -1,4 +1,9 @@
 Template.home.onCreated(function() {
+
+    if (Meteor.userId()) {
+      Router.go('/list');
+    };
+
     if (Accounts._verifyEmailToken) {
       Accounts.verifyEmail(Accounts._verifyEmailToken, function(err) {
         if (err != null) {
@@ -10,10 +15,10 @@ Template.home.onCreated(function() {
           Router.go("/details");
         }
       });
-    }
+    };
 
     if (Accounts._resetPasswordToken) {
-    Session.set('resetPassword', Accounts._resetPasswordToken);
-    Router.go("/resetPassword");
-   }
+      Session.set('resetPassword', Accounts._resetPasswordToken);
+      Router.go("/resetPassword");
+   };
   });

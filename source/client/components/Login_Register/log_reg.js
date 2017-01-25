@@ -20,7 +20,16 @@ Template.register.events({
         sweetAlert(error.reason);
       } else {
         sweetAlert("your account was created successfully");
-        Router.go('verifyEmail');
+
+        Meteor.loginWithPassword(email, password,
+          function(error) {
+            if (error) {
+              sweetAlert(error.reason);
+            } else {
+              Router.go('details');
+            };
+          });
+
       }
     });
 

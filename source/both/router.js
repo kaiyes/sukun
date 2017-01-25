@@ -10,7 +10,7 @@ Router.route('/verifyEmail');
 Router.route('/forgotPassword');
 Router.route('/resetPassword');
 Router.route('/banned');
-
+Router.route('/details');
 
 Router.route('/adminApprove',{
   onBeforeAction: function() {
@@ -61,31 +61,20 @@ Router.route('/adminChat',{
 });
 
 
-Router.route('/details',  {
-  onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
-       if(!verify){
-         Router.go('verifyEmail');
-       }else{
-        console.log("veried, going to details");
-      };
-      this.next();
-    }
-  });
+
 
 
 Router.route('/list',{
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-    if (!verify) {
-      Router.go('verifyEmail');
-    } else if (!hasDb) {
+
+    if (!hasDb) {
       Router.go("details");
-    } else if (banned) {
+    };
+    if (banned) {
       Router.go("banned");
-    }
+    };
     this.next();
   }
 });
@@ -94,16 +83,14 @@ Router.route('show', {
   path: '/list/:username',
 
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-      if (!verify) {
-        Router.go('verifyEmail');
-      } else if (!hasDb) {
+      if (!hasDb) {
         Router.go("details");
-      } else if (banned) {
+      };
+      if (banned) {
         Router.go("banned");
-      }
+      };
       this.next();
   },
   waitOn: function() {
@@ -126,16 +113,14 @@ Router.route('show', {
 
 Router.route('/chat',{
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-      if (!verify) {
-        Router.go('verifyEmail');
-      } else if (!hasDb) {
+      if (!hasDb) {
         Router.go("details");
-      } else if (banned) {
+      };
+      if (banned) {
         Router.go("banned");
-      }
+      };
       this.next();
   }
 });
@@ -145,60 +130,55 @@ Router.route('/myProfile',{
     var verify = Meteor.user().emails[0].verified;
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-      if (!verify) {
-        Router.go('verifyEmail');
-      } else if (!hasDb) {
+      if (!hasDb) {
         Router.go("details");
-      } else if (banned) {
+      };
+      if (banned) {
         Router.go("banned");
-      }
+      };
       this.next();
   }
 });
 
 Router.route('/dashBoard',{
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-      if (!verify) {
-        Router.go('verifyEmail');
-      } else if (!hasDb) {
+      if (!hasDb) {
         Router.go("details");
-      } else if (banned) {
+      };
+      if (banned) {
         Router.go("banned");
-      }
+      };
       this.next();
   }
 });
 
 Router.route('/photo',{
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
+
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-      if (!verify) {
-        Router.go('verifyEmail');
-      } else if (!hasDb) {
+      if (!hasDb) {
         Router.go("details");
-      } else if (banned) {
+      };
+      if (banned) {
         Router.go("banned");
-      }
+      };
       this.next();
   }
 });
 Router.route('/updateDetails',{
   onBeforeAction: function() {
-    var verify = Meteor.user().emails[0].verified;
+
     var hasDb = Meteor.user().profile.hasDb;
     var banned = Meteor.user().profile.banned;
-      if (!verify) {
-        Router.go('verifyEmail');
-      } else if (!hasDb) {
+      if (!hasDb) {
         Router.go("details");
-      } else if (banned) {
+      };
+      if (banned) {
         Router.go("banned");
-      }
+      };
       this.next();
   }
 });
