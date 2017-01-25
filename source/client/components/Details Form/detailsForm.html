@@ -1,12 +1,114 @@
 <template name="details">
  {{>style_show}}
   <div class="container">
-    <div class="card-panel">
-       <h4> Upload Your CV Here</h4>
+    <h5 class=""> Upload Your CV Here</h5>
+    <div class="row">
+      <form class="col s12">
 
-    </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="name" type="text" class="validate">
+            <label for="name">Write Your name here</label>
+          </div>
+        </div>
 
-    <div class="card-panel" id="form">
+        <div class="row">
+          <div class="input-field col s12">
+            <select>
+              <option value="" selected>Choose your option</option>
+              <option value="1">male</option>
+              <option value="2">female</option>
+            </select>
+            <label>Are you male or female ? </label>
+         </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="height" type="text" class="validate">
+            <label for="height">What is your Height ? </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="profession" type="text" class="validate">
+            <label for="profession">Whats your profession ? </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="education" type="text" class="validate">
+            <label for="education">Whats your last Degree ? </label>
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="input-field col s12">
+            <select>
+              <option value="" selected>Choose your option</option>
+              <option value="1">Always pray</option>
+              <option value="2">Sometimes miss fajr</option>
+              <option value="3">Often pray</option>
+              <option value="4">Before exam</option>
+              <option value="5">Eid only</option>
+              <option value="6">Jumuah Only</option>
+              <option value="7">Will start praying very soon</option>
+            </select>
+            <label>How often Do you pray ? </label>
+         </div>
+        </div>
+        
+         <div class="row">
+          <div class="input-field col s12">
+            <select>
+              <option value="" selected>Choose your option</option>
+              <option value="1">For 5 years</option>
+              <option value="2">For 3 years</option>
+              <option value="3">For 1 or 2 years</option>
+              <option value="5">Have not started practising yet but want to, soon</option>
+            </select>
+            <label>How long have you been practising ? </label>
+         </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <select>
+              <option value="" selected>Choose your option</option>
+              <option value="1">I have let my beard grow</option>
+              <option value="2">I trim my beard</option>
+              <option value="3">No beard, shaved</option>
+            </select>
+            <label>How long is your Beard ? </label>
+         </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <select>
+              <option value="" selected>Choose your option</option>
+              <option value="1">Always With Burkha/Abaya face open</option>
+              <option value="2">Always with Burkha/Abaya with Niqab</option>
+              <option value="3">Always with Scarf only</option>
+              <option value="1">I dress modestly but not Burkha/Abaya/niqab</option>
+            </select>
+            <label>Do you wear Hijab ?  </label>
+         </div>
+        </div>
+
+         <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+            <label for="textarea1">About You</label>
+          </div>
+        </div>
+
+     </form>
+   </div>
+
+    <!-- <div class="card-panel" id="form">
     {{#if currentUser}}
       {{#if $eq currentUser.profile.gender "male"}}
         {{>  quickForm collection="Biye"
@@ -18,7 +120,7 @@
             omitFields="createdBy, religiousFacts.beard, mySpouseShouldBe.hijab "}}
       {{/if}}
     {{/if}}
-    </div>
+    </div> -->
   </div>
 </template>
 

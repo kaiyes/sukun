@@ -1,5 +1,5 @@
 Template.details.onRendered(function() {
-
+ $('select').material_select();
   this.autorun(function() {
   var check = Meteor.user().profile.hasDb;
    if (check) {
