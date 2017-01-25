@@ -25,17 +25,17 @@
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="name" type="text" class="validate">
+            <input id="name" type="text" required>
             <label for="name">Write Your name here</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <select>
+            <select id="gender" required>
               <option value="" selected>Choose your option</option>
-              <option value="1">male</option>
-              <option value="2">female</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
             </select>
             <label>Are you male or female ? </label>
          </div>
@@ -64,28 +64,28 @@
 
          <div class="row">
           <div class="input-field col s12">
-            <select>
+            <select id="prayer">
               <option value="" selected>Choose your option</option>
-              <option value="1">Always pray</option>
-              <option value="2">Sometimes miss fajr</option>
-              <option value="3">Often pray</option>
-              <option value="4">Before exam</option>
-              <option value="5">Eid only</option>
-              <option value="6">Jumuah Only</option>
-              <option value="7">Will start praying very soon</option>
+              <option value="Always pray">Always pray</option>
+              <option value="Sometimes miss fajr">Sometimes miss fajr</option>
+              <option value="Often pray">Often pray</option>
+              <option value="Before exam">Before exam</option>
+              <option value="Eid only">Eid only</option>
+              <option value="Jumuah Only">Jumuah Only</option>
+              <option value="Will start praying very soon">Will start praying very soon</option>
             </select>
             <label>How often Do you pray ? </label>
          </div>
         </div>
-        
+
          <div class="row">
           <div class="input-field col s12">
-            <select>
+            <select id="practising">
               <option value="" selected>Choose your option</option>
-              <option value="1">For 5 years</option>
-              <option value="2">For 3 years</option>
-              <option value="3">For 1 or 2 years</option>
-              <option value="5">Have not started practising yet but want to, soon</option>
+              <option value="For 5 years">For 5 years</option>
+              <option value="For 3 years">For 3 years</option>
+              <option value="For 1 or 2 years">For 1 or 2 years</option>
+              <option value="Have not started practising yet but want to, soon">Have not started practising yet but want to, soon</option>
             </select>
             <label>How long have you been practising ? </label>
          </div>
@@ -93,11 +93,11 @@
 
         <div class="row">
           <div class="input-field col s12">
-            <select>
+            <select id="beard">
               <option value="" selected>Choose your option</option>
-              <option value="1">I have let my beard grow</option>
-              <option value="2">I trim my beard</option>
-              <option value="3">No beard, shaved</option>
+              <option value="I have let my beard grow">I have let my beard grow</option>
+              <option value="I trim my beard">I trim my beard</option>
+              <option value="No beard, shaved">No beard, shaved</option>
             </select>
             <label>How long is your Beard ? </label>
          </div>
@@ -105,12 +105,12 @@
 
         <div class="row">
           <div class="input-field col s12">
-            <select>
+            <select id="hijab">
               <option value="" selected>Choose your option</option>
-              <option value="1">Always With Burkha/Abaya face open</option>
-              <option value="2">Always with Burkha/Abaya with Niqab</option>
-              <option value="3">Always with Scarf only</option>
-              <option value="1">I dress modestly but not Burkha/Abaya/niqab</option>
+              <option value="Always With Burkha/Abaya face open">Always With Burkha/Abaya face open</option>
+              <option value="Always with Burkha/Abaya with Niqab">Always with Burkha/Abaya with Niqab</option>
+              <option value="Always with Scarf only">Always with Scarf only</option>
+              <option value="I dress modestly but not Burkha/Abaya/niqab">I dress modestly but not Burkha/Abaya/niqab</option>
             </select>
             <label>Do you wear Hijab ?  </label>
          </div>
@@ -118,8 +118,8 @@
 
          <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
-            <label for="textarea1">About You</label>
+            <textarea id="aboutMe" class="materialize-textarea" length="120"></textarea>
+            <label for="aboutMe">About You</label>
           </div>
         </div>
 
@@ -127,21 +127,6 @@
           type="submit" value="submit">
      </form>
    </div>
-
-    <!-- <div class="card-panel" id="form">
-    {{#if currentUser}}
-      {{#if $eq currentUser.profile.gender "male"}}
-        {{>  quickForm collection="Biye"
-            id="details" type="insert"
-            omitFields="createdBy,religiousFacts.hijab, mySpouseShouldBe.beard"}}
-          {{else}}
-        {{> quickForm collection="Biye"
-            id="details" type="insert"
-            omitFields="createdBy, religiousFacts.beard, mySpouseShouldBe.hijab "}}
-      {{/if}}
-    {{/if}}
-    </div> -->
-    
   </div>
 </template>
 
