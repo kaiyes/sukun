@@ -6,6 +6,5 @@ Meteor.startup(function() {
       sendVerificationEmail: true
     });
 
-    Houston.add_collection(Meteor.users);
 
   });

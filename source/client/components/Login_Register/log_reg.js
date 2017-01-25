@@ -3,19 +3,15 @@ Template.register.events({
     event.preventDefault();
     var email = event.target.email.value;
     var password = event.target.password.value;
-    var gender = event.target.sex.value;
-    var username = event.target.username.value;
-    var age = event.target.age.value;
+
 
     profile = {
-      gender: gender,
-      age:age,
       hasDb:false,
       approved:false,
       banned:false,
     };
 
-    Meteor.call("addUser", email,password,username,profile, function(error,result){
+    Meteor.call("addUser", email,password,profile, function(error,result){
       if (error) {
         sweetAlert(error.reason);
       } else {

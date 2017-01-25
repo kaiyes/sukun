@@ -1,11 +1,9 @@
 Meteor.methods({
 
-addUser: function(email,password,username,profile){
-  check(profile, Object);
+addUser: function(email,password,profile){
   Accounts.createUser({
         email: email,
         password: password,
-        username: username,
         profile: profile
       });
 },
